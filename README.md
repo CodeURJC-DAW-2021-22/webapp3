@@ -27,40 +27,40 @@ ___
 ### ENTITIES
 
 There are going to be four different entities:
-	* **USER** —  this entity is formed by different types of users that take part of the system
-		* Gym Member
-		* Gym Instructor
-		* Administrator 
-	* **EXERCISE** — this entity is formed by different activities a gym member can perform. The member can be guided by an instructor or not.
-	* **GROUP ACTIVITIES** — this entity is formed by different activities which are directed by instructors. 
-	* **EXERCISE TABLES** — this entity is formed by different types of exercises. These tables are for the members.
+* **USER** —  this entity is formed by different types of users that take part of the system
+*  	Gym Member
+*  	Gym Instructor
+*  	Administrator 
+*  **EXERCISE** — this entity is formed by different activities a gym member can perform. The member can be guided by an instructor or not.
+*  **GROUP ACTIVITIES** — this entity is formed by different activities which are directed by instructors. 
+*   **EXERCISE TABLES** — this entity is formed by different types of exercises. These tables are for the members.
   
 ### USERS
 
 Among the user entity there are going to be different types of users:
-	* **Members** — are the users that have access to the different services provided by the gym
-	* **Instructors** — These users can book rooms to perform group activities and can assign exercise tables to the members
-	* **Administrator** — their main activity is to create and maintain different instances of the gym
-	* **Unregistered users** — these users can only access to information about the different prices and services provided by the gym
+* **Members** — are the users that have access to the different services provided by the gym
+* **Instructors** — These users can book rooms to perform group activities and can assign exercise tables to the members
+* **Administrator** — their main activity is to create and maintain different instances of the gym
+* **Unregistered users** — these users can only access to information about the different prices and services provided by the gym
 
 ### USER PERMISSIONS
 
 Members and Instructors, own the information they have in their profile. They can edit, creating, modifying and deleting that information:
-	* Profile avatar
-	* Email
-	* Password
-	* Change of password
-	* Change of password
-	* Percentage of corporal fat
-	* Height
-	* Breadth
-	* Gender
-	* Bank account associated
+* Profile avatar
+* Email
+* Password
+* Change of password
+* Change of password
+* Percentage of corporal fat
+* Height
+*  Breadth
+*  Gender
+*  Bank account associated
 
 Permissions associated to the administrator are: 
-	* Register new rooms, modify the existing ones and disable rooms that cannot be used
-	* Register new instructors, edit the instructors that form part of the gym and delete instructors
-	* See the general progress of the gym members
+* Register new rooms, modify the existing ones and disable rooms that cannot be used
+* Register new instructors, edit the instructors that form part of the gym and delete instructors
+* See the general progress of the gym members
 
 ### IMAGES
 
@@ -70,8 +70,8 @@ Administrators can edit images associated to the different entities, activities,
 ### GRAPHICS
 
 The administrator is the one who has de capability of visualizing the different graphics. They are mainly related to member participation graphics:
-	* Activities (it will be shown as bar charts)
-	* Exercise Tables (it will be shown as bar charts)
+* Activities (it will be shown as bar charts)
+* Exercise Tables (it will be shown as bar charts)
 
 ### COMPLEMENTARY TECHNOLOGY
 
