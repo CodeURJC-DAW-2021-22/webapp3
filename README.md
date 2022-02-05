@@ -28,9 +28,9 @@ ___
 
 There are going to be four different entities:
 * **USER** —  this entity is formed by different types of users that take part of the system
-*  	Gym Member
-*  	Gym Instructor
-*  	Administrator 
+  * Gym Member
+  * Gym Instructor
+  * Administrator 
 *  **EXERCISE** — this entity is formed by different activities a gym member can perform. The member can be guided by an instructor or not.
 *  **GROUP ACTIVITIES** — this entity is formed by different activities which are directed by instructors. 
 *   **EXERCISE TABLES** — this entity is formed by different types of exercises. These tables are for the members.
