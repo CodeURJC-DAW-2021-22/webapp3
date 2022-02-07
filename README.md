@@ -1,8 +1,8 @@
 # RUKY GYMASTIC
 
-The objective of this application is to represent the functioning of a gym. It has different options of gym members, 
+The objective of this application is to represent a gym. It will allow users to store important information related to activities carried out in the gym.
 
-___
+__
 
 ## MEMBERS OF THE TEAM
 
@@ -18,7 +18,7 @@ ___
 
 ## CORPORATIVE TOOLS
 
-In order to plan de distribution of the amount of work, the team is going to use trello, https://trello.com/b/u60sMfLS/g3-daw-2021-22 and in case meetings are necessary the team is going to use Discord
+In order to plan the distribution of work, the team is going to use trello, (https://trello.com/b/u60sMfLS/g3-daw-2021-22). If online meetings are necessary, the team will use Discord.
 
 ___
 
@@ -27,45 +27,44 @@ ___
 ### ENTITIES
 
 There are going to be four different entities:
-* **USER** —  this entity is formed by different types of users that take part of the system
+* **USER** —  This entity represents the application's users. There are different types of users that take part in the system:
   * Gym Member
   * Gym Instructor
   * Administrator 
-*  **EXERCISE** — this entity is formed by different activities a gym member can perform. The member can be guided by an instructor or not.
-*  **GROUP ACTIVITIES** — this entity is formed by different activities which are directed by instructors. 
-*   **EXERCISE TABLES** — this entity is formed by different types of exercises. These tables are for the members.
+*  **EXERCISE** — This entity represents a physical activity a gym member can perform. The member can be guided by an instructor or not.
+*  **GROUP ACTIVITIES** — This entity represents a sport which is directed by instructors. Group activities can be created, modified or deleted by the administrator.
+*   **EXERCISE TABLES** — This entity is formed by different types of exercises. The exercise tables are for gym members. Exercise tables can be created, modified or deleted by gym instructors.
   
 ### USERS
 
 Among the user entity there are going to be different types of users:
-* **Members** — are the users that have access to the different services provided by the gym
-* **Instructors** — These users can book rooms to perform group activities and can assign exercise tables to the members
-* **Administrator** — their main activity is to create and maintain different instances of the gym
-* **Unregistered users** — these users can only access to information about the different prices and services provided by the gym
+* **Member** — is the type of user that have access to the different services provided by the gym.
+* **Instructor** — this type of user can assign exercise tables to members and book rooms to perform group activities.
+* **Administrator** — its main activity is to create and maintain updated the gym information.
+* **Unregistered user** — this type of user can only access to information about the different prices and services provided by the gym.
 
 ### USER PERMISSIONS
 
-Members and Instructors, own the information they have in their profile. They can edit, creating, modifying and deleting that information:
+Members and Instructors own the information they have in their profile. They can edit, create, modify and delete the information:
 * Profile avatar
 * Email
 * Password
 * Change of password
-* Change of password
 * Percentage of corporal fat
 * Height
-*  Breadth
-*  Gender
-*  Bank account associated
+* Breadth
+* Gender
+* Bank account associated
 
 Permissions associated to the administrator are: 
-* Register new rooms, modify the existing ones and disable rooms that cannot be used
-* Register new instructors, edit the instructors that form part of the gym and delete instructors
-* See the general progress of the gym members
+* Register new group activities, modify the existing ones and delete activities.
+* Register new instructors, edit the instructors that form part of the gym and delete instructors.
+* See the general progress of the gym members.
 
 ### IMAGES
 
 Members and instructors will have representative avatars. They can modify it.
-Administrators can edit images associated to the different entities, activities,  exercise tables…
+Administrators can edit images associated to the different entities: activities, exercise tables, general information of the gym...
 
 ### GRAPHICS
 
@@ -75,12 +74,12 @@ The administrator is the one who has de capability of visualizing the different 
 
 ### COMPLEMENTARY TECHNOLOGY
 
-Introduce the localisation of the gym using google maps
-Generate different pdfs with the exercise tables
+Introduce the localization of the gym using Google Maps.
+Generate different pdfs with the exercise tables.
 
 ### ADVANCED CONSULTING ALGORITHM
 
-At the end of a season the members can see the individualized progress that has improved along the season.
+At the end of a season, members will be able to see their individual progress.
 
 ___
   
