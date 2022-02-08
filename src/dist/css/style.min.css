@@ -220,7 +220,7 @@ a {
 }
 
 a:hover {
-    color: #381be7;
+    color: #f36100;
     text-decoration: underline
 }
 
@@ -2756,8 +2756,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #7460ee;
-    border-color: #7460ee
+    background-color: #f36100;
+    border-color: #f36100;
 }
 
 .btn-primary:hover {
@@ -10573,7 +10573,7 @@ html[dir=ltr] body .p-l-0 {
 #main-wrapper {}
 
 #main-wrapper .topbar .top-navbar .navbar-header[data-logobg=skin5] {
-    background: #1F262D
+    background: #111111
 }
 
 #main-wrapper .topbar .navbar-collapse[data-navbarbg=skin5],
@@ -10583,7 +10583,7 @@ html[dir=ltr] body .p-l-0 {
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5],
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] ul {
-    background: #1F262D
+    background: #111
 }
 
 #main-wrapper .left-sidebar[data-sidebarbg=skin5] .create-btn,
@@ -10691,7 +10691,7 @@ html[dir=ltr] body .p-l-0 {
 body {
     margin: 0;
     overflow-x: hidden;
-    color: #3e5569;
+    color: white;
     background: #fff
 }
 
@@ -10701,7 +10701,7 @@ html {
 }
 
 a {
-    color: #2962FF
+    color: #fff
 }
 
 a:focus,
@@ -11319,7 +11319,7 @@ ul.list-style-none li a:hover {
 }
 
 #navbarSupportedContent {
-    background: #1F262D!important
+    background: #111111!important
 }
 
 .search-box .app-search {
@@ -11472,7 +11472,8 @@ ul.list-style-none li a:hover {
 }
 
 .page-breadcrumb .page-title {
-    margin-bottom: 0px
+    margin-bottom: 0px;
+    color: black;
 }
 
 .page-breadcrumb .breadcrumb {
@@ -11540,7 +11541,7 @@ ul.list-style-none li a:hover {
 }
 
 .sidebar-nav ul .sidebar-item.selected>.sidebar-link {
-    background: #27a9e3;
+    background: #f36100;
     opacity: 1
 }
 
@@ -15872,6 +15873,7 @@ label {
 }
 
 .el-element-overlay .el-card-item {
+    background-color: #000;
     position: relative;
     padding-bottom: 20px
 }
@@ -15941,8 +15943,8 @@ label {
 }
 
 .el-element-overlay .el-card-item .el-overlay-1 .el-info .el-item .el-link:hover {
-    background: #2962FF;
-    border-color: #2962FF
+    background: #f36100;
+    border-color: #f36100
 }
 
 .el-element-overlay .el-card-item .el-overlay {
