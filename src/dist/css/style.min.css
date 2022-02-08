@@ -5198,7 +5198,8 @@ input[type=submit].btn-block {
 }
 
 .card-title {
-    margin-bottom: 0.75rem
+    margin-bottom: 0.75rem;
+    color: black
 }
 
 .card-subtitle {
@@ -9966,6 +9967,10 @@ button.bg-purple:hover {
 
 .text-right {
     text-align: right!important
+}
+
+.text {
+    color: #5a6268
 }
 
 .text-center {
@@ -15869,7 +15874,7 @@ label {
     -moz-transform: rotate(45deg)
 }
 
-.el-element-overlay .white-box {
+.el-element-overlay .white-box .el-element-overlay-1 {
     padding: 0px
 }
 
@@ -15937,6 +15942,10 @@ label {
     margin: 0 3px
 }
 
+.el-element-overlay-2 {
+    background-color: #fff;
+}
+
 .el-element-overlay .el-card-item .el-overlay-1 .el-info .el-item .el-link {
     border-color: #fff;
     color: #fff;
@@ -15956,7 +15965,7 @@ label {
     top: 0;
     left: 0;
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
     -webkit-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out
@@ -15964,7 +15973,7 @@ label {
 
 .el-element-overlay .el-card-item .el-overlay-1:hover .el-overlay {
     opacity: 1;
-    filter: alpha(opacity=100);
+    filter: alpha(opacity=0);
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0)
