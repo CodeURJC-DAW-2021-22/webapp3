@@ -9969,7 +9969,7 @@ button.bg-purple:hover {
 }
 
 .text {
-	color:#5a6268;
+    color: #5a6268;
 }
 
 .text-center {
@@ -16093,6 +16093,19 @@ label {
 
 .selector {
     float: right;
+    background-color: black;
+    border-radius: 5px;
+    border: solid 2px #eee
+}
+
+.buttonsAddActivity {
+    display: flex center;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 2px #eee
+}
+
+.selector2 {
     background-color: black;
     border-radius: 5px;
     border: solid 2px #eee
