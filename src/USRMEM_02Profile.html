@@ -251,91 +251,144 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Usuario</h4>
-                                <h5 class="card-subtitle">Información Básica</h5>
                                 <div class="row">
-                                    <div class="col-md-1">
-                                        <div class="card">
-                                            <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="80" class="rounded-circle"></div>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <h4 class="card-title text">Usuario</h4>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="card">
-                                            <form class="form-horizontal">
-                                                <div class="card-body">
-                                                    <div class="form-group row">
-                                                        <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="fname" placeholder="Nombre">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="lname" placeholder="Apellidos">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="lname" placeholder="@NombreUsuario">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="password" class="form-control" id="lname" placeholder="Contraseña">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="email1" class="col-sm-3 text-right text control-label col-form-label">Confirmación de contraseña</label>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="email1" placeholder="Contraseña">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="form-group row">
-                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="date-mask" placeholder="dd/mm/yyyy">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="cono1" placeholder="Número de teléfono">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="cono1" placeholder="Domicilio">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="cono1" placeholder="Código Postal">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-6">
+                                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRMEM_02EditProfile.html"><i class="mdi mdi-tooltip-edit"></i></a></button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="border-top card">
                                             <div class="card-body">
-                                                <button type="submit" class="btn btn-success">Save</button>
-                                                <button type="submit" class="btn btn-primary">Reset</button>
-                                                <button type="submit" class="btn btn-info">Edit</button>
-                                                <button type="submit" class="btn btn-danger">Cancel</button>
+                                                <h5 class="card-subtitle">Información Básica</h5>
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        <div class="card align-items-center">
+                                                            <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="80" class="rounded-circle"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="fname" placeholder="Nombre">Andrea</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="lname" placeholder="Apellidos">Nuzzi Herrero</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="user" placeholder="@NombreUsuario">@AndyNuzzi</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="password" class="form-control" id="password" placeholder="Contraseña">AndyNuzzi</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group row">
+                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                            <div class="col-sm-9 input-group">
+                                                                <span type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">08/03/2000</span>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-md-3 m-t-15 text-right text">Sexo</label>
+                                                            <div class="col-md-9">
+                                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                                    <option> </option>
+                                                                    <optgroup label=" Sexo">
+                                                                        <option value="H">Hombre</option>
+                                                                        <option value="M">Mujer</option>
+                                                                        <option value="B">No contesto</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">163</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">53</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--aditional information-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="border-top card">
+                                            <div class="card-body">
+                                                <h5 class="card-subtitle">Información Adicional</h5>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="cono1" placeholder="Domicilio">c/ Aranjuez</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="cono1" placeholder="00000">28954</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="cono1" placeholder="+XX-XXX XX XX XX">+34-654 76 89 34</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="cono1" placeholder="000-000-000">234-456-876</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- medical information-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="border-top card">
+                                            <div class="card-body">
+                                                <h5 class="card-subtitle">Información Médica</h5>
+                                                <div class="form-group row">
+                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
+                                                    <div class="col-sm-9">
+                                                        <span type="text" class="form-control" id="cono1" placeholder="Indicar alergias a tratamientos o lesiones crónicas">No tengo alergias ni lesiones</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
