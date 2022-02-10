@@ -16121,3 +16121,16 @@ label {
     padding-top: 6px;
     padding-left: 10px;
 }
+
+.colorBlackText {
+    color: black;
+}
+
+.colorWhiteText {
+    color: white;
+}
+
+.colorOrangeText {
+    background-color: black;
+    color: #f36100;
+}
