@@ -228,7 +228,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Editar actividad</h4>
+                        <h4 class="page-title">Información de actividad</h4>
                     </div>
                 </div>
             </div>
@@ -246,51 +246,61 @@
 
                     <div class="col-12">
                         <div class="card">
-                            <div class="row">
-                                <div class="col-lg-8 col-md-6 col-6 card-body">
+                            <div class="row el-element-overlay">
+                                <div class="col-lg-8 col-md-12 col-12 card-body">
 
                                     <h4 class="card-title" style="color: black; margin-bottom: 20px;">Datos generales</h4>
                                     <div class="row mb-3">
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control" placeholder="Zumba">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Nombre: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">Zumba</span>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control" placeholder="Sala de actividades 1">
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Sala: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">Sala de actividades 1 </span>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-lg-12">
-                                            <input type="text" class="form-control" placeholder="40€">
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Tarifa: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">40 €</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-6 ">
-                                    <img width="340px" height="340px" src="img/gallery/gallery-8.jpg" alt="user" />
+                                <div class="col-lg-3 col-md-12 col-12 image ">
+                                    <div class="el-card-avatar el-overlay-1 ">
+                                        <img src="img/gallery/gallery-8.jpg " width="250 " height="250 " alt="user " />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="card-body">
-                                <div class="border-top card"></div>
+                            <div class="card-body ">
+                                <div class="border-top card "></div>
                             </div>
 
-                            <div class="card-body">
-                                <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
+                            <div class="card-body ">
+                                <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Descripción</h4>
                                 <!-- Create the editor container -->
-                                <div style="height: 300px; color: black;">
+                                <div style="height: 300px; color: black; ">
                                     <p>Se trata de una actividad en grupo pero individual. ¡Música y a bailar!</p>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                </div>
-
-                <div class="row el-element-overlay">
-                    <div class="col-12 buttonsAddActivity">
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_07AddMonitor.html">Guardar cambios</a></button>
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="javascript:void(0);">Cancelar</a></button>
+                        <div class="row el-element-overlay">
+                            <div class="col-12 buttonsAddActivity">
+                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_02ActivitiesList.html">Editar</a></button>
+                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_02ActivitiesList.html">Eliminar</a></button>
+                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_02ActivitiesList.html">Cancelar</a></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -310,8 +320,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            <footer class="footer text-center ">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com ">WrapPixel</a>.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -327,35 +337,35 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
+    <script src="assets/extra-libs/sparkline/sparkline.js "></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
+    <script src="dist/js/waves.js "></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="dist/js/sidebarmenu.js "></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="dist/js/custom.min.js "></script>
     <!-- This Page JS -->
-    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-    <script src="dist/js/pages/mask/mask.init.js"></script>
-    <script src="assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
-    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
-    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
-    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
-    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
+    <script src="dist/js/pages/mask/mask.init.js "></script>
+    <script src="assets/libs/select2/dist/js/select2.full.min.js "></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js "></script>
+    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
+    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
+    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
+    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
+    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
+    <script src="assets/libs/quill/dist/quill.min.js "></script>
     <script>
         //***********************************//
         // For select 2
         //***********************************//
-        $(".select2").select2();
+        $(".select2 ").select2();
 
         /*colorpicker*/
         $('.demo').each(function() {

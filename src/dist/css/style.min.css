@@ -16110,3 +16110,13 @@ label {
     border-radius: 5px;
     border: solid 2px #eee
 }
+
+.image {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.centerText {
+    padding-top: 6px;
+}
