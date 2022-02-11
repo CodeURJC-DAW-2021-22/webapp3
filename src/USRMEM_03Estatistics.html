@@ -255,98 +255,16 @@
                                     <div>
                                         <h4 class="card-title">Progreso</h4>
                                         <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Pie Chart</h5>
 
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Pie Chart</h5>
-
-                                                    <div class="pie" style="height: 300px; padding: 0px; position: relative;">
-                                                        <canvas class="flot-base" width="1263" height="539" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 702.222px; height: 300px;">
-                                                        </canvas>
-                                                        <canvas class="flot-overlay" width="1263" height="539" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 702.222px; height: 300px;">
-                                                        </canvas>
-                                                        <div class="legend">
-                                                            <div style="position: absolute; width: 57.0747px; height: 77.9861px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;">
-                                                            </div>
-                                                            <table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="legendColorBox">
-                                                                            <div style="border:1px solid #ccc;padding:1px">
-                                                                                <div style="width:4px;height:0;border:5px solid rgb(72,140,19);overflow:hidden">
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="legendLabel">
-                                                                            Series1
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="legendColorBox">
-                                                                            <div style="border:1px solid #ccc;padding:1px">
-                                                                                <div style="width:4px;height:0;border:5px solid rgb(27,85,192);overflow:hidden">
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="legendLabel">
-                                                                            Series2
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="legendColorBox">
-                                                                            <div style="border:1px solid #ccc;padding:1px">
-                                                                                <div style="width:4px;height:0;border:5px solid rgb(218,75,15);overflow:hidden">
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="legendLabel">
-                                                                            Series3
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="legendColorBox">
-                                                                            <div style="border:1px solid #ccc;padding:1px">
-                                                                                <div style="width:4px;height:0;border:5px solid rgb(233,177,4);overflow:hidden">
-                                                                                </div>
-                                                                            </div>
-                                                                        </td>
-                                                                        <td class="legendLabel">
-                                                                            Series4
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
+                                                        <div class="pie" style="height: 300px; padding: 0px; position: relative;">
                                                         </div>
-                                                        <div class="pieLabelBackground" style="position: absolute; width: 39.7309px; height: 35.9896px; top: 161.505px; left: 764.097px; background-color: rgb(0, 0, 0); opacity: 0.5;">
-                                                        </div>
-                                                        <span class="pieLabel" id="pieLabel0" style="position: absolute; top: 161.505px; left: 764.097px;">
-                                                            <div style="font-size:8pt;text-align:center;padding:2px;color:white;">
-                                                                Series1<br>35%
-                                                            </div>
-                                                        </span>
-                                                        <div class="pieLabelBackground" style="position: absolute; width: 39.7309px; height: 35.9896px; top: 409.505px; left: 456.097px; background-color: rgb(0, 0, 0); opacity: 0.5;">
-                                                        </div>
-                                                        <span class="pieLabel" id="pieLabel1" style="position: absolute; top: 409.505px; left: 456.097px;">
-                                                            <div style="font-size:8pt;text-align:center;padding:2px;color:white;">
-                                                                Series2<br>51%
-                                                            </div>
-                                                        </span>
-                                                        <div class="pieLabelBackground" style="position: absolute; width: 39.7309px; height: 35.9896px; top: 107.505px; left: 441.097px; background-color: rgb(0, 0, 0); opacity: 0.5;">
-                                                        </div>
-                                                        <span class="pieLabel" id="pieLabel2" style="position: absolute; top: 107.505px; left: 441.097px;">
-                                                            <div style="font-size:8pt;text-align:center;padding:2px;color:white;">
-                                                                Series3<br>3%
-                                                            </div>
-                                                        </span>
-                                                        <div class="pieLabelBackground" style="position: absolute; width: 39.7309px; height: 35.9896px; top: 61.5052px; left: 514.097px; background-color: rgb(0, 0, 0); opacity: 0.5;">
-                                                        </div>
-                                                        <span class="pieLabel" id="pieLabel3" style="position: absolute; top: 61.5052px; left: 514.097px;">
-                                                            <div style="font-size:8pt;text-align:center;padding:2px;color:white;">
-                                                                Series4<br>11%
-                                                            </div>
-                                                        </span>
                                                     </div>
                                                 </div>
+
                                             </div>
 
                                         </div>
@@ -421,6 +339,16 @@
     <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="dist/js/pages/chart/chart-page-init.js"></script>
+
+    <script>
+        $(function() {
+            /** This code runs when everything has been loaded on the page */
+            /* Inline sparklines take their values from the contents of the tag */
+            $('.pie').sparkline([10, 8, 5, 7, 4, 4, 1], {
+                type: pie,
+            });
+        });
+    </script>
 
 </body>
 
