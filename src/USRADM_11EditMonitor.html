@@ -12,17 +12,23 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
-    <link href="assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/libs/quill/dist/quill.snow.css">
     <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
 <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
@@ -206,14 +212,23 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Monitores</h4>
+                        <h4 class="page-title">Modificar información del monitor</h4>
                     </div>
                 </div>
             </div>
@@ -227,100 +242,106 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <div class="row">
 
-                <div class="row el-element-overlay">
-                    <div class="col-12 editMonitors">
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_08AddMonitor.html"><i class="mdi mdi mdi-account-plus"></i> Añadir monitor</a></button>
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_09DeleteMonitor.html"><i class="mdi mdi mdi-account-minus"></i> Eliminar monitor</a></button>
-                    </div>
-                </div>
-                <div class="row el-element-overlay">
-                    <div class="col-lg-3 col-md-6 col-6">
+                    <div class="col-12">
                         <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-2.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Jorge Javier</h4> <span class="text-muted">Zumba</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-1.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Noelia Ávila</h4> <span class="text-muted">Body Combat</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-5.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Maria Luisa Martinez</h4> <span class="text-muted">Yoga</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-3.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Frenando Alonso</h4> <span class="text-muted">Spinning</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-4.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Vinicius Junior</h4> <span class="text-muted">Body Pump</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="row el-element-overlay">
+                                <div class="col-lg-8 col-md-12 col-12 card-body">
 
+                                    <h4 class="card-title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Nombre: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="Jorge Javier Salinas Galindo"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Especialidad: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="Zumba">
+                                            </input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Estado laboral: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="Baja por lesión"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="31/02/2008"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Edad: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="43"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Teléfono: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="+1 111 111 111"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> DNI/NIE: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="00000000A"></input>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Email: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text " class="form-control " value="estoesunaprueba@prueba.com"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-12 image ">
+                                    <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                        <img src="img/team/team-2.jpg " width="300 " height="370 " alt="user " style="text-align: center;;" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body ">
+                                <div class="border-top card "></div>
+                            </div>
+
+                            <div class="card-body ">
+                                <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
+                                <!-- Create the editor container -->
+                                <div id="editor" style="height: 300px; color: black; ">
+                                    <p>Dos veces campeón del Premio al Profesor de Zumba (2019 y 2021)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row el-element-overlay">
+                            <div class="col-12 buttonsAddActivity">
+                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Guardar cambios</a></button>
+                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Cancelar</a></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -339,8 +360,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+            <footer class="footer text-center ">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com ">WrapPixel</a>.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -356,22 +377,72 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
+    <script src="assets/extra-libs/sparkline/sparkline.js "></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
+    <script src="dist/js/waves.js "></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="dist/js/sidebarmenu.js "></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
-    <!-- this page js -->
-    <script src="assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="assets/libs/magnific-popup/meg.init.js"></script>
+    <script src="dist/js/custom.min.js "></script>
+    <!-- This Page JS -->
+    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
+    <script src="dist/js/pages/mask/mask.init.js "></script>
+    <script src="assets/libs/select2/dist/js/select2.full.min.js "></script>
+    <script src="assets/libs/select2/dist/js/select2.min.js "></script>
+    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
+    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
+    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
+    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
+    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
+    <script src="assets/libs/quill/dist/quill.min.js "></script>
+    <script>
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2 ").select2();
+
+        /*colorpicker*/
+        $('.demo').each(function() {
+            //
+            // Dear reader, it's actually very easy to initialize MiniColors. For example:
+            //
+            //  $(selector).minicolors();
+            //
+            // The way I've done it below is just for the demo, so don't get confused
+            // by it. Also, data- attributes aren't supported at this time...they're
+            // only used for this demo.
+            //
+            $(this).minicolors({
+                control: $(this).attr('data-control') || 'hue',
+                position: $(this).attr('data-position') || 'bottom left',
+
+                change: function(value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ', ' + opacity;
+                    if (typeof console === 'object') {
+                        console.log(value);
+                    }
+                },
+                theme: 'bootstrap'
+            });
+
+        });
+        /*datwpicker*/
+        jQuery('.mydatepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+    </script>
 </body>
 
 </html>
