@@ -2,7 +2,7 @@
 
 The objective of this application is to represent a gym. It will allow users to store important information related to activities carried out in the gym.
 
-__
+___
 
 ## MEMBERS OF THE TEAM
 
