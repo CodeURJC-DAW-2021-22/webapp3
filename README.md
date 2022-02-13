@@ -165,5 +165,5 @@ The application consists of the following screens:
 ### Navigation diagram
 
 The following diagram shows how users can navigate through the different pages of the application according to their role.
-![](phase1_Doc_Imgs/NavigationDiagram.svg)
+![](phase1_Doc_Imgs/NavigationDiagram.png)
 --- 
