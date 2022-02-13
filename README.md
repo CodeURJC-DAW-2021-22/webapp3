@@ -119,7 +119,6 @@ The application consists of the following screens:
   ![](phase1_Doc_Imgs/USRADM/USRADM_11-EditInstructor.png)
 * USRADM_12EditMembers: The administrator can edit the amount of members the gym has. The administrator can add a new member or delete an existing member.
   ![](phase1_Doc_Imgs/USRADM/USARADM_12-EditMembers.png)
-
 * USRMEM_01ExerciseTable: The user can see the different exercise tables associated by the instructor.
   ![](phase1_Doc_Imgs/USRMEM/USRMEM_01-ExerciseTables.png)
 * USRMEM_02Profile: The member can see the information used in the register.
@@ -130,7 +129,6 @@ The application consists of the following screens:
   ![](phase1_Doc_Imgs/USRMEM/USRMEM_04-Statistics.png)
 * USRMEM_04Activities: The member can see the activities they are subscribed.
   ![](phase1_Doc_Imgs/USRMEM/USRMEM_05-GrupalActivities.png)
-
 * USRMON_01Schedule: This page shows monitor schedule.
   ![](phase1_Doc_Imgs/USRMON/USRMON_01-MonitorPage.png)
 * USRMON_02Profile: The monitor can see the information used in the register.
@@ -145,7 +143,6 @@ The application consists of the following screens:
   ![](phase1_Doc_Imgs/USRMON/USRMON_06-DeleteTables.png)
 * USRMON_07DeleteExerciseTable: This screen shows a table with exercises tables. The monitor can select them and delete them from the system.
   ![](phase1_Doc_Imgs/USRMON/USRMON_07-AddTable.png)
-
 * USRNR_01GymMainPage: Main page that all users will see upon entering and briefly explains the gym's services.
   ![](phase1_Doc_Imgs/USRNR/USRNR_01-GymMainPage.png)
 * USRNR_02Schedule: This page shows the schedule of activities available in the gym.
@@ -165,5 +162,6 @@ The application consists of the following screens:
 ### Navigation diagram
 
 The following diagram shows how users can navigate through the different pages of the application according to their role.
-![](phase1_Doc_Imgs/NavigationDiagram.png)
---- 
+  ![](phase1_Doc_Imgs/NavigationDiagram.png)
+
+___
