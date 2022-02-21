@@ -7,8 +7,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-    @GetMapping("/")
-    public String prueba(Model model){
-        return "USRADM_01Estatistics";
+    @GetMapping("/adminestadisticas")
+    public String stadistics(Model model){
+        return "USRADM_01Statistics";
+    }
+
+    @GetMapping("/adminactividades")
+    public String activities(Model model){
+        return "USRADM_02ActivitiesList";
+    }
+
+    @GetMapping("/adminmonitores")
+    public String monitors(Model model){
+        return "USRADM_03MonitorsList";
+    }
+
+    @GetMapping("/adminclientes")
+    public String clients(Model model){
+        return "USRADM_12Clients";
     }
 }
