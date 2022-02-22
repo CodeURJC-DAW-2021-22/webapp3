@@ -9,6 +9,6 @@ public class NonRegController {
 
     @GetMapping("/inicio")
     public String publicWeb(Model model){
-        return "mainPage";
+        return "USR_01mainPage";
     }
 }

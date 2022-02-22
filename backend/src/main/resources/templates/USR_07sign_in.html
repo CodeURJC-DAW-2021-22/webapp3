@@ -7,7 +7,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ruky Gymastic - Log In</title>
+    <title>Ruky Gymastic - Sign In</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -41,17 +41,17 @@
         </div>
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./mainPage.html">Home</a></li>
-                <li><a href="./schedule.html">Horarios</a></li>
-                <li><a href="./prices.html">Tarifas</a></li>
-                <li><a href="./activities.html">Actividades</a></li>
-                <li><a href="./contact_us.html">Contactanos</a></li>
+                <li><a href="USR_01mainPage.html">Home</a></li>
+                <li><a href="USR_03schedule.html">Horarios</a></li>
+                <li><a href="USR_04prices.html">Tarifas</a></li>
+                <li><a href="USR_02activities.html">Actividades</a></li>
+                <li><a href="USR_05contact_us.html">Contactanos</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-            <a href="./log_in.html">Log in</a>
-            <a href="./sign_in.html">Sign in</a>
+            <a href="USR_06log_in.html">Log in</a>
+            <a href="USR_07sign_in.html">Sign in</a>
         </div>
     </div>
     <!-- Offcanvas Menu Section End -->
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo">
-                        <a href="./mainPage.html">
+                        <a href="USR_01mainPage.html">
                             <img src="img/logo.png" alt="" width="200px">
                         </a>
                     </div>
@@ -70,11 +70,11 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="./mainPage.html">Home</a></li>
-                            <li><a href="./schedule.html">Horarios</a></li>
-                            <li><a href="./prices.html">Tarifas</a></li>
-                            <li><a href="./activities.html">Actividades</a></li>
-                            <li><a href="./contact_us.html">Contactanos</a></li>
+                            <li class="active"><a href="USR_01mainPage.html">Home</a></li>
+                            <li><a href="USR_03schedule.html">Horarios</a></li>
+                            <li><a href="USR_04prices.html">Tarifas</a></li>
+                            <li><a href="USR_02activities.html">Actividades</a></li>
+                            <li><a href="USR_05contact_us.html">Contactanos</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -84,8 +84,8 @@
                             <i class="fa fa-search"></i>
                         </div>
                         <div class="to-social">
-                            <a href="./log_in.html">Log in</a>
-                            <a href="./sign_in.html">Sign in</a>
+                            <a href="USR_06log_in.html">Log in</a>
+                            <a href="USR_07sign_in.html">Sign in</a>
                         </div>
                     </div>
                 </div>
@@ -104,18 +104,74 @@
         <br>
         <br>
         <div class="container">
-            <div class="row">
-            </div>
-            <div style="background-color: rgb(32, 32, 32); border-radius: 5px; width: 400px; margin-left: 31%;">
+            <div style="background-color: rgb(32, 32, 32); border-radius: 5px;">
                 <br>
                 <img src="img/logo.png" alt="" style=" display: block; margin-left: auto; margin-right: auto;" width="200px">
-                <h2 style="color: white; text-align: center;">Gymastic <strong style="color: rgb(255, 123, 0);">Log in</strong></h2>
+                <h2 style="color: white; text-align: center;">Gymastic <strong style="color: rgb(255, 123, 0);">Sign in</strong></h2>
                 <br>
                 <br>
-                <form action="/action_page.php" style="text-align: center;">
-                    <input type="text" id="fname" name="fname" placeholder="Usuario" required><br><br>
-                    <input type="text" id="lname" name="lname" placeholder="Contraseña" required><br><br>
+                <form action="/action_page.php" style="text-align: left; margin-left: 20%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="fname"><h4 style="color: white;">Nombre:</h4></label>
+                            <br>
+                            <input type="text" id="fname" name="fname"><br><br>
+
+                            <label for="fname"><h4 style="color: white;">Apellidos:</h4></label>
+                            <br>
+                            <input type="text" id="fname" name="fname"><br><br>
+
+                            <label for="fname"><h4 style="color: white;">Sexo:</h4></label>
+                            <br>
+                            <input type="text" id="fname" name="fname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">DNI:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Fecha Nacimiento:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Teléfono:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="lname"><h4 style="color: white;">Código Postal:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="fname"><h4 style="color: white;">Usuario:</h4></label>
+                            <br>
+                            <input type="text" id="fname" name="fname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Correo:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Contraseña:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Repetir contraseña:</h4></label>
+                            <br>
+                            <input type="text" id="lname" name="lname"><br><br>
+
+                            <label for="lname"><h4 style="color: white;">Tarifa:</h4></label>
+                            <br>
+                            <input list="tarifas" name="tarifas">
+                            <datalist id="tarifas">
+                                <option value="1 Month (19,99€)">
+                                <option value="6 Months (59,99€)">
+                                <option value="12 Months (99,99€)">
+                            </datalist>
+                        </div>
+                    </div>
+                    <br>
                     <input type="submit" value="Acceder" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn">
+
                 </form>
                 <br>
             </div>
@@ -147,9 +203,9 @@
                     <div class="fs-widget">
                         <h4>Links</h4>
                         <ul>
-                            <li><a href="./prices.html">Tarifas</a></li>
-                            <li><a href="./activities.html">Actividades</a></li>
-                            <li><a href="./contact_us.html">Contactanos</a></li>
+                            <li><a href="USR_04prices.html">Tarifas</a></li>
+                            <li><a href="USR_02activities.html">Actividades</a></li>
+                            <li><a href="USR_05contact_us.html">Contactanos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -157,8 +213,8 @@
                     <div class="fs-widget">
                         <h4>Registro</h4>
                         <ul>
-                            <li><a href="./log_in.html">Log in</a></li>
-                            <li><a href="./sign_in.html">Sign in</a></li>
+                            <li><a href="USR_06log_in.html">Log in</a></li>
+                            <li><a href="USR_07sign_in.html">Sign in</a></li>
                         </ul>
                     </div>
                 </div>
