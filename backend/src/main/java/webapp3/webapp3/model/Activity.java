@@ -1,18 +1,21 @@
-package webapp3.webapp3;
+package webapp3.webapp3.model;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.sql.Blob;
 
+
 @Entity
+@Table(name = "activities")
 public class Activity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id = null;
 
     private String name;
     private String price;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String room;
     private int capacity;
@@ -28,6 +31,7 @@ public class Activity {
     }
 
     public Activity(String name, String price, String description, String room, int capacity, String schedule) {
+        super();
         this.name = name;
         this.price = price;
         this.description = description;
@@ -40,7 +44,6 @@ public class Activity {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
@@ -103,5 +106,9 @@ public class Activity {
 
     public void setImageFile(Blob image) {
         this.imageFile = image;
+    }
+
+    public Blob getImageFile() {
+        return imageFile;
     }
 }

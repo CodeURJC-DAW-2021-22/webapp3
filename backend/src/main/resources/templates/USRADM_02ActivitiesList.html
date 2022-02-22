@@ -61,10 +61,11 @@
                     </div>
                 </div>
                 <div class="row el-element-overlay">
+                    {{#activitiesList}}
                     <div class="col-lg-3 col-md-6 col-6">
                         <div class="card">
                             <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-8.jpg" alt="user" />
+                                <div class="el-card-avatar el-overlay-1"> <img src="{imageFile}" alt="user" />
                                     <div class="el-overlay">
                                         <ul class="list-style-none el-info">
                                             <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
@@ -73,79 +74,16 @@
                                     </div>
                                 </div>
                                 <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">Zumba</a></h4>
+                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">{{name}}</a></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-2.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_07EditActivity.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">Body Combat</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-3.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_07EditActivity.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">Body Pump</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-4.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_07EditActivity.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">Spinning</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-5.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_07EditActivity.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">Yoga</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{/activitiesList}}
+
+
+
+
                 </div>
 
 
