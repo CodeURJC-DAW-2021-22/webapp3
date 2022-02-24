@@ -56,8 +56,7 @@
 
                 <div class="row el-element-overlay">
                     <div class="col-12 editMonitors">
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_04AddActivity.html"><i class="mdi mdi-plus-outline"></i> Añadir actividad</a></button>
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_05DeleteActivity.html"><i class="mdi mdi-delete"></i> Eliminar actividad</a></button>
+                        <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick='location.href="/addNewActivity"'><i class="mdi mdi-plus-outline"></i> Añadir actividad</button>
                     </div>
                 </div>
                 <div class="row el-element-overlay">
@@ -68,13 +67,13 @@
                                 <div class="el-card-avatar el-overlay-1"> <img src="{imageFile}" alt="user" />
                                     <div class="el-overlay">
                                         <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_06SeeActivityInfo.html"><i class="mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_07EditActivity.html"><i class="mdi mdi-pencil"></i></a></li>
+                                            <li class="el-item"><button class="btn default btn-outline el-link " onclick='location.href="/activity/{{id}}"'><i class="mdi mdi-eye"></i></button></li>
+                                            <li class="el-item"><button class="btn default btn-outline el-link " onclick='location.href="/editActivity/{{id}}"'><i class="mdi mdi-pencil"></i></button></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="el-card-content">
-                                    <h4 class="m-b-0"><a href="USRADM_06SeeActivityInfo.html">{{name}}</a></h4>
+                                    <h4 class="m-b-0">{{name}}</h4>
                                 </div>
                             </div>
                         </div>

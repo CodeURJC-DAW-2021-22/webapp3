@@ -68,17 +68,19 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <form action="/addNewActivity" method="post" >
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+
                                 <h4 class="card-title" style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
                                 <div class="row mb-3">
                                     <div class="col-lg-2 col-md-4 col-12 ">
                                         <p style="color:black; " class="centerText"> Nombre: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text" class="form-control" placeholder="Nombre de la actividad">
+                                        <input type="text" class="form-control" placeholder="Nombre de la actividad" name="name">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -86,7 +88,7 @@
                                         <p style="color:black; " class="centerText"> Sala: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12">
-                                        <input type="text" class="form-control" placeholder="Sala">
+                                        <input type="text" class="form-control" placeholder="Sala" name="room">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -94,7 +96,31 @@
                                         <p style="color:black; " class="centerText"> Precio: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12">
-                                        <input type="text" class="form-control" placeholder="Precio">
+                                        <input type="text" class="form-control" placeholder="Precio" name="price">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Capacidad: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="number" class="form-control" placeholder="Capacidad" name="capacity">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Dia: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control" placeholder="Dia" name="schedule">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Añadir imagen: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input class="colorBlackText" type='file' name='imageField' accept=".jpg, .jpeg" />
                                     </div>
                                 </div>
                             </div>
@@ -102,12 +128,13 @@
                                 <div class="border-top card"></div>
                             </div>
 
+
+
                             <div class="card-body">
                                 <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
                                 <!-- Create the editor container -->
-                                <div id="editor" style="height: 300px; color: black;">
-
-                                </div>
+                                <textarea id="editor" style="height: 300px; color: black; width: 100%;" name="description">
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -115,10 +142,11 @@
 
                 <div class="row el-element-overlay">
                     <div class="col-12 buttonsAddActivity">
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_02ActivitiesList.html">Guardar cambios</a></button>
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_02ActivitiesList.html">Cancelar</a></button>
+                        <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit" value="Guardar cambios"/>
+                        <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick="location.href='/activities'">Cancelar</button>
                     </div>
                 </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

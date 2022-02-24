@@ -14,7 +14,7 @@ public class ActivityService {
     @Autowired
     private ActivityRepository repository;
 
-    public Optional<Activity> findAll(long id){
+    public Optional<Activity> findById(long id){
         return repository.findById(id);
     }
 
