@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Blob;
 
 
+
 @Entity
 @Table(name = "activities")
 public class Activity {
@@ -19,7 +20,11 @@ public class Activity {
     private String description;
     private String room;
     private int capacity;
-    private String schedule;
+    private String monday;
+    private String tuesday;
+    private String wednesday;
+    private String thursday;
+    private String friday;
 
     @Lob
     private Blob imageFile;
@@ -30,14 +35,19 @@ public class Activity {
 
     }
 
-    public Activity(String name, String price, String description, String room, int capacity, String schedule) {
+    public Activity(String name, String price, String description, String room, int capacity, String monday,
+                          String tuesday, String wednesday, String thursday, String friday) {
         super();
         this.name = name;
         this.price = price;
         this.description = description;
         this.room = room;
         this.capacity = capacity;
-        this.schedule = schedule;
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
     }
 
     public void setId(Long id) {
@@ -88,12 +98,44 @@ public class Activity {
         this.capacity = capacity;
     }
 
-    public String getSchedule() {
-        return schedule;
+    public String getMonday() {
+        return monday;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public void setMonday(String monday) {
+        this.monday = monday;
+    }
+
+    public String getTuesday() {
+        return tuesday;
+    }
+
+    public void setTuesday(String tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public String getWednesday() {
+        return wednesday;
+    }
+
+    public void setWednesday(String wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public String getThursday() {
+        return thursday;
+    }
+
+    public void setThursday(String thursday) {
+        this.thursday = thursday;
+    }
+
+    public String getFriday() {
+        return friday;
+    }
+
+    public void setFriday(String friday) {
+        this.friday = friday;
     }
 
     public boolean getImage(){

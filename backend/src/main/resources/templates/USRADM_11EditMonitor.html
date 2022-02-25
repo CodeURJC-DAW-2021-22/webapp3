@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <title>Ruky Gymastic - Editar monitor</title>
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/jquery-minicolors/jquery.minicolors.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/quill/dist/quill.snow.css">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/quill/dist/quill.snow.css">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -68,107 +68,126 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="row el-element-overlay">
-                                <div class="col-lg-8 col-md-12 col-12 card-body">
-
+                <form action="/editMonitor/{{id}}" method="post">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
                                     <h4 class="card-title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
+
                                     <div class="row mb-3">
                                         <div class="col-lg-2 col-md-4 col-12">
                                             <p style="color:black;" class="centerText"> Nombre: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="Jorge Javier Salinas Galindo"></input>
+                                            <input type="text" class="form-control " value="{{monitor.name}}" name="name" pattern="[a-zA-Z ]+"/>
                                         </div>
                                     </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Especialidad: </p>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Apellidos: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="Zumba">
-                                            </input>
+                                            <input type="text" class="form-control " value="{{monitor.surname}}" name="surname" pattern="[a-zA-Z ]+"/>
                                         </div>
                                     </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Estado laboral: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="Baja por lesión"></input>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Fecha de alta: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="31/02/2008"></input>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Edad: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="43"></input>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Teléfono: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="+1 111 111 111"></input>
-                                        </div>
-                                    </div>
+
                                     <div class="row mb-3 ">
                                         <div class="col-lg-2 col-md-4 col-12 ">
                                             <p style="color:black; " class="centerText"> DNI/NIE: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="00000000A"></input>
+                                            <input type="text" class="form-control " value="{{monitor.NIF}}" name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/> <!--pattern digitos de control-->
                                         </div>
                                     </div>
+
                                     <div class="row mb-3 ">
                                         <div class="col-lg-2 col-md-4 col-12 ">
                                             <p style="color:black; " class="centerText"> Email: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input type="text " class="form-control " value="estoesunaprueba@prueba.com"></input>
+                                            <input type="text" class="form-control " value="{{monitor.email}}" name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Dirección: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.address}}" name="address" pattern="[a-zA-Z,./ 0-9áéíóúü]+"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Código postal: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.postalCode}}" name="postalCode" pattern="[0-9]{5}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Teléfono: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.phone}}" name="phone" pattern="(6|7){1}}[0-9]{8}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Fecha de nacimiento: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.birthday}}" name="birthdayDate" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.hiringDate}}" name="hiringDate" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Actividad: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.activityName}}" name="activityName" pattern="[a-zA-Z]+"/>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-12 col-12 image ">
-                                    <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
-                                        <img src="img/team/team-2.jpg " width="300 " height="370 " alt="user " style="text-align: center;;" />
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="card-body ">
-                                <div class="border-top card "></div>
-                            </div>
-
-                            <div class="card-body ">
-                                <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
-                                <!-- Create the editor container -->
-                                <div id="editor" style="height: 300px; color: black; ">
-                                    <p>Dos veces campeón del Premio al Profesor de Zumba (2019 y 2021)</p>
+                                <div class="card-body ">
+                                    <div class="border-top card "></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row el-element-overlay">
-                            <div class="col-12 buttonsAddActivity">
-                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Guardar cambios</a></button>
-                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Cancelar</a></button>
+
+                                <div class="card-body ">
+                                    <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
+                                    <!-- Create the editor container -->
+                                    <textarea id="editor" style="height: 300px; color: black; width:100%" name="description">
+                                        <p>{{monitor.description}}</p>
+                                    </textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="row el-element-overlay">
+                        <div class="col-12 buttonsAddActivity">
+                            <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit" value="Guardar cambios"></input>
+                            <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/monitors"'>Cancelar</button>
+                        </div>
+                    </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -201,30 +220,30 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
+    <script src="/assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js "></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js "></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js "></script>
+    <script src="/dist/js/waves.js "></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js "></script>
+    <script src="/dist/js/sidebarmenu.js "></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js "></script>
+    <script src="/dist/js/custom.min.js "></script>
     <!-- This Page JS -->
-    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
-    <script src="dist/js/pages/mask/mask.init.js "></script>
-    <script src="assets/libs/select2/dist/js/select2.full.min.js "></script>
-    <script src="assets/libs/select2/dist/js/select2.min.js "></script>
-    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
-    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
-    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
-    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
-    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
-    <script src="assets/libs/quill/dist/quill.min.js "></script>
+    <script src="/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
+    <script src="/dist/js/pages/mask/mask.init.js "></script>
+    <script src="/assets/libs/select2/dist/js/select2.full.min.js "></script>
+    <script src="/assets/libs/select2/dist/js/select2.min.js "></script>
+    <script src="/assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
+    <script src="/assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
+    <script src="/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
+    <script src="/assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
+    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
+    <script src="/assets/libs/quill/dist/quill.min.js "></script>
     <script>
         //***********************************//
         // For select 2

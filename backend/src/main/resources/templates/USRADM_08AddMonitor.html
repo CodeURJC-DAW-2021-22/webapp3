@@ -68,87 +68,124 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <!--            @RequestParam String name,
+                                @RequestParam String surname,
+                                @RequestParam String NIF,
+                                @RequestParam String email,
+                                @RequestParam String address,
+                                @RequestParam String postalCode,
+                                @RequestParam String phone,
+                                @RequestParam String birthdayDate,
+                                @RequestParam String hiringDate,
+                                @RequestParam String activityName-->
+                <form action="/addNewMonitor" method="post">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
+
                                 <div class="row mb-3">
                                     <div class="col-lg-2 col-md-4 col-12">
                                         <p style="color:black;" class="centerText"> Nombre: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="Nombre y apellidos"></input>
+                                        <input type="text" class="form-control " placeholder="Nombre" name="name" pattern="[a-zA-Z ]+"/>
                                     </div>
                                 </div>
-                                <div class="row mb-3 ">
-                                    <div class="col-lg-2 col-md-4 col-12 ">
-                                        <p style="color:black; " class="centerText"> Especialidad: </p>
+
+                                <div class="row mb-3">
+                                    <div class="col-lg-2 col-md-4 col-12">
+                                        <p style="color:black;" class="centerText"> Apellidos: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="Actividad">
-                                        </input>
+                                        <input type="text" class="form-control " placeholder="Apellidos" name="surname" pattern="[a-zA-Z ]+"/>
                                     </div>
                                 </div>
-                                <div class="row mb-3 ">
-                                    <div class="col-lg-2 col-md-4 col-12 ">
-                                        <p style="color:black; " class="centerText"> Estado laboral: </p>
-                                    </div>
-                                    <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="Estado laboral"></input>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 ">
-                                    <div class="col-lg-2 col-md-4 col-12 ">
-                                        <p style="color:black; " class="centerText"> Fecha de alta: </p>
-                                    </div>
-                                    <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="dd/mm/aaaa"></input>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 ">
-                                    <div class="col-lg-2 col-md-4 col-12 ">
-                                        <p style="color:black; " class="centerText"> Edad: </p>
-                                    </div>
-                                    <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="Edad"></input>
-                                    </div>
-                                </div>
-                                <div class="row mb-3 ">
-                                    <div class="col-lg-2 col-md-4 col-12 ">
-                                        <p style="color:black; " class="centerText"> Teléfono: </p>
-                                    </div>
-                                    <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="Número de teléfono"></input>
-                                    </div>
-                                </div>
+
                                 <div class="row mb-3 ">
                                     <div class="col-lg-2 col-md-4 col-12 ">
                                         <p style="color:black; " class="centerText"> DNI/NIE: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="DNI/NIE"></input>
+                                        <input type="text" class="form-control " placeholder="NIF" name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/> <!--pattern digitos de control-->
                                     </div>
                                 </div>
+
                                 <div class="row mb-3 ">
                                     <div class="col-lg-2 col-md-4 col-12 ">
                                         <p style="color:black; " class="centerText"> Email: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text " class="form-control " placeholder="correo electrónico"></input>
+                                        <input type="text" class="form-control " placeholder="Correo electrónico" name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Dirección: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="Dirección" name="address" pattern="[a-zA-Z,./ 0-9áéíóúü]+"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Código postal: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="Código postal" name="postalCode" pattern="[0-9]{5}"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Teléfono: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="Número de teléfono" name="phone" pattern="(6|7){1}[0-9]{8}"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Fecha de nacimiento: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="dd/mm/aaaa" name="birthdayDate" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="dd/mm/aaaa" name="hiringDate" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Actividad: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <input type="text" class="form-control " placeholder="Actividad" name="activityName" pattern="[a-zA-Z ]+"/>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card-body">
                                 <div class="border-top card"></div>
                             </div>
 
                             <div class="card-body">
-                                <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
+                                <h4 class="card-title" style="color: black; margin-bottom: 20px;">Experiencia profesional</h4>
                                 <!-- Create the editor container -->
-                                <div id="editor" style="height: 300px; color: black;">
+                                <textarea id="editor" style="height: 300px; color: black; width:100%" name="description">
 
-                                </div>
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -156,10 +193,11 @@
 
                 <div class="row el-element-overlay">
                     <div class="col-12 buttonsAddActivity">
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Guardar cambios</a></button>
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Cancelar</a></button>
+                        <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit" value="Guardar cambios"/>
+                        <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/monitors"'>Cancelar</button>
                     </div>
                 </div>
+                </form>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

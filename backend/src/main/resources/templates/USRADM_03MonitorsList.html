@@ -56,97 +56,29 @@
 
                 <div class="row el-element-overlay">
                     <div class="col-12 editMonitors">
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_08AddMonitor.html"><i class="mdi mdi mdi-account-plus"></i> Añadir monitor</a></button>
-                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRADM_09DeleteMonitor.html"><i class="mdi mdi mdi-account-minus"></i> Eliminar monitor</a></button>
+                        <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick='location.href="/addNewMonitor"'><i class="mdi mdi mdi-account-plus"></i> Añadir monitor</button>
                     </div>
                 </div>
                 <div class="row el-element-overlay">
+                    {{#monitors}}
                     <div class="col-lg-3 col-md-6 col-6">
                         <div class="card">
                             <div class="el-card-item">
                                 <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-2.jpg" alt="user" />
                                     <div class="el-overlay">
                                         <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
+                                            <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/monitor/{{id}}"'><i class="mdi mdi mdi-eye"></i></button></li>
+                                            <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/editMonitor/{{id}}"'><i class="mdi mdi-pencil"></i></button></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="el-card-content">
-                                    <h4 class="m-b-0">Jorge Javier</h4> <span class="text-muted">Zumba</span>
+                                    <h4 class="m-b-0">{{name}}</h4> <span class="text-muted">{{activityName}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-1.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Noelia Ávila</h4> <span class="text-muted">Body Combat</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-5.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Maria Luisa Martinez</h4> <span class="text-muted">Yoga</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-3.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Frenando Alonso</h4> <span class="text-muted">Spinning</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="img/team/team-4.jpg" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_10SeeMonitorInfo.html"><i class="mdi mdi mdi-eye"></i></a></li>
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="USRADM_11EditMonitor.html"><i class="mdi mdi-pencil"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">Vinicius Junior</h4> <span class="text-muted">Body Pump</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    {{/monitors}}
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
