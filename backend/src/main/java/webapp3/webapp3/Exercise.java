@@ -10,13 +10,13 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id = null;
 
-    String name;
-    String muscleGroup;
+    private String name;
+
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    String material;
+    private String material;
 
     @Lob
     private Blob imageFile;
@@ -37,14 +37,6 @@ public class Exercise {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMuscleGroup() {
-        return muscleGroup;
-    }
-
-    public void setMuscleGroup(String muscleGroup) {
-        this.muscleGroup = muscleGroup;
     }
 
     public String getDescription() {

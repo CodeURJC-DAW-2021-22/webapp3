@@ -1,4 +1,5 @@
 {{>USR_header}}
+
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="hs-slider owl-carousel">
@@ -9,7 +10,7 @@
                             <div class="hi-text">
                                 <span>Ruky Gymastic</span>
                                 <h1>be <strong>Stronger</strong></h1>
-                                <a href="USR_07sign_in.html" class="primary-btn">Regístrate</a>
+                                <a href="/USR_sign_in" class="primary-btn">Regístrate</a>
                             </div>
                         </div>
                     </div>
@@ -22,7 +23,7 @@
                             <div class="hi-text">
                                 <span>Ruky Gymastic</span>
                                 <h1>Por <strong>menos</strong> de los que piensas</h1>
-                                <a href="USR_04prices.html" class="primary-btn">Precios</a>
+                                <a href="/USR_prices" class="primary-btn">Precios</a>
                             </div>
                         </div>
                     </div>
@@ -35,7 +36,7 @@
                             <div class="hi-text">
                                 <span>Ruky Gymastic</span>
                                 <h1><strong>Actividades</strong> para ti</h1>
-                                <a href="USR_02activities.html" class="primary-btn">Actividades</a>
+                                <a href="/USR_activities" class="primary-btn">Actividades</a>
                             </div>
                         </div>
                     </div>
@@ -98,7 +99,7 @@
                     <div class="bs-text">
                         <h2>Regístrate ahora con nuentras nuevas ofertas</h2>
                         <div class="bt-tips">El camino al exito está a tu alcance</div>
-                        <a href="USR_07sign_in.html" class="primary-btn  btn-normal">Regístrate ahora</a>
+                        <a href="/USR_sign_in" class="primary-btn  btn-normal">Regístrate ahora</a>
                     </div>
                 </div>
             </div>
@@ -130,63 +131,26 @@
                             <span>Nuestro equipo</span>
                             <h2>Entrena con expertos</h2>
                         </div>
-                        <a href="USR_05contact_us.html" class="primary-btn btn-normal appoinment-btn">Contactanos</a>
+                        <a href="/USR_contact_us" class="primary-btn btn-normal appoinment-btn">Contactanos</a>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="ts-slider owl-carousel">
+                    {{#monitor}}
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
+                        <div class="ts-item set-bg" data-setbg="/USR_mainpage/{id}/image">
                             <div class="ts_text">
-                                <h4>Athart Rachel</h4>
+                                <h4>{{name}}</h4><!--Rename like the name atribute in monitor entity-->
                                 <span>Gym Trainer</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
-                            <div class="ts_text">
-                                <h4>Athart Rachel</h4>
-                                <span>Gym Trainer</span>
-                            </div>
-                        </div>
-                    </div>
+                    {{/monitor}}
                 </div>
             </div>
         </div>
     </section>
     <!-- Team Section End -->
+
 {{>USR_footer}}

@@ -9,12 +9,12 @@ public class ExerciseTable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id = null;
 
-    String name;
+    private String name;
 
     @Lob
     private Blob imageFile;
 
-    String muscleGroup;
+    private String muscleGroup;
 
     public ExerciseTable() {}
 
