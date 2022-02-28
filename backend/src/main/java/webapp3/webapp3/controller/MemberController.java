@@ -1,15 +1,26 @@
-package webapp3.webapp3;
+package webapp3.webapp3.controller;
 
-import antlr.ASTNULLType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import webapp3.webapp3.model.Exercise;
+import webapp3.webapp3.service.ExerciseService;
+
+import java.util.List;
+
 
 @Controller
 public class MemberController {
 
+    @Autowired
+    private ExerciseService exerServ;
+
+
     @GetMapping("/exercise")
-    public String memberPage(Model model){
+    public String exercise (Model model){
+        List<Exercise> all = exerServ.findAll();
+        model.addAttribute("exerciseList", all);
         return "USRMEM_01ExerciseTable";
     }
 
