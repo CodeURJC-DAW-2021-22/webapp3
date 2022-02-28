@@ -1,6 +1,5 @@
 package model;
 import org.hibernate.type.DateType;
-import org.hibernate.type.LocalDateTimeType;
 
 import java.sql.Blob;
 import java.time.LocalDate;
@@ -12,7 +11,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class user {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
