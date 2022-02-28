@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <title>Ruky Gymastic - Jorge Javier</title>
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/jquery-minicolors/jquery.minicolors.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/libs/quill/dist/quill.snow.css">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/jquery-minicolors/jquery.minicolors.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/libs/quill/dist/quill.snow.css">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -81,63 +81,88 @@
                                             <p style="color:black;" class="centerText"> Nombre: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">Jorge Javier Salinas Galindo</span>
+                                            <span type="text " class="form-control ">{{monitor.name}}</span>
                                         </div>
                                     </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Especialidad: </p>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Apellidos: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">Zumba </span>
+                                            <span type="text " class="form-control ">{{monitor.surname}}</span>
                                         </div>
                                     </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Estado laboral: </p>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> DNI/NIE: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">Baja por lesión</span>
+                                            <span type="text " class="form-control ">{{monitor.NIF}}</span>
                                         </div>
                                     </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Email: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">{{monitor.email}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Dirección: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">{{monitor.address}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Código postal: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">{{monitor.postalCode}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Teléfono: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">{{monitor.phone}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span type="text " class="form-control ">{{monitor.birthday}}</span>
+                                        </div>
+                                    </div>
+
                                     <div class="row mb-3 ">
                                         <div class="col-lg-2 col-md-4 col-12 ">
                                             <p style="color:black; " class="centerText"> Fecha de alta: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">31/02/2008</span>
+                                            <span type="text " class="form-control ">{{monitor.hiringDate}}</span>
                                         </div>
                                     </div>
+
                                     <div class="row mb-3 ">
                                         <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Edad: </p>
+                                            <p style="color:black; " class="centerText"> Actividad: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">43</span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Teléfono: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">+1 111 111 111</span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> DNI/NIE: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">00000000A</span>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 ">
-                                        <div class="col-lg-2 col-md-4 col-12 ">
-                                            <p style="color:black; " class="centerText"> Email: </p>
-                                        </div>
-                                        <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">estoesunaprueba@prueba.com</span>
+                                            <span type="text " class="form-control ">{{monitor.activityName}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -156,15 +181,15 @@
                                 <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
                                 <!-- Create the editor container -->
                                 <div style="height: 300px; color: black; ">
-                                    <p>Dos veces campeón del Premio al Profesor de Zumba (2019 y 2021)</p>
+                                    <p>{{monitor.description}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row el-element-overlay">
                             <div class="col-12 buttonsAddActivity">
-                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_11EditMonitor.html">Editar</a></button>
-                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Eliminar</a></button>
-                                <button class="btn default btn-outline el-link selector2" type="button"><a href="USRADM_03MonitorsList.html">Cancelar</a></button>
+                                <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/editMonitor/{{id}}"'>Editar</button>
+                                <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/delete/monitor/{{id}}"'>Eliminar</button>
+                                <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/monitors"'>Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -201,30 +226,30 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js "></script>
+    <script src="/assets/libs/jquery/dist/jquery.min.js "></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js "></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js "></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js "></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js "></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js "></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js "></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js "></script>
+    <script src="/dist/js/waves.js "></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js "></script>
+    <script src="/dist/js/sidebarmenu.js "></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js "></script>
+    <script src="/dist/js/custom.min.js "></script>
     <!-- This Page JS -->
-    <script src="assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
+    <script src="/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js "></script>
     <script src="dist/js/pages/mask/mask.init.js "></script>
-    <script src="assets/libs/select2/dist/js/select2.full.min.js "></script>
-    <script src="assets/libs/select2/dist/js/select2.min.js "></script>
-    <script src="assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
-    <script src="assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
-    <script src="assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
-    <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
-    <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
-    <script src="assets/libs/quill/dist/quill.min.js "></script>
+    <script src="/assets/libs/select2/dist/js/select2.full.min.js "></script>
+    <script src="/assets/libs/select2/dist/js/select2.min.js "></script>
+    <script src="/assets/libs/jquery-asColor/dist/jquery-asColor.min.js "></script>
+    <script src="/assets/libs/jquery-asGradient/dist/jquery-asGradient.js "></script>
+    <script src="/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js "></script>
+    <script src="/assets/libs/jquery-minicolors/jquery.minicolors.min.js "></script>
+    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js "></script>
+    <script src="/assets/libs/quill/dist/quill.min.js "></script>
     <script>
         //***********************************//
         // For select 2

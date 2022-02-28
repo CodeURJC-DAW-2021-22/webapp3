@@ -45,8 +45,6 @@ public class AdminController {
         return "USRADM_04AddActivity";
     }
 
-    /*String name, String price, String description, String room, int capacity, Session monday,
-     Session tuesday, Session wednesday, Session thursday, Session friday, Blob imageFile, boolean image*/
     @PostMapping("/addNewActivity")
     public String addNewActivity(Model model, @RequestParam String name, @RequestParam String room,
                                  @RequestParam String price, @RequestParam String description,
@@ -116,7 +114,6 @@ public class AdminController {
         actServ.delete(id);
         return "redirect:/activities";
     }
-
 
     //Monitors' management
     @GetMapping("/monitors")
@@ -230,7 +227,6 @@ public class AdminController {
         model.addAttribute("clientList", all);*/
         return "USRADM_12Clients";
     }
-
 
     //Gestionar error
     @GetMapping("/error")
