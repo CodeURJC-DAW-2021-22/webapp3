@@ -1,15 +1,11 @@
 package model;
-import org.hibernate.type.DateType;
-import org.hibernate.type.LocalDateTimeType;
 
 import java.sql.Blob;
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.Column;
 
 @Entity
