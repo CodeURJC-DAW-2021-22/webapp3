@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.Member;
+import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
 import webapp3.webapp3.service.MemberService;
 
@@ -23,6 +25,8 @@ public class MemberController {
     @Autowired
     private MemberService memServ;
 
+    @Autowired
+    private ActivityService actServ;
 
     @GetMapping("/exercise")
     public String exercise (Model model){
@@ -53,6 +57,8 @@ public class MemberController {
 
     @GetMapping("/activities")
     public String activities(Model model) {
+        List<Activity> all = actServ.findAll();
+        model.addAttribute("activities", all);
         return "USRMEM_04Activities";
     }
 }
