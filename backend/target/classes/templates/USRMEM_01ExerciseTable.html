@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="img/logo-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
     <title>Ruky Gymastic - Tablas de ejercicios</title>
     <!-- Custom CSS -->
     <link href="assets/libs/flot/css/float-chart.css" rel="stylesheet">
@@ -24,24 +24,15 @@
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div>
+    {{>USRMEM_preloader}}
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper">
-
-        <!-- ============================================================== -->
-        <!-- Topbar header-->
-        <!-- ============================================================== -->
         {{>USRMEM_header}}
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -66,11 +57,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row el-element-overlay">
-                            {{#exerciseList}}
+                            {{#exercises}}
                             <div class="col-lg-3 col-md-6 col-6">
                                 <div class="card">
                                     <div class="el-card-item">
-                                        <div class="el-card-avatar el-overlay-1"> <img src="{imageFile}" alt="user"/>
+                                        <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-10.jpeg" alt="user" />
                                             <div class="el-overlay">
                                                 <ul class="list-style-none el-info">
                                                     <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-eye"></i></a></li>
@@ -78,12 +69,12 @@
                                             </div>
                                         </div>
                                         <div class="el-card-content">
-                                            <h4 class="m-b-0"><a href="javascript:void(0);">{{name}}</a></h4>
+                                            <h4 class="m-b-0">{{name}}</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{/exerciseList}}
+                            {{/exercises}}
                         </div>
                     </div>
                 </div>
@@ -97,13 +88,7 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
             {{>USRMEM_footer}}
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->

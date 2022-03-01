@@ -23,7 +23,6 @@ public class Exercise {
 
     private boolean image;
 
-
     public Exercise(){
 
     }

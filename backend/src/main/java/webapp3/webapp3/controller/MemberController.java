@@ -27,7 +27,7 @@ public class MemberController {
     @GetMapping("/exercise")
     public String exercise (Model model){
         List<Exercise> all = exerServ.findAll();
-        model.addAttribute("exerciseList", all);
+        model.addAttribute("exercises", all);
         return "USRMEM_01ExerciseTable";
     }
 
