@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.sql.Blob;
 
 
-
 @Entity
 @Table(name = "activities_tab")
 public class Activity {

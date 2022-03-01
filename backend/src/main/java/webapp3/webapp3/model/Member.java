@@ -1,11 +1,8 @@
 package webapp3.webapp3.model;
 
 
-
 import javax.persistence.*;
 import java.sql.Blob;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "member_tab")

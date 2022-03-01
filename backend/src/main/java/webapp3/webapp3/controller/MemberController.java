@@ -1,5 +1,6 @@
 package webapp3.webapp3.controller;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -9,13 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.Member;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
 import webapp3.webapp3.service.MemberService;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +50,80 @@ public class MemberController {
     @GetMapping("/editProfile")
     public String editProfile(Model model) {
         return "USRMEM_02EditProfile";
+    }
+
+    @GetMapping("/editProfile/{id}")
+    public String editProfile (Model model, @PathVariable Long id){
+        Optional<Member> optMember = memServ.findById(id);
+        if (optMember.isPresent()){
+            model.addAttribute("monitor", optMember.get());
+            return "USRMEM_02EditProfile";
+        } else {
+            return "USRADM_02Profile";
+        }
+    }
+
+    @PostMapping("/editProfile/{id}")
+    public String addEditedProle(Model model, @PathVariable Long id,
+                                 @RequestParam String name,
+                                 @RequestParam String surname,
+                                 @RequestParam String usrname,
+                                 @RequestParam String password,
+                                 @RequestParam String email,
+                                 @RequestParam String NIF,
+                                 @RequestParam DateType birthday,
+                                 @RequestParam String genre,
+                                 @RequestParam String height,
+                                 @RequestParam String weight,
+                                 @RequestParam String address,
+                                 @RequestParam String postalCode,
+                                 @RequestParam String phone,
+                                 @RequestParam String creditCard,
+                                 @RequestParam String additionalInfo,
+                                 @RequestParam("image") MultipartFile image) throws IOException {
+        Optional<Member> mem = memServ.findById(id);
+        String htmlFile;
+        if (mem.isPresent()){
+            Member member = mem.get();
+            member.setName(name);
+            member.setSurname(surname);
+            member.setUsrname(usrname);
+            member.setPassword(password);
+            member.setEmail(email);
+            member.setNIF(NIF);
+            member.setBirthday(birthday);
+            member.setGenre(genre);
+            member.setHeight(height);
+            member.setWeight(weight);
+            member.setAddress(address);
+            member.setPostalCode(postalCode);
+            member.setPhone(phone);
+            member.setCreditCard(creditCard);
+            member.setAdditionalInfo(additionalInfo);
+            member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            memServ.save(member);
+            htmlFile = "redirect:/member";
+        } else {
+            //Gestionar error envío de formulario
+            htmlFile = "error-404";
+        }
+        return htmlFile;
+    }
+
+    @GetMapping("/monitor/{id}/image")
+    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
+        Optional<Member> optMon = memServ.findById(id);
+
+        if (optMon.isPresent()){
+            Member member = optMon.get();
+            if (member.getImageFile() != null){
+                Resource file = new InputStreamResource(member.getImageFile().getBinaryStream());
+
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(member.getImageFile().length()).body(file);
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/profile/{id}")
