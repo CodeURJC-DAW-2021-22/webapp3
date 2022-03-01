@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
+
 
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.Exercise;
+import webapp3.webapp3.model.Member;
 import webapp3.webapp3.repository.ExerciseRepository;
+import webapp3.webapp3.repository.MemberRepository;
 
 
 @Service
@@ -22,6 +23,9 @@ public class DataBaseInitializer {
 
     @Autowired
     private ExerciseRepository exRep;
+
+    @Autowired
+    private MemberRepository memRep;
 
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
@@ -39,9 +43,17 @@ public class DataBaseInitializer {
         Exercise ex4 = new Exercise("Ejercicios sin fechas");
         exRep.save(ex4);
 
+        DateType d = new DateType("2000","03","08");
+
+        Member memb1 = new Member("Andrea", "Nuzzi Herrero", "@AndyNuzzi", "AndyNuzzi00",
+                "andy.nuzzi@gmail.com", "1111111D", d, "Mujer", "160", "55",
+                "C/Aranjuez", "28914", "000-99-87-54", "0000-44543-66775-33",
+                "No tengo lesiones ni alergias conocidas");
+        memRep.save(memb1);
+
     }
 
-    public void setActivityImage(Exercise exercise, String classpathResource) throws IOException {
+    public void setExerciseImage(Exercise exercise, String classpathResource) throws IOException {
         exercise.setImage(true);
         Resource image = new ClassPathResource(classpathResource);
         exercise.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
