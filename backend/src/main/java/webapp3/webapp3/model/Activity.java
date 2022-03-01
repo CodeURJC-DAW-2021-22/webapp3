@@ -6,7 +6,7 @@ import java.sql.Blob;
 
 
 @Entity
-@Table(name = "activities")
+@Table(name = "activities_tab")
 public class Activity {
 
     @Id
