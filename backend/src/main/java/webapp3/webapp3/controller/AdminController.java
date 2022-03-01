@@ -8,21 +8,21 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.Client;
 import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.Monitor;
 import webapp3.webapp3.service.ActivityService;
+import webapp3.webapp3.service.ClientService;
 import webapp3.webapp3.service.MonitorService;
 
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -37,6 +37,9 @@ public class AdminController {
 
     @Autowired
     private MonitorService monServ;
+
+    @Autowired
+    private ClientService clnServ;
 
     //Statistics of monitor
 
@@ -281,12 +284,25 @@ public class AdminController {
     //Clients' management
     @GetMapping("/clients")
     public String clients(Model model){
-        /*List<Client> all = usrServ.findAll();
-        model.addAttribute("clientList", all);*/
+        List<Client> all = clnServ.findAll();
+        model.addAttribute("clientList", all);
         return "USRADM_12Clients";
     }
 
-    //Gestionar error
+    @PostMapping("/deleteClients")
+    public String deleteClients(Model model, @RequestParam(required = false) List<Long> id){
+        if(id != null) {
+            for (Long l : id) {
+                clnServ.delete(l);
+            }
+        }
+        List<Client> all = clnServ.findAll();
+        model.addAttribute("clientList", all);
+        return "redirect:/clients";
+
+    }
+
+    //Manage error
     @GetMapping("/error")
     public String error(Model model){
         return "error-404";

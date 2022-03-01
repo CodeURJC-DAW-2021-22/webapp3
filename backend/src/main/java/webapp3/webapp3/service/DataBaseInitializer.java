@@ -14,9 +14,11 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.Client;
 import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.Monitor;
 import webapp3.webapp3.repository.ActivityRepository;
+import webapp3.webapp3.repository.ClientRepository;
 import webapp3.webapp3.repository.MonitorRepository;
 
 @Service
@@ -27,6 +29,9 @@ public class DataBaseInitializer {
 
     @Autowired
     private MonitorRepository monRep;
+
+    @Autowired
+    private ClientRepository clnRep;
 
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
@@ -76,6 +81,15 @@ public class DataBaseInitializer {
                 "423489789", d, false,d, "Body Pump", "Te miro y te golpeo.");
         setMonitorImage(mon3, "/sample_images/Monitor3.jpeg");
         monRep.save(mon3);
+
+        Client c1 = new Client("A1", "a1", 16, "11112222A");
+        clnRep.save(c1);
+        Client c2 = new Client("A2", "a2", 17, "11112222B");
+        clnRep.save(c2);
+        Client c3 = new Client("A3", "a3", 18, "11112222C");
+        clnRep.save(c3);
+        Client c4 = new Client("A4", "a4", 19, "11112222D");
+        clnRep.save(c4);
     }
 
     public void setActivityImage(Activity activity, String classpathResource) throws IOException {
