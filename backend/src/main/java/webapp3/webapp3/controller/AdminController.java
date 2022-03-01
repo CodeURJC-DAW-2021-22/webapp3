@@ -1,14 +1,14 @@
-package webapp3.webapp3;
+package webapp3.webapp3.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MemberController {
+public class AdminController {
 
-    @GetMapping("/socio")
-    public String memberPage(Model model){
-        return "USRMEM_01ExerciseTable";
+    @GetMapping("/")
+    public String prueba(Model model){
+        return "USRADM_01Estatistics";
     }
 }

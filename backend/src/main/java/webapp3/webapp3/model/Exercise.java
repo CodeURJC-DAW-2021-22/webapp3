@@ -1,22 +1,27 @@
-package webapp3.webapp3;
+package webapp3.webapp3.model;
 
 import javax.persistence.*;
 import java.sql.Blob;
 
 @Entity
-public class ExerciseTable {
+public class Exercise {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id = null;
 
     private String name;
 
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    private String material;
+
     @Lob
     private Blob imageFile;
 
-    private String muscleGroup;
-
-    public ExerciseTable() {}
+    public Exercise() {}
 
     public Long getId() {
         return id;
@@ -34,6 +39,22 @@ public class ExerciseTable {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
     public Blob getImageFile() {
         return imageFile;
     }
@@ -42,11 +63,4 @@ public class ExerciseTable {
         this.imageFile = imageFile;
     }
 
-    public String getMuscleGroup() {
-        return muscleGroup;
-    }
-
-    public void setMuscleGroup(String muscleGroup) {
-        this.muscleGroup = muscleGroup;
-    }
 }

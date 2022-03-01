@@ -1,7 +1,9 @@
-package webapp3.webapp3;
+package webapp3.webapp3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import webapp3.webapp3.model.ExerciseTable;
+import webapp3.webapp3.repository.ExerciseTableRepository;
 
 import java.util.List;
 import java.util.Optional;

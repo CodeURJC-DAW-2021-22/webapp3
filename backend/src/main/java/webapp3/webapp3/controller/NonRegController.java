@@ -1,4 +1,4 @@
-package webapp3.webapp3;
+package webapp3.webapp3.controller;
 
 import org.hibernate.type.DateType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import webapp3.webapp3.ActivityPrueba;
+import webapp3.webapp3.ActivityPruebaService;
+import webapp3.webapp3.MonitorPrueba;
+import webapp3.webapp3.MonitorPruebaService;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
