@@ -69,7 +69,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->
-            <form action="/editMonitor/{{id}}" method="post">
+            <form action="/editMonitor/{{id}}" method="post" enctype="multipart/form-data">
                 <div class="row">
 
                     <div class="col-12">
@@ -182,7 +182,7 @@
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control "
                                                        value="{{monitor.activityName}}" name="activityName"
-                                                       pattern="[a-zA-Z]+"/>
+                                                       pattern="[a-zA-Z ]+"/>
                                             </div>
                                         </div>
 
@@ -191,7 +191,7 @@
                                                 <p style="color:black; " class="centerText"> Añadir imagen: </p>
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
-                                                <input class="colorBlackText" type='file' name='imageField'
+                                                <input class="colorBlackText" type='file' name='image'
                                                        accept=".jpg, .jpeg"/>
                                             </div>
                                         </div>

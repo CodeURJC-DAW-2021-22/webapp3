@@ -78,7 +78,7 @@
                                 @RequestParam String birthdayDate,
                                 @RequestParam String hiringDate,
                                 @RequestParam String activityName-->
-                <form action="/addNewMonitor" method="post">
+                <form action="/addNewMonitor" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -180,7 +180,7 @@
                                         <p style="color:black; " class="centerText"> Añadir imagen: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input class="colorBlackText" type='file' name='imageField' accept=".jpg, .jpeg" />
+                                        <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg" />
                                     </div>
                                 </div>
                             </div>
