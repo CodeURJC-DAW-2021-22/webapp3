@@ -68,7 +68,7 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <form action="/editActivity/{{activity.id}}" method="post">
+                <form action="/editActivity/{{activity.id}}" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -153,13 +153,15 @@
                                             <p style="color:black; " class="centerText"> Añadir imagen: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <input class="colorBlackText" type='file' name='imageField' accept=".jpg, .jpeg" />
+                                            <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-12 image ">
                                     <div class="el-card-avatar el-overlay-1 ">
-                                        <img src="img/gallery/gallery-8.jpg " width="250 " height="250 " alt="user " />
+                                        <br>
+                                        <br>
+                                        <img src="/activity/{{id}}/image" width="250 " height="300 " alt="user " />
                                     </div>
                                 </div>
                             </div>
@@ -169,10 +171,9 @@
 
                             <div class="card-body">
                                 <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
-                                <!-- Create the editor container -->
-                                <textarea id="editor" style="height: 300px; color: black; width:100%" value="" name="description">
-                                    {{activity.description}}
-                                </textarea>
+                                <!-- Create the container -->
+                                <p><textarea style="height: 300px; color: black; width:100%" name="description">{{activity.description}}
+                                </textarea></p>
                             </div>
                         </div>
                     </div>

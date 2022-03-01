@@ -68,7 +68,7 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <form action="/addNewActivity" method="post" >
+                <form action="/addNewActivity" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -80,7 +80,7 @@
                                         <p style="color:black; " class="centerText"> Nombre: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input type="text" class="form-control" placeholder="Nombre de la actividad" name="name" pattern="[A-Za-z]+"/>
+                                        <input type="text" class="form-control" placeholder="Nombre de la actividad" name="name" pattern="[A-Za-z ]+"/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -88,7 +88,7 @@
                                         <p style="color:black; " class="centerText"> Sala: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12">
-                                        <input type="text" class="form-control" placeholder="Sala" name="room" pattern="[A-Za-z0-9]+"/>
+                                        <input type="text" class="form-control" placeholder="Sala" name="room" pattern="[A-Za-z0-9 ]+"/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -152,7 +152,7 @@
                                         <p style="color:black; " class="centerText"> Añadir imagen: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
-                                        <input class="colorBlackText" type='file' name='imageField' accept=".jpg, .jpeg" />
+                                        <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg" />
                                     </div>
                                 </div>
                             </div>

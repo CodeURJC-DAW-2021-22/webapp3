@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -72,6 +72,7 @@
 
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-body">
                             <div class="row el-element-overlay">
                                 <div class="col-lg-8 col-md-12 col-12 card-body">
 
@@ -144,7 +145,7 @@
                                             <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">{{monitor.birthday}}</span>
+                                            <span type="date" class="form-control">{{monitor.birthday.spanishFormat}}</span>
                                         </div>
                                     </div>
 
@@ -153,7 +154,7 @@
                                             <p style="color:black; " class="centerText"> Fecha de alta: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span type="text " class="form-control ">{{monitor.hiringDate}}</span>
+                                            <span type="date" class="form-control ">{{monitor.hiringDate.spanishFormat}}</span>
                                         </div>
                                     </div>
 
@@ -168,7 +169,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-12 image ">
                                     <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
-                                        <img src="img/team/team-2.jpg " width="300 " height="370 " alt="user " style="text-align: center;;" />
+                                        <img src="/monitor/{{id}}/image" width="300 " height="370 " alt="user " style="text-align: center;;" />
                                     </div>
                                 </div>
                             </div>
@@ -178,13 +179,13 @@
                             </div>
 
                             <div class="card-body ">
-                                <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
+                                <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
                                 <!-- Create the editor container -->
-                                <div style="height: 300px; color: black; ">
-                                    <p>{{monitor.description}}</p>
-                                </div>
+                                <textarea style="height: 300px; color: black; width:100%" readonly>{{monitor.description}}
+                                </textarea>
                             </div>
                         </div>
+                    </div>
                         <div class="row el-element-overlay">
                             <div class="col-12 buttonsAddActivity">
                                 <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick='location.href="/editMonitor/{{id}}"'>Editar</button>
