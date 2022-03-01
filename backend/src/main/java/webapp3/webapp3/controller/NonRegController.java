@@ -21,8 +21,10 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+
 @Controller
 public class NonRegController {
+
 
     //Test BBDD References
     @Autowired
@@ -151,5 +153,4 @@ public class NonRegController {
 
         return "redirect:/USR_log_in";
     }
-
 }
