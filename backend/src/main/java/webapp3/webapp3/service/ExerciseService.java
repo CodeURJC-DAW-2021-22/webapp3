@@ -15,6 +15,7 @@ public class ExerciseService {
     private ExerciseRepository repository;
 
     public Optional<Exercise> findById(long id){
+
         return repository.findById(id);
     }
 

@@ -33,6 +33,7 @@ public class MemberController {
     @Autowired
     private ActivityService actServ;
 
+
     @GetMapping("/exercise")
     public String exercise (Model model){
         List<Exercise> all = exerServ.findAll();
@@ -68,7 +69,7 @@ public class MemberController {
     }
 
     @GetMapping("/activity/{id}/image")
-    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+    public ResponseEntity<Object> downloadActivityImage(@PathVariable long id) throws SQLException {
         Optional<Activity> optAct = actServ.findById(id);
 
         if (optAct.isPresent()){
@@ -78,6 +79,22 @@ public class MemberController {
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
                         .contentLength(activity.getImageFile().length()).body(file);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/exercise/{id}/image")
+    public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
+        Optional<Exercise> optExer = exerServ.findById(id);
+
+        if (optExer.isPresent()){
+            Exercise exercise = optExer.get();
+            if (exercise.getImageFile() != null){
+                Resource file = new InputStreamResource(exercise.getImageFile().getBinaryStream());
+
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(exercise.getImageFile().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
