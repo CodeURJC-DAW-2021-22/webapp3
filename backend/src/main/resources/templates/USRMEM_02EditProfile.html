@@ -83,45 +83,45 @@
                                                         <div class="form-group row">
                                                             <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="fname" placeholder="Nombre">
+                                                                <input type="text" class="form-control" id="fname" placeholder="Nombre" pattern="[a-zA-Z ]+"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="lname" placeholder="Apellidos">
+                                                                <input type="text" class="form-control" id="lname" placeholder="Apellidos" pattern="[a-zA-Z ]+"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="user" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="user" placeholder="@NombreUsuario">
+                                                                <input type="text" class="form-control" id="user" placeholder="@NombreUsuario" pattern="\@[a-zA-Z ]+"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
                                                             <div class="col-sm-9">
-                                                                <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                                                                <input type="password" class="form-control" id="password" placeholder="Contraseña"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
                                                             <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="email" placeholder="Correo Electrónico">{{member.email}}</span>
+                                                                <input type="text" class="form-control" id="email" placeholder="Correo Electrónico" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group row">
-                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
+                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI</label>
                                                             <div class="col-sm-9 input-group">
-                                                                <span type="text" class="form-control" id="NIF" placeholder="0000000-A">{{member.NIF}}</span>
+                                                                <input type="text" class="form-control" id="NIF" placeholder="0000000-A" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
                                                             <div class="col-sm-9 input-group">
-                                                                <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">
+                                                                <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                                 </div>
@@ -167,7 +167,7 @@
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                                                         <label class="custom-file-label" for="validatedCustomFile">Elige un fichero</label>
-                                                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                                        <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,13 +184,13 @@
                                                         <div class="form-group row">
                                                             <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="street" placeholder="Domicilio">
+                                                                <input type="text" class="form-control" id="street" placeholder="Domicilio" pattern="[a-zA-Z,./ 0-9áéíóúü]+"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="postalCode" placeholder="XXXXX">
+                                                                <input type="text" class="form-control" id="postalCode" placeholder="XXXXX" pattern="[0-9]{5}"/>>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -198,7 +198,7 @@
                                                         <div class="form-group row">
                                                             <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="phone" placeholder="+XX-XXX XX XX XX">
+                                                                <input type="text" class="form-control" id="phone" placeholder="+XX-XXX XX XX XX" pattern="(6|7){1}[0-9]{8}"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
