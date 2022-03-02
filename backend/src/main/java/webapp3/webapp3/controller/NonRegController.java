@@ -14,6 +14,10 @@ import webapp3.webapp3.ActivityPrueba;
 import webapp3.webapp3.ActivityPruebaService;
 import webapp3.webapp3.MonitorPrueba;
 import webapp3.webapp3.MonitorPruebaService;
+import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.Monitor;
+import webapp3.webapp3.service.ActivityService;
+import webapp3.webapp3.service.MonitorService;
 
 import javax.annotation.PostConstruct;
 import java.sql.SQLException;
@@ -28,25 +32,15 @@ public class NonRegController {
 
     //Test BBDD References
     @Autowired
-    private MonitorPruebaService serviceM;
+    private ActivityService actServ;
     @Autowired
-    private ActivityPruebaService serviceA;
+    private MonitorService monServ;
 
-    //Test data
-    @PostConstruct
-    public void ini(){
-        serviceM.save(new MonitorPrueba("Fernando"));
-        serviceM.save(new MonitorPrueba("Carlos"));
-        serviceM.save(new MonitorPrueba("Federico"));
-
-        serviceA.save(new ActivityPrueba("Zumba", "20", "bailar con pesas", "203", 50, "8:00-9:00",
-                "8:00-9:00", "", "8:00-9:00", ""));
-    }
 
     //Main page
     @GetMapping("/USR_mainpage")
     public String mainPage(Model model){
-        List<MonitorPrueba> monitores = serviceM.findAll();
+        List<Monitor> monitores = monServ.findAll();
         model.addAttribute("monitor", monitores);
 
         return "USR_01mainPage";
@@ -54,7 +48,7 @@ public class NonRegController {
 
     @GetMapping("/USR_mainpage/{id}/image")
     public ResponseEntity<Object> showMonitorImage(@PathVariable long id) throws SQLException {
-        Optional<MonitorPrueba> monitor = serviceM.findById(id);
+        Optional<Monitor> monitor = monServ.findById(id);
 
         if (monitor.isPresent() && monitor.get().getImageFile() != null) {
 
@@ -71,7 +65,7 @@ public class NonRegController {
     //Activities page
     @GetMapping("/USR_activities")
     public String activities(Model model){
-        List<ActivityPrueba> actividades = serviceA.findAll();
+        List<Activity> actividades = actServ.findAll();
         model.addAttribute("activities", actividades);
 
         return "USR_02activities";
@@ -79,7 +73,7 @@ public class NonRegController {
 
     @GetMapping("/USR_activities/{id}/image")
     public ResponseEntity<Object> showActivitieImage(@PathVariable long id) throws SQLException {
-        Optional<ActivityPrueba> actividad = serviceA.findById(id);
+        Optional<Activity> actividad = actServ.findById(id);
 
         if (actividad.isPresent() && actividad.get().getImageFile() != null) {
 
@@ -95,7 +89,7 @@ public class NonRegController {
     //ActivitySchedule
     @GetMapping("/USR_activities/schedule/{id}")
     public String schedule(Model model, @PathVariable long id){
-        Optional<ActivityPrueba> act = serviceA.findById(id);
+        Optional<Activity> act = actServ.findById(id);
         if(act.isPresent()){
             model.addAttribute("name", act.get().getName());
             model.addAttribute("description", act.get().getDescription());

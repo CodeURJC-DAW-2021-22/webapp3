@@ -62,19 +62,19 @@ public class DataBaseInitializer {
         Monitor mon1 = new Monitor("Jose Luis","Martinez Munuera",
                 "11111111A", "mm@gmail.com","PRUEBA", "PRUEBA", "21131",
                 "43534534", d, false, d, "Spinning", "Larga trayectoria profesional en el mundo fitness.");
-        setMonitorImage(mon1, "/sample_images/Monitor1.jpeg");
+        setMonitorImage(mon1, "/static/img/team/team-1.jpg");
         monRep.save(mon1);
 
         Monitor mon2 = new Monitor("Jose David","Fernandez Dgank",
                 "11111111B", "am@gmail.com","PRUEBA", "PRUEBA", "21344",
                 "43532344", d, false,d, "Yoga", "Yogui como el oso.");
-        setMonitorImage(mon2, "/sample_images/Monitor2.jpeg");
+        setMonitorImage(mon2, "/static/img/team/team-2.jpg");
         monRep.save(mon2);
 
         Monitor mon3 = new Monitor("Maria Luisa","Rodriguez Carajote",
                 "11111111C", "rc@gmail.com","PRUEBA", "PRUEBA", "74553",
                 "423489789", d, false,d, "Body Pump", "Te miro y te golpeo.");
-        setMonitorImage(mon3, "/sample_images/Monitor3.jpeg");
+        setMonitorImage(mon3, "/static/img/team/team-3.jpg");
         monRep.save(mon3);
     }
 
