@@ -5,24 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import webapp3.webapp3.ActivityPrueba;
-import webapp3.webapp3.ActivityPruebaService;
-import webapp3.webapp3.MonitorPrueba;
-import webapp3.webapp3.MonitorPruebaService;
 import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.Monitor;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.MonitorService;
 
-import javax.annotation.PostConstruct;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -46,6 +39,7 @@ public class NonRegController {
         return "USR_01mainPage";
     }
 
+    //Monitor images download
     @GetMapping("/USR_mainpage/{id}/image")
     public ResponseEntity<Object> showMonitorImage(@PathVariable long id) throws SQLException {
         Optional<Monitor> monitor = monServ.findById(id);
@@ -71,6 +65,7 @@ public class NonRegController {
         return "USR_02activities";
     }
 
+    //Activities image download
     @GetMapping("/USR_activities/{id}/image")
     public ResponseEntity<Object> showActivitieImage(@PathVariable long id) throws SQLException {
         Optional<Activity> actividad = actServ.findById(id);
@@ -86,7 +81,7 @@ public class NonRegController {
             return ResponseEntity.notFound().build();
         }
     }
-    //ActivitySchedule
+    //ActivitySchedule page
     @GetMapping("/USR_activities/schedule/{id}")
     public String schedule(Model model, @PathVariable long id){
         Optional<Activity> act = actServ.findById(id);
@@ -117,6 +112,22 @@ public class NonRegController {
         return "USR_03schedule";
     }
 
+    @GetMapping("/USR_activities/schedule/{id}/image")
+    public ResponseEntity<Object> scheduleImage(@PathVariable long id) throws SQLException{
+        Optional<Activity> actividad = actServ.findById(id);
+
+        if (actividad.isPresent() && actividad.get().getImageFile() != null) {
+
+            Resource file = new InputStreamResource(actividad.get().getImageFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(actividad.get().getImageFile().length()).body(file);
+
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     //Prices page
     @GetMapping("/USR_prices")
     public String price(Model model){return "USR_04prices";}
@@ -127,24 +138,25 @@ public class NonRegController {
 
     //Log in page
     @GetMapping("/USR_log_in")
-    public String login(Model model){return "USR_06log_in";}
+    public String loginPage(Model model){return "USR_06log_in";}
 
-    @RequestMapping("/log")
-    public String log() {return "login";}
-
-    @RequestMapping("/logerror")
-    public  String logerror(){return "loginerror";}
+    //Log in
+    @PostMapping("/USR_log_in")
+    public String login(Model model, @RequestParam String username, @RequestParam String password){
+        return "USR_06log_in";
+    }
 
     //Sign in page
     @GetMapping("/USR_sign_in")
     public String signin(Model model){return "USR_07sign_in";}
 
+    //Sign in
     @PostMapping("/USR_sign_in")
     public String postSignin(Model model,@RequestParam String name, @RequestParam String surname, @RequestParam String NIF, @RequestParam DateType birthday,
                              @RequestParam String phone_num, @RequestParam String postal_code, @RequestParam String address, @RequestParam String email,
                              @RequestParam String password, @RequestParam DateType entryDate, @RequestParam int height, @RequestParam int weight,
                              @RequestParam String IBAN, @RequestParam String medicalInfo){
-
+        //añadir Server.save cuando este la base de datos
         return "redirect:/USR_log_in";
     }
 }
