@@ -81,7 +81,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                            <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" id="fname" placeholder="Nombre">
                                                             </div>
@@ -93,21 +93,33 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
+                                                            <label for="user" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" id="user" placeholder="@NombreUsuario">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
+                                                            <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
                                                             <div class="col-sm-9">
                                                                 <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="email" placeholder="Correo Electrónico">{{member.email}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group row">
-                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
+                                                            <div class="col-sm-9 input-group">
+                                                                <span type="text" class="form-control" id="NIF" placeholder="0000000-A">{{member.NIF}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
                                                             <div class="col-sm-9 input-group">
                                                                 <input type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">
                                                                 <div class="input-group-append">
@@ -120,7 +132,7 @@
                                                             <div class="col-sm-9 ">
                                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
                                                                     <option>Mujer</option>
-                                                                    <optgroup label="Sexo" >
+                                                                    <optgroup label="genre" >
                                                                         <option value="H">Hombre</option>
                                                                         <option value="M">Mujer</option>
                                                                         <option value="B">No contesto</option>
@@ -129,13 +141,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
+                                                            <label for="height" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">
+                                                                <input type="text" class="form-control" id="height" placeholder="Ej. 180(cm)">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
+                                                            <label for="weight" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
                                                             <div class="col-sm-9">
                                                                 <input type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">
                                                             </div>
@@ -170,29 +182,29 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
-                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                            <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="cono1" placeholder="Domicilio">
+                                                                <input type="text" class="form-control" id="street" placeholder="Domicilio">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                            <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="cono1" placeholder="XXXXX">
+                                                                <input type="text" class="form-control" id="postalCode" placeholder="XXXXX">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
-                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                            <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="cono1" placeholder="+XX-XXX XX XX XX">
+                                                                <input type="text" class="form-control" id="phone" placeholder="+XX-XXX XX XX XX">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
+                                                            <label for="creditCard" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="cono1" placeholder="000-000-000">
+                                                                <input type="text" class="form-control" id="creditCard" placeholder="000-000-000">
                                                             </div>
                                                         </div>
                                                     </div>
