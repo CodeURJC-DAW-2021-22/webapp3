@@ -62,8 +62,7 @@
                         <div class="card">
                             <div class="card-body colorBlackText">
                                 <h5 class="card-title">Turning-series chart</h5>
-                                <div id="placeholder" style="height: 400px;"></div>
-                                <p id="choices" class="m-t-20"></p>
+                                <canvas id="myChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -76,7 +75,7 @@
                         <div class="card">
                             <div class="card-body colorBlackText">
                                 <h5 class="card-title">Line Chart</h5>
-                                <div class="bars" style="height: 400px;"></div>
+                                <canvas id="myChartBar"></canvas>
                             </div>
                         </div>
                     </div>
@@ -110,147 +109,96 @@
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
     <!-- this page js -->
-    <script src="assets/libs/chart/matrix.interface.js"></script>
     <script src="assets/libs/flot/jquery.flot.js"></script>
-    <script src="assets/libs/chart/matrix.charts.js"></script>
-    <script src="assets/libs/chart/jquery.flot.pie.min.js"></script>
-    <script src="assets/libs/chart/turning-series.js"></script>
+    <script src="assets/libs/chartJs/chart.js"></script>
     <script>
-        $(function() {
-            // we use an inline data source in the example, usually data would
-            // be fetched from a server
-            // ==============================================================
-            // Real Time Visits
-            // ==============================================================
-            var data = [5, 10, 15, 20, 15, 30, 40],
-                totalPoints = 100;
+        // LINE CHART
+        const labelsLine = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+        const dataLine = {
+            labels: labelsLine,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [1, 2, 3, 4, 5, 6]  // [1, 2, 3, 4, 5, 6]
+            }]
+        };
+        const configLine = {
+            type: 'line',
+            data: dataLine,
+            options: {}
+        };
 
-            function getRandomData() {
-                if (data.length > 0) data = data.slice(1);
-                // Do a random walk
-                while (data.length < totalPoints) {
-                    var prev = data.length > 0 ? data[data.length - 1] : 10,
-                        y = prev + Math.random() * 10 - 5;
-                    if (y < 0) {
-                        y = 0;
-                    } else if (y > 100) {
-                        y = 100;
-                    }
-                    data.push(y);
-                }
-                // Zip the generated y values with the x values
-                var res = [];
-                for (var i = 0; i < data.length; ++i) {
-                    res.push([i, data[i]])
-                }
-                return res;
-            }
-            // Set up the control widget
-            var updateInterval = 1000;
-            $("#updateInterval").val(updateInterval).change(function() {
-                var v = $(this).val();
-                if (v && !isNaN(+v)) {
-                    updateInterval = +v;
-                    if (updateInterval < 1) {
-                        updateInterval = 1;
-                    } else if (updateInterval > 1000) {
-                        updateInterval = 1000;
-                    }
-                    $(this).val("" + updateInterval);
-                }
-            });
-            var plot = $.plot("#real-time", [getRandomData()], {
-                series: {
-                    shadowSize: 1, // Drawing is faster without shadows
-                    lines: { fill: true, fillColor: 'transparent' },
-                },
-                yaxis: {
-                    min: 0,
-                    max: 100,
-                    show: true
-                },
-                xaxis: {
-                    show: false
-                },
-                colors: ["#488c13"],
-                grid: {
-                    color: "#AFAFAF",
-                    hoverable: true,
-                    borderWidth: 0,
-                    backgroundColor: 'transparent'
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    content: "Visits: %x",
-                    defaultTheme: false
-                }
-            });
-            window.onresize = function(event) {
-                $.plot($("#real-time"), [getRandomData()]);
-            }
+        new Chart(
+            document.getElementById('myChart'),
+            configLine
+        );
 
-            function update() {
-                plot.setData([getRandomData()]);
-                // Since the axes don't change, we don't need to call plot.setupGrid()
-                plot.draw();
-                setTimeout(update, updateInterval);
-            }
-            update();
 
-            console.log("document ready");
-            var offset = 0;
-            plot1();
+        // BAR CHART
 
-            function plot1() {
-                var sin = []
-                    , cos = [];
-                for (var i = 0; i < 12; i += 0.2) {
-                    sin.push([i, Math.sin(i + offset)]);
-                    cos.push([i, Math.cos(i + offset)]);
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July'
+        ];
+        const dataBar = {
+            labels: labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        const configBar = {
+            type: 'bar',
+            data: dataBar,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-                var options = {
-                    series: {
-                        lines: {
-                            show: true
-                        }
-                        , points: {
-                            show: true
-                        }
-                    }
-                    , grid: {
-                        hoverable: true //IMPORTANT! this is needed for tooltip to work
-                    }
-                    , yaxis: {
-                        min: -1.2
-                        , max: 1.2
-                    }
-                    , colors: ["#ee7951", "#4fb9f0"]
-                    , grid: {
-                        color: "#AFAFAF"
-                        , hoverable: true
-                        , borderWidth: 0
-                        , backgroundColor: '#FFF'
-                    }
-                    , tooltip: true
-                    , tooltipOpts: {
-                        content: "'%s' of %x.1 is %y.4"
-                        , shifts: {
-                            x: -60
-                            , y: 25
-                        }
-                    }
-                };
-                var plotObj = $.plot($("#flot-line-chart"), [{
-                    data: sin
-                    , label: "sin(x)"
-                    , }, {
-                    data: cos
-                    , label: "cos(x)"
-                }], options);
-            }
+            },
+        };
+        new Chart(
+            document.getElementById('myChartBar'),
+            configBar
+        );
 
-        });
     </script>
+
+
 </body>
 
 </html>

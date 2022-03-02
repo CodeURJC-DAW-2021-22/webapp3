@@ -47,6 +47,27 @@ public class MemberController {
         return "USRMEM_01ExerciseTable";
     }
 
+    @GetMapping("/exercise/{id}/image")
+    public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
+        Optional<Exercise> optExer = exerServ.findById(id);
+
+        if (optExer.isPresent()){
+            Exercise exercise = optExer.get();
+            if (exercise.getImageFile() != null){
+                Resource file = new InputStreamResource(exercise.getImageFile().getBinaryStream());
+
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(exercise.getImageFile().length()).body(file);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/exercise/{id}/pdf")
+    public void pdfGenerator(){
+
+    }
+
     @GetMapping("/editProfile")
     public String editProfile(Model model) {
         return "USRMEM_02EditProfile";
@@ -164,19 +185,4 @@ public class MemberController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/exercise/{id}/image")
-    public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
-        Optional<Exercise> optExer = exerServ.findById(id);
-
-        if (optExer.isPresent()){
-            Exercise exercise = optExer.get();
-            if (exercise.getImageFile() != null){
-                Resource file = new InputStreamResource(exercise.getImageFile().getBinaryStream());
-
-                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(exercise.getImageFile().length()).body(file);
-            }
-        }
-        return ResponseEntity.notFound().build();
-    }
 }
