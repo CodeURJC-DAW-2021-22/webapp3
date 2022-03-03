@@ -4,6 +4,7 @@ import java.sql.Blob;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Excercise_Table")
 public class Exercise {
 
     @Id

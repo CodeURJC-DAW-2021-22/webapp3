@@ -3,14 +3,10 @@ import org.hibernate.type.DateType;
 
 import java.sql.Blob;
 import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "User_Table")
 public class User {
 
     @Id
@@ -31,7 +27,6 @@ public class User {
     private boolean image;
 
     private enum Demarcacion {member,admministrator,monitor}
-    @ManyToMany
     private Demarcacion  userType;
 
     private DateType entryDate;
@@ -41,6 +36,12 @@ public class User {
     private String medicalInfo;
     private LocalDate sickLeave;
     private DateType hiringDate;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name ="GroupActivity_id")
+    private GroupActivity groupActivity;
 
     public User(){}
 
@@ -64,6 +65,8 @@ public class User {
         this.medicalInfo=medicalInfo;
         this.sickLeave=sickLeave;
         this.hiringDate=hiringDate;
+
+
     }
 
     public void setName(String name){
@@ -223,6 +226,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public GroupActivity getGroupActivity() {
+        return groupActivity;
+    }
+
+    public void setGroupActivity(GroupActivity groupActivity) {
+        this.groupActivity = groupActivity;
     }
 
 }

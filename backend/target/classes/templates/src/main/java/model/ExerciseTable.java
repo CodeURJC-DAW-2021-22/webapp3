@@ -2,14 +2,11 @@ package model;
 
 
 import java.sql.Blob;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 
 @Entity
+@Table(name = "ExcerciseTable_Table")
 public class ExerciseTable {
 
     @Id
@@ -23,6 +20,18 @@ public class ExerciseTable {
     private Blob imageFile;
     private boolean image;
 
+    @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JoinColumn(name ="Excercise_id")
+    private Exercise exercise;
+
+    public Exercise getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
+    }
+
     public ExerciseTable(){}
 
     public ExerciseTable(String name, String muscleGroup){
@@ -30,17 +39,19 @@ public class ExerciseTable {
         this.muscleGroup= muscleGroup;
     }
 
+
+
+
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
