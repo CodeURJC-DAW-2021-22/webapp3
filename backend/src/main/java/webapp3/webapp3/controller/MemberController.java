@@ -23,6 +23,7 @@ import webapp3.webapp3.service.MemberService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -159,6 +160,7 @@ public class MemberController {
 
     @GetMapping("/statistics")
     public String statistics(Model model) {
+
         return "USRMEM_03Estatistics";
     }
 

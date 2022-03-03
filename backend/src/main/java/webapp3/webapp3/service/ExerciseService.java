@@ -22,16 +22,8 @@ public class ExerciseService {
         return repository.findById(id);
     }
 
-    public void pdfGenerator() throws FileNotFoundException, DocumentException {
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
+    public void pdfGenerator() {
 
-        document.open();
-        Font font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
-        Chunk chunk = new Chunk("Hello World", font);
-
-        document.add(chunk);
-        document.close();
     }
 
     public boolean exist(long id){
