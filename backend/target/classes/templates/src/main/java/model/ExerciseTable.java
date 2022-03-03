@@ -19,7 +19,7 @@ public class ExerciseTable {
     @Lob
     private Blob imageFile;
     private boolean image;
-
+    /*relacion*/
     @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @JoinColumn(name ="Excercise_id")
     private Exercise exercise;

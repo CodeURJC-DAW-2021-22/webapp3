@@ -38,7 +38,7 @@ public class User {
     private DateType hiringDate;
 
 
-
+    /*relacion*/
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name ="GroupActivity_id")
     private GroupActivity groupActivity;
