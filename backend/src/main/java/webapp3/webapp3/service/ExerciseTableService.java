@@ -10,26 +10,23 @@ import java.util.Optional;
 
 @Service
 public class ExerciseTableService {
+
     @Autowired
-    private ExerciseTableRepository repository;
+    private ExerciseTableRepository exerciseTabRep;
 
     public Optional<ExerciseTable> findById(Long id){
-        return repository.findById(id);
+        return exerciseTabRep.findById(id);
     }
 
-    public boolean exist(long id) {
-        return repository.existsById(id);
+    public List<ExerciseTable> findAll(){
+        return exerciseTabRep.findAll();
     }
 
-    public List<ExerciseTable> findAll() {
-        return repository.findAll();
+    public void delete(Long id){
+        exerciseTabRep.deleteById(id);
     }
 
-    public void save(ExerciseTable ej) {
-        repository.save(ej);
-    }
-
-    public void delete(long id) {
-        repository.deleteById(id);
+    public ExerciseTable save(ExerciseTable exTab){
+        return exerciseTabRep.save(exTab);
     }
 }

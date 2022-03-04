@@ -1,33 +1,52 @@
 package webapp3.webapp3.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id = null;
+    private long id;
 
-    private String name;
+    @Column(nullable = false)
+    @NotNull
+    private String name = "";
 
+    @NotNull
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String description = "";
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
-
-    private String material;
+    @Column(nullable = false)
+    @NotNull
+    private String material = "";
 
     @Lob
-    private Blob imageFile;
+    private Blob image;
 
-    public Exercise() {}
+    @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "exercises")
+    private List<ExerciseTable> exercisesTables = new ArrayList<>();
 
-    public Long getId() {
+    public Exercise(){
+
+    }
+
+    public Exercise(String name, String description, String material) {
+        this.name = name;
+        this.description = description;
+        this.material = material;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -55,12 +74,19 @@ public class Exercise {
         this.material = material;
     }
 
-    public Blob getImageFile() {
-        return imageFile;
+    public Blob getImage() {
+        return image;
     }
 
-    public void setImageFile(Blob imageFile) {
-        this.imageFile = imageFile;
+    public void setImage(Blob image) {
+        this.image = image;
     }
 
+    public List<ExerciseTable> getExercisesTables() {
+        return exercisesTables;
+    }
+
+    public void setExercisesTables(List<ExerciseTable> exercisesTables) {
+        this.exercisesTables = exercisesTables;
+    }
 }

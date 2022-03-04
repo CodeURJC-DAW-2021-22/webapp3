@@ -1,42 +1,54 @@
 package webapp3.webapp3.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
 
-
-
 @Entity
-@Table(name = "activities")
 public class Activity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id = null;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private String name;
-    private String price;
+    @Column(nullable = false)
+    @NotNull
+    private String name = "";
 
-    @Column(columnDefinition = "TEXT")
-    private String description;
-    private String room;
+    @Column(nullable = false)
+    @NotNull
+    private String room = "";
+
+    @Column(nullable = false)
+    @NotNull
     private int capacity;
+
+    @NotNull
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String description = "";
+
+    @Column(nullable = false)
+    @NotNull
+    private int price;
+
+
     private String monday;
     private String tuesday;
     private String wednesday;
     private String thursday;
     private String friday;
 
-    @Lob
-    private Blob imageFile;
+    private String monitorName;
 
-    private boolean image;
+    @Lob
+    private Blob image;
 
     public Activity(){
-
     }
 
-    public Activity(String name, String price, String description, String room, int capacity, String monday,
-                          String tuesday, String wednesday, String thursday, String friday) {
+    public Activity(String name, int price, String description, String room, int capacity, String monday,
+                    String tuesday, String wednesday, String thursday, String friday) {
         super();
         this.name = name;
         this.price = price;
@@ -50,12 +62,12 @@ public class Activity {
         this.friday = friday;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -64,22 +76,6 @@ public class Activity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getRoom() {
@@ -96,6 +92,22 @@ public class Activity {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getMonday() {
@@ -138,19 +150,19 @@ public class Activity {
         this.friday = friday;
     }
 
-    public boolean getImage(){
-        return this.image;
+    public Blob getImage() {
+        return image;
     }
 
-    public void setImage(boolean image){
+    public void setImage(Blob image) {
         this.image = image;
     }
 
-    public void setImageFile(Blob image) {
-        this.imageFile = image;
+    public String getMonitorName() {
+        return monitorName;
     }
 
-    public Blob getImageFile() {
-        return imageFile;
+    public void setMonitorName(String monitorName) {
+        this.monitorName = monitorName;
     }
 }
