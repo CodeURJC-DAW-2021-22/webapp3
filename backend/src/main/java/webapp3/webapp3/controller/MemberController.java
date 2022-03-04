@@ -4,6 +4,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
 import webapp3.webapp3.service.MemberService;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -65,8 +67,18 @@ public class MemberController {
     }
 
     @GetMapping("/exercise/{id}/pdf")
-    public void pdfGenerator(){
+    public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
+        try {
+            ByteArrayOutputStream baos = exerServ.generatePDF(id, 5L);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .header("Content-disposition", "attachment;filename=\"nombre.pdf\"")
+                    .body(baos.toByteArray());
+        } catch (Exception e){
 
+            return ResponseEntity.badRequest().body("Malamente tra trá");
+        }
     }
 
     @GetMapping("/editProfile")
@@ -95,8 +107,8 @@ public class MemberController {
                                  @RequestParam String NIF,
                                  @RequestParam DateType birthday,
                                  @RequestParam String genre,
-                                 @RequestParam String height,
-                                 @RequestParam String weight,
+                                 @RequestParam int height,
+                                 @RequestParam Integer weight,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
@@ -116,7 +128,7 @@ public class MemberController {
             member.setBirthday(birthday);
             member.setGenre(genre);
             member.setHeight(height);
-            member.setWeight(weight);
+            member.appendWeight(weight);
             member.setAddress(address);
             member.setPostalCode(postalCode);
             member.setPhone(phone);

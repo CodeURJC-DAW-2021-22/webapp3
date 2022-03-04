@@ -3,6 +3,7 @@ package webapp3.webapp3.model;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.List;
 
 @Entity
 @Table(name = "member_tab")
@@ -21,8 +22,11 @@ public class Member {
     private String NIF;
     private DateType birthday;
     private String genre;
-    private String height;
-    private String weight;
+    private int height;
+
+    @ElementCollection
+    private List<Integer> weight;
+
     private String address;
     private String postalCode;
     private String phone;
@@ -40,7 +44,7 @@ public class Member {
     }
 
     public Member(String name, String surname, String usrname, String password, String email, String NIF, DateType birthday,
-                  String genre, String height, String weight, String address, String postalCode, String phone,
+                  String genre, int height, List<Integer> weight, String address, String postalCode, String phone,
                   String creditCard, String additionalInfo) {
         this.name = name;
         this.surname = surname;
@@ -149,20 +153,24 @@ public class Member {
         this.genre = genre;
     }
 
-    public String getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public String getWeight() {
+    public List<Integer> getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(List<Integer> weight) {
         this.weight = weight;
+    }
+
+    public void appendWeight(Integer weight){
+        this.weight.add(weight);
     }
 
     public String getCreditCard() {

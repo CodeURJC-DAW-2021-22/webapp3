@@ -5,8 +5,16 @@ import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Member;
 import webapp3.webapp3.repository.MemberRepository;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Optional;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
+import org.springframework.stereotype.Service;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 @Service
 public class MemberService {
@@ -34,5 +42,6 @@ public class MemberService {
         repository.deleteById(id);
     }
 
-    // generar datos de las graficas
+
+    // generate data for graphics
 }

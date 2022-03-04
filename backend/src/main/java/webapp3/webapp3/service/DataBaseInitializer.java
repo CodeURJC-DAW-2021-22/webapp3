@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 
 
 import org.springframework.core.io.Resource;
@@ -55,7 +56,7 @@ public class DataBaseInitializer {
         DateType d = new DateType("2000","03","08");
 
         Member memb1 = new Member("Andrea", "Nuzzi Herrero", "@AndyNuzzi", "AndyNuzzi00",
-                "andy.nuzzi@gmail.com", "1111111D", d, "Mujer", "160", "55",
+                "andy.nuzzi@gmail.com", "1111111D", d, "Mujer", 160, List.of(2, 3, 5, 6),
                 "C/Aranjuez", "28914", "000-99-87-54", "0000-44543-66775-33",
                 "No tengo lesiones ni alergias conocidas");
         memRep.save(memb1);
@@ -79,8 +80,6 @@ public class DataBaseInitializer {
         Activity act5 = new Activity("Yoga");
         setActivityImage(act5, "/static/img/gallery/gallery-2.jpg");
         actRep.save(act5);
-
-
 
     }
 
