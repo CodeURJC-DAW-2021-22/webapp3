@@ -11,26 +11,30 @@ import java.util.Optional;
 @Service
 public class ActivityService {
 
+    //Properties
+
     @Autowired
-    private ActivityRepository repository;
+    private ActivityRepository activityRep;
 
-    public Optional<Activity> findById(long id){
-        return repository.findById(id);
+    //Methods
+    public Optional<Activity> findById(Long id){
+        return activityRep.findById(id);
     }
 
-    public boolean exist(long id){
-        return repository.existsById(id);
+    public List<Activity> findAll(){
+        return activityRep.findAll();
     }
 
-    public List<Activity> findAll() {
-        return repository.findAll();
+    public void delete(Long id){
+        activityRep.deleteById(id);
     }
 
-    public void save(Activity activity) {
-        repository.save(activity);
+    public Activity save(Activity act){
+        return activityRep.save(act);
     }
 
-    public void delete(long id) {
-        repository.deleteById(id);
+    public Activity findByName(String name){
+        return activityRep.findByName(name);
     }
+
 }

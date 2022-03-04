@@ -1,5 +1,6 @@
 package webapp3.webapp3.controller;
 
+
 import org.hibernate.type.DateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -180,3 +181,4 @@ public class NonRegController {
         return "redirect:/USR_06log_in";
     }
 }
+

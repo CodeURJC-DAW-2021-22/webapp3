@@ -1,25 +1,5 @@
 package webapp3.webapp3.service;
 
-import org.hibernate.engine.jdbc.BlobProxy;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Service;
-import webapp3.webapp3.model.Activity;
-import webapp3.webapp3.model.DateType;
-import webapp3.webapp3.model.Monitor;
-import webapp3.webapp3.repository.ActivityRepository;
-import webapp3.webapp3.repository.MonitorRepository;
-
-@Service
 public class DataBaseInitializer {
 
     @Autowired

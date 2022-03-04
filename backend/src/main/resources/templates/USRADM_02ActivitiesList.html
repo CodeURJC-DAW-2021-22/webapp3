@@ -17,123 +17,123 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 
 <body>
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
     </div>
+</div>
 
-    <div id="main-wrapper">
-        {{>USRADM_Header}}
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Actividades</h4>
-                    </div>
+<div id="main-wrapper">
+    {{>USRADM_Header}}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Actividades</h4>
                 </div>
             </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
             <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- Start Page Content -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
 
-                <div class="row el-element-overlay">
-                    <div class="col-12 editMonitors">
-                        <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick='location.href="/addNewActivity"'><i class="mdi mdi-plus-outline"></i> Añadir actividad</button>
-                    </div>
+            <div class="row el-element-overlay">
+                <div class="col-12 editMonitors">
+                    <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick='location.href="/addNewActivity"'><i class="mdi mdi-plus-outline"></i> Añadir actividad</button>
                 </div>
-                <div class="row el-element-overlay">
-                    {{#activitiesList}}
-                    <div class="col-lg-3 col-md-6 col-6">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="/activity/{{id}}/image" alt=" " />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/activity/{{id}}"'><i class="mdi mdi-eye"></i></button></li>
-                                            <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/editActivity/{{id}}"'><i class="mdi mdi-pencil"></i></button></li>
-                                        </ul>
-                                    </div>
+            </div>
+            <div class="row el-element-overlay">
+                {{#activitiesList}}
+                <div class="col-lg-3 col-md-6 col-6">
+                    <div class="card">
+                        <div class="el-card-item">
+                            <div class="el-card-avatar el-overlay-1"> <img style="width:200px; height:280px; object-fit:cover; margin: auto" src="/activity/{{id}}/image" alt=" " />
+                                <div class="el-overlay">
+                                    <ul class="list-style-none el-info">
+                                        <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/activity/{{id}}"'><i class="mdi mdi-eye"></i></button></li>
+                                        <li class="el-item"><button class="btn default btn-outline el-link colorOrangeText" onclick='location.href="/editActivity/{{id}}"'><i class="mdi mdi-pencil"></i></button></li>
+                                    </ul>
                                 </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0">{{name}}</h4>
-                                </div>
+                            </div>
+                            <div class="el-card-content">
+                                <h4 class="m-b-0">{{name}}</h4>
                             </div>
                         </div>
                     </div>
-                    {{/activitiesList}}
-
-
-
-
                 </div>
+                {{/activitiesList}}
 
 
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+
+
             </div>
+
+
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
+            <!-- End PAge Content -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- footer -->
+            <!-- Right sidebar -->
             <!-- ============================================================== -->
-            {{>USRADM_Footer}}
+            <!-- .right-sidebar -->
             <!-- ============================================================== -->
-            <!-- End footer -->
+            <!-- End Right sidebar -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        {{>USRADM_Footer}}
+        <!-- ============================================================== -->
+        <!-- End footer -->
         <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
-    <!-- End Wrapper -->
+    <!-- End Page wrapper  -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
-    <!-- this page js -->
-    <script src="assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-    <script src="assets/libs/magnific-popup/meg.init.js"></script>
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="dist/js/custom.min.js"></script>
+<!-- this page js -->
+<script src="assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+<script src="assets/libs/magnific-popup/meg.init.js"></script>
 </body>
 
 </html>

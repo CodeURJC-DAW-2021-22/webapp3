@@ -69,7 +69,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->
-            <form action="/editMonitor/{{id}}" method="post" enctype="multipart/form-data">
+            <form action="/editMonitor/{{monitor.id}}" method="post" enctype="multipart/form-data">
                 <div class="row">
 
                     <div class="col-12">
@@ -181,7 +181,7 @@
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control "
-                                                       value="{{monitor.activityName}}" name="activityName"
+                                                       value="{{monitor.ACT1.name}}" name="activityName"
                                                        pattern="[a-zA-Z ]+"/>
                                             </div>
                                         </div>
@@ -200,7 +200,7 @@
                                         <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
                                             <br>
                                             <br>
-                                            <img src="/monitor/{{id}}/image" width="300 " height="450 " alt="user "
+                                            <img src="/monitor/{{id}}/image" width="100%" alt="user "
                                                  style="text-align: center;;"/>
                                         </div>
                                     </div>

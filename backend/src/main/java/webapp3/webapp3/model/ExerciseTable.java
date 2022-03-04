@@ -1,28 +1,50 @@
 package webapp3.webapp3.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ExerciseTable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id = null;
+    private long id;
 
-    private String name;
+    @Column(nullable = false)
+    @NotNull
+    private String name = "";
+
+    @NotNull
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String description = "";
 
     @Lob
-    private Blob imageFile;
+    private Blob image;
 
-    private String muscleGroup;
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "exerciseTable")
+    private List<UserExerciseTable> users = new ArrayList<>();
 
-    public ExerciseTable() {}
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private List<Exercise> exercises = new ArrayList<>();
 
-    public Long getId() {
+    public ExerciseTable(){
+
+    }
+
+    public ExerciseTable(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -34,19 +56,35 @@ public class ExerciseTable {
         this.name = name;
     }
 
-    public Blob getImageFile() {
-        return imageFile;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImageFile(Blob imageFile) {
-        this.imageFile = imageFile;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getMuscleGroup() {
-        return muscleGroup;
+    public Blob getImage() {
+        return image;
     }
 
-    public void setMuscleGroup(String muscleGroup) {
-        this.muscleGroup = muscleGroup;
+    public void setImage(Blob image) {
+        this.image = image;
+    }
+
+    public List<UserExerciseTable> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserExerciseTable> exerciseTables) {
+        this.users = users;
+    }
+
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises = exercises;
     }
 }
