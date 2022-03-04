@@ -45,8 +45,8 @@
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>5.5.10</version>
+            <artifactId>kernel</artifactId>
+            <version>7.1.12</version>
         </dependency>
     </dependencies>
 

@@ -80,6 +80,8 @@ public class DataBaseInitializer {
         setActivityImage(act5, "/static/img/gallery/gallery-2.jpg");
         actRep.save(act5);
 
+
+
     }
 
     public void setExerciseImage(Exercise exercise, String classpathResource) throws IOException {

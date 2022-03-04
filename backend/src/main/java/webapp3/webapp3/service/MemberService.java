@@ -33,4 +33,6 @@ public class MemberService {
     public void delete(long id) {
         repository.deleteById(id);
     }
+
+    // generar datos de las graficas
 }

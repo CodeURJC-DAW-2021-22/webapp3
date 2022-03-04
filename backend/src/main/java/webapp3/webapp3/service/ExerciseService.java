@@ -1,14 +1,10 @@
 package webapp3.webapp3.service;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.repository.ExerciseRepository;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
 
