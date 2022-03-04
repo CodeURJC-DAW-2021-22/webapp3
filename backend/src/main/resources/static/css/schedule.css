@@ -13,7 +13,7 @@
     background-color: rgb(58, 59, 59);
 }
 .activitieBoxTitle{ /*Tamaño y fuente de los titulos de los elementos del calendario*/
-    text-align: center;
+    text-align: left;
 
     color: #ffffff;
     font-size: 22px;
