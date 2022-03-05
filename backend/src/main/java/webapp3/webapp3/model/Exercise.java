@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Exercise {
@@ -35,6 +36,7 @@ public class Exercise {
     public Exercise(){
 
     }
+
 
     public Exercise(String name, String description, String material) {
         this.name = name;

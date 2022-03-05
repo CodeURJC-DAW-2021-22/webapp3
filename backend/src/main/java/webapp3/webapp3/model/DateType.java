@@ -61,6 +61,4 @@ public class DateType implements Serializable {
     public void generateSpanishFormat() {
         this.spanishFormat = day + "/" + month + "/" + year;
     }
-
 }
-

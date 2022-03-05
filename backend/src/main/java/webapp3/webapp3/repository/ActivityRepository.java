@@ -10,4 +10,4 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
     public Activity findByName(String name);
 
     public ArrayList<Activity> findByMonitorName(String s);
-}
+

@@ -40,5 +40,6 @@ public class ActivityService {
 
     public ArrayList<Activity> findByMonitorName(String s) {
         return activityRep.findByMonitorName(s);
+
     }
 }

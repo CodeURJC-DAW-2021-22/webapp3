@@ -32,7 +32,6 @@ public class Activity {
     @NotNull
     private int price;
 
-
     private String monday;
     private String tuesday;
     private String wednesday;
@@ -62,10 +61,11 @@ public class Activity {
         this.friday = friday;
     }
 
+
     public Long getId() {
         return id;
     }
-
+  
     public void setId(Long id) {
         this.id = id;
     }
@@ -149,7 +149,7 @@ public class Activity {
     public void setFriday(String friday) {
         this.friday = friday;
     }
-
+  
     public Blob getImage() {
         return image;
     }

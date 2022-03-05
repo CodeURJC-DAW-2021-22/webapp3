@@ -23,7 +23,6 @@ import java.util.Optional;
 @Controller
 public class NonRegController {
 
-
     //BBDD References
     @Autowired
     private ActivityService actServ;
@@ -181,4 +180,3 @@ public class NonRegController {
         return "redirect:/USR_06log_in";
     }
 }
-
