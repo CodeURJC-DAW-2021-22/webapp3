@@ -36,6 +36,6 @@ public class UserService {
     }
 
     public User findByName(String name){
-        return userRep.findByName(name);
+        return userRep.findByName(name).orElseThrow();
     }
 }

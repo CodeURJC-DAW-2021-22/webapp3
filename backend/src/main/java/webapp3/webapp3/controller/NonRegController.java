@@ -10,10 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import webapp3.webapp3.model.Activity;
-import webapp3.webapp3.model.Monitor;
+import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.ActivityService;
-import webapp3.webapp3.service.MonitorService;
+import webapp3.webapp3.service.UserService;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -28,7 +29,7 @@ public class NonRegController {
     @Autowired
     private ActivityService actServ;
     @Autowired
-    private MonitorService monServ;
+    private UserService userServ;
 
 
     //-------------------------------------------------Main page------------------------------------------------------//
@@ -36,7 +37,7 @@ public class NonRegController {
     //Main page controller
     @GetMapping("/USR_mainpage")
     public String mainPage(Model model){
-        List<Monitor> monitores = monServ.findAll();
+        List<User> monitores = userServ.findAll();
         model.addAttribute("monitor", monitores);
 
         return "USR_01mainPage";
@@ -45,14 +46,14 @@ public class NonRegController {
     //Monitor images download for main page
     @GetMapping("/USR_mainpage/{id}/image")
     public ResponseEntity<Object> showMonitorImage(@PathVariable long id) throws SQLException {
-        Optional<Monitor> monitor = monServ.findById(id);
+        Optional<User> monitor = userServ.findById(id);
 
-        if (monitor.isPresent() && monitor.get().getImageFile() != null) {
+        if (monitor.isPresent() && monitor.get().getImage() != null) {
 
-            Resource file = new InputStreamResource(monitor.get().getImageFile().getBinaryStream());
+            Resource file = new InputStreamResource(monitor.get().getImage().getBinaryStream());
 
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                    .contentLength(monitor.get().getImageFile().length()).body(file);
+                    .contentLength(monitor.get().getImage().length()).body(file);
 
         } else {
             return ResponseEntity.notFound().build();
@@ -75,12 +76,12 @@ public class NonRegController {
     public ResponseEntity<Object> showActivitieImage(@PathVariable long id) throws SQLException {
         Optional<Activity> actividad = actServ.findById(id);
 
-        if (actividad.isPresent() && actividad.get().getImageFile() != null) {
+        if (actividad.isPresent() && actividad.get().getImage() != null) {
 
-            Resource file = new InputStreamResource(actividad.get().getImageFile().getBinaryStream());
+            Resource file = new InputStreamResource(actividad.get().getImage().getBinaryStream());
 
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                    .contentLength(actividad.get().getImageFile().length()).body(file);
+                    .contentLength(actividad.get().getImage().length()).body(file);
 
         } else {
             return ResponseEntity.notFound().build();
@@ -129,12 +130,12 @@ public class NonRegController {
     public ResponseEntity<Object> scheduleImage(@PathVariable long id) throws SQLException{
         Optional<Activity> actividad = actServ.findById(id);
 
-        if (actividad.isPresent() && actividad.get().getImageFile() != null) {
+        if (actividad.isPresent() && actividad.get().getImage() != null) {
 
-            Resource file = new InputStreamResource(actividad.get().getImageFile().getBinaryStream());
+            Resource file = new InputStreamResource(actividad.get().getImage().getBinaryStream());
 
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                    .contentLength(actividad.get().getImageFile().length()).body(file);
+                    .contentLength(actividad.get().getImage().length()).body(file);
 
         } else {
             return ResponseEntity.notFound().build();
