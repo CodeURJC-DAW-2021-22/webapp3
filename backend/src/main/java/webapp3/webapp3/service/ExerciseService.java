@@ -26,7 +26,7 @@ public class ExerciseService {
     private ExerciseRepository repository;
 
     @Autowired
-    private MemberService memberService;
+    private UserService memberService;
 
     public Optional<Exercise> findById(long id){
         return repository.findById(id);

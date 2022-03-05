@@ -20,12 +20,11 @@ import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.Member;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
-import webapp3.webapp3.service.MemberService;
+import webapp3.webapp3.service.UserService;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +36,7 @@ public class MemberController {
     private ExerciseService exerServ;
 
     @Autowired
-    private MemberService memServ;
+    private UserService memServ;
 
     @Autowired
     private ActivityService actServ;
