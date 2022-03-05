@@ -2,7 +2,7 @@ package webapp3.webapp3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import webapp3.webapp3.model.Member;
+import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.UserRepository;
 
 import java.util.List;
@@ -12,28 +12,31 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRep;
 
-    public Optional<Member> findById(long id){
-        return repository.findById(id);
+    public Optional<User> findById(Long id){
+        return userRep.findById(id);
     }
 
-    public boolean exist(long id){
-        return repository.existsById(id);
+    public List<User> findAll(){
+        return userRep.findAll();
     }
 
-    public List<Member> findAll() {
-        return repository.findAll();
+    public void delete(Long id){
+        userRep.deleteById(id);
     }
 
-    public void save(Member member) {
-        repository.save(member);
+    public User save(User ex){
+        return userRep.save(ex);
     }
 
-    public void delete(long id) {
-        repository.deleteById(id);
+    public List<User> findByUserType(String userType) {
+        return userRep.findByUserType(userType);
     }
 
+    public User findByName(String name){
+        return userRep.findByName(name);
+    }
 
     // generate data for graphics
 }

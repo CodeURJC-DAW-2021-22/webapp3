@@ -9,7 +9,9 @@ public class DateType implements Serializable {
     private String day;
     private String spanishFormat;
 
-    public DateType(){}
+    public DateType(){
+
+    }
 
     public DateType(String year, String month, String day){
         super();
