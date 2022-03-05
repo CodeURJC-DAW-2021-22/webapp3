@@ -163,9 +163,13 @@
                                             <p style="color:black; " class="centerText"> Actividad: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            {{#act}}
-                                            <span type="text " class="form-control ">{{act.name}}</span>
-                                            {{/act}}
+                                            {{#monitor.ACT1}}
+                                            <span type="text " class="form-control ">{{monitor.ACT1.name}}</span>
+                                            {{/monitor.ACT1}}
+
+                                            {{^monitor.ACT1}}
+                                            <span type="text " class="form-control ">No hay actividades asignadas</span>
+                                            {{/monitor.ACT1}}
                                         </div>
                                     </div>
                                 </div>

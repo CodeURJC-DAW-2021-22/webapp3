@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control " value="{{monitor.name}}"
-                                                       name="name" pattern="[a-zA-Z ]+"/>
+                                                       name="name" pattern="[a-zA-Záéíóúü ]+"/>
                                             </div>
                                         </div>
 
@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control " value="{{monitor.surname}}"
-                                                       name="surname" pattern="[a-zA-Z ]+"/>
+                                                       name="surname" pattern="[a-zA-Záéíóúü ]+"/>
                                             </div>
                                         </div>
 
@@ -109,7 +109,6 @@
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control " value="{{monitor.NIF}}"
                                                        name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
-                                                <!--pattern digitos de control-->
                                             </div>
                                         </div>
 
@@ -129,7 +128,7 @@
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control " value="{{monitor.address}}"
-                                                       name="address" pattern="[a-zA-Z,./ 0-9áéíóúü]+"/>
+                                                       name="address" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
                                             </div>
                                         </div>
 
@@ -149,7 +148,7 @@
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
                                                 <input type="text" class="form-control " value="{{monitor.phone}}"
-                                                       name="phone" pattern="(6|7){1}}[0-9]{8}"/>
+                                                       name="phone" pattern="(6|7){1}[0-9]{8}"/>
                                             </div>
                                         </div>
 
@@ -180,9 +179,19 @@
                                                 <p style="color:black; " class="centerText"> Actividad: </p>
                                             </div>
                                             <div class="col-lg-10 col-md-8 col-12 ">
-                                                <input type="text" class="form-control "
-                                                       value="{{monitor.ACT1.name}}" name="activityName"
-                                                       pattern="[a-zA-Z ]+"/>
+                                                <select name="activityName" type="number">
+
+                                                    {{#monitor.ACT1.name}}
+                                                    <option value="{{monitor.ACT1.id}" selected>{{monitor.ACT1.name}}</option>
+                                                    <option value="-1" >Ninguna</option>
+                                                    {{/monitor.ACT1.name}}
+                                                    {{^monitor.ACT1.name}}
+                                                    <option value="-1" selected>Ninguna</option>
+                                                    {{/monitor.ACT1.name}}
+                                                    {{#freeAct}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                    {{/freeAct}}
+                                                </select>
                                             </div>
                                         </div>
 

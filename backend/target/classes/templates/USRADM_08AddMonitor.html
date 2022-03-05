@@ -156,12 +156,25 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3 ">
+                                <!--div class="row mb-3 ">
                                     <div class="col-lg-2 col-md-4 col-12 ">
                                         <p style="color:black; " class="centerText"> Actividad: </p>
                                     </div>
                                     <div class="col-lg-10 col-md-8 col-12 ">
                                         <input type="text" class="form-control " placeholder="Actividad" name="activityName" pattern="[a-zA-Z ]+"/>
+                                    </div>
+                                </div-->
+                                <div class="row mb-3 ">
+                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                        <p style="color:black; " class="centerText"> Actividad: </p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                        <select name="activityName" type="number">
+                                            <option value="-1">Ninguna</option>
+                                            {{#freeAct}}
+                                            <option value="{{id}}">{{name}}</option>
+                                            {{/freeAct}}
+                                        </select>
                                     </div>
                                 </div>
 
