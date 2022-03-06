@@ -122,8 +122,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.8.4" level="project" />
-    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.3.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.13.3" level="project" />
   </component>
 </module>

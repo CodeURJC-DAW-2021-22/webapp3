@@ -10,7 +10,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.Member;
+import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.ExerciseRepository;
 
 import java.io.ByteArrayOutputStream;
@@ -53,12 +53,12 @@ public class ExerciseService {
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        Optional<Member> possibleMember = memberService.findById(userId);
+        Optional<User> possibleMember = memberService.findById(userId);
         if(possibleMember.isPresent()){
             PdfWriter.getInstance(document, baos);
             document.open();
 
-            Member member = possibleMember.get();
+            User member = possibleMember.get();
             // Sumo 1 al contador
 
             Optional<Exercise> possibleExercise = repository.findById(exerciseId);

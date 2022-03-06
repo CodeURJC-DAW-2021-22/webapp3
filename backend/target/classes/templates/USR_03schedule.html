@@ -1,0 +1,85 @@
+{{>USR_header}}
+
+<!-- schedule Section Begin -->
+<section class="classes-section spad">
+    <br>
+    <br>
+    <div class="container">
+        <h1 style="color: #f36100; font-size: 32px; text-transform: uppercase; margin-top: 5px; font-weight: 800; text-align: center;">
+            {{name}}
+        </h1>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 style="color: #ffffff; font-size: 32px; font-weight: 600; text-transform: uppercase; margin-top: 8px; margin-bottom: 45px;">
+                            Descripcion
+                        </h2>
+                        <p class="activitieBoxIntext">{{description}}</p>
+                    </div>
+                </div>
+                <br>
+                <!--schedule header Begin-->
+                <div>
+                    <h2 style="margin-bottom: 45px; color: white; font-size: 32px; font-weight: 600; text-transform: uppercase; margin-top: 8px;">Horarios</h2>
+                    <br>
+                    <div class="row boxAling">
+                        <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Lunes</div>
+                        {{#monAct}}
+                        <div class="col-lg-2 col-md-2 activitieBox activitieAling">
+                            <h3 class="activitieBoxTitle">{{monday}}</h3>
+                        </div>
+                        {{/monAct}}
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row boxAling">
+                        <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Martes</div>
+                        {{#tusAct}}
+                        <div class="col-lg-2 col-md-2 activitieBox activitieAling">
+                            <h3 class="activitieBoxTitle">{{tuesday}}</h3>
+                        </div>
+                        {{/tusAct}}
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row boxAling">
+                        <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Miercoles</div>
+                        {{#wenAct}}
+                        <div class="col-lg-2 col-md-2 activitieBox activitieAling">
+                            <h3 class="activitieBoxTitle">{{wednesday}}</h3>
+                        </div>
+                        {{/wenAct}}
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row boxAling">
+                        <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Jueves</div>
+                        {{#thuAct}}
+                        <div class="col-lg-2 col-md-2 activitieBox activitieAling">
+                            <h3 class="activitieBoxTitle">{{thursday}}</h3>
+                        </div>
+                        {{/thuAct}}
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row boxAling">
+                        <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Viernes</div>
+                        {{#friAct}}
+                        <div class="col-lg-2 col-md-2 activitieBox activitieAling">
+                            <h3 class="activitieBoxTitle">{{friday}}</h3>
+                        </div>
+                        {{/friAct}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <img src="/USR_activities/schedule/{{id}}/image" style="border-style: solid; border-width: 5px; border-color: #f36100; border-radius: 100%;">
+            </div>
+        </div>
+    </div>
+</section>
+
+{{>USR_footer}}
