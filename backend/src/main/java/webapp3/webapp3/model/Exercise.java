@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Exercise {
@@ -31,12 +31,11 @@ public class Exercise {
     private Blob image;
 
     @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "exercises")
-    private List<ExerciseTable> exercisesTables = new ArrayList<>();
+    private List<ExerciseTable> exerciseTables = new ArrayList<>();
 
     public Exercise(){
 
     }
-
 
     public Exercise(String name, String description, String material) {
         this.name = name;
@@ -84,11 +83,12 @@ public class Exercise {
         this.image = image;
     }
 
-    public List<ExerciseTable> getExercisesTables() {
-        return exercisesTables;
+    public List<ExerciseTable> getExerciseTables() {
+        return exerciseTables;
     }
 
-    public void setExercisesTables(List<ExerciseTable> exercisesTables) {
-        this.exercisesTables = exercisesTables;
+    public void setExercisesTables(List<ExerciseTable> exerciseTables) {
+        this.exerciseTables = exerciseTables;
     }
+
 }

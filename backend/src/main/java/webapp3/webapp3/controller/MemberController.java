@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import webapp3.webapp3.model.Activity;
-import webapp3.webapp3.model.DateType;
-import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.User;
+import webapp3.webapp3.model.*;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
+import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
 import java.io.ByteArrayOutputStream;
@@ -35,6 +33,9 @@ public class MemberController {
     private ExerciseService exerServ;
 
     @Autowired
+    private ExerciseTableService exerTabServ;
+
+    @Autowired
     private UserService memServ;
 
     @Autowired
@@ -43,39 +44,38 @@ public class MemberController {
 
     @GetMapping("/MEMexercise")
     public String exercise (Model model){
-        List<Exercise> all = exerServ.findAll();
-        model.addAttribute("exercises", all);
+        List<ExerciseTable> all = exerTabServ.findAll();
+        model.addAttribute("MEMexercises", all);
         return "USRMEM_01ExerciseTable";
     }
 
     @GetMapping("/MEMexercise/{id}/image")
     public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
-        Optional<Exercise> optExer = exerServ.findById(id);
+        Optional<ExerciseTable> optExerTab = exerTabServ.findById(id);
 
-        if (optExer.isPresent()){
-            Exercise exercise = optExer.get();
-            if (exercise.getImage() != null){
-                Resource file = new InputStreamResource(exercise.getImage().getBinaryStream());
-
+        if (optExerTab.isPresent()){
+            ExerciseTable exerciseTab = optExerTab.get();
+            if (exerciseTab.getImage() != null){
+                Resource file = new InputStreamResource(exerciseTab.getImage().getBinaryStream());
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(exercise.getImage().length()).body(file);
+                        .contentLength(exerciseTab.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MEMexercise/{id}/pdf")
+    @GetMapping("/MEMexerciseTable/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
         try {
-            ByteArrayOutputStream baos = exerServ.generatePDF(id, 5L);
+            ByteArrayOutputStream baos = exerTabServ.generatePDF(id, 5L);
             return ResponseEntity
                     .ok()
                     .contentType(MediaType.APPLICATION_PDF)
-                    .header("Content-disposition", "attachment;filename=\"nombre.pdf\"")
+                    .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
                     .body(baos.toByteArray());
         } catch (Exception e){
 
-            return ResponseEntity.badRequest().body("Malamente tra trá");
+            return ResponseEntity.badRequest().body("Error");
         }
     }
 

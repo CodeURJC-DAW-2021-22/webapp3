@@ -25,9 +25,6 @@ public class ExerciseService {
     @Autowired
     private ExerciseRepository repository;
 
-    @Autowired
-    private UserService memberService;
-
     public Optional<Exercise> findById(long id){
         return repository.findById(id);
     }
@@ -48,52 +45,5 @@ public class ExerciseService {
         repository.deleteById(id);
     }
 
-    public ByteArrayOutputStream generatePDF(Long exerciseId, Long userId) throws DocumentException, IOException {
 
-        Document document = new Document();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-        Optional<User> possibleMember = memberService.findById(userId);
-        if(possibleMember.isPresent()){
-            PdfWriter.getInstance(document, baos);
-            document.open();
-
-            User member = possibleMember.get();
-            // Sumo 1 al contador
-
-            Optional<Exercise> possibleExercise = repository.findById(exerciseId);
-            if (possibleExercise.isPresent()){
-                PdfPTable table = new PdfPTable(3);
-                addTableHeader(table);
-
-                table.addCell("row 1, col 1");
-                table.addCell("row 1, col 2");
-                table.addCell("row 1, col 3");
-
-                document.add(table);
-
-            } else {
-                // ...
-            }
-
-            // Cierro streams
-            document.close();
-        } else {
-
-        }
-
-        baos.close();
-        return baos;
-    }
-
-    private void addTableHeader(PdfPTable table) {
-        Stream.of("column header 1", "column header 2", "column header 3")
-                .forEach(columnTitle -> {
-                    PdfPCell header = new PdfPCell();
-                    header.setBackgroundColor(BaseColor.MAGENTA);
-                    header.setBorderWidth(2);
-                    header.setPhrase(new Phrase(columnTitle));
-                    table.addCell(header);
-                });
-    }
 }

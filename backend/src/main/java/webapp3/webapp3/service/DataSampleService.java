@@ -197,11 +197,12 @@ public class DataSampleService {
         User client7= new User("Nadie", "Tyson Manson", "22222222G", "n0b0dy@gmail.com", "C/ Tres Aguas, 2, 6ºD",
                 "41210", cl7, "760000001", ed7, 76, 35, "ES59 5059 5150 5315", "Ninguna alergia conocida.");
         setUserImage(client7, "/sample_images/Client7.jpeg");
-        client5.setACT1(act3);
-        client5.setACT2(act1);
+        client7.setACT1(act3);
+        client7.setACT2(act1);
 
         Exercise ex1 = new Exercise("Curl de biceps alterno", "Coge una mancuerna en cada mano y dobla el brazo fijo 90 grados.", "Mancuernas.");
         Exercise ex2 = new Exercise("Biceps con barra Z", "Apoyate en el banco y haz 15 repeticiones agarrando la barra Z.", "Barra Z y discos.");
+
         exeRep.save(ex1);
         exeRep.save(ex2);
 
@@ -209,6 +210,7 @@ public class DataSampleService {
         exerciseTable1.getExercises().add(ex1);
         exerciseTable1.getExercises().add(ex2);
 
+        setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
         Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
@@ -227,7 +229,7 @@ public class DataSampleService {
 
         client2.addExerciseTable(exerciseTable1);
 
-        exerciseTableRep.save(exerciseTable1);
+
         userRep.save(client1);
         userRep.save(client2);
         userRep.save(client3);
@@ -247,5 +249,17 @@ public class DataSampleService {
 
         Resource image = new ClassPathResource(classpathResource);
         monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    public void setExerciseImage(Exercise exercise, String classpathResource) throws IOException {
+
+        Resource image = new ClassPathResource(classpathResource);
+        exercise.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    public void setExerciseTableImage(ExerciseTable exerciseTab, String classpathResource) throws IOException {
+
+        Resource image = new ClassPathResource(classpathResource);
+        exerciseTab.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 }
