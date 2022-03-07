@@ -1,6 +1,5 @@
 package webapp3.webapp3.controller;
 
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -17,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.Member;
+import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
 import webapp3.webapp3.service.UserService;
@@ -42,30 +41,30 @@ public class MemberController {
     private ActivityService actServ;
 
 
-    @GetMapping("/exercise")
+    @GetMapping("/MEMexercise")
     public String exercise (Model model){
         List<Exercise> all = exerServ.findAll();
         model.addAttribute("exercises", all);
         return "USRMEM_01ExerciseTable";
     }
 
-    @GetMapping("/exercise/{id}/image")
+    @GetMapping("/MEMexercise/{id}/image")
     public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
         Optional<Exercise> optExer = exerServ.findById(id);
 
         if (optExer.isPresent()){
             Exercise exercise = optExer.get();
-            if (exercise.getImageFile() != null){
-                Resource file = new InputStreamResource(exercise.getImageFile().getBinaryStream());
+            if (exercise.getImage() != null){
+                Resource file = new InputStreamResource(exercise.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(exercise.getImageFile().length()).body(file);
+                        .contentLength(exercise.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/exercise/{id}/pdf")
+    @GetMapping("/MEMexercise/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
         try {
             ByteArrayOutputStream baos = exerServ.generatePDF(id, 5L);
@@ -80,14 +79,14 @@ public class MemberController {
         }
     }
 
-    @GetMapping("/editProfile")
+    @GetMapping("/MEMeditProfile")
     public String editProfile(Model model) {
         return "USRMEM_02EditProfile";
     }
 
-    @GetMapping("/editProfile/{id}")
+    @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id){
-        Optional<Member> optMember = memServ.findById(id);
+        Optional<User> optMember = memServ.findById(id);
         if (optMember.isPresent()){
             model.addAttribute("monitor", optMember.get());
             return "USRMEM_02EditProfile";
@@ -96,7 +95,7 @@ public class MemberController {
         }
     }
 
-    @PostMapping("/editProfile/{id}")
+    @PostMapping("/MEMeditProfile/{id}")
     public String addEditedProle(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
@@ -114,26 +113,26 @@ public class MemberController {
                                  @RequestParam String creditCard,
                                  @RequestParam String additionalInfo,
                                  @RequestParam("image") MultipartFile image) throws IOException {
-        Optional<Member> mem = memServ.findById(id);
+        Optional<User> mem = memServ.findById(id);
         String htmlFile;
         if (mem.isPresent()){
-            Member member = mem.get();
+            User member = mem.get();
             member.setName(name);
             member.setSurname(surname);
-            member.setUsrname(usrname);
+            //member.setUsrname(usrname);
             member.setPassword(password);
             member.setEmail(email);
             member.setNIF(NIF);
             member.setBirthday(birthday);
-            member.setGenre(genre);
+            //member.setGenre(genre);
             member.setHeight(height);
-            member.appendWeight(weight);
+            //member.appendWeight(weight);
             member.setAddress(address);
             member.setPostalCode(postalCode);
             member.setPhone(phone);
-            member.setCreditCard(creditCard);
-            member.setAdditionalInfo(additionalInfo);
-            member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            //member.setCreditCard(creditCard);
+            //member.setAdditionalInfo(additionalInfo);
+            //member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
             memServ.save(member);
             htmlFile = "redirect:/member";
         } else {
@@ -143,25 +142,25 @@ public class MemberController {
         return htmlFile;
     }
 
-    @GetMapping("/monitor/{id}/image")
+    @GetMapping("/MEMmonitor/{id}/image")
     public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
-        Optional<Member> optMon = memServ.findById(id);
+        Optional<User> optMon = memServ.findById(id);
 
         if (optMon.isPresent()){
-            Member member = optMon.get();
-            if (member.getImageFile() != null){
-                Resource file = new InputStreamResource(member.getImageFile().getBinaryStream());
+            User member = optMon.get();
+            if (member.getImage() != null){
+                Resource file = new InputStreamResource(member.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(member.getImageFile().length()).body(file);
+                        .contentLength(member.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/profile/{id}")
+    @GetMapping("/MEMprofile/{id}")
     public String profile(Model model, @PathVariable long id) {
-        Optional<Member> mem = memServ.findById(id);
+        Optional<User> mem = memServ.findById(id);
         if(mem.isPresent()){
             model.addAttribute("member", mem.get());
             return "USRMEM_02Profile";
@@ -169,30 +168,30 @@ public class MemberController {
         return "404";
     }
 
-    @GetMapping("/statistics")
+    @GetMapping("/MEMstatistics")
     public String statistics(Model model) {
 
         return "USRMEM_03Estatistics";
     }
 
-    @GetMapping("/activities")
+    @GetMapping("/MEMactivities")
     public String activities(Model model) {
         List<Activity> all = actServ.findAll();
         model.addAttribute("activities", all);
         return "USRMEM_04Activities";
     }
 
-    @GetMapping("/activity/{id}/image")
+    @GetMapping("/MEMactivity/{id}/image")
     public ResponseEntity<Object> downloadActivityImage(@PathVariable long id) throws SQLException {
         Optional<Activity> optAct = actServ.findById(id);
 
         if (optAct.isPresent()){
             Activity activity = optAct.get();
-            if (activity.getImageFile() != null){
-                Resource file = new InputStreamResource(activity.getImageFile().getBinaryStream());
+            if (activity.getImage() != null){
+                Resource file = new InputStreamResource(activity.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(activity.getImageFile().length()).body(file);
+                        .contentLength(activity.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
