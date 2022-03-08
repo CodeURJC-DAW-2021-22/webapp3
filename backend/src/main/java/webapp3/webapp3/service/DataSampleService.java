@@ -202,9 +202,20 @@ public class DataSampleService {
 
         Exercise ex1 = new Exercise("Curl de biceps alterno", "Coge una mancuerna en cada mano y dobla el brazo fijo 90 grados.", "Mancuernas.");
         Exercise ex2 = new Exercise("Biceps con barra Z", "Apoyate en el banco y haz 15 repeticiones agarrando la barra Z.", "Barra Z y discos.");
-
+        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
+                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
+        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
+                "Barra Z y discos.");
+        Exercise ex5 = new Exercise("Abdominales", "Apoya la espalda en el banco y haz 15 repeticiones de abdominal alto y completo. Con una pesa de 5 kilos apoyada en la tripa.",
+                "Pesa de 5 kilos.");
+        Exercise ex6 = new Exercise("Lumbares", "Tumbate boca arriba en el suelo y haz lumbares",
+                "Tu propio cuerpo");
         exeRep.save(ex1);
         exeRep.save(ex2);
+        exeRep.save(ex3);
+        exeRep.save(ex4);
+        exeRep.save(ex5);
+        exeRep.save(ex6);
 
         ExerciseTable exerciseTable1 = new ExerciseTable("Tabla 1", "Tabla de entrenamiento de biceps.");
         exerciseTable1.getExercises().add(ex1);
@@ -213,18 +224,13 @@ public class DataSampleService {
         setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
-        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
-                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
-        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
-                "Barra Z y discos.");
-        exeRep.save(ex3);
-        exeRep.save(ex4);
         ExerciseTable exerciseTable2 = new ExerciseTable("Tabla 2", "Tabla de entrenamiento de brazo.");
         exerciseTable2.getExercises().add(ex1);
         exerciseTable2.getExercises().add(ex2);
         exerciseTable2.getExercises().add(ex3);
         exerciseTable2.getExercises().add(ex4);
 
+        setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
         exerciseTableRep.save(exerciseTable2);
 
         client2.addExerciseTable(exerciseTable1);
