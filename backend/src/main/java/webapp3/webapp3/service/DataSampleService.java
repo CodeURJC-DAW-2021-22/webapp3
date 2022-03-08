@@ -189,8 +189,8 @@ public class DataSampleService {
         User client6= new User("Aitor", "Menta Irrállos", "22222222F", "tormentas@gmail.com", "C/ Tres Aguas, 12, 3ºC",
                 "41210", cl6, "666666666", ed6, 196, 100, "ES10 1010 1010 1010", "Alergia al deporte");
         setUserImage(client6, "/sample_images/Client6.jpeg");
-        client5.setACT1(act2);
-        client5.setACT2(act5);
+        client6.setACT1(act2);
+        client6.setACT2(act5);
 
         DateType cl7 = new DateType("1986", "05", "02");
         DateType ed7 = new DateType("2019", "04", "13");
@@ -233,7 +233,28 @@ public class DataSampleService {
         setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
         exerciseTableRep.save(exerciseTable2);
 
-        client2.addExerciseTable(exerciseTable1);
+        ExerciseTable exerciseTable3 = new ExerciseTable("Tabla 3", "Tabla de entrenamiento mixta.");
+        exerciseTable3.getExercises().add(ex1);
+        exerciseTable3.getExercises().add(ex2);
+        exerciseTable3.getExercises().add(ex5);
+        exerciseTable3.getExercises().add(ex6);
+
+        setExerciseTableImage(exerciseTable3, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable3);
+
+        ExerciseTable exerciseTable4 = new ExerciseTable("Tabla 4", "Tabla de entrenamiento abdominal y lumbar");
+        exerciseTable4.getExercises().add(ex5);
+        exerciseTable4.getExercises().add(ex6);
+
+        setExerciseTableImage(exerciseTable4, "/sample_images/gallery-13.jpeg");
+        exerciseTableRep.save(exerciseTable4);
+
+        ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento jeje");
+        exerciseTable5.getExercises().add(ex3);
+        exerciseTable5.getExercises().add(ex4);
+
+        setExerciseTableImage(exerciseTable5, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable5);
 
 
         userRep.save(client1);
