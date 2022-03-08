@@ -1,21 +1,24 @@
 package webapp3.webapp3.controller;
 
 
-import org.hibernate.type.DateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +33,36 @@ public class NonRegController {
     private ActivityService actServ;
     @Autowired
     private UserService userServ;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @ModelAttribute
+    public String addAtributes(Model model, HttpServletRequest request){
+        Principal principal = request.getUserPrincipal();
+        String target;
+        if (principal != null) {
+            model.addAttribute("log",true);
+
+            if(request.isUserInRole("member")){
+                model.addAttribute("cli", true);
+                target = "redirect:/";
+            }else if(request.isUserInRole("monitor")){
+                model.addAttribute("mon", true);
+                target = "redirect:/";
+            }else{
+                model.addAttribute("adm", true);
+                target = "USR_01mainPage";//redirect:/statistics
+            }
+        }else{
+            model.addAttribute("log",false);
+
+            List<User> monitores = userServ.findAll();
+            model.addAttribute("monitor", monitores);
+            target = "USR_01mainPage";
+        }
+
+        return target;
+    }
 
 
     //-------------------------------------------------Main page------------------------------------------------------//
@@ -170,16 +203,25 @@ public class NonRegController {
 
     //Sign in page controller
     @GetMapping("/USR_sign_in")
-    public String signin(Model model){return "USR_07sign_in";}
+    public String signin(Model model){return "/USR_07sign_in";}
 
     //Add user
     @PostMapping("/USR_sign_in")
-    public String postSignin(Model model,@RequestParam String name, @RequestParam String surname, @RequestParam String NIF, @RequestParam DateType birthday,
-                             @RequestParam String phone_num, @RequestParam String postal_code, @RequestParam String address, @RequestParam String email,
-                             @RequestParam String password, @RequestParam DateType entryDate, @RequestParam int height, @RequestParam int weight,
+    public String postSignin(@RequestParam String name, @RequestParam String surname,
+                             @RequestParam String NIF, @RequestParam String birthday,
+                             @RequestParam String phone_num, @RequestParam String postal_code,
+                             @RequestParam String address, @RequestParam String email,
+                             @RequestParam String password,@RequestParam int height, @RequestParam int weight,
                              @RequestParam String IBAN, @RequestParam String medicalInfo){
-        //añadir Server.save cuando este la base de datos
-        return "redirect:/USR_06log_in";
+
+        DateType birthday_Date = new DateType(birthday.substring(0, 4), birthday.substring(5, 7), birthday.substring(8, 10));
+
+        User newUser = new User(name, surname, NIF, email, passwordEncoder.encode(password), address, postal_code, birthday_Date, phone_num,
+                "member", height, weight, IBAN, medicalInfo);
+
+        userServ.save(newUser);
+
+        return "/USR_06log_in";
     }
 }
 

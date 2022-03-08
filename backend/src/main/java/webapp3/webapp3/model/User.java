@@ -1,6 +1,8 @@
 package webapp3.webapp3.model;
 
 import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -33,7 +35,7 @@ public class User {
 
     @Column(nullable = false)
     @NotNull
-    private String password = "";
+    private String encodedPassword = "";
 
     @Column(nullable = false)
     @NotNull
@@ -83,7 +85,7 @@ public class User {
     private DateType hiringDate;
 
 
-    public User(){
+    public User(String name, String surname, String NIF, String email, String encodedPassword, String address, String postal_code, org.hibernate.type.DateType birthday, String phone_num, String member, org.hibernate.type.DateType entryDate, int height, int weight, String IBAN, String medicalInfo){
 
     }
 
@@ -100,7 +102,7 @@ public class User {
         this.birthday = birthday;
         this.phone = phone;
         this.userType = "administrator";
-        this.password = "password";
+        this.encodedPassword = "password";
     }
 
 
@@ -118,7 +120,7 @@ public class User {
         this.hiringDate = hiring;
         this.description = description;
         this.userType = "monitor";
-        this.password = NIF;
+        this.encodedPassword = NIF;
     }
 
 
@@ -139,8 +141,28 @@ public class User {
         this.IBAN = IBAN;
         this.medicalInfo = medicalInfo;
         this.userType = "member";
-        this.password = "password";
+        this.encodedPassword = "password";
     }
+
+    public User(String name, String surname, String NIF, String email, String password, String address,
+                String postalCode, DateType birthday, String phone, String userType, int height, int weight, String IBAN, String medicalInfo) {
+        this.name = name;
+        this.surname = surname;
+        this.NIF = NIF;
+        this.email = email;
+        this.encodedPassword = password;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.userType = userType;
+        this.height = height;
+        this.weight = weight;
+        this.IBAN = IBAN;
+        this.medicalInfo = medicalInfo;
+    }
+
+    public User() {}
 
     public long getId() {
         return id;
@@ -182,12 +204,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEncodedPassword() {
+        return encodedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public String getAddress() {
