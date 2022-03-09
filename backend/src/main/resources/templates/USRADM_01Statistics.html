@@ -92,7 +92,6 @@
 
     // LINE CHART
     const labelsLine = [
-        ' ',
         'January',
         'February',
         'March',
@@ -104,30 +103,35 @@
         'September',
         'October',
         'November',
-        'December',
-        ' '
+        'December'
     ];
     const dataLine = {
         labels: labelsLine,
         datasets: [
             {
-                label: 'Año 2022',
+                label: 'Año 2019',
                 backgroundColor: 'rgb(255, 125, 98)',
                 borderColor: 'rgb(255, 82, 0)',
-                data: [ 0, 2, 6]
-            },
-            {
-                label: 'Año 2021',
-                backgroundColor: 'rgb(136, 219, 255)',
-                borderColor: 'rgb(0, 178, 255)',
-                data: [ 0, 1, 2, 3, 4, 2, 6, 4, 5, 3, 7, 4, 0]
+                data: [ {{m00}}, {{m10}}, {{m20}}, {{m30}}, {{m40}}, {{m50}}, {{m60}}, {{m70}}, {{m80}},{{m90}}, {{m100}}, {{m110}}]
             },
             {
                 label: 'Año 2020',
+                backgroundColor: 'rgb(136, 219, 255)',
+                borderColor: 'rgb(0, 178, 255)',
+                data: [ {{m01}}, {{m11}}, {{m21}}, {{m31}}, {{m41}}, {{m51}}, {{m61}}, {{m71}}, {{m81}},{{m91}}, {{m101}}, {{m111}}]
+            },
+            {
+                label: 'Año 2021',
                 backgroundColor: 'rgb(126, 255, 146)',
                 borderColor: 'rgb(59, 222, 84)',
-                data: [ 0, 4, 7, 3, 5, 4, 8, 4, 3, 2, 5, 1, 0]
-            }
+                data: [ {{m02}}, {{m12}}, {{m22}}, {{m32}}, {{m42}}, {{m52}}, {{m62}}, {{m72}}, {{m82}},{{m92}}, {{m102}}, {{m112}}]
+            },
+            {
+                label: 'Año 2022',
+                backgroundColor: 'rgb(11, 2, 16)',
+                borderColor: 'rgb(33, 2, 150)',
+                data: [ {{m03}}, {{m13}}, {{m23}}, {{m33}}, {{m43}}, {{m53}}, {{m63}}, {{m73}}, {{m83}},{{m93}}, {{m103}}, {{m113}}]
+            },
         ]
     };
     const configLine = {

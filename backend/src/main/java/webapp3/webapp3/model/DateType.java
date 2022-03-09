@@ -1,6 +1,8 @@
 package webapp3.webapp3.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Calendar;
 
 public class DateType implements Serializable {
 
@@ -18,6 +20,14 @@ public class DateType implements Serializable {
         this.year = year;
         this.month = month;
         this.day = day;
+        this.spanishFormat = day + "/" + month + "/" + year;
+    }
+
+    public DateType(Date d){
+        super();
+        this.year = d.toString().substring(0, 4);
+        this.month = d.toString().substring(5, 7);
+        this.day = d.toString().substring(8, 10);
         this.spanishFormat = day + "/" + month + "/" + year;
     }
 
@@ -60,5 +70,11 @@ public class DateType implements Serializable {
 
     public void generateSpanishFormat() {
         this.spanishFormat = day + "/" + month + "/" + year;
+    }
+
+    public Date getDate(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+        return cal.getTime();
     }
 }
