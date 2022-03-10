@@ -74,7 +74,6 @@ public class MemberController {
                     .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
                     .body(baos.toByteArray());
         } catch (Exception e){
-
             return ResponseEntity.badRequest().body("Error");
         }
     }

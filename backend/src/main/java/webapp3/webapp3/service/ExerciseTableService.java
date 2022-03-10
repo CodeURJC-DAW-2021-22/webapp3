@@ -59,17 +59,17 @@ public class ExerciseTableService {
             PdfWriter.getInstance(document, baos);
             document.open();
 
-            User member = possibleMember.get();
-            // Sumo 1 al contador
+            //acceder a la tabla al haber pulsado el checkbox
 
             Optional<Exercise> possibleExercise = repository.findById(exerciseId);
+            ExerciseTable exTab = findById(exerciseId).get();
             if (possibleExercise.isPresent()){
                 PdfPTable table = new PdfPTable(3);
                 addTableHeader(table);
 
-                table.addCell("row 1, col 1");
-                table.addCell("row 1, col 2");
-                table.addCell("row 1, col 3");
+                table.addCell(exTab.getName());
+                table.addCell(exTab.getDescription());
+                // table.addCell(exTab.);
 
                 document.add(table);
 
@@ -82,7 +82,6 @@ public class ExerciseTableService {
         } else {
 
         }
-
         baos.close();
         return baos;
     }
