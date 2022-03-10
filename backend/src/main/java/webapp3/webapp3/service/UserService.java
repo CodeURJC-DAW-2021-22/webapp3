@@ -39,4 +39,11 @@ public class UserService {
     }
 
     // generate data for graphics
+    public int findByUserTypeAndEntryDate(String type, int month, String year) {
+        String s = Integer.toString(month);
+        if (s.length() == 1)
+            s = "0" + s;
+        System.out.println(s);
+        return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
+    }
 }

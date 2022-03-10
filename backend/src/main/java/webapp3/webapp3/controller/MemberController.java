@@ -169,7 +169,16 @@ public class MemberController {
 
     @GetMapping("/MEMstatistics")
     public String statistics(Model model) {
-
+        int [] clients = new int [12];
+        String [][] months = new String [12][4];
+        String [] years = {"2019", "2020", "2021", "2022"};
+        for (int j = 0; j < years.length; j++) {
+            for (int i = 0; i < 12; i++) {
+                months[i][j] = "m" + i + j;
+                clients[i] = memServ.findByUserTypeAndEntryDate("member", i + 1, years[j]);
+                model.addAttribute(months[i][j], clients[i]);
+            }
+        }
         return "USRMEM_03Estatistics";
     }
 
