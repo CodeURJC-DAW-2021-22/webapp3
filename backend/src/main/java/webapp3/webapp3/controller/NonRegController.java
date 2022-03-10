@@ -36,6 +36,8 @@ public class NonRegController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    //-------------------------------------------------Loged User Control-----------------------------------------------//
+
     @ModelAttribute
     public String addAtributes(Model model, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
@@ -51,7 +53,7 @@ public class NonRegController {
                 target = "redirect:/";
             }else{
                 model.addAttribute("adm", true);
-                target = "USR_01mainPage";//redirect:/statistics
+                target = "redirect:/statistics";
             }
         }else{
             model.addAttribute("log",false);
