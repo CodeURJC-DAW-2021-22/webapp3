@@ -1,9 +1,6 @@
 package webapp3.webapp3.service;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Phrase;
+import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -17,6 +14,7 @@ import webapp3.webapp3.repository.ExerciseTableRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -49,51 +47,66 @@ public class ExerciseTableService {
         return exerciseTabRep.save(exTab);
     }
 
-    public ByteArrayOutputStream generatePDF(Long exerciseId, Long userId) throws DocumentException, IOException {
+    public ByteArrayOutputStream generatePDF(Long userId, Long tableEx) throws DocumentException, IOException, SQLException {
 
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         Optional<User> possibleMember = memberService.findById(userId);
+
         if(possibleMember.isPresent()){
+            PdfPTable tableHeader = new PdfPTable(2);
+            PdfPTable tableDoc = new PdfPTable(4);
             PdfWriter.getInstance(document, baos);
             document.open();
 
             //acceder a la tabla al haber pulsado el checkbox
 
-            Optional<Exercise> possibleExercise = repository.findById(exerciseId);
-            ExerciseTable exTab = findById(exerciseId).get();
-            if (possibleExercise.isPresent()){
-                PdfPTable table = new PdfPTable(3);
-                addTableHeader(table);
+            Optional<ExerciseTable> exTab = exerciseTabRep.findById(tableEx);
 
-                table.addCell(exTab.getName());
-                table.addCell(exTab.getDescription());
-                // table.addCell(exTab.);
+            if (exTab.isPresent()){
 
-                document.add(table);
+                ExerciseTable exTabGet = exTab.get();
 
-            } else {
-                // ...
+                Stream.of(exTabGet.getName(), exTabGet.getDescription())
+                        .forEach(columnTitle -> {
+                            PdfPCell header = new PdfPCell();
+                            header.setBackgroundColor(BaseColor.ORANGE);
+                            header.setBorderWidth(1);
+                            header.setPhrase(new Phrase(columnTitle));
+                            tableHeader.addCell(header);
+                        });
+                document.add(tableHeader);
+
+
+                List<Exercise> exList = exTabGet.getExercises();
+
+                Stream.of("Nombre", "Descripción", "Material", "Imagen")
+                        .forEach(columnTitle -> {
+                            PdfPCell header = new PdfPCell();
+                            header.setBackgroundColor(BaseColor.ORANGE);
+                            header.setBorderWidth(1);
+                            header.setPhrase(new Phrase(columnTitle));
+                            tableDoc.addCell(header);
+                        });
+
+                for (Exercise ex: exList) {
+                    tableDoc.addCell(ex.getName());
+                    tableDoc.addCell(ex.getDescription());
+                    tableDoc.addCell(ex.getMaterial());
+                    tableDoc.addCell("");
+                    //tableDoc.addCell(Image.getInstance(ex.getImage().getBytes(0, (int) ex.getImage().length())));
+
+                }
+                //table.addCell(Image.getInstance(exTabGet.getImage().getBytes(0, (int) exTabGet.getImage().length())));
+                document.add(tableDoc);
+
             }
 
             // Cierro streams
             document.close();
-        } else {
-
         }
         baos.close();
         return baos;
-    }
-
-    private void addTableHeader(PdfPTable table) {
-        Stream.of("column header 1", "column header 2", "column header 3")
-                .forEach(columnTitle -> {
-                    PdfPCell header = new PdfPCell();
-                    header.setBackgroundColor(BaseColor.MAGENTA);
-                    header.setBorderWidth(2);
-                    header.setPhrase(new Phrase(columnTitle));
-                    table.addCell(header);
-                });
     }
 }
