@@ -143,14 +143,18 @@ public class DataSampleService {
         Exercise exercise1 = new Exercise("Press De Banca Con Barra","Ejercio de pectoral medio","banco, barra y discos");
         setExcerciseImage(exercise1,"/sample_images/pressBanca.png");
 
+        exeRep.save(exercise1);
+
         Exercise exercise2 = new Exercise("Press Militar","Ejercio de hombro ","Barra y discos");
         setExcerciseImage(exercise1,"/sample_images/pressMilitar.jpg");
+
+        exeRep.save(exercise2);
 
         Exercise exercise3 = new Exercise("Sentadilla con barra","Ejercicio para cuadriceps y gluteos"," barra y discos");
         setExcerciseImage(exercise1,"/sample_images/sentadilla.jpg");
 
         Exercise exercise4 = new Exercise("Peso Muerto","Ejercio de espalda media y baja","barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/peso-muerto-sumo-6244.png");
+        setExcerciseImage(exercise1,"/sample_images/peso-muerto-sumo-6244.jpeg");
 
         Exercise exercise5 = new Exercise("Cruces con poleas","Ejercio de pectoral alto o bajo dependiendo del agarre","dos poleas altas o bajas");
         setExcerciseImage(exercise1,"/sample_images/crucesPoleas.jpg");
@@ -230,11 +234,6 @@ public class DataSampleService {
         Exercise exercise30 = new Exercise("Encogimientos","Ejercio de trapecio","mancuernas");
         setExcerciseImage(exercise1,"/sample_images/encogimientosTrap.jpg");
 
-
-
-
-
-
         act1.setMonitorName(monitor1.getName());
         act2.setMonitorName(monitor5.getName());
         act3.setMonitorName(monitor6.getName());
@@ -262,8 +261,8 @@ public class DataSampleService {
         userRep.save(monitor5);
         userRep.save(monitor6);
 
-        exeRep.save(exercise1);
-        exeRep.save(exercise2);
+
+
         exeRep.save(exercise3);
         exeRep.save(exercise4);
         exeRep.save(exercise5);
