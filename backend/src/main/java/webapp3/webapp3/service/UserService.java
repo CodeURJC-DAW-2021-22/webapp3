@@ -48,4 +48,7 @@ public class UserService {
         return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
     }
 
+    public Optional<User> findByEmail(String prueba) {
+        return userRep.findByEmail(prueba);
+    }
 }
