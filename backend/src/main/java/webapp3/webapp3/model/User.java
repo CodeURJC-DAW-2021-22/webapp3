@@ -85,11 +85,10 @@ public class User {
     //Monitor
     private Date hiringDate;
 
+    public User() {}
 
     public User(String name, String surname, String NIF, String email, String encodedPassword, String address, String postal_code, org.hibernate.type.DateType birthday, String phone_num, String member, org.hibernate.type.DateType entryDate, int height, int weight, String IBAN, String medicalInfo){
-
     }
-
 
     //Administrator constructor
     public User(String name, String surname, String NIF, String email, String address, String postalCode, DateType birthday,
@@ -154,7 +153,7 @@ public class User {
         this.encodedPassword = password;
         this.address = address;
         this.postalCode = postalCode;
-        this.birthday = birthday;
+        this.birthday = birthday.getDate();
         this.phone = phone;
         this.userType = userType;
         this.height = height;
@@ -163,7 +162,7 @@ public class User {
         this.medicalInfo = medicalInfo;
     }
 
-    public User() {}
+
 
     public long getId() {
         return id;

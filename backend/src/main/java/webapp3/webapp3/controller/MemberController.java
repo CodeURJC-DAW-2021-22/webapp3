@@ -122,7 +122,7 @@ public class MemberController {
             member.setName(name);
             member.setSurname(surname);
             //member.setUsrname(usrname);
-            member.setPassword(password);
+            member.setEncodedPassword(password);
             member.setEmail(email);
             member.setNIF(NIF);
             member.setBirthday(birthday);
@@ -144,7 +144,7 @@ public class MemberController {
         return htmlFile;
     }
 
-    @GetMapping("/monitor/{id}/image")
+    @GetMapping("/MEM/{id}/image")
     public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
         Optional<User> optMon = memServ.findById(id);
 
