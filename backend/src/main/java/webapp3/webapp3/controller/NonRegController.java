@@ -58,7 +58,7 @@ public class NonRegController {
         }else{
             model.addAttribute("log",false);
 
-            List<User> monitores = userServ.findAll();
+            List<User> monitores = userServ.findByUserType("monitor");
             model.addAttribute("monitor", monitores);
             target = "USR_01mainPage";
         }
