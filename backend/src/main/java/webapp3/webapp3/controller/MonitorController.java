@@ -166,7 +166,7 @@ public class MonitorController {
             monitor.setName(name);
             monitor.setSurname(surname);
             //member.setUsrname(usrname);
-            monitor.setPassword(password);
+            monitor.setEncodedPassword(password);
             monitor.setEmail(email);
             monitor.setNIF(NIF);
             monitor.setBirthday(birthday);
@@ -189,14 +189,14 @@ public class MonitorController {
     }
 
     //exercise table page
-    @GetMapping("/exerciseTable")
+    @GetMapping("/MONexerciseTable")
     public String exerciseTable(Model model) {
         List<ExerciseTable> all = exerciseTableServ.findAll();
         model.addAttribute("exerciseTableList", all);
         return "USRMON_03ExerciseTable";
     }
 
-    @GetMapping("/exerciseTable/{id}")
+    @GetMapping("/MONexerciseTable/{id}")
     public String seeExerciseTableInfo(Model model, @PathVariable long id){
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
 
@@ -207,7 +207,7 @@ public class MonitorController {
             return "USRMON_03ExercsieTable";
     }
 
-    @GetMapping("/exerciseTable/{id}/image")
+    @GetMapping("/MONexerciseTable/{id}/image")
     public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
         Optional<ExerciseTable> optExerTab = exerciseTableServ.findById(id);
 
@@ -223,13 +223,13 @@ public class MonitorController {
     }
 
     //add exercise table page
-    @GetMapping("/addNewExerciseTable")
+    @GetMapping("/MONaddNewExerciseTable")
     public String newExerciseTable(Model model){
         return "USRMON_06AddExerciseTable";
     }
 
     // FALTA
-    @PostMapping("/addNewExerciseTable")
+    @PostMapping("/MONaddNewExerciseTable")
     public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String room,
                                  @RequestParam int price, @RequestParam String description,
                                  @RequestParam int capacity, @RequestParam String monday,
@@ -248,7 +248,7 @@ public class MonitorController {
     }
 
     //edit exercise table
-    @GetMapping("/editExerciseTable/{id}")
+    @GetMapping("/MONeditExerciseTable/{id}")
     public String editExerciseTable(Model model, @PathVariable Long id){
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
         String htmlFile;
@@ -262,7 +262,7 @@ public class MonitorController {
     }
 
     // FALTA
-    @PostMapping("/editActivity/{id}")
+    @PostMapping("/MONeditActivity/{id}")
     public String addEditedActivity(Model model, @RequestParam String name, @RequestParam String room,
                                     @RequestParam int price, @RequestParam String description,
                                     @RequestParam int capacity, @RequestParam String monday,
@@ -295,7 +295,7 @@ public class MonitorController {
     }
 
     // delete exercise table page
-    @GetMapping("/exerciseTable/delete/{id}")
+    @GetMapping("/MONexerciseTable/delete/{id}")
     public String deleteExerciseTable(Model model, @PathVariable long id){
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
 
@@ -310,14 +310,14 @@ public class MonitorController {
 
 
     //grupal activities page
-    @GetMapping("/activities")
+    @GetMapping("/MONactivities")
     public String activities(Model model) {
         List<Activity> all = actServ.findAll();
         model.addAttribute("activitiesList", all);
         return "USRMON_04GrupalActivities";
     }
 
-    @GetMapping("/activity/{id}")
+    @GetMapping("/MONactivity/{id}")
     public String seeActivityInfo(Model model, @PathVariable long id) {
         Optional<Activity> activity = actServ.findById(id);
         if (activity.isPresent()) {
@@ -327,7 +327,7 @@ public class MonitorController {
             return "USRMON_04GrupalActivities";
     }
 
-    @GetMapping("/activity/{id}/image")
+    @GetMapping("/MONactivity/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
         Optional<Activity> optionalActivity = actServ.findById(id);
         if (optionalActivity.isPresent()) {
@@ -340,12 +340,4 @@ public class MonitorController {
         }
         return ResponseEntity.notFound().build();
     }
-
-    //Manage error
-    @GetMapping("/error")
-    public String error(Model model) {
-        return "error-404";
-
-    }
-
 }

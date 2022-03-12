@@ -61,7 +61,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/editMonitor/{id}").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/clients").hasAnyRole("administrator");
+
             //monitor
+        http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("monitor");
+
+        http.authorizeRequests().antMatchers("/MONprofile/{id}").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONeditProfile").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONeditProfile/{id}").hasAnyRole("monitor");
+
+        http.authorizeRequests().antMatchers("/MONexerciseTable").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONexerciseTable/{id}").hasAnyRole("monitor");
+
+        http.authorizeRequests().antMatchers("/MONaddNewExerciseTable").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONeditExerciseTable/{id}").hasAnyRole("monitor");
+
+        http.authorizeRequests().antMatchers("/MONeditActivity/{id}").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONexerciseTable/delete/{id}").hasAnyRole("monitor");
+
+        http.authorizeRequests().antMatchers("/MONactivities").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONactivity/{id}").hasAnyRole("monitor");
+        http.authorizeRequests().antMatchers("/MONactivity/{id}/image").hasAnyRole("monitor");
+
             //member
         http.authorizeRequests().antMatchers("/MEMexercise").hasAnyRole("member");
         http.authorizeRequests().antMatchers("/MEMexercise/{id}/image").hasAnyRole("member");
