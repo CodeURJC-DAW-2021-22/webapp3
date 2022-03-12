@@ -43,27 +43,25 @@ public class NonRegController {
         Principal principal = request.getUserPrincipal();
         String target;
         if (principal != null) {
-            model.addAttribute("log",true);
+            //model.addAttribute("log",true);
 
             if(request.isUserInRole("member")){
-                model.addAttribute("cli", true);
-                target = "redirect:/MEMstatistics";
+                //model.addAttribute("cli", true);
+                return "redirect:/MEMexercise";
             }else if(request.isUserInRole("monitor")){
-                model.addAttribute("mon", true);
-                target = "redirect:/";
+                //model.addAttribute("mon", true);
+                return "redirect:/";
             }else{
-                model.addAttribute("adm", true);
-                target = "redirect:/statistics";
+                //model.addAttribute("adm", true);
+                return "redirect:/statistics";
             }
         }else{
             model.addAttribute("log",false);
 
             List<User> monitores = userServ.findByUserType("monitor");
             model.addAttribute("monitor", monitores);
-            target = "USR_01mainPage";
+            return "USR_01mainPage";
         }
-
-        return "USR_01mainPage";
     }
 
     //Monitor images download for main page
