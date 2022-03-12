@@ -34,10 +34,12 @@ public class NonRegController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    //-------------------------------------------------Loged User Control-----------------------------------------------//
 
-    @ModelAttribute
-    public String addAtributes(Model model, HttpServletRequest request){
+    //-------------------------------------------------Main page------------------------------------------------------//
+
+    //Main page controller
+    @GetMapping("/USR_mainpage")
+    public String mainPage(Model model,  HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         String target;
         if (principal != null) {
@@ -45,7 +47,7 @@ public class NonRegController {
 
             if(request.isUserInRole("member")){
                 model.addAttribute("cli", true);
-                target = "redirect:/";
+                target = "redirect:/MEMstatistics";
             }else if(request.isUserInRole("monitor")){
                 model.addAttribute("mon", true);
                 target = "redirect:/";
@@ -62,18 +64,6 @@ public class NonRegController {
         }
 
         return target;
-    }
-
-
-    //-------------------------------------------------Main page------------------------------------------------------//
-
-    //Main page controller
-    @GetMapping("/USR_mainpage")
-    public String mainPage(Model model){
-        List<User> monitores = userServ.findAll();
-        model.addAttribute("monitor", monitores);
-
-        return "USR_01mainPage";
     }
 
     //Monitor images download for main page

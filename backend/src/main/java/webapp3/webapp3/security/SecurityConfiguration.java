@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/USR_sign_in").permitAll();
 
         // Private pages
-        //administrator
+            //administrator
         http.authorizeRequests().antMatchers("/statistics").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/activities").hasAnyRole("administrator");
@@ -61,8 +61,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/editMonitor/{id}").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/clients").hasAnyRole("administrator");
-        //monitor
-        //member
+            //monitor
+            //member
+        http.authorizeRequests().antMatchers("/MEMexercise").hasAnyRole("member");
+        http.authorizeRequests().antMatchers("/MEMexercise/{id}/image").hasAnyRole("member");
+        http.authorizeRequests().antMatchers("/MEMexerciseTable/{id}/pdf").hasAnyRole("member");
+
+        http.authorizeRequests().antMatchers("/MEMeditProfile").hasAnyRole("member");
+        http.authorizeRequests().antMatchers("/MEMeditProfile/{id}").hasAnyRole("member");
+        http.authorizeRequests().antMatchers("//MEM/{id}/image").hasAnyRole("member");
+
+        http.authorizeRequests().antMatchers("/MEMprofile/{id}").hasAnyRole("member");
+
+        http.authorizeRequests().antMatchers("/MEMstatistics").hasAnyRole("member");
+
+        http.authorizeRequests().antMatchers("/MEMactivities").hasAnyRole("member");
+        http.authorizeRequests().antMatchers("/MEMactivity/{id}/image").hasAnyRole("member");
+
+
 
         // Login form
         http.formLogin().loginPage("/USR_log_in");
