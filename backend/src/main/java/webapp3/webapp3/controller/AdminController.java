@@ -38,7 +38,6 @@ public class AdminController {
 
     @GetMapping("/statistics")
     public String statistics(Model model){
-        //Guardar en array las consultas por meses. Arrreglar la consulta en funcion del año y mes
         int [] clients = new int [12];
         String [][] months = new String [12][4];
         String [] years = {"2019", "2020", "2021", "2022"};
@@ -161,8 +160,9 @@ public class AdminController {
         Optional<Activity> optAct = actServ.findById(id);
 
         if (optAct.isPresent()) {
-            User monitor = userServ.findByName(optAct.get().getMonitorName());
-            monitor.setACT1(null);
+            Optional<User> monitor = userServ.findByName(optAct.get().getMonitorName());
+            User mon = monitor.orElseThrow();
+            mon.setACT1(null);
             actServ.delete(id);
         }
         return "redirect:/activities";

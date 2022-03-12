@@ -101,18 +101,15 @@ public class MemberController {
     public String addEditedProle(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
-                                 @RequestParam String usrname,
                                  @RequestParam String password,
                                  @RequestParam String email,
                                  @RequestParam String NIF,
                                  @RequestParam DateType birthday,
-                                 @RequestParam String genre,
                                  @RequestParam int height,
                                  @RequestParam Integer weight,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
-                                 @RequestParam String creditCard,
                                  @RequestParam String additionalInfo,
                                  @RequestParam("image") MultipartFile image) throws IOException {
         Optional<User> mem = memServ.findById(id);
@@ -121,24 +118,21 @@ public class MemberController {
             User member = mem.get();
             member.setName(name);
             member.setSurname(surname);
-            //member.setUsrname(usrname);
             member.setEncodedPassword(password);
             member.setEmail(email);
             member.setNIF(NIF);
             member.setBirthday(birthday);
-            //member.setGenre(genre);
             member.setHeight(height);
-            //member.appendWeight(weight);
+            member.setWeight(weight);
             member.setAddress(address);
             member.setPostalCode(postalCode);
             member.setPhone(phone);
-            //member.setCreditCard(creditCard);
-            //member.setAdditionalInfo(additionalInfo);
+            member.setMedicalInfo(additionalInfo);
             //member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
             memServ.save(member);
             htmlFile = "redirect:/member";
         } else {
-            //Gestionar error envío de formulario
+            //Form error
             htmlFile = "error-404";
         }
         return htmlFile;
@@ -162,7 +156,7 @@ public class MemberController {
 
     @GetMapping("/MEMprofile/{id}")
     public String profile(Model model, @PathVariable long id) {
-        model.addAttribute("id", "9");
+        //model.addAttribute("id", "9");
         Optional<User> mem = memServ.findById(id);
         if(mem.isPresent()){
             model.addAttribute("member", mem.get());
@@ -173,7 +167,7 @@ public class MemberController {
 
     @GetMapping("/MEMstatistics")
     public String statistics(Model model) {
-        model.addAttribute("id", "9");
+        //model.addAttribute("id", "9");
         int [] clients = new int [12];
         String [][] months = new String [12][4];
         String [] years = {"2019", "2020", "2021", "2022"};

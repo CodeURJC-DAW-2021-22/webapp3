@@ -63,7 +63,7 @@ public class NonRegController {
             target = "USR_01mainPage";
         }
 
-        return target;
+        return "USR_01mainPage";
     }
 
     //Monitor images download for main page
