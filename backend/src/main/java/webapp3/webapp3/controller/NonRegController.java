@@ -1,6 +1,5 @@
 package webapp3.webapp3.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -22,7 +21,6 @@ import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
 
 @Controller
 public class NonRegController {
@@ -226,4 +224,3 @@ public class NonRegController {
         return "/USR_06log_in";
     }
 }
-

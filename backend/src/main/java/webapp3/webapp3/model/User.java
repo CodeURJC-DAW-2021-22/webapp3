@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class User {
 
     @Column(nullable = false)
     @NotNull
-    private DateType birthday = new DateType();
+    private Date birthday = new Date();
 
     @Column(nullable = false)
     @NotNull
@@ -64,7 +65,7 @@ public class User {
     private String userType = "";
 
     //Member
-    private DateType entryDate;
+    private Date entryDate;
     private int height;
     private int weight;
     private String IBAN;
@@ -82,7 +83,7 @@ public class User {
 
 
     //Monitor
-    private DateType hiringDate;
+    private Date hiringDate;
 
 
     public User(String name, String surname, String NIF, String email, String encodedPassword, String address, String postal_code, org.hibernate.type.DateType birthday, String phone_num, String member, org.hibernate.type.DateType entryDate, int height, int weight, String IBAN, String medicalInfo){
@@ -99,7 +100,7 @@ public class User {
         this.email = email;
         this.address = address;
         this.postalCode = postalCode;
-        this.birthday = birthday;
+        this.birthday = birthday.getDate();
         this.phone = phone;
         this.userType = "administrator";
         this.encodedPassword = "password";
@@ -115,9 +116,9 @@ public class User {
         this.email = email;
         this.address = address;
         this.postalCode = postalCode;
-        this.birthday = birthday;
+        this.birthday = birthday.getDate();
         this.phone = phone;
-        this.hiringDate = hiring;
+        this.hiringDate = hiring.getDate();
         this.description = description;
         this.userType = "monitor";
         this.encodedPassword = NIF;
@@ -133,9 +134,9 @@ public class User {
         this.email = email;
         this.address = address;
         this.postalCode = postalCode;
-        this.birthday = birthday;
+        this.birthday = birthday.getDate();
         this.phone = phone;
-        this.entryDate = entryDate;
+        this.entryDate = entryDate.getDate();
         this.height = height;
         this.weight = weight;
         this.IBAN = IBAN;
@@ -229,11 +230,11 @@ public class User {
     }
 
     public DateType getBirthday() {
-        return birthday;
+        return new DateType(birthday);
     }
 
     public void setBirthday(DateType birthday) {
-        this.birthday = birthday;
+        this.birthday = birthday.getDate();
     }
 
     public String getPhone() {
@@ -269,11 +270,11 @@ public class User {
     }
 
     public DateType getEntryDate() {
-        return entryDate;
+        return new DateType(entryDate);
     }
 
     public void setEntryDate(DateType entryDate) {
-        this.entryDate = entryDate;
+        this.entryDate = entryDate.getDate();
     }
 
     public int getHeight() {
@@ -309,11 +310,11 @@ public class User {
     }
 
     public DateType getHiringDate() {
-        return hiringDate;
+        return new DateType(hiringDate);
     }
 
     public void setHiringDate(DateType hiringDate) {
-        this.hiringDate = hiringDate;
+        this.hiringDate = hiringDate.getDate();
     }
 
     public List<UserExerciseTable> getExerciseTables() {

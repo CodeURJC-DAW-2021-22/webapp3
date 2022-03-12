@@ -1,6 +1,5 @@
 package webapp3.webapp3.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.User;
@@ -37,5 +36,14 @@ public class UserService {
 
     public User findByName(String name){
         return userRep.findByName(name).orElseThrow();
+    }
+
+    // generate data for graphics
+    public int findByUserTypeAndEntryDate(String type, int month, String year) {
+        String s = Integer.toString(month);
+        if (s.length() == 1)
+            s = "0" + s;
+        System.out.println(s);
+        return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
     }
 }

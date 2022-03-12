@@ -1,53 +1,8 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en" xmlns="http://www.w3.org/1999/html">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
-    <title>Ruky Gymastic - Jorge Javier</title>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/libs/jquery-minicolors/jquery.minicolors.css">
-    <link rel="stylesheet" type="text/css" href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/libs/quill/dist/quill.snow.css">
-    <link href="/dist/css/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
-<div class="preloader">
-    <div class="lds-ripple">
-        <div class="lds-pos"></div>
-        <div class="lds-pos"></div>
-    </div>
-</div>
-
-<div id="main-wrapper">
-    {{>USRADM_Header}}
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
+{{>USRADM_header}}
     <!-- ============================================================== -->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -163,9 +118,13 @@
                                             <p style="color:black; " class="centerText"> Actividad: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            {{#act}}
-                                            <span type="text " class="form-control ">{{act.name}}</span>
-                                            {{/act}}
+                                            {{#monitor.ACT1}}
+                                            <span type="text " class="form-control ">{{monitor.ACT1.name}}</span>
+                                            {{/monitor.ACT1}}
+
+                                            {{^monitor.ACT1}}
+                                            <span type="text " class="form-control ">No hay actividades asignadas</span>
+                                            {{/monitor.ACT1}}
                                         </div>
                                     </div>
                                 </div>
@@ -214,7 +173,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        {{>USRADM_Footer}}
+        {{>USRMEM_Footer}}
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->

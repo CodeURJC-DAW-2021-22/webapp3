@@ -2,6 +2,7 @@ package webapp3.webapp3.controller;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -24,9 +25,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-
 @Controller
 public class AdminController {
+
 
 
     @Autowired
@@ -160,6 +161,7 @@ public class AdminController {
 
     @GetMapping("/addNewMonitor")
     public String newMonitor(Model model){
+        model.addAttribute("freeAct", actServ.findByMonitorName(null));
         return "USRADM_08AddMonitor";
     }
 
@@ -173,20 +175,29 @@ public class AdminController {
                                 @RequestParam String phone,
                                 @RequestParam String birthdayDate,
                                 @RequestParam String hiringDate,
-                                @RequestParam String activityName,
+                                @RequestParam Long activityName,
                                 @RequestParam String description,
-                                @RequestParam("image") MultipartFile image) throws IOException {
+                                @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         DateType birthday = new DateType(birthdayDate.substring(0, 4), birthdayDate.substring(5, 7), birthdayDate.substring(8, 10));
         DateType hiring = new DateType(hiringDate.substring(0, 4), hiringDate.substring(5, 7), hiringDate.substring(8, 10));
         User monitor = new User(name, surname, NIF, email, address, postalCode, phone, birthday,
                  hiring, description);
 
-        Activity activity = actServ.findByName(activityName);
-        if (activity != null) {
-            activity.setMonitorName(name);
-            monitor.setACT1(activity);
+        if (activityName != -1) {
+            Optional<Activity> activity = actServ.findById(activityName);
+            if (activity.isPresent()) {
+                activity.get().setMonitorName(name);
+                actServ.save(activity.get());
+                monitor.setACT1(activity.get());
+            }//Error activity not found
         }
-        monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+
+        if (image.isEmpty()) {
+            Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedPeople.jpeg");
+            monitor.setImage(BlobProxy.generateProxy(imageNotAdded.getInputStream(), imageNotAdded.contentLength()));
+        } else {
+            monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+        }
         userServ.save(monitor);
 
         return "redirect:/monitors";
@@ -230,6 +241,7 @@ public class AdminController {
         String html = "";
         if (optMonitor.isPresent()){
             model.addAttribute("monitor", optMonitor.get());
+            model.addAttribute("freeAct", actServ.findByMonitorName(null));
             html = "USRADM_11EditMonitor";
         } else {
             html = "USRADM_03MonitorList";
@@ -248,9 +260,9 @@ public class AdminController {
                                    @RequestParam String phone,
                                    @RequestParam String birthdayDate,
                                    @RequestParam String hiringDate,
-                                   @RequestParam String activityName,
+                                   @RequestParam(required = false) Long activityName,
                                    @RequestParam String description,
-                                   @RequestParam("image") MultipartFile image) throws IOException {
+                                   @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         Optional<User> mon = userServ.findById(id);
         String htmlFile;
         if (mon.isPresent()){
@@ -270,9 +282,31 @@ public class AdminController {
             user.getHiringDate().setMonth(hiringDate.substring(5, 7));
             user.getHiringDate().setYear(hiringDate.substring(0, 4));
             user.getHiringDate().generateSpanishFormat();
-
+            if (activityName != -1) {
+                //Update old activity monitorName to NULL
+                Activity activityAux = user.getACT1();
+                Optional<Activity> act;
+                if (activityAux != null) {
+                    act = actServ.findById(activityAux.getId());
+                    if (act.isPresent()) {
+                        act.get().setMonitorName(null);
+                        actServ.save(act.get());
+                    }
+                }
+                //save activity modified
+                //Error al crear monitor modificar dejandolo como está y añadir tarea en otra modificacion posterior
+                act = actServ.findById(activityName);
+                if (act.isPresent()){
+                    user.setACT1(act.get());
+                    act.get().setMonitorName(user.getName());
+                    actServ.save(act.get());
+                }
+            } else {
+                //Delete activity asociated if exists
+            }
             user.setDescription(description);
-            user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            if (!image.isEmpty())
+                user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
             userServ.save(user);
             htmlFile = "redirect:/monitors";
         } else {

@@ -201,45 +201,74 @@ public class DataSampleService {
         User client6= new User("Aitor", "Menta Irrállos", "22222222F", "tormentas@gmail.com", "C/ Tres Aguas, 12, 3ºC",
                 "41210", cl6, "666666666", ed6, 196, 100, "ES10 1010 1010 1010", "Alergia al deporte");
         setUserImage(client6, "/sample_images/Client6.jpeg");
-        client5.setACT1(act2);
-        client5.setACT2(act5);
+        client6.setACT1(act2);
+        client6.setACT2(act5);
 
         DateType cl7 = new DateType("1986", "05", "02");
         DateType ed7 = new DateType("2019", "04", "13");
         User client7= new User("Nadie", "Tyson Manson", "22222222G", "n0b0dy@gmail.com", "C/ Tres Aguas, 2, 6ºD",
                 "41210", cl7, "760000001", ed7, 76, 35, "ES59 5059 5150 5315", "Ninguna alergia conocida.");
         setUserImage(client7, "/sample_images/Client7.jpeg");
-        client5.setACT1(act3);
-        client5.setACT2(act1);
+        client7.setACT1(act3);
+        client7.setACT2(act1);
 
         Exercise ex1 = new Exercise("Curl de biceps alterno", "Coge una mancuerna en cada mano y dobla el brazo fijo 90 grados.", "Mancuernas.");
         Exercise ex2 = new Exercise("Biceps con barra Z", "Apoyate en el banco y haz 15 repeticiones agarrando la barra Z.", "Barra Z y discos.");
+        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
+                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
+        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
+                "Barra Z y discos.");
+        Exercise ex5 = new Exercise("Abdominales", "Apoya la espalda en el banco y haz 15 repeticiones de abdominal alto y completo. Con una pesa de 5 kilos apoyada en la tripa.",
+                "Pesa de 5 kilos.");
+        Exercise ex6 = new Exercise("Lumbares", "Tumbate boca arriba en el suelo y haz lumbares",
+                "Tu propio cuerpo");
         exeRep.save(ex1);
         exeRep.save(ex2);
+        exeRep.save(ex3);
+        exeRep.save(ex4);
+        exeRep.save(ex5);
+        exeRep.save(ex6);
 
         ExerciseTable exerciseTable1 = new ExerciseTable("Tabla 1", "Tabla de entrenamiento de biceps.");
         exerciseTable1.getExercises().add(ex1);
         exerciseTable1.getExercises().add(ex2);
 
+        setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
-        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
-                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
-        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
-                "Barra Z y discos.");
-        exeRep.save(ex3);
-        exeRep.save(ex4);
         ExerciseTable exerciseTable2 = new ExerciseTable("Tabla 2", "Tabla de entrenamiento de brazo.");
         exerciseTable2.getExercises().add(ex1);
         exerciseTable2.getExercises().add(ex2);
         exerciseTable2.getExercises().add(ex3);
         exerciseTable2.getExercises().add(ex4);
 
+        setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
         exerciseTableRep.save(exerciseTable2);
 
-        client2.addExerciseTable(exerciseTable1);
+        ExerciseTable exerciseTable3 = new ExerciseTable("Tabla 3", "Tabla de entrenamiento mixta.");
+        exerciseTable3.getExercises().add(ex1);
+        exerciseTable3.getExercises().add(ex2);
+        exerciseTable3.getExercises().add(ex5);
+        exerciseTable3.getExercises().add(ex6);
 
-        exerciseTableRep.save(exerciseTable1);
+        setExerciseTableImage(exerciseTable3, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable3);
+
+        ExerciseTable exerciseTable4 = new ExerciseTable("Tabla 4", "Tabla de entrenamiento abdominal y lumbar");
+        exerciseTable4.getExercises().add(ex5);
+        exerciseTable4.getExercises().add(ex6);
+
+        setExerciseTableImage(exerciseTable4, "/sample_images/gallery-13.jpeg");
+        exerciseTableRep.save(exerciseTable4);
+
+        ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento jeje");
+        exerciseTable5.getExercises().add(ex3);
+        exerciseTable5.getExercises().add(ex4);
+
+        setExerciseTableImage(exerciseTable5, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable5);
+
+
         userRep.save(client1);
         userRep.save(client2);
         userRep.save(client3);
@@ -259,5 +288,17 @@ public class DataSampleService {
 
         Resource image = new ClassPathResource(classpathResource);
         monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    public void setExerciseImage(Exercise exercise, String classpathResource) throws IOException {
+
+        Resource image = new ClassPathResource(classpathResource);
+        exercise.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    public void setExerciseTableImage(ExerciseTable exerciseTab, String classpathResource) throws IOException {
+
+        Resource image = new ClassPathResource(classpathResource);
+        exerciseTab.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 }

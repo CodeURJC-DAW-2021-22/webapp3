@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.repository.ActivityRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,4 +38,8 @@ public class ActivityService {
         return activityRep.findByName(name);
     }
 
+    public ArrayList<Activity> findByMonitorName(String s) {
+        return activityRep.findByMonitorName(s);
+
+    }
 }
