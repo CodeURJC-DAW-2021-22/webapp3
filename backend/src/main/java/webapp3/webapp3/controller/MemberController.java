@@ -46,6 +46,7 @@ public class MemberController {
     public String exercise (Model model){
         List<ExerciseTable> all = exerTabServ.findAll();
         model.addAttribute("MEMexercises", all);
+        model.addAttribute("id", "9");
         return "USRMEM_01ExerciseTable";
     }
 
@@ -80,11 +81,13 @@ public class MemberController {
 
     @GetMapping("/MEMeditProfile")
     public String editProfile(Model model) {
+        model.addAttribute("id", "9");
         return "USRMEM_02EditProfile";
     }
 
     @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id){
+        model.addAttribute("id", "9");
         Optional<User> optMember = memServ.findById(id);
         if (optMember.isPresent()){
             model.addAttribute("monitor", optMember.get());
@@ -141,7 +144,7 @@ public class MemberController {
         return htmlFile;
     }
 
-    @GetMapping("/MEMmonitor/{id}/image")
+    @GetMapping("/monitor/{id}/image")
     public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
         Optional<User> optMon = memServ.findById(id);
 
@@ -159,6 +162,7 @@ public class MemberController {
 
     @GetMapping("/MEMprofile/{id}")
     public String profile(Model model, @PathVariable long id) {
+        model.addAttribute("id", "9");
         Optional<User> mem = memServ.findById(id);
         if(mem.isPresent()){
             model.addAttribute("member", mem.get());
@@ -169,6 +173,7 @@ public class MemberController {
 
     @GetMapping("/MEMstatistics")
     public String statistics(Model model) {
+        model.addAttribute("id", "9");
         int [] clients = new int [12];
         String [][] months = new String [12][4];
         String [] years = {"2019", "2020", "2021", "2022"};
@@ -184,6 +189,7 @@ public class MemberController {
 
     @GetMapping("/MEMactivities")
     public String activities(Model model) {
+        model.addAttribute("id", "9");
         List<Activity> all = actServ.findAll();
         model.addAttribute("activities", all);
         return "USRMEM_04Activities";
