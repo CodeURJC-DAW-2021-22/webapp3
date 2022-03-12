@@ -32,7 +32,7 @@
                                         <h4 class="card-title text">Usuario</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <button class="btn default btn-outline el-link selector" type="button"><a href="USRMEM_02EditProfile.html"><i class="mdi mdi-grease-pencil"></i> Editar perfil</a></button>
+                                        <button class="btn default btn-outline el-link selector" type="button"><a href="/MEMeditProfile/{id}"><i class="mdi mdi-grease-pencil"></i> Editar perfil</a></button>
                                     </div>
                                 </div>
                                 <!--basic information-->
@@ -44,7 +44,7 @@
                                                 <div class="row">
                                                     <div class="col-md-1">
                                                         <div class="card align-items-center">
-                                                            <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="80" class="rounded-circle"></div>
+                                                            <div class="p-2"><img src="/assets/images/users/1.jpg" alt="user" width="80" class="rounded-circle"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
@@ -60,18 +60,7 @@
                                                                 <span type="text" class="form-control" id="lname" placeholder="Apellidos">{{member.surname}}</span>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="user" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
-                                                            <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="user" placeholder="@NombreUsuario">{{member.usrname}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                                            <div class="col-sm-9">
-                                                                <span type="password" class="form-control" id="password" placeholder="Contraseña">{{member.password}}</span>
-                                                            </div>
-                                                        </div>
+
                                                         <div class="form-group row">
                                                             <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
                                                             <div class="col-sm-9">
@@ -96,21 +85,15 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
-                                                            <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="genre" placeholder="Ej. 180(cm)">{{member.genre}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
                                                             <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
                                                             <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="height" placeholder="Ej. 180(cm)">{{member.height}}</span>
+                                                                <span type="text" class="form-control" id="height" placeholder="height">{{member.height}}</span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
                                                             <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">{{member.weight}}</span>
+                                                                <span type="text" class="form-control" id="weight" placeholder="weight">{{member.weight}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,13 +113,13 @@
                                                         <div class="form-group row">
                                                             <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                             <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="street" placeholder="Domicilio">{{member.adress}}</span>
+                                                                <span type="text" class="form-control" id="street" placeholder="Domicilio">{{member.address}}</span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
                                                             <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="postalCode" placeholder="00000">{{member.adress}}</span>
+                                                                <span type="text" class="form-control" id="postalCode" placeholder="00000">{{member.postalCode}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -145,12 +128,6 @@
                                                             <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
                                                             <div class="col-sm-9">
                                                                 <span type="text" class="form-control" id="phone" placeholder="+XX-XXX XX XX XX">{{member.phone}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="creditCard" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
-                                                            <div class="col-sm-9">
-                                                                <span type="text" class="form-control" id="creditCard" placeholder="000-000-000">{{member.creditCard}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -168,7 +145,7 @@
                                                 <div class="form-group row">
                                                     <label for="infoExtra" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
                                                     <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="infoExtra" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{member.additionalInfo}}</span>
+                                                        <span type="text" class="form-control" id="infoExtra" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{member.medicalInfo}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,29 +180,29 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
-    <script src="dist/js/waves.js"></script>
+    <script src="/dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="dist/js/sidebarmenu.js"></script>
+    <script src="/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
     <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->
-    <script src="assets/libs/flot/excanvas.js"></script>
-    <script src="assets/libs/flot/jquery.flot.js"></script>
-    <script src="assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="dist/js/pages/chart/chart-page-init.js"></script>
+    <script src="/assets/libs/flot/excanvas.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="/dist/js/pages/chart/chart-page-init.js"></script>
 
 </body>
 

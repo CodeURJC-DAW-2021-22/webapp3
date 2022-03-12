@@ -6,6 +6,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,10 @@ import webapp3.webapp3.service.ExerciseService;
 import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -43,10 +47,13 @@ public class MemberController {
 
 
     @GetMapping("/MEMexercise")
-    public String exercise (Model model){
+    public String exercise (Model model, HttpServletRequest request){
+        String prueba = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(prueba);
+        User user = mem.orElseThrow();
         List<ExerciseTable> all = exerTabServ.findAll();
         model.addAttribute("MEMexercises", all);
-        model.addAttribute("id", "9");
+        model.addAttribute("id", user.getId());
         return "USRMEM_01ExerciseTable";
     }
 
@@ -81,13 +88,16 @@ public class MemberController {
 
     @GetMapping("/MEMeditProfile")
     public String editProfile(Model model) {
-        model.addAttribute("id", "9");
+        //model.addAttribute("id", "9");
         return "USRMEM_02EditProfile";
     }
 
     @GetMapping("/MEMeditProfile/{id}")
-    public String editProfile (Model model, @PathVariable Long id){
-        model.addAttribute("id", "9");
+    public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
+        String prueba = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(prueba);
+        User user = mem.orElseThrow();
+        model.addAttribute("id", user.getId());
         Optional<User> optMember = memServ.findById(id);
         if (optMember.isPresent()){
             model.addAttribute("monitor", optMember.get());
@@ -155,19 +165,21 @@ public class MemberController {
     }
 
     @GetMapping("/MEMprofile/{id}")
-    public String profile(Model model, @PathVariable long id) {
-        //model.addAttribute("id", "9");
-        Optional<User> mem = memServ.findById(id);
-        if(mem.isPresent()){
-            model.addAttribute("member", mem.get());
-            return "USRMEM_02Profile";
-        }
-        return "404";
+    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
+        String prueba = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(prueba);
+        User user = mem.orElseThrow();
+        model.addAttribute("id", user.getId());
+        model.addAttribute("member", user);
+        return "USRMEM_02Profile";
     }
 
     @GetMapping("/MEMstatistics")
-    public String statistics(Model model) {
-        //model.addAttribute("id", "9");
+    public String statistics(Model model, HttpServletRequest request) {
+        String prueba = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(prueba);
+        User user = mem.orElseThrow();
+        model.addAttribute("id", user.getId());
         int [] clients = new int [12];
         String [][] months = new String [12][4];
         String [] years = {"2019", "2020", "2021", "2022"};
@@ -182,8 +194,11 @@ public class MemberController {
     }
 
     @GetMapping("/MEMactivities")
-    public String activities(Model model) {
-        model.addAttribute("id", "9");
+    public String activities(Model model, HttpServletRequest request) {
+        String prueba = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(prueba);
+        User user = mem.orElseThrow();
+        model.addAttribute("id", user.getId());
         List<Activity> all = actServ.findAll();
         model.addAttribute("activities", all);
         return "USRMEM_04Activities";
