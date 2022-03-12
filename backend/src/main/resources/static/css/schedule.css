@@ -1,5 +1,5 @@
 .scheduleBox{ /*Bordes de la tabla*/
-    border: solid; 
+    border: solid;
     border-color: orange;
     align-content: center;
 }
@@ -13,23 +13,20 @@
     background-color: rgb(58, 59, 59);
 }
 .activitieBoxTitle{ /*Tamaño y fuente de los titulos de los elementos del calendario*/
-    margin-bottom: 45px;
-	text-align: center;
-    
+    text-align: left;
+
     color: #ffffff;
-	font-size: 22px;
-	font-weight: 600;
-	margin-top: 8px;
+    font-size: 22px;
+    font-weight: 600;
 }
 .activitieBoxIntext{ /*Tamaño y fuente de los textos de los elementos del calendario*/
     margin-bottom: 45px;
-    
+
     color: rgb(209, 201, 201);
-	font-size: 15px;
-	font-weight: 600;
-	margin-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 8px;
 }
 .activitieAling{ /*Alineamiento entre los elementos del horario*/
-    margin-top: 1%;
-    margin-bottom: 1%;
+    align-content: center;
 }

@@ -1,0 +1,35 @@
+{{>USR_header}}
+
+    <!-- Activities Section Begin -->
+    <section class="classes-section spad">
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Actividades grupales</span>
+                        <h2>Actividades para vosotros</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {{#activities}}
+                <div class="col-lg-4 col-md-6">
+                    <div class="class-item">
+                        <div class="ci-pic">
+                            <img style="width:200px; height:280px; object-fit:cover; margin: auto;" src="/USR_activities/{{id}}/image" alt="">
+                        </div>
+                        <div class="ci-text">
+                            <h5>{{name}}</h5>
+                            <a href="/USR_activities/schedule/{{id}}"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {{/activities}}
+            </div>
+        </div>
+    </section>
+    <!-- Activities Section End -->
+
+{{>USR_footer}}

@@ -1,0 +1,83 @@
+{{>USR_header}}
+
+    <!-- log in Section Begin -->
+    <section class="classes-section spad">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div style="background-color: rgb(32, 32, 32); border-radius: 5px;">
+                <br>
+                <img src="img/logo.png" alt="" style=" display: block; margin-left: auto; margin-right: auto;" width="200px">
+                <h2 style="color: white; text-align: center;">Gymastic <strong style="color: rgb(255, 123, 0);">Sign in</strong></h2>
+                <br>
+                <br>
+                <form action="/USR_sign_in" method="post" style="text-align: left; margin-left: 20%;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="name"><h4 style="color: white;">Nombre:</h4></label>
+                            <br>
+                            <input type="text" id="name" name="name"pattern="[A-Za-z]+" required><br><br>
+
+                            <label for="surname"><h4 style="color: white;">Apellidos:</h4></label>
+                            <br>
+                            <input type="text" id="surname" name="surname" pattern="[A-Za-z]+" required><br><br>
+
+                            <label for="NIF"><h4 style="color: white;">DNI:</h4></label>
+                            <br>
+                            <input type="text" id="NIF" name="NIF" pattern="[0-9]{8}[A-Za-z]" required><br><br>
+
+                            <label for="birthday"><h4 style="color: white;">Fecha Nacimiento:</h4></label>
+                            <br>
+                            <input type="date" id="birthday" name="birthday" pattern="([0-2][0-9]|3[0-1])[/-](0[0-9]|1[0-2])[/-][0-9][0-9][0-9][0-9]" required style="width: 200px;"><br><br>
+
+                            <label for="phone_num"><h4 style="color: white;">Teléfono:</h4></label>
+                            <br>
+                            <input type="text" id="phone_num" name="phone_num" pattern="[0-9]{9}" required><br><br>
+
+                            <label for="postal_code"><h4 style="color: white;">Código Postal:</h4></label>
+                            <br>
+                            <input type="text" id="postal_code" name="postal_code" pattern="[0-9]{5}" required><br><br>
+                            <br>
+                            <input type="submit" value="Acceder" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn">
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
+                        </div>
+
+                        <div class="col-lg-6">
+
+                            <label for="address"><h4 style="color: white;">Dirección:</h4></label>
+                            <br>
+                            <input type="text" id="address" name="address" required><br><br>
+
+                            <label for="email"><h4 style="color: white;">Correo:</h4></label>
+                            <br>
+                            <input type="text" id="email" name="email" pattern="[A-Za-z0-9]+@[A-Za-z]+.[A-Za-z]{3}" required><br><br>
+
+                            <label for="password"><h4 style="color: white;">Contraseña:</h4></label>
+                            <br>
+                            <input type="password" id="password" name="password" required><br><br>
+
+                            <label for="height"><h4 style="color: white;">Altura:</h4></label>
+                            <br>
+                            <input type="text" id="height" name="height"><br><br>
+
+                            <label for="weight"><h4 style="color: white;">Peso:</h4></label>
+                            <br>
+                            <input type="text" id="weight" name="weight"><br><br>
+
+                            <label for="medicalInfo"><h4 style="color: white;">Informacion medica:</h4></label>
+                            <br>
+                            <textarea type="text" id="medicalInfo" name="medicalInfo" style="width: 400px; height: 200px;"></textarea><br><br>
+
+                        </div>
+                    </div>
+                </form>
+                <br>
+            </div>
+
+        </div>
+    </section>
+    <!-- log in Section End -->
+
+{{>USR_footer}}

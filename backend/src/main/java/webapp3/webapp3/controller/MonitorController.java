@@ -1,5 +1,6 @@
 package webapp3.webapp3.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -25,8 +26,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 public class MonitorController {
+
 
     @Autowired
     private ExerciseService exerServ;
