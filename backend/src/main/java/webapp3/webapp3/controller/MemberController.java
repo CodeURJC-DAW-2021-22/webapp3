@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import webapp3.webapp3.model.Activity;
-import webapp3.webapp3.model.DateType;
-import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.User;
+import webapp3.webapp3.model.*;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.ExerciseService;
+import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
 import java.io.ByteArrayOutputStream;
@@ -35,6 +33,9 @@ public class MemberController {
     private ExerciseService exerServ;
 
     @Autowired
+    private ExerciseTableService exerTabServ;
+
+    @Autowired
     private UserService memServ;
 
     @Autowired
@@ -43,49 +44,50 @@ public class MemberController {
 
     @GetMapping("/MEMexercise")
     public String exercise (Model model){
-        List<Exercise> all = exerServ.findAll();
-        model.addAttribute("exercises", all);
+        List<ExerciseTable> all = exerTabServ.findAll();
+        model.addAttribute("MEMexercises", all);
+        model.addAttribute("id", "9");
         return "USRMEM_01ExerciseTable";
     }
 
     @GetMapping("/MEMexercise/{id}/image")
     public ResponseEntity<Object> downloadExerciseImage(@PathVariable long id) throws SQLException {
-        Optional<Exercise> optExer = exerServ.findById(id);
+        Optional<ExerciseTable> optExerTab = exerTabServ.findById(id);
 
-        if (optExer.isPresent()){
-            Exercise exercise = optExer.get();
-            if (exercise.getImage() != null){
-                Resource file = new InputStreamResource(exercise.getImage().getBinaryStream());
-
+        if (optExerTab.isPresent()){
+            ExerciseTable exerciseTab = optExerTab.get();
+            if (exerciseTab.getImage() != null){
+                Resource file = new InputStreamResource(exerciseTab.getImage().getBinaryStream());
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(exercise.getImage().length()).body(file);
+                        .contentLength(exerciseTab.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MEMexercise/{id}/pdf")
+    @GetMapping("/MEMexerciseTable/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
         try {
-            ByteArrayOutputStream baos = exerServ.generatePDF(id, 5L);
+            ByteArrayOutputStream baos = exerTabServ.generatePDF(9L, id);
             return ResponseEntity
                     .ok()
                     .contentType(MediaType.APPLICATION_PDF)
-                    .header("Content-disposition", "attachment;filename=\"nombre.pdf\"")
+                    .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
                     .body(baos.toByteArray());
         } catch (Exception e){
-
-            return ResponseEntity.badRequest().body("Malamente tra trá");
+            return ResponseEntity.badRequest().body("Error");
         }
     }
 
     @GetMapping("/MEMeditProfile")
     public String editProfile(Model model) {
+        model.addAttribute("id", "9");
         return "USRMEM_02EditProfile";
     }
 
     @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id){
+        model.addAttribute("id", "9");
         Optional<User> optMember = memServ.findById(id);
         if (optMember.isPresent()){
             model.addAttribute("monitor", optMember.get());
@@ -142,7 +144,7 @@ public class MemberController {
         return htmlFile;
     }
 
-    @GetMapping("/MEMmonitor/{id}/image")
+    @GetMapping("/monitor/{id}/image")
     public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
         Optional<User> optMon = memServ.findById(id);
 
@@ -160,6 +162,7 @@ public class MemberController {
 
     @GetMapping("/MEMprofile/{id}")
     public String profile(Model model, @PathVariable long id) {
+        model.addAttribute("id", "9");
         Optional<User> mem = memServ.findById(id);
         if(mem.isPresent()){
             model.addAttribute("member", mem.get());
@@ -170,12 +173,23 @@ public class MemberController {
 
     @GetMapping("/MEMstatistics")
     public String statistics(Model model) {
-
+        model.addAttribute("id", "9");
+        int [] clients = new int [12];
+        String [][] months = new String [12][4];
+        String [] years = {"2019", "2020", "2021", "2022"};
+        for (int j = 0; j < years.length; j++) {
+            for (int i = 0; i < 12; i++) {
+                months[i][j] = "m" + i + j;
+                clients[i] = memServ.findByUserTypeAndEntryDate("member", i + 1, years[j]);
+                model.addAttribute(months[i][j], clients[i]);
+            }
+        }
         return "USRMEM_03Estatistics";
     }
 
     @GetMapping("/MEMactivities")
     public String activities(Model model) {
+        model.addAttribute("id", "9");
         List<Activity> all = actServ.findAll();
         model.addAttribute("activities", all);
         return "USRMEM_04Activities";

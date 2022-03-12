@@ -35,10 +35,11 @@ public class UserService {
     }
 
     public User findByName(String name){
-        return userRep.findByName(name);
+        return userRep.findByName(name).orElseThrow();
     }
 
-    //Data for graphics
+
+    // generate data for graphics
     public int findByUserTypeAndEntryDate(String type, int month, String year) {
         String s = Integer.toString(month);
         if (s.length() == 1)

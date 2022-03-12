@@ -482,6 +482,15 @@ ol {
 	margin-left: 15px;
 }
 
+.top-option .to-profile {
+	display: inline-block;
+}
+
+.top-option .to-profile a {
+	display: inline-block;
+	margin-left: 10px;
+}
+
 .offcanvas-menu-wrapper {
 	display: none;
 }
