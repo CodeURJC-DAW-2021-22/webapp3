@@ -64,7 +64,7 @@ public class MemberController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MEMexercise/{id}/pdf")
+    /*@GetMapping("/MEMexercise/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
         try {
             ByteArrayOutputStream baos = exerServ.generatePDF(id, 5L);
@@ -77,7 +77,7 @@ public class MemberController {
 
             return ResponseEntity.badRequest().body("Malamente tra trá");
         }
-    }
+    }*/
 
     @GetMapping("/MEMeditProfile")
     public String editProfile(Model model) {
