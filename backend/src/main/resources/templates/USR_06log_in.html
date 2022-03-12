@@ -16,9 +16,10 @@
                 <br>
                 <br>
                 <form action="/USR_log_in" method="post" style="text-align: center;">
-                    <input type="text" name="username" placeholder="Usuario" required><br><br>
+                    <input type="text" name="email" placeholder="Usuario" required><br><br>
                     <input type="password" name="password" placeholder="Contraseña" required><br><br>
                     <input type="submit" value="Acceder" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn">
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
                 </form>
                 <br>
             </div>
