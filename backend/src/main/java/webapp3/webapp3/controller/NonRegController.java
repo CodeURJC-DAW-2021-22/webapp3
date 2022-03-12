@@ -41,7 +41,6 @@ public class NonRegController {
     @GetMapping("/USR_mainpage")
     public String mainPage(Model model,  HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
-        String target;
         if (principal != null) {
             //model.addAttribute("log",true);
 
