@@ -40,7 +40,7 @@ public class DataSampleService {
 
         DateType adminBirthday = new DateType("0000","00","00");
         User admin = new User("admin", "admin", "00000000A", "admin@admin.com", passwordEncoder.encode("admin"),"admin", "00000", adminBirthday,
-                "123456789", "administrator", 11, 11, "123456789012345678901234", "soy admin");
+                "123456789", "administrator", 11, 11, "soy admin");
         setUserImage(admin, "/sample_images/zumba.jpeg");
         userRep.save(admin);
 
@@ -169,7 +169,7 @@ public class DataSampleService {
         DateType cl2 = new DateType("1985", "02", "05");
         DateType ed2 = new DateType("2020", "07", "14");
         User client2 = new User("Cristiano", "Ronaldo Dos Santos Aveiro", "22222222B", "suuu@gmail.com", passwordEncoder.encode("password"),"C/ G.O.A.T. , 12",
-                "33246", cl2, "621144674", "member", 184, 83000, "IB12 9876 1230 1212",
+                "33246", cl2, "621144674", "member", 184, 83000,
                 "Tengo alergia a Messi");
 
         setUserImage(client2, "/sample_images/Client2.jpeg");

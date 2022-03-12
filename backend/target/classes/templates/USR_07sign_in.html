@@ -30,7 +30,7 @@
 
                             <label for="birthday"><h4 style="color: white;">Fecha Nacimiento:</h4></label>
                             <br>
-                            <input type="date" id="birthday" name="birthday" pattern="([0-2][0-9]|3[0-1])[/-](0[0-9]|1[0-2])[/-][0-9][0-9][0-9][0-9]" required><br><br>
+                            <input type="date" id="birthday" name="birthday" pattern="([0-2][0-9]|3[0-1])[/-](0[0-9]|1[0-2])[/-][0-9][0-9][0-9][0-9]" required style="width: 200px;"><br><br>
 
                             <label for="phone_num"><h4 style="color: white;">Teléfono:</h4></label>
                             <br>
@@ -39,6 +39,9 @@
                             <label for="postal_code"><h4 style="color: white;">Código Postal:</h4></label>
                             <br>
                             <input type="text" id="postal_code" name="postal_code" pattern="[0-9]{5}" required><br><br>
+                            <br>
+                            <input type="submit" value="Acceder" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn">
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
                         </div>
 
                         <div class="col-lg-6">
@@ -63,23 +66,12 @@
                             <br>
                             <input type="text" id="weight" name="weight"><br><br>
 
-                            <label for="IBAN"><h4 style="color: white;">IBAN:</h4></label>
-                            <br>
-                            <input type="text" id="IBAN" name="IBAN" pattern="[0-9]{24}" required><br><br>
-
                             <label for="medicalInfo"><h4 style="color: white;">Informacion medica:</h4></label>
                             <br>
-                            <textarea type="text" id="medicalInfo" name="medicalInfo"></textarea><br><br>
+                            <textarea type="text" id="medicalInfo" name="medicalInfo" style="width: 400px; height: 200px;"></textarea><br><br>
 
                         </div>
                     </div>
-                    <br>
-                    {{#Error}}
-                    <p style="color: red; text-align: center;"> Las contraeñas no coinciden</p>
-                    {{/Error}}
-                    <input type="submit" value="Acceder" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn">
-                    <input type="hidden" name="_csrf" value="{{token}}"/>
-
                 </form>
                 <br>
             </div>

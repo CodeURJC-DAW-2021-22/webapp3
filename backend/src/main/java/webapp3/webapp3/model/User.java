@@ -145,7 +145,7 @@ public class User {
     }
 
     public User(String name, String surname, String NIF, String email, String password, String address,
-                String postalCode, DateType birthday, String phone, String userType, int height, int weight, String IBAN, String medicalInfo) {
+                String postalCode, DateType birthday, String phone, String userType, int height, int weight, String medicalInfo) {
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
@@ -158,7 +158,6 @@ public class User {
         this.userType = userType;
         this.height = height;
         this.weight = weight;
-        this.IBAN = IBAN;
         this.medicalInfo = medicalInfo;
     }
 

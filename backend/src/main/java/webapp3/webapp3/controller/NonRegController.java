@@ -200,12 +200,12 @@ public class NonRegController {
                              @RequestParam String phone_num, @RequestParam String postal_code,
                              @RequestParam String address, @RequestParam String email,
                              @RequestParam String password,@RequestParam int height, @RequestParam int weight,
-                             @RequestParam String IBAN, @RequestParam String medicalInfo){
+                             @RequestParam String medicalInfo){
 
         DateType birthday_Date = new DateType(birthday.substring(0, 4), birthday.substring(5, 7), birthday.substring(8, 10));
 
         User newUser = new User(name, surname, NIF, email, passwordEncoder.encode(password), address, postal_code, birthday_Date, phone_num,
-                "member", height, weight, IBAN, medicalInfo);
+                "member", height, weight, medicalInfo);
 
         userServ.save(newUser);
 
