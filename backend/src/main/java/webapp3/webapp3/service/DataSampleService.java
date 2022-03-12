@@ -353,6 +353,7 @@ public class DataSampleService {
         exerciseTable1.getExercises().add(ex1);
         exerciseTable1.getExercises().add(ex2);
 
+        setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
         Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
@@ -367,11 +368,31 @@ public class DataSampleService {
         exerciseTable2.getExercises().add(ex3);
         exerciseTable2.getExercises().add(ex4);
 
+        setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
         exerciseTableRep.save(exerciseTable2);
 
-        client2.addExerciseTable(exerciseTable1);
 
-        exerciseTableRep.save(exerciseTable1);
+
+        ExerciseTable exerciseTable3 = new ExerciseTable("Tabla 3", "Tabla de entrenamiento mixta.");
+        exerciseTable3.getExercises().add(ex1);
+        exerciseTable3.getExercises().add(ex2);
+
+        setExerciseTableImage(exerciseTable3, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable3);
+
+        ExerciseTable exerciseTable4 = new ExerciseTable("Tabla 4", "Tabla de entrenamiento abdominal y lumbar");
+
+
+        setExerciseTableImage(exerciseTable4, "/sample_images/gallery-13.jpeg");
+        exerciseTableRep.save(exerciseTable4);
+
+        ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento jeje");
+        exerciseTable5.getExercises().add(ex3);
+        exerciseTable5.getExercises().add(ex4);
+
+        setExerciseTableImage(exerciseTable5, "/sample_images/gallery-12.jpeg");
+        exerciseTableRep.save(exerciseTable5);
+
         userRep.save(client1);
         userRep.save(client2);
         userRep.save(client3);
@@ -402,5 +423,11 @@ public class DataSampleService {
 
         Resource image = new ClassPathResource(classpathResource);
         exerciseTable.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    public void setExerciseTableImage(ExerciseTable exerciseTab, String classpathResource) throws IOException {
+
+        Resource image = new ClassPathResource(classpathResource);
+        exerciseTab.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 }
