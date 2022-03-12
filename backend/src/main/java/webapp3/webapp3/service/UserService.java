@@ -38,6 +38,7 @@ public class UserService {
         return userRep.findByName(name).orElseThrow();
     }
 
+
     // generate data for graphics
     public int findByUserTypeAndEntryDate(String type, int month, String year) {
         String s = Integer.toString(month);
