@@ -368,10 +368,4 @@ public class AdminController {
         return "redirect:/clients";
     }
 
-    //Manage error
-    @GetMapping("/error")
-    public String error(Model model){
-        return "error-404";
-
-    }
 }
