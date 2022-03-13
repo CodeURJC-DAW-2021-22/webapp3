@@ -73,9 +73,12 @@ public class MemberController {
     }
 
     @GetMapping("/MEMexerciseTable/{id}/pdf")
-    public ResponseEntity<?> pdfGenerator(@PathVariable Long id){
+    public ResponseEntity<?> pdfGenerator(@PathVariable Long id, HttpServletRequest request){
         try {
-            ByteArrayOutputStream baos = exerTabServ.generatePDF(9L, id);
+            String prueba = request.getUserPrincipal().getName();
+            Optional<User> mem = memServ.findByEmail(prueba);
+            User user = mem.orElseThrow();
+            ByteArrayOutputStream baos = exerTabServ.generatePDF(user.getId(), id);
             return ResponseEntity
                     .ok()
                     .contentType(MediaType.APPLICATION_PDF)
