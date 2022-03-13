@@ -1,7 +1,6 @@
 package webapp3.webapp3.controller;
 
 
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -46,38 +45,34 @@ public class MonitorController {
     private UserService monServ;
 
     //schedule page
-    @GetMapping("/MONschedule/{id}")
-    public String schedule(Model model, @PathVariable long id) {
-        Optional<Activity> act = actServ.findById(id);
-        String result;
-        if (act.isPresent()) {
-            result = "USRMON_01Schedule";
-            model.addAttribute("name", act.get().getName());
-            model.addAttribute("description", act.get().getDescription());
-            if (!act.get().getMonday().equals("")) {
-                model.addAttribute("monAct", true);
-                model.addAttribute("monday", act.get().getMonday());
-            }
-            if (!act.get().getTuesday().equals("")) {
-                model.addAttribute("tusAct", true);
-                model.addAttribute("tuesday", act.get().getTuesday());
-            }
-            if (!act.get().getWednesday().equals("")) {
-                model.addAttribute("wenAct", true);
-                model.addAttribute("wednesday", act.get().getWednesday());
-            }
-            if (!act.get().getThursday().equals("")) {
-                model.addAttribute("thuAct", true);
-                model.addAttribute("thursday", act.get().getThursday());
-            }
-            if (!act.get().getFriday().equals("")) {
-                model.addAttribute("friAct", true);
-                model.addAttribute("friday", act.get().getFriday());
-            }
-        } else {
-            result = "404";
+    @GetMapping("/MONschedule")
+    public String schedule(Model model, HttpServletRequest request) {
+        Optional<User> user = monServ.findByName(request.getUserPrincipal().getName());
+        Activity act =user.get().getACT1();
+
+        model.addAttribute("name", act.getName());
+        model.addAttribute("description", act.getDescription());
+        if (!act.getMonday().equals("")) {
+            model.addAttribute("monAct", true);
+            model.addAttribute("monday", act.getMonday());
         }
-        return result;
+        if (!act.getTuesday().equals("")) {
+            model.addAttribute("tusAct", true);
+            model.addAttribute("tuesday", act.getTuesday());
+        }
+        if (!act.getWednesday().equals("")) {
+            model.addAttribute("wenAct", true);
+            model.addAttribute("wednesday", act.getWednesday());
+        }
+        if (!act.getThursday().equals("")) {
+            model.addAttribute("thuAct", true);
+            model.addAttribute("thursday", act.getThursday());
+        }
+        if (!act.getFriday().equals("")) {
+            model.addAttribute("friAct", true);
+            model.addAttribute("friday", act.getFriday());
+        }
+        return "USRMON_01Schedule";
     }
 
     @GetMapping("/MONschedule/{id}/image")
@@ -98,76 +93,96 @@ public class MonitorController {
 
     //profile page
     @GetMapping("/MON/{id}/image")
-    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
+    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException {
         Optional<User> optMon = monServ.findById(id);
 
-        if (optMon.isPresent()){
-            User monitor = optMon.get();
-            if (monitor.getImage() != null){
-                Resource file = new InputStreamResource(monitor.getImage().getBinaryStream());
+        if (optMon.isPresent()) {
+            User member = optMon.get();
+            if (member.getImage() != null) {
+                Resource file = new InputStreamResource(member.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(monitor.getImage().length()).body(file);
+                        .contentLength(member.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/MONprofile/{id}")
-    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
-        String emailName = request.getUserPrincipal().getName();
-        Optional<User> mon = monServ.findByEmail(emailName);
-        User user = mon.orElseThrow();
-        model.addAttribute("id", user.getId());
-        model.addAttribute("monitor", user);
-        return "USRMON_02Profile";
+    public String profile(Model model, @PathVariable long id) {
+        model.addAttribute("id", "9");
+        Optional<User> mon = monServ.findById(id);
+        if (mon.isPresent()) {
+            model.addAttribute("member", mon.get());
+            return "USRMON_02Pofile";
+        }
+        return "404";
     }
 
     //edit profile page
-    @GetMapping("/MONeditProfile/{id}")
-    public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
-        String emailName = request.getUserPrincipal().getName();
-        Optional<User> mon = monServ.findByEmail(emailName);
-        User user = mon.orElseThrow();
-        model.addAttribute("id", user.getId());
-        model.addAttribute("monitor", user);
+    @GetMapping("/MONeditProfile")
+    public String editProfile(Model model) {
+        model.addAttribute("id", "9");
         return "USRMON_05EditProfile";
     }
 
+    @GetMapping("/MONeditProfile/{id}")
+    public String editProfile(Model model, @PathVariable Long id) {
+        model.addAttribute("id", "9");
+        Optional<User> optMonitor = monServ.findById(id);
+        if (optMonitor.isPresent()) {
+            model.addAttribute("monitor", optMonitor.get());
+            return "USRMON_05EditProfile";
+        } else {
+            return "USRMON_02Profile";
+        }
+    }
+
     @PostMapping("/MONeditProfile/{id}")
-    public String addEditedProfile(Model model, @PathVariable Long id,
+    public String addEditedProle(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
+                                 @RequestParam String usrname,
+                                 @RequestParam String password,
                                  @RequestParam String email,
                                  @RequestParam String NIF,
-                                 @RequestParam String birthday,
+                                 @RequestParam DateType birthday,
+                                 @RequestParam String gender,
                                  @RequestParam int height,
                                  @RequestParam Integer weight,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
+                                 @RequestParam String creditCard,
                                  @RequestParam String additionalInfo,
                                  @RequestParam("image") MultipartFile image) throws IOException {
         Optional<User> mon = monServ.findById(id);
-        User monitor = mon.orElseThrow();
-        monitor.setName(name);
-        monitor.setSurname(surname);
-        monitor.setEmail(email);
-        monitor.setNIF(NIF);
-        monitor.getBirthday().setDay(birthday.substring(8, 10));
-        monitor.getBirthday().setMonth(birthday.substring(5, 7));
-        monitor.getBirthday().setYear(birthday.substring(0,4));
-        monitor.setHeight(height);
-        monitor.setWeight(weight);
-        monitor.setAddress(address);
-        monitor.setPostalCode(postalCode);
-        monitor.setPhone(phone);
-        monitor.setMedicalInfo(additionalInfo);
-        if (!image.isEmpty()) {
-            monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+        String htmlFile;
+        if (mon.isPresent()) {
+            User monitor = mon.get();
+            monitor.setName(name);
+            monitor.setSurname(surname);
+            //member.setUsrname(usrname);
+            monitor.setEncodedPassword(password);
+            monitor.setEmail(email);
+            monitor.setNIF(NIF);
+            monitor.setBirthday(birthday);
+            //member.setGenre(genre);
+            monitor.setHeight(height);
+            //member.appendWeight(weight);
+            monitor.setAddress(address);
+            monitor.setPostalCode(postalCode);
+            monitor.setPhone(phone);
+            //member.setCreditCard(creditCard);
+            //member.setAdditionalInfo(additionalInfo);
+            //member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            monServ.save(monitor);
+            htmlFile = "redirect:/member";
+        } else {
+            //Gestionar error envío de formulario
+            htmlFile = "error-404";
         }
-        monServ.save(monitor);
-        return "redirect:/MONprofile/{id}";
+        return htmlFile;
     }
 
     //exercise table page
