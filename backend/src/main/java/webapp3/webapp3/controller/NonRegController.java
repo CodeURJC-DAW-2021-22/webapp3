@@ -1,6 +1,8 @@
 package webapp3.webapp3.controller;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +19,7 @@ import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
@@ -205,6 +208,13 @@ public class NonRegController {
 
         User newUser = new User(name, surname, NIF, email, passwordEncoder.encode(password), address, postal_code, birthday_Date, phone_num,
                 "member", height, weight, medicalInfo);
+
+        try {
+            Resource image = new ClassPathResource("/sample_images/imageNotAddedPeople.jpeg");
+            newUser.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         userServ.save(newUser);
 
