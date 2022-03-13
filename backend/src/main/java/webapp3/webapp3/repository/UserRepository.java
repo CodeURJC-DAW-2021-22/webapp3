@@ -29,6 +29,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
             nativeQuery = true)
     int findByUserTypeAndEntryDate(String type,@Param("date") String date);
 
-    Page<User> findAll(Pageable page);
+    Page<User> findByUserType(Pageable page, String userType);
 
 }

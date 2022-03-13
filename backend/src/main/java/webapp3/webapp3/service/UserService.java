@@ -55,7 +55,7 @@ public class UserService {
         return userRep.findByEmail(prueba);
     }
 
-    public Page<User> findPageClient(int page){
-        return userRep.findAll(PageRequest.of(page, 3));
+    public Page<User> findPageClient(int page, String s){
+        return userRep.findByUserType(PageRequest.of(page, 3), s);
     }
 }
