@@ -113,61 +113,97 @@ public class MonitorController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MONprofile/{id}")
-    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
+    @GetMapping("/MONprofile")
+    public String profile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
         User user = mon.orElseThrow();
-        model.addAttribute("id", user.getId());
         model.addAttribute("monitor", user);
         return "USRMON_02Profile";
     }
 
     //edit profile page
-    @GetMapping("/MONeditProfile/{id}")
-    public String editProfile(Model model, @PathVariable Long id, HttpServletRequest request) {
+    @GetMapping("/MONeditProfile")
+    public String editProfile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
         User user = mon.orElseThrow();
-        model.addAttribute("id", user.getId());
         model.addAttribute("monitor", user);
         return "USRMON_05EditProfile";
     }
 
-    @PostMapping("/MONeditProfile/{id}")
-    public String addEditedProfile(Model model, @PathVariable Long id,
-                                 @RequestParam String name,
-                                 @RequestParam String surname,
-                                 @RequestParam String email,
-                                 @RequestParam String NIF,
-                                 @RequestParam String birthday,
-                                 @RequestParam String hiring,
-                                 @RequestParam String address,
-                                 @RequestParam String postalCode,
-                                 @RequestParam String phone,
-                                 @RequestParam String description,
-                                 @RequestParam("image") MultipartFile image) throws IOException {
-        Optional<User> mon = monServ.findById(id);
-        User monitor = mon.orElseThrow();
-        monitor.setName(name);
-        monitor.setSurname(surname);
-        monitor.setEmail(email);
-        monitor.setNIF(NIF);
-        monitor.getBirthday().setDay(birthday.substring(8, 10));
-        monitor.getBirthday().setMonth(birthday.substring(5, 7));
-        monitor.getBirthday().setYear(birthday.substring(0, 4));
-        monitor.getHiringDate().setDay(hiring.substring(8, 10));
-        monitor.getHiringDate().setMonth(hiring.substring(5, 7));
-        monitor.getHiringDate().setYear(hiring.substring(0, 4));
-        monitor.setAddress(address);
-        monitor.setPostalCode(postalCode);
-        monitor.setPhone(phone);
-        monitor.setDescription(description);
-        if (!image.isEmpty()) {
-            monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+    @PostMapping("/MONeditProfile")
+    public String addEditedMonitor(Model model, HttpServletRequest request,
+                                   @RequestParam String name,
+                                   @RequestParam String surname,
+                                   @RequestParam String NIF,
+                                   @RequestParam String email,
+                                   @RequestParam String address,
+                                   @RequestParam String postalCode,
+                                   @RequestParam String phone,
+                                   @RequestParam String birthdayDate,
+                                   @RequestParam String hiringDate,
+                                   @RequestParam(required = false) Long activityName,
+                                   @RequestParam String description,
+                                   @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mon = monServ.findByEmail(emailName);
+        String htmlFile;
+        if (mon.isPresent()){
+            User user = mon.get();
+            user.setName(name);
+            user.setSurname(surname);
+            user.setNIF(NIF);
+            user.setEmail(email);
+            user.setAddress(address);
+            user.setPostalCode(postalCode);
+            user.setPhone(phone);
+            user.getBirthday().setDay(birthdayDate.substring(8, 10));
+            user.getBirthday().setMonth(birthdayDate.substring(5, 7));
+            user.getBirthday().setYear(birthdayDate.substring(0,4));
+            user.getBirthday().generateSpanishFormat();
+            user.getHiringDate().setDay(hiringDate.substring(8, 10));
+            user.getHiringDate().setMonth(hiringDate.substring(5, 7));
+            user.getHiringDate().setYear(hiringDate.substring(0, 4));
+            user.getHiringDate().generateSpanishFormat();
+
+            if (activityName == -1) {
+                //Delete association to an activity
+                Activity act = user.getACT1();
+                act.setMonitorName(null);
+                actServ.save(act);
+                user.setACT1(null);
+            } else if (activityName != -1 && user.getACT1() == null) {
+                //Add activity to a monitor without previous activity
+                Optional<Activity> activityOptional = actServ.findById(activityName);
+                activityOptional.orElseThrow().setMonitorName(user.getName());
+                actServ.save(activityOptional.get());
+                user.setACT1(activityOptional.get());
+            } else if (activityName != -1 && user.getACT1() != null && !user.getACT1().getId().equals(activityName)) {
+                //Add activity to monitor with previous activity associated
+                //1 -> Change monitorName in old activity
+                if (user.getACT1() != null) {
+                    user.getACT1().setMonitorName(null);
+                    actServ.save(user.getACT1());
+                }
+                //2 -> Change monitor name in new Activity
+                Optional<Activity> activityOptional = actServ.findById(activityName);
+                activityOptional.orElseThrow().setMonitorName(user.getName());
+                actServ.save(activityOptional.get());
+                //3 -> Add activity to user
+                user.setACT1(activityOptional.get());
+            }
+
+            user.setDescription(description);
+            if (!image.isEmpty())
+                user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            monServ.save(user);
+            htmlFile = "redirect:/MONprofile";
+        } else {
+            //Error monitor not found
+            htmlFile = "error-404";
         }
-        monServ.save(monitor);
-        return "redirect:/MONprofile/{id}";
+        return htmlFile;
     }
 
     //exercise table page

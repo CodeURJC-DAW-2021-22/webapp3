@@ -33,142 +33,131 @@
                             </div>
                             <div class="col-md-6">
                                 <button class="btn default btn-outline el-link selector" type="button"><a
-                                        href="/MONeditProfile/{{id}}"><i class="mdi mdi-grease-pencil"></i> Editar
+                                        href="/MONeditProfile"><i class="mdi mdi-grease-pencil"></i> Editar
                                     perfil</a></button>
                             </div>
                         </div>
                         <!--basic information-->
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="border-top card" style="margin-top:20px">
+                            <div class="col-12">
+                                <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-subtitle">Información Básica</h5>
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="card align-items-center">
-                                                    <div class="p-2"><img src="/MON/{{id}}/image" alt="user" width="80"
-                                                                          class="rounded-circle"></div>
+                                        <div class="row el-element-overlay">
+                                            <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                                                <h4 class="card-title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Nombre: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.name}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Apellidos: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.surname}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> DNI/NIE: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.NIF}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Email: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.email}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Dirección: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.address}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Código postal: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.postalCode}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Teléfono: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.phone}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="date" class="form-control">{{monitor.birthday.spanishFormat}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3 ">
+                                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                                        <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="date" class="form-control ">{{monitor.hiringDate.spanishFormat}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3 ">
+                                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                                        <p style="color:black; " class="centerText"> Actividad: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        {{#monitor.ACT1}}
+                                                        <span type="text " class="form-control ">{{monitor.ACT1.name}}</span>
+                                                        {{/monitor.ACT1}}
+
+                                                        {{^monitor.ACT1}}
+                                                        <span type="text " class="form-control ">No hay actividades asignadas</span>
+                                                        {{/monitor.ACT1}}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group row">
-                                                    <label for="lname"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="fname"
-                                                              placeholder="Nombre">{{monitor.name}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="lname"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="lname"
-                                                              placeholder="Apellidos">{{monitor.surname}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="NIF"
-                                                           class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
-                                                    <div class="col-sm-9 input-group">
-                                                        <span type="text" class="form-control" id="NIF"
-                                                              placeholder="0000000-A">{{monitor.NIF}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="email"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Correo
-                                                        Electrónico</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="email"
-                                                              placeholder="Correo Electrónico">{{monitor.email}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group row">
-                                                    <label for="datepicker-autoclose"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Fecha
-                                                        de nacimiento</label>
-                                                    <div class="col-sm-9 input-group">
-                                                        <span type="text" class="form-control" id="datepicker-autoclose"
-                                                              placeholder="dd/mm/yyyy">{{monitor.birthday.spanishFormat}}</span>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa fa-calendar"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="datepicker-autoclose"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Fecha
-                                                        de contratacion</label>
-                                                    <div class="col-sm-9 input-group">
-                                                        <span type="text" class="form-control" id="datepicker-autoclose-hiring"
-                                                              placeholder="dd/mm/yyyy">{{monitor.hiring.spanishFormat}}</span>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa fa-calendar"></i></span>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-lg-3 col-md-12 col-12 image ">
+                                                <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                                    <img src="/MON/{{id}}/image" width="100%" alt="user " style="text-align: center;;" />
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--aditional information-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="border-top card">
-                                    <div class="card-body">
-                                        <h5 class="card-subtitle">Información Adicional</h5>
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <div class="form-group row">
-                                                    <label for="street"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="street"
-                                                              placeholder="Domicilio">{{monitor.address}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="postalCode"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Código
-                                                        Postal</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="postalCode"
-                                                              placeholder="00000">{{monitor.postalCode}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="phone"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Teléfono
-                                                        de contacto</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="phone"
-                                                              placeholder="+XX-XXX XX XX XX">{{monitor.phone}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                        <div class="card-body ">
+                                            <div class="border-top card "></div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- medical information-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="border-top card">
-                                    <div class="card-body">
-                                        <h5 class="card-subtitle">Descripcion</h5>
-                                        <div class="form-group row">
-                                            <div class="col-sm-12">
-                                                <span type="text" class=" form-control" id="infoExtra"
-                                                      placeholder="Descripcion">{{monitor.description}}</span>
-                                            </div>
+
+                                        <div class="card-body ">
+                                            <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
+                                            <!-- Create the editor container -->
+                                            <textarea style="height: 300px; color: black; width:100%" readonly>{{monitor.description}}
+                                </textarea>
                                         </div>
                                     </div>
                                 </div>
