@@ -222,7 +222,7 @@ public class MonitorController {
             model.addAttribute("exerciseTable", exerciseTable.get());
             return "USRMON_09SeeExerciseTableInfo";
         } else
-            return "USRMON_03ExercsieTable";
+            return "USRMON_03ExerciseTable";
     }
 
     @GetMapping("/MONexerciseTable/{id}/image")

@@ -46,8 +46,8 @@
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <div class="card align-items-center">
-                                                    <div class="p-2"><img src="assets/images/users/1.jpg" alt="user"
-                                                                          width="80" class="rounded-circle"></div>
+                                                    <div class="p-2"><img src="/MON/{{id}}/image" alt="user" width="80"
+                                                                          class="rounded-circle"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
@@ -68,20 +68,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="user"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Nombre
-                                                        de usuario</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="user"
-                                                              placeholder="@NombreUsuario">{{monitor.usrname}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="password"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="password" class="form-control" id="password"
-                                                              placeholder="Contraseña">{{monitor.password}}</span>
+                                                    <label for="NIF"
+                                                           class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
+                                                    <div class="col-sm-9 input-group">
+                                                        <span type="text" class="form-control" id="NIF"
+                                                              placeholder="0000000-A">{{monitor.NIF}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -96,20 +87,12 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group row">
-                                                    <label for="NIF"
-                                                           class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
-                                                    <div class="col-sm-9 input-group">
-                                                        <span type="text" class="form-control" id="NIF"
-                                                              placeholder="0000000-A">{{monitor.NIF}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label for="datepicker-autoclose"
                                                            class="col-sm-3 text-right text control-label col-form-label">Fecha
                                                         de nacimiento</label>
                                                     <div class="col-sm-9 input-group">
                                                         <span type="text" class="form-control" id="datepicker-autoclose"
-                                                              placeholder="dd/mm/yyyy">{{monitor.birthday}}</span>
+                                                              placeholder="dd/mm/yyyy">{{monitor.birthday.spanishFormat}}</span>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i
                                                                     class="fa fa-calendar"></i></span>
@@ -117,26 +100,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="genre"
-                                                              placeholder="Ej. 180(cm)">{{monitor.genre}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="lname"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Altura</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="height"
-                                                              placeholder="Ej. 180(cm)">{{monitor.height}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="lname"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Peso</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="weight"
-                                                              placeholder="Ej. 60(kg)">{{monitor.weight}}</span>
+                                                    <label for="datepicker-autoclose"
+                                                           class="col-sm-3 text-right text control-label col-form-label">Fecha
+                                                        de contratacion</label>
+                                                    <div class="col-sm-9 input-group">
+                                                        <span type="text" class="form-control" id="datepicker-autoclose-hiring"
+                                                              placeholder="dd/mm/yyyy">{{monitor.hiring.spanishFormat}}</span>
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i
+                                                                    class="fa fa-calendar"></i></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,13 +125,13 @@
                                     <div class="card-body">
                                         <h5 class="card-subtitle">Información Adicional</h5>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-9">
                                                 <div class="form-group row">
                                                     <label for="street"
                                                            class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                     <div class="col-sm-9">
                                                         <span type="text" class="form-control" id="street"
-                                                              placeholder="Domicilio">{{monitor.adress}}</span>
+                                                              placeholder="Domicilio">{{monitor.address}}</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -167,11 +140,9 @@
                                                         Postal</label>
                                                     <div class="col-sm-9">
                                                         <span type="text" class="form-control" id="postalCode"
-                                                              placeholder="00000">{{monitor.adress}}</span>
+                                                              placeholder="00000">{{monitor.postalCode}}</span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label for="phone"
                                                            class="col-sm-3 text-right text control-label col-form-label">Teléfono
@@ -179,15 +150,6 @@
                                                     <div class="col-sm-9">
                                                         <span type="text" class="form-control" id="phone"
                                                               placeholder="+XX-XXX XX XX XX">{{monitor.phone}}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="creditCard"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Tarjeta
-                                                        Bancaria</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="creditCard"
-                                                              placeholder="000-000-000">{{monitor.creditCard}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,14 +163,11 @@
                             <div class="col-md-12">
                                 <div class="border-top card">
                                     <div class="card-body">
-                                        <h5 class="card-subtitle">Información Médica</h5>
+                                        <h5 class="card-subtitle">Descripcion</h5>
                                         <div class="form-group row">
-                                            <label for="infoExtra"
-                                                   class="col-sm-3 text-right text control-label col-form-label">Información
-                                                médica adicional</label>
-                                            <div class="col-sm-9">
-                                                <span type="text" class="form-control" id="infoExtra"
-                                                      placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{monitor.additionalInfo}}</span>
+                                            <div class="col-sm-12">
+                                                <span type="text" class=" form-control" id="infoExtra"
+                                                      placeholder="Descripcion">{{monitor.description}}</span>
                                             </div>
                                         </div>
                                     </div>
