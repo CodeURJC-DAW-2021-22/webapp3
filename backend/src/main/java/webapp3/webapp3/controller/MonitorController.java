@@ -44,7 +44,7 @@ public class MonitorController {
     private UserService monServ;
 
     //schedule page
-    @GetMapping("/MONschedule{id}")
+    @GetMapping("/MONschedule/{id}")
     public String schedule(Model model, @PathVariable long id) {
         Optional<Activity> act = actServ.findById(id);
         String result;
