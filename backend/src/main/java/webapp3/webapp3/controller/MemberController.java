@@ -86,7 +86,7 @@ public class MemberController {
         } catch (Exception e){
             return ResponseEntity.badRequest().body("Error");
         }
-    }*/
+    }
 
     @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
