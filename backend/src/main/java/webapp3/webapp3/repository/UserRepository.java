@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
@@ -24,22 +25,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     @Query(
-            value = "SELECT COUNT(ID) FROM USER WHERE USER_TYPE = :type AND ENTRY_DATE LIKE :date%",
+            value = "SELECT COUNT(ID) FROM USER_TABLE WHERE USER_TYPE = :type AND TO_CHAR(ENTRY_DATE, 'YYYY-MM-DD') LIKE :date%",
             nativeQuery = true)
-    int findByUserTypeAndEntryDate(String type, String date);
-
-    @Query(
-            value = "SELECT COUNT(ID) FROM USER WHERE USER_TYPE = :type AND ENTRY_DATE LIKE :date%",
-            nativeQuery = true)
-    int findByUserTypeAndDownloads(String type, String date);
+    int findByUserTypeAndEntryDate(String type,@Param("date") String date);
 
     Page<User> findAll(Pageable page);
-
-
-    /*
-
-    public User findByName(String name);
-
-    */
 
 }

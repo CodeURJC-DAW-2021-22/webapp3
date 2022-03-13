@@ -40,7 +40,7 @@ public class UserExerciseTableService {
     }
 
     public TreeMap<String, Integer> findExercisesTables(Long id){
-        List<Long> topExercises = repository.findTopExercises(Long.toString(id));
+        List<Long> topExercises = repository.findTopExercises(id);
         TreeMap<String, Integer> map = new TreeMap<>();
         List<Integer> rep = repository.findHowMany();
         while (!topExercises.isEmpty()){
