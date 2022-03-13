@@ -38,9 +38,9 @@ public class DataSampleService {
     @PostConstruct
     public void init() throws IOException {
 
-        DateType adminBirthday = new DateType("0000","00","00");
-        User admin = new User("admin", "admin", "00000000A", "admin@admin.com", passwordEncoder.encode("admin"),"admin", "00000", adminBirthday,
-                "123456789", "administrator", 11, 11, "soy admin");
+        DateType adminBirthday = new DateType("2018","02","10");
+        User admin = new User("admin", "admin", "00000000A", "admin@admin.com", "Gym Street, 1", "12300", adminBirthday,
+                "123456789", passwordEncoder.encode("admin"));
         setUserImage(admin, "/sample_images/zumba.jpeg");
         userRep.save(admin);
 
@@ -108,7 +108,6 @@ public class DataSampleService {
                 " Mi objetivo en la vida es zumbar como nadie", passwordEncoder.encode("monitor"));
         setUserImage(monitor1, "/sample_images/Monitor1.jpeg");
         monitor1.setACT1(act1);
-
 
         DateType mon2B = new DateType("1994", "12", "08");
         DateType mon2H = new DateType("2018", "11", "08");
@@ -327,39 +326,38 @@ public class DataSampleService {
         userRep.save(monitor5);
         userRep.save(monitor6);
 
-
         DateType cl1 = new DateType("1987", "02", "02");
         DateType ed1 = new DateType("2021", "02", "08");
-        User client1 = new User("Gerard", "Piqué Bernabéu", "22222222A", "odioAFlorentino@gmail.com", "C/ Alabama Dulce, 18",
-                "33423", cl1, "724344154", ed1, 185, 85000, "IB12 3456 7890 0101",
-                "No tengo ningún problema médico pero cuando veo una camiseta de Mbappé me entra depresión");
+        User client1 = new User("Gerard", "Piqué Bernabéu", "22222222A", "odioAFlorentino@gmail.com","C/ Alabama Dulce, 18",
+                "33423", cl1, "724344154", ed1, 185, 85000,
+                "No tengo ningún problema médico pero cuando veo una camiseta de Mbappé me entra depresión",  passwordEncoder.encode("password"));
         setUserImage(client1, "/sample_images/Client1.jpeg");
 
         DateType cl2 = new DateType("1985", "02", "05");
         DateType ed2 = new DateType("2020", "07", "14");
-        User client2 = new User("Cristiano", "Ronaldo Dos Santos Aveiro", "22222222B", "suuu@gmail.com", passwordEncoder.encode("password"),"C/ G.O.A.T. , 12",
-                "33246", cl2, "621144674", "member", 184, 83000,
-                "Tengo alergia a Messi");
+        User client2 = new User("Cristiano", "Ronaldo Dos Santos Aveiro", "22222222B", "suuu@gmail.com","C/ G.O.A.T. , 12",
+                "33246", cl2, "621144674", ed2 , 184, 83000,
+                "Tengo alergia a Messi", passwordEncoder.encode("password"));
 
         setUserImage(client2, "/sample_images/Client2.jpeg");
 
         DateType cl3 = new DateType("2000", "04", "12");
         DateType ed3 = new DateType("2019", "03", "01");
         User client3 = new User("Vinicius", "José Paixão de Oliveira Junior", "22222222C", "fastandfurious@gmail.com", "C/ Brazil de Pelé, 13",
-                "33212", cl3, "686686686", ed3, 176, 73, "ES12 1443 7465 8252", "Alergia a meter gol.");
+                "33212", cl3, "686686686", ed3, 176, 73,  "Alergia a meter gol.", passwordEncoder.encode("password"));
         setUserImage(client3, "/sample_images/Client3.jpeg");
 
         DateType cl4 = new DateType("2000", "05", "26");
         DateType ed4 = new DateType("2019", "04", "12");
         User client4= new User("Miquel", "Montoro Marquez", "22222222D", "mencanten@gmail.com", "C/ Los Pilotes, 12, 3ºC",
-                "41221", cl4, "711771171", ed4, 179, 85, "ES99 9119 9119 9119", "Intolerancia a la lactosa severa");
+                "41221", cl4, "711771171", ed4, 179, 85, "Intolerancia a la lactosa severa", passwordEncoder.encode("password"));
         setUserImage(client4, "/sample_images/Client4.jpeg");
         client4.setACT1(act5);
 
         DateType cl5 = new DateType("1986", "05", "02");
         DateType ed5 = new DateType("2019", "04", "13");
         User client5= new User("Aitor", "Tilla Despinacas", "22222222E", "elespinacas@gmail.com", "C/ Popeye, 10, 5ºC",
-                "41220", cl5, "716644172", ed5, 166, 50, "ES09 0019 2110 9317", "Intolerancia al brócoli");
+                "41220", cl5, "716644172", ed5, 166, 50,  "Intolerancia al brócoli", passwordEncoder.encode("password"));
         setUserImage(client5, "/sample_images/Client5.jpeg");
         client5.setACT1(act2);
         client5.setACT2(act3);
@@ -368,7 +366,7 @@ public class DataSampleService {
         DateType cl6 = new DateType("1976", "09", "13");
         DateType ed6 = new DateType("2019", "04", "22");
         User client6= new User("Aitor", "Menta Irrállos", "22222222F", "tormentas@gmail.com", "C/ Tres Aguas, 12, 3ºC",
-                "41210", cl6, "666666666", ed6, 196, 100, "ES10 1010 1010 1010", "Alergia al deporte");
+                "41210", cl6, "666666666", ed6, 196, 100,  "Alergia al deporte", passwordEncoder.encode("password"));
         setUserImage(client6, "/sample_images/Client6.jpeg");
         client6.setACT1(act2);
         client6.setACT2(act5);
@@ -376,7 +374,7 @@ public class DataSampleService {
         DateType cl7 = new DateType("1986", "05", "02");
         DateType ed7 = new DateType("2019", "04", "13");
         User client7= new User("Nadie", "Tyson Manson", "22222222G", "n0b0dy@gmail.com", "C/ Tres Aguas, 2, 6ºD",
-                "41210", cl7, "760000001", ed7, 76, 35, "ES59 5059 5150 5315", "Ninguna alergia conocida.");
+                "41210", cl7, "760000001", ed7, 76, 35,  "Ninguna alergia conocida.", passwordEncoder.encode("password"));
         setUserImage(client7, "/sample_images/Client7.jpeg");
         client7.setACT1(act3);
         client7.setACT2(act1);
@@ -527,7 +525,12 @@ public class DataSampleService {
         userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable1));
         userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable4));
 
-
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable15));
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable2));
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable15));
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable3));
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable1));
+        userExerciseTableRepository.save(new UserExerciseTable(client1, exerciseTable7));
 
     }
 

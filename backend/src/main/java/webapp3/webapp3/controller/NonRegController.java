@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -205,9 +206,11 @@ public class NonRegController {
                              @RequestParam String medicalInfo){
 
         DateType birthday_Date = new DateType(birthday.substring(0, 4), birthday.substring(5, 7), birthday.substring(8, 10));
+        DateType entryDate = new DateType(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)),
+                Integer.toString(Calendar.getInstance().get(Calendar.YEAR)), Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
 
-        User newUser = new User(name, surname, NIF, email, passwordEncoder.encode(password), address, postal_code, birthday_Date, phone_num,
-                "member", height, weight, medicalInfo);
+        User newUser = new User(name, surname, NIF, email, address, postal_code, birthday_Date, phone_num,
+                entryDate, height, weight, medicalInfo, passwordEncoder.encode(password));
 
         try {
             Resource image = new ClassPathResource("/sample_images/imageNotAddedPeople.jpeg");

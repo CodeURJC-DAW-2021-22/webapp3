@@ -68,7 +68,6 @@ public class User {
     private Date entryDate;
     private int height;
     private int weight;
-    private String IBAN;
     private String medicalInfo;
 
     @OneToOne(fetch = FetchType.EAGER, optional = true)
@@ -92,7 +91,7 @@ public class User {
 
     //Administrator constructor
     public User(String name, String surname, String NIF, String email, String address, String postalCode, DateType birthday,
-                String phone){
+                String phone, String password){
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
@@ -102,7 +101,7 @@ public class User {
         this.birthday = birthday.getDate();
         this.phone = phone;
         this.userType = "administrator";
-        this.encodedPassword = "password";
+        this.encodedPassword = password;
     }
 
 
@@ -126,7 +125,7 @@ public class User {
 
     //Client constructor
     public User(String name, String surname, String NIF, String email, String address, String postalCode,
-                DateType birthday, String phone, DateType entryDate, int height, int weight, String IBAN, String medicalInfo){
+                DateType birthday, String phone, DateType entryDate, int height, int weight, String medicalInfo, String password){
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
@@ -138,30 +137,10 @@ public class User {
         this.entryDate = entryDate.getDate();
         this.height = height;
         this.weight = weight;
-        this.IBAN = IBAN;
         this.medicalInfo = medicalInfo;
         this.userType = "member";
-        this.encodedPassword = "password";
-    }
-
-    public User(String name, String surname, String NIF, String email, String password, String address,
-                String postalCode, DateType birthday, String phone, String userType, int height, int weight, String medicalInfo) {
-        this.name = name;
-        this.surname = surname;
-        this.NIF = NIF;
-        this.email = email;
         this.encodedPassword = password;
-        this.address = address;
-        this.postalCode = postalCode;
-        this.birthday = birthday.getDate();
-        this.phone = phone;
-        this.userType = userType;
-        this.height = height;
-        this.weight = weight;
-        this.medicalInfo = medicalInfo;
     }
-
-
 
     public long getId() {
         return id;
@@ -289,14 +268,6 @@ public class User {
 
     public void setWeight(int weight) {
         this.weight = weight;
-    }
-
-    public String getIBAN() {
-        return IBAN;
-    }
-
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
     }
 
     public String getMedicalInfo() {
