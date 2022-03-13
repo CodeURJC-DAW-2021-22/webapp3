@@ -54,6 +54,7 @@ public class MonitorController {
 
         model.addAttribute("name", act.getName());
         model.addAttribute("description", act.getDescription());
+        model.addAttribute("monitor", user.get());
         if (!act.getMonday().equals("")) {
             model.addAttribute("monAct", true);
             model.addAttribute("monday", act.getMonday());
@@ -148,6 +149,7 @@ public class MonitorController {
                                    @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
+        model.addAttribute("monitor", mon.get());
         String htmlFile;
         if (mon.isPresent()){
             User user = mon.get();
@@ -208,16 +210,17 @@ public class MonitorController {
 
     //exercise table page
     @GetMapping("/MONexerciseTable")
-    public String exerciseTable(Model model) {
+    public String exerciseTable(Model model, HttpServletRequest request) {
         List<ExerciseTable> all = exerciseTableServ.findAll();
         model.addAttribute("exerciseTableList", all);
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         return "USRMON_03ExerciseTable";
     }
 
     @GetMapping("/MONexerciseTable/{id}")
-    public String seeExerciseTableInfo(Model model, @PathVariable long id) {
+    public String seeExerciseTableInfo(Model model, @PathVariable long id, HttpServletRequest request) {
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
-
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         if (exerciseTable.isPresent()) {
             model.addAttribute("exerciseTable", exerciseTable.get());
             return "USRMON_09SeeExerciseTableInfo";
@@ -242,7 +245,8 @@ public class MonitorController {
 
     //add exercise table page
     @GetMapping("/MONaddNewExerciseTable")
-    public String newExerciseTable(Model model) {
+    public String newExerciseTable(Model model, HttpServletRequest request) {
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         return "USRMON_06AddExerciseTable";
     }
 
@@ -267,8 +271,9 @@ public class MonitorController {
 
     //edit exercise table
     @GetMapping("/MONeditExerciseTable/{id}")
-    public String editExerciseTable(Model model, @PathVariable Long id) {
+    public String editExerciseTable(Model model, @PathVariable Long id, HttpServletRequest request) {
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         String htmlFile;
         if (exerciseTable.isPresent()) {
             model.addAttribute("exerciseTable", exerciseTable.get());
@@ -329,14 +334,16 @@ public class MonitorController {
 
     //grupal activities page
     @GetMapping("/MONactivities")
-    public String activities(Model model) {
+    public String activities(Model model, HttpServletRequest request) {
         List<Activity> all = actServ.findAll();
         model.addAttribute("activitiesList", all);
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         return "USRMON_04GrupalActivities";
     }
 
     @GetMapping("/MONactivity/{id}")
-    public String seeActivityInfo(Model model, @PathVariable long id) {
+    public String seeActivityInfo(Model model, @PathVariable long id, HttpServletRequest request) {
+        model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         Optional<Activity> activity = actServ.findById(id);
         if (activity.isPresent()) {
             model.addAttribute("activity", activity.get());
