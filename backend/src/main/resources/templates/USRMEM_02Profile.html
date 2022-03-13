@@ -60,7 +60,12 @@
                                                                 <span type="text" class="form-control" id="lname" placeholder="Apellidos">{{member.surname}}</span>
                                                             </div>
                                                         </div>
-
+                                                        <div class="form-group row">
+                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
+                                                            <div class="col-sm-9 input-group">
+                                                                <span type="text" class="form-control" id="NIF" placeholder="0000000-A">{{member.NIF}}</span>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group row">
                                                             <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
                                                             <div class="col-sm-9">
@@ -69,12 +74,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <div class="form-group row">
-                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
-                                                            <div class="col-sm-9 input-group">
-                                                                <span type="text" class="form-control" id="NIF" placeholder="0000000-A">{{member.NIF}}</span>
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group row">
                                                             <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
                                                             <div class="col-sm-9 input-group">
@@ -109,7 +108,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-subtitle">Información Adicional</h5>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-9">
                                                         <div class="form-group row">
                                                             <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                             <div class="col-sm-9">
@@ -122,8 +121,6 @@
                                                                 <span type="text" class="form-control" id="postalCode" placeholder="00000">{{member.postalCode}}</span>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
                                                             <div class="col-sm-9">
@@ -143,9 +140,8 @@
                                             <div class="card-body">
                                                 <h5 class="card-subtitle">Información Médica</h5>
                                                 <div class="form-group row">
-                                                    <label for="infoExtra" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
-                                                    <div class="col-sm-9">
-                                                        <span type="text" class="form-control" id="infoExtra" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{member.medicalInfo}}</span>
+                                                    <div class="col-sm-12">
+                                                        <span type="text" class=" form-control" id="infoExtra" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{member.medicalInfo}}</span>
                                                     </div>
                                                 </div>
                                             </div>
