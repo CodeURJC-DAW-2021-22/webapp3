@@ -14,6 +14,7 @@ import webapp3.webapp3.repository.ExerciseTableRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -46,7 +47,7 @@ public class ExerciseTableService {
         return exerciseTabRep.save(exTab);
     }
 
-    public ByteArrayOutputStream generatePDF(Long userId, Long tableEx) throws DocumentException, IOException {
+    public ByteArrayOutputStream generatePDF(Long userId, Long tableEx) throws DocumentException, IOException, SQLException {
 
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -92,8 +93,7 @@ public class ExerciseTableService {
                     tableDoc.addCell(ex.getName());
                     tableDoc.addCell(ex.getDescription());
                     tableDoc.addCell(ex.getMaterial());
-                    tableDoc.addCell("");
-                    //tableDoc.addCell(Image.getInstance(ex.getImage().getBytes(0, (int) ex.getImage().length())));
+                    tableDoc.addCell(Image.getInstance(ex.getImage().getBytes(0, (int) ex.getImage().length())));
                 }
                 //table.addCell(Image.getInstance(exTabGet.getImage().getBytes(0, (int) exTabGet.getImage().length())));
                 document.add(tableDoc);
