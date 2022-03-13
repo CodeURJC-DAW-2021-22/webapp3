@@ -7,8 +7,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.*;
-import webapp3.webapp3.repository.UserExerciseTableRepository;
 import webapp3.webapp3.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 
 @Controller
@@ -168,9 +165,10 @@ public class MemberController {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
-        Map<Long, Integer> ex = usExServ.findExercisesTables(user);
+        TreeMap<String, Integer> ex = usExServ.findExercisesTables(user.getId());
         model.addAttribute("id", user.getId());
-        model.addAttribute("TableList", ex);
+        model.addAttribute("TableList", ex.keySet());
+        model.addAttribute("List", ex.values());
         return "USRMEM_03Estatistics";
     }
 
@@ -201,4 +199,9 @@ public class MemberController {
         return ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/MEMexerciseTable/{id}/done")
+    public String doneExerciseTable(@PathVariable long id, HttpServletRequest request){
+        usExServ.save(new UserExerciseTable(memServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow(), exerTabServ.findById(id).orElseThrow()));
+        return "redirect:/MEMexercise";
+    }
 }

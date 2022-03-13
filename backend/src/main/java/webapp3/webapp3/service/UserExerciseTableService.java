@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.model.UserExerciseTable;
+import webapp3.webapp3.repository.ExerciseTableRepository;
 import webapp3.webapp3.repository.UserExerciseTableRepository;
 
 import java.util.*;
 
 @Service
 public class UserExerciseTableService {
+
+    @Autowired
+    private ExerciseTableRepository exTabRep;
 
     @Autowired
     private UserExerciseTableRepository repository;
@@ -35,7 +39,14 @@ public class UserExerciseTableService {
         return repository.findByUser(user);
     }
 
-    public Map<Long, Integer> findExercisesTables(User user){
-        return repository.findTopExercises(user);
+    public TreeMap<String, Integer> findExercisesTables(Long id){
+        List<Long> topExercises = repository.findTopExercises(Long.toString(id));
+        TreeMap<String, Integer> map = new TreeMap<>();
+        List<Integer> rep = repository.findHowMany();
+        while (!topExercises.isEmpty()){
+            Long removed = topExercises.remove(0);
+            map.put(exTabRep.findById(removed).orElseThrow().getName(), rep.remove(0));
+        }
+        return map;
     }
 }
