@@ -77,7 +77,7 @@
         // BAR CHART
         const labels = [
             {{#TableList}}
-            '{{ExerciseTable.name}}',
+            '{{.}}',
             {{/TableList}}
         ];
         const dataBar = {
@@ -85,7 +85,8 @@
             datasets: [
                 {
                     label: '2022',
-                    data: [{{}}, 59, 70],
+                    data: [{{#List}} {{.}}, {{/List}}
+                            ],
                     backgroundColor: [
                         'rgba(75, 192, 192, 0.8)',
                         'rgb(91, 231, 111, 0.8)',
