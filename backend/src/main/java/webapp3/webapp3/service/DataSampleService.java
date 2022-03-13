@@ -156,147 +156,147 @@ public class DataSampleService {
         exeRep.save(exercise1);
 
         Exercise exercise2 = new Exercise("Press Militar","Ejercio de hombro ","Barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/pressMilitar.jpg");
+        setExcerciseImage(exercise2,"/sample_images/pressMilitar.jpg");
 
         exeRep.save(exercise2);
 
         Exercise exercise3 = new Exercise("Sentadilla con barra","Ejercicio para cuadriceps y gluteos"," barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/sentadilla.jpg");
+        setExcerciseImage(exercise3,"/sample_images/sentadilla.jpg");
 
         exeRep.save(exercise3);
 
         Exercise exercise4 = new Exercise("Peso Muerto","Ejercio de espalda media y baja","barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/peso-muerto-sumo-6244.jpeg");
+        setExcerciseImage(exercise4,"/sample_images/peso-muerto-sumo-6244.jpeg");
 
         exeRep.save(exercise4);
 
         Exercise exercise5 = new Exercise("Cruces con poleas","Ejercio de pectoral alto o bajo dependiendo del agarre","dos poleas altas o bajas");
-        setExcerciseImage(exercise1,"/sample_images/crucesPoleas.jpg");
+        setExcerciseImage(exercise5,"/sample_images/crucesPoleas.jpg");
 
         exeRep.save(exercise5);
 
         Exercise exercise6 = new Exercise("Curl de biceps con barra Z","Ejercio de biceps","barra Z y discos");
-        setExcerciseImage(exercise1,"/sample_images/curlZ.png");
+        setExcerciseImage(exercise6,"/sample_images/curlZ.png");
 
         exeRep.save(exercise6);
 
         Exercise exercise7 = new Exercise("Curl femoral tumbado","Ejercio de femoral","maquina femoral");
-        setExcerciseImage(exercise1,"/sample_images/curl-femoral-con-maquina-2790.png");
+        setExcerciseImage(exercise7,"/sample_images/curl-femoral-con-maquina-2790.png");
 
         exeRep.save(exercise7);
 
         Exercise exercise8 = new Exercise("Puente de gluteos","Ejercio de gluteos","banco, barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/Hip-thrust-740x418.jpg");
+        setExcerciseImage(exercise8,"/sample_images/Hip-thrust-740x418.jpg");
 
         exeRep.save(exercise8);
 
         Exercise exercise9 = new Exercise("Fondos en paralelas","Ejercio de pectoral bajo","paralelas");
-        setExcerciseImage(exercise1,"/sample_images/fondosParalelas.jpg");
+        setExcerciseImage(exercise9,"/sample_images/fondosParalelas.jpg");
 
         exeRep.save(exercise9);
 
         Exercise exercise10 = new Exercise("Elevaciones laterales","Ejercio de deltoides medio","macuernas");
-        setExcerciseImage(exercise1,"/sample_images/elevacionesLaterales.jpg");
+        setExcerciseImage(exercise10,"/sample_images/elevacionesLaterales.jpg");
 
         exeRep.save(exercise10);
 
         Exercise exercise11 = new Exercise("Elevaciones frontales","Ejercio de deltoides frontal","mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/elevacionesFrontales.jpg");
+        setExcerciseImage(exercise11,"/sample_images/elevacionesFrontales.jpg");
 
         exeRep.save(exercise11);
 
         Exercise exercise12 = new Exercise("Dominadas","Ejercio de espalda media","barra alta");
-        setExcerciseImage(exercise1,"/sample_images/dominadas.jpg");
+        setExcerciseImage(exercise12,"/sample_images/dominadas.jpg");
 
         exeRep.save(exercise12);
 
         Exercise exercise13 = new Exercise("Jalon al pecho","Ejercio de espalda mediaa","poleas y banco");
-        setExcerciseImage(exercise1,"/sample_images/jalonPecho.jpg");
+        setExcerciseImage(exercise13,"/sample_images/jalonPecho.jpg");
 
         exeRep.save(exercise13);
 
         Exercise exercise14 = new Exercise("Curl martillo","Ejercio de biceps externo","mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/culrMartillo.jpg");
+        setExcerciseImage(exercise14,"/sample_images/culrMartillo.jpg");
 
         exeRep.save(exercise14);
 
         Exercise exercise15 = new Exercise("Press de banca con agarre semi-cerrado","Ejercio de triceps","banco, barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/Press-de-banca-con-agarre-cerrado.jpg");
+        setExcerciseImage(exercise15,"/sample_images/Press-de-banca-con-agarre-cerrado.jpg");
 
         exeRep.save(exercise15);
 
         Exercise exercise16 = new Exercise("Fondos en paralelas","Ejercio de triceps","paralelas");
-        setExcerciseImage(exercise1,"/sample_images/fondosParalelas.jpg");
+        setExcerciseImage(exercise16,"/sample_images/fondosParalelas.jpg");
 
         exeRep.save(exercise16);
 
         Exercise exercise17 = new Exercise("Extensiones con barra tumbado","Ejercio de triceps","banco, barra Z y discos");
-        setExcerciseImage(exercise1,"/sample_images/");
+        setExcerciseImage(exercise17,"/sample_images/");
 
         exeRep.save(exercise17);
 
         Exercise exercise18 = new Exercise("Elevacion de gemelos sentado","Ejercio de gemelos","banco, barra ydiscos");
-        setExcerciseImage(exercise1,"/sample_images/gemelosSentado.jpg");
+        setExcerciseImage(exercise18,"/sample_images/gemelosSentado.jpg");
 
         exeRep.save(exercise18);
 
         Exercise exercise19 = new Exercise("Encogimientos en polea","Ejercio de abdominal","polea alta");
-        setExcerciseImage(exercise1,"/sample_images/encogimientos.jpg");
+        setExcerciseImage(exercise19,"/sample_images/encogimientos.jpg");
 
         exeRep.save(exercise19);
 
         Exercise exercise20 = new Exercise("Zancada con mancuernas","Ejercio de femoral ","mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/zancada.jpg");
+        setExcerciseImage(exercise20,"/sample_images/zancada.jpg");
 
         exeRep.save(exercise20);
 
         Exercise exercise21 = new Exercise("Aperturas en banco","Ejercio de extension de pectoral","banco y mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/aperturas.jpg");
+        setExcerciseImage(exercise21,"/sample_images/aperturas.jpg");
 
         exeRep.save(exercise21);
 
         Exercise exercise22 = new Exercise("Flexiones","Ejercio de pectoral ","ninguno");
-        setExcerciseImage(exercise1,"/sample_images/flexiones.jpg");
+        setExcerciseImage(exercise22,"/sample_images/flexiones.jpg");
 
         exeRep.save(exercise22);
 
         Exercise exercise23 = new Exercise("Oblicuos con poleas","Ejercicio de oblicuos","polea alta");
-        setExcerciseImage(exercise1,"/sample_images/oblicuos.jpg");
+        setExcerciseImage(exercise23,"/sample_images/oblicuos.jpg");
 
         exeRep.save(exercise23);
 
         Exercise exercise24 = new Exercise("Curl en banco inclinado","Ejercio de biceps","banco y mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/curl-biceps-alterno-con-mancuernas-banco-inclinado-6211.png");
+        setExcerciseImage(exercise24,"/sample_images/curl-biceps-alterno-con-mancuernas-banco-inclinado-6211.png");
 
         exeRep.save(exercise24);
 
         Exercise exercise25 = new Exercise("Curl de muñeca","Ejercio de antebrazo","barra y discos");
-        setExcerciseImage(exercise1,"/sample_images/muñeca.jpg");
+        setExcerciseImage(exercise25,"/sample_images/muñeca.jpg");
 
         exeRep.save(exercise25);
 
         Exercise exercise26 = new Exercise("Press Arnorld","Ejercio de deltoides","banco y mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/arnold.jpg");
+        setExcerciseImage(exercise26,"/sample_images/arnold.jpg");
 
         exeRep.save(exercise26);
 
         Exercise exercise27 = new Exercise("Curl en polea","Ejercio de biceps","polea baja");
-        setExcerciseImage(exercise1,"/sample_images/curlPolea.jpg");
+        setExcerciseImage(exercise27,"/sample_images/curlPolea.jpg");
 
         exeRep.save(exercise27);
 
         Exercise exercise28 = new Exercise("Jalon de triceps","Ejercio de triceps","polea alta");
-        setExcerciseImage(exercise1,"/sample_images/jalonTriceps.jpg");
+        setExcerciseImage(exercise28,"/sample_images/jalonTriceps.jpg");
 
         exeRep.save(exercise28);
 
         Exercise exercise29 = new Exercise("Prensa","Ejercio de cuadriceps y gluteo","prensa");
-        setExcerciseImage(exercise1,"/sample_images/prensa.jpg");
+        setExcerciseImage(exercise29,"/sample_images/prensa.jpg");
 
         exeRep.save(exercise29);
 
         Exercise exercise30 = new Exercise("Encogimientos","Ejercio de trapecio","mancuernas");
-        setExcerciseImage(exercise1,"/sample_images/encogimientosTrap.jpg");
+        setExcerciseImage(exercise30,"/sample_images/encogimientosTrap.jpg");
 
         exeRep.save(exercise30);
 
@@ -381,13 +381,11 @@ public class DataSampleService {
         client7.setACT1(act3);
         client7.setACT2(act1);
 
-
-
         ExerciseTable exerciseTable1 = new ExerciseTable("Tabla 1", "Tabla de entrenamiento de biceps.");
         exerciseTable1.getExercises().add(exercise1);
         exerciseTable1.getExercises().add(exercise2);
 
-        setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
+        setExerciseTableImage(exerciseTable1, "/sample_images/biceps.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
         ExerciseTable exerciseTable2 = new ExerciseTable("Tabla 2", "Tabla de entrenamiento de brazo.");
@@ -396,27 +394,26 @@ public class DataSampleService {
         exerciseTable2.getExercises().add(exercise3);
         exerciseTable2.getExercises().add(exercise4);
 
-        setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
+        setExerciseTableImage(exerciseTable2, "/sample_images/brazo-1.jpeg");
         exerciseTableRep.save(exerciseTable2);
-
 
         ExerciseTable exerciseTable3 = new ExerciseTable("Tabla 3", "Tabla de entrenamiento mixta.");
         exerciseTable3.getExercises().add(exercise1);
         exerciseTable3.getExercises().add(exercise2);
 
-        setExerciseTableImage(exerciseTable3, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable3, "/sample_images/mixta-1.jpeg");
         exerciseTableRep.save(exerciseTable3);
 
         ExerciseTable exerciseTable4 = new ExerciseTable("Tabla 4", "Tabla de entrenamiento abdominal y lumbar");
 
-        setExerciseTableImage(exerciseTable4, "/sample_images/gallery-13.jpeg");
+        setExerciseTableImage(exerciseTable4, "/sample_images/abdominal-1.jpeg");
         exerciseTableRep.save(exerciseTable4);
 
         ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento tonificar");
         exerciseTable5.getExercises().add(exercise3);
         exerciseTable5.getExercises().add(exercise4);
 
-        setExerciseTableImage(exerciseTable5, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable5, "/sample_images/tonificar1.jpeg");
         exerciseTableRep.save(exerciseTable5);
 
         ExerciseTable exerciseTable6 = new ExerciseTable("Tabla 6", "Tabla de entrenamiento de espalda.");
@@ -424,7 +421,7 @@ public class DataSampleService {
         exerciseTable6.getExercises().add(exercise12);
         exerciseTable6.getExercises().add(exercise4);
 
-        setExerciseTableImage(exerciseTable6, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable6, "/sample_images/espalda1.jpeg");
         exerciseTableRep.save(exerciseTable6);
 
         ExerciseTable exerciseTable7 = new ExerciseTable("Tabla 7", "Tabla de entrenamiento de espalda y triceps.");
@@ -435,7 +432,7 @@ public class DataSampleService {
         exerciseTable7.getExercises().add(exercise16);
         exerciseTable7.getExercises().add(exercise17);
 
-        setExerciseTableImage(exerciseTable7, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable7, "/sample_images/triceps-espalda1.png");
         exerciseTableRep.save(exerciseTable7);
 
         ExerciseTable exerciseTable8 = new ExerciseTable("Tabla 8", "Tabla de entrenamiento de triceps.");
@@ -444,7 +441,7 @@ public class DataSampleService {
         exerciseTable8.getExercises().add(exercise17);
         exerciseTable8.getExercises().add(exercise28);
 
-        setExerciseTableImage(exerciseTable8, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable8, "/sample_images/triceps1.png");
         exerciseTableRep.save(exerciseTable8);
 
         ExerciseTable exerciseTable9 = new ExerciseTable("Tabla 9", "Tabla de entrenamiento de espalda y biceps.");
@@ -455,15 +452,15 @@ public class DataSampleService {
         exerciseTable9.getExercises().add(exercise12);
         exerciseTable9.getExercises().add(exercise13);
 
-        setExerciseTableImage(exerciseTable9, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable9, "/sample_images/biceps-espalda1.jpeg");
         exerciseTableRep.save(exerciseTable9);
 
-        ExerciseTable exerciseTable10 = new ExerciseTable("Tabla 10", "Tabla de entrenamiento de biceps.");
+        ExerciseTable exerciseTable10 = new ExerciseTable("Tabla 10", "Tabla de entrenamiento de biceps (parte 2).");
         exerciseTable10.getExercises().add(exercise6);
         exerciseTable9.getExercises().add(exercise14);
         exerciseTable9.getExercises().add(exercise24);
 
-        setExerciseTableImage(exerciseTable10, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable10, "/sample_images/biceps-Parte2.jpg");
         exerciseTableRep.save(exerciseTable10);
 
         ExerciseTable exerciseTable11 = new ExerciseTable("Tabla 11", "Tabla de entrenamiento de biceps y triceps.");
@@ -474,7 +471,7 @@ public class DataSampleService {
         exerciseTable11.getExercises().add(exercise16);
         exerciseTable11.getExercises().add(exercise17);
 
-        setExerciseTableImage(exerciseTable11, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable11, "/sample_images/biceps-triceps1.jpeg");
         exerciseTableRep.save(exerciseTable11);
 
 
@@ -483,16 +480,16 @@ public class DataSampleService {
         exerciseTable12.getExercises().add(exercise10);
         exerciseTable12.getExercises().add(exercise11);
 
-        setExerciseTableImage(exerciseTable12, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable12, "/sample_images/deltoide1.png");
         exerciseTableRep.save(exerciseTable12);
 
-        ExerciseTable exerciseTable13 = new ExerciseTable("Tabla 13", "Tabla de entrenamiento de biceps.");
+        ExerciseTable exerciseTable13 = new ExerciseTable("Tabla 13", "Tabla de entrenamiento de biceps (parte 3).");
         exerciseTable13.getExercises().add(exercise1);
         exerciseTable13.getExercises().add(exercise5);
         exerciseTable13.getExercises().add(exercise9);
         exerciseTable13.getExercises().add(exercise21);
 
-        setExerciseTableImage(exerciseTable13, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable13, "/sample_images/biceps-Parte3.jpeg");
         exerciseTableRep.save(exerciseTable13);
 
         ExerciseTable exerciseTable14 = new ExerciseTable("Tabla 14", "Tabla de entrenamiento de pecho y biceps.");
@@ -503,7 +500,7 @@ public class DataSampleService {
         exerciseTable14.getExercises().add(exercise6);
         exerciseTable14.getExercises().add(exercise14);
 
-        setExerciseTableImage(exerciseTable14, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable14, "/sample_images/pectoral1.png");
         exerciseTableRep.save(exerciseTable14);
 
         ExerciseTable exerciseTable15 = new ExerciseTable("Tabla 15", "Tabla de entrenamiento de pierna.");
@@ -512,7 +509,7 @@ public class DataSampleService {
         exerciseTable15.getExercises().add(exercise7);
         exerciseTable15.getExercises().add(exercise20);
 
-        setExerciseTableImage(exerciseTable15, "/sample_images/gallery-12.jpeg");
+        setExerciseTableImage(exerciseTable15, "/sample_images/pierna1.jpeg");
         exerciseTableRep.save(exerciseTable15);
 
         userRep.save(client1);
