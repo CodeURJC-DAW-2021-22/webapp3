@@ -14,7 +14,6 @@ import webapp3.webapp3.repository.ExerciseTableRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -47,7 +46,7 @@ public class ExerciseTableService {
         return exerciseTabRep.save(exTab);
     }
 
-    public ByteArrayOutputStream generatePDF(Long userId, Long tableEx) throws DocumentException, IOException, SQLException {
+    public ByteArrayOutputStream generatePDF(Long userId, Long tableEx) throws DocumentException, IOException {
 
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -60,7 +59,7 @@ public class ExerciseTableService {
             PdfWriter.getInstance(document, baos);
             document.open();
 
-            //acceder a la tabla al haber pulsado el checkbox
+            //access table with chekbox
 
             Optional<ExerciseTable> exTab = exerciseTabRep.findById(tableEx);
 
@@ -77,7 +76,6 @@ public class ExerciseTableService {
                             tableHeader.addCell(header);
                         });
                 document.add(tableHeader);
-
 
                 List<Exercise> exList = exTabGet.getExercises();
 
@@ -96,14 +94,11 @@ public class ExerciseTableService {
                     tableDoc.addCell(ex.getMaterial());
                     tableDoc.addCell("");
                     //tableDoc.addCell(Image.getInstance(ex.getImage().getBytes(0, (int) ex.getImage().length())));
-
                 }
                 //table.addCell(Image.getInstance(exTabGet.getImage().getBytes(0, (int) exTabGet.getImage().length())));
                 document.add(tableDoc);
-
             }
-
-            // Cierro streams
+            // Close streams
             document.close();
         }
         baos.close();

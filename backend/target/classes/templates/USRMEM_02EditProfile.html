@@ -19,137 +19,85 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
+
             <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h4 class="card-title text">Usuario</h4>
+                <form action="/MEMeditProfile/{{member.id}}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title text">Usuario</h4>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick="location.href='/MEMprofile/{{id}}'">Cancelar</button>
-                                        <input class="btn default btn-outline el-link selector colorWhiteText" type="submit" value="Guardar"/>
-                                        <input type="hidden" name="_csrf" value="{{token}}"/>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="border-top card" style="margin-top:20px">
-                                            <div class="card-body">
-                                                <h5 class="card-subtitle">Información Básica</h5>
-                                                <div class="row">
-                                                    <div class="col-md-1">
-                                                        <div class="card align-items-center">
-                                                            <div class="p-2"><img src="/MEM/{{id}}/image" alt="user" width="80" class="rounded-circle"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group row">
-                                                            <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="fname" value="{{member.name}}" pattern="[a-zA-Z ]+"/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="border-top card" style="margin-top:20px">
+                                                <div class="card-body">
+                                                    <h5 class="card-subtitle">Información Básica</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                            <div class="card align-items-center">
+                                                                <div class="p-2"><img src="/MEM/{{id}}/image" alt="user" width="80" class="rounded-circle"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="lname" value="{{member.surname}}" pattern="[a-zA-Z ]+"/>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group row">
+                                                                <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="fname" value="{{member.name}}" pattern="[a-zA-Z ]+"/>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <!--div class="form-group row">
-                                                            <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="password" class="form-control" id="password" placeholder="Contraseña"/>
+                                                            <div class="form-group row">
+                                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="lname" value="{{member.surname}}" pattern="[a-zA-Z ]+"/>
+                                                                </div>
                                                             </div>
-                                                        </div-->
-                                                        <div class="form-group row">
-                                                            <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="email" value="{{member.email}}" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
+                                                            <!--div class="form-group row">
+                                                                <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="password" class="form-control" id="password" placeholder="Contraseña"/>
+                                                                </div>
+                                                            </div-->
+                                                            <div class="form-group row">
+                                                                <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI</label>
+                                                                <div class="col-sm-9 input-group">
+                                                                    <input type="text" class="form-control" id="NIF" value="{{member.NIF}}" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <div class="form-group row">
-                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI</label>
-                                                            <div class="col-sm-9 input-group">
-                                                                <input type="text" class="form-control" id="NIF" value="{{member.NIF}}" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
-                                                            <div class="col-sm-9 input-group">
-                                                                <input type="text" class="form-control" id="datepicker-autoclose" value="{{member.birthday}}" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                            <div class="form-group row">
+                                                                <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="email" value="{{member.email}}" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="height" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="height" value="{{member.height}}">
+                                                        <div class="col-md-5">
+                                                            <div class="form-group row">
+                                                                <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                                <div class="col-sm-9 input-group">
+                                                                    <input type="text" class="form-control" id="datepicker-autoclose" value="{{member.birthday}}" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="weight" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="weight" value="{{member.weight}}">
+                                                            <div class="form-group row">
+                                                                <label for="height" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="height" value="{{member.height}}">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="border-top card">
-                                            <div class="card-body">
-                                                <h4 class="card-subtitle">Imagen</h4>
-                                                <div class="col-md-9">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                                        <label class="custom-file-label" for="validatedCustomFile">Elige un fichero</label>
-                                                        <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="border-top card">
-                                            <div class="card-body">
-                                                <h5 class="card-subtitle">Información Adicional</h5>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="street" value="{{member.address}}" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="postalCode" value="{{member.postalCode}}" pattern="[0-9]{5}"/>>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="phone" value="{{member.phone}}" pattern="(6|7){1}[0-9]{8}"/>
+                                                            <div class="form-group row">
+                                                                <label for="weight" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="weight" value="{{member.weight}}">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -157,16 +105,60 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="border-top card">
-                                            <div class="card-body">
-                                                <h5 class="card-subtitle">Información Médica</h5>
-                                                <div class="form-group row">
-                                                    <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
-                                                    <div class="col-sm-9">
-                                                        <textarea type="text" class="form-control" id="cono1" >{{member.medicalInfo}}</textarea>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="border-top card">
+                                                <div class="card-body">
+                                                    <h4 class="card-subtitle">Imagen</h4>
+                                                    <div class="col-md-9">
+                                                        <div class="custom-file">
+                                                            <input class="text control-label col-form-label" type='file' name='image' accept=".jpg, .jpeg"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="border-top card">
+                                                <div class="card-body">
+                                                    <h5 class="card-subtitle">Información Adicional</h5>
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <div class="form-group row">
+                                                                <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="street" value="{{member.address}}" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="postalCode" value="{{member.postalCode}}" pattern="[0-9]{5}"/>>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="phone" value="{{member.phone}}" pattern="(6|7){1}[0-9]{8}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="border-top card">
+                                                <div class="card-body">
+                                                    <h5 class="card-subtitle">Información Médica</h5>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <textarea type="text" class="form-control" id="cono1" >{{member.medicalInfo}}</textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -174,16 +166,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row el-element-overlay">
+                                <div class="col-12 buttonsAddActivity">
+                                    <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit"
+                                           value="Guardar cambios"/>
+                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                    <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button"
+                                            onclick='location.href="MEMprofile/{{id}}"'>Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row el-element-overlay">
+                                <div class="col-12 buttonsAddActivity">
+                                    <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit"
+                                           value="Guardar cambios"/>
+                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                    <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button"
+                                            onclick='location.href="/MEMprofile/{{id}}"'>Cancelar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Recent comment and chats -->
-                <!-- ============================================================== -->
+                </form>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
