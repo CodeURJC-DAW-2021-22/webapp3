@@ -123,6 +123,7 @@ public class MonitorController {
 
     //edit profile page
     @GetMapping("/MONeditProfile")
+
     public String editProfile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
