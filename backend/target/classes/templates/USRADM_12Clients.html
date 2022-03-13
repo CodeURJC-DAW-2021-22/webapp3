@@ -41,7 +41,7 @@
                                         </tr>
                                         </thead>
                                         <tbody class="colorBlackText">
-                                        {{#clientList}}
+                                        {{#list}}
                                         <tr>
                                             <td>{{name}}</td>
                                             <td>{{birthday.getSpanishFormat}}</td>
@@ -51,12 +51,14 @@
                                                 <span class="checkmark"></span>
                                             </label></td>
                                         </tr>
-                                        {{/clientList}}
+                                        {{/list}}
                                         </tbody>
                                     </table>
                                 </div>
-
-
+                                <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore">
+                                    Cargar más
+                                    <i class="" id="spinner"></i>
+                                </button>
                             </div>
 
                         </div>
@@ -119,11 +121,31 @@
 <script src="/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
 <script src="/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
 <script src="/assets/extra-libs/DataTables/datatables.min.js"></script>
-<script>
+<!-- <script>
     /****************************************
      *       Basic Table                   *
      ****************************************/
     $('#zero_config').DataTable();
+</script> -->
+<script>
+    var contPage = 1;
+    $( "#loadMore" ).click(function() {
+        $.ajax({
+            url: "/clients/page/" + contPage,
+            method: "get",
+            beforeSend: ()=>{
+                $("#spinner").addClass("fa fa-circle-notch fa-spin");
+            }
+        }).done(function (answer) {
+            $("tr").last().after(answer);
+            contPage += 1;
+            $("#spinner").removeClass("fa fa-circle-notch fa-spin");
+            if(contPage === {{last}}){
+                $("#loadMore").off("click");
+                $("#loadMore").remove();
+            }
+        });
+    });
 </script>
 
 </body>

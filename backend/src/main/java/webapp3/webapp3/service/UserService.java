@@ -1,8 +1,11 @@
 package webapp3.webapp3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.UserRepository;
 
@@ -57,5 +60,9 @@ public class UserService {
 
     public Optional<User> findByEmail(String prueba) {
         return userRep.findByEmail(prueba);
+    }
+
+    public Page<User> findPageClient(int page){
+        return userRep.findAll(PageRequest.of(page, 3));
     }
 }

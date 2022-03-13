@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.DateType;
+import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.UserService;
@@ -353,8 +355,20 @@ public class AdminController {
     @GetMapping("/clients")
     public String clients(Model model){
         List<User> all = userServ.findByUserType("member");
+        Page<User> exerTabPage = userServ.findPageClient(0);
         model.addAttribute("clientList", all);
+        model.addAttribute("list", exerTabPage.toList());
+        model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRADM_12Clients";
+    }
+
+    @GetMapping("/clients/page/{page}")
+    public String getClientPage(Model model, @PathVariable int page){
+        Page<User> client = userServ.findPageClient(page);
+        model.addAttribute("list", client.toList());
+
+        return "USRADM_12CLientsAJAX";
+
     }
 
     @PostMapping("/deleteClients")

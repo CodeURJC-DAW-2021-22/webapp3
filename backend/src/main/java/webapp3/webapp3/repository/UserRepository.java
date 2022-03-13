@@ -1,9 +1,12 @@
 package webapp3.webapp3.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Query;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
 
 import java.util.List;
@@ -29,6 +32,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
             value = "SELECT COUNT(ID) FROM USER WHERE USER_TYPE = :type AND ENTRY_DATE LIKE :date%",
             nativeQuery = true)
     int findByUserTypeAndDownloads(String type, String date);
+
+    Page<User> findAll(Pageable page);
 
 
     /*
