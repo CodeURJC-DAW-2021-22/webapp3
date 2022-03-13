@@ -8,10 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import webapp3.webapp3.model.*;
-import webapp3.webapp3.repository.ActivityRepository;
-import webapp3.webapp3.repository.ExerciseRepository;
-import webapp3.webapp3.repository.ExerciseTableRepository;
-import webapp3.webapp3.repository.UserRepository;
+import webapp3.webapp3.repository.*;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -34,6 +31,9 @@ public class DataSampleService {
 
     @Autowired
     private ExerciseTableRepository exerciseTableRep;
+
+    @Autowired
+    private UserExerciseTableRepository userExerciseTableRepository;
 
     @PostConstruct
     public void init() throws IOException {
@@ -519,6 +519,16 @@ public class DataSampleService {
         userRep.save(client5);
         userRep.save(client6);
         userRep.save(client7);
+
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable1));
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable2));
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable1));
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable4));
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable1));
+        userExerciseTableRepository.save(new UserExerciseTable(client2, exerciseTable4));
+
+
+
     }
 
     public void setActivityImage(Activity activity, String classpathResource) throws IOException {
