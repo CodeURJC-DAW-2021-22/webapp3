@@ -24,20 +24,6 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
 
-                <!-- Charts -->
-                <!-- Chart-1 -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body colorBlackText">
-                                <h5 class="card-title">Progreso anual</h5>
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Chart-1 -->
-
                 <!-- Chart-2 -->
                 <div class="row">
                     <div class="col-md-12">
@@ -82,64 +68,6 @@
     <script src="assets/libs/chartJs/chart.js"></script>
     <script>
 
-        // LINE CHART
-        const labelsLine = [
-            ' ',
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-            ' '
-        ];
-        const dataLine = {
-            labels: labelsLine,
-            datasets: [
-                {
-                    label: 'Año 2019',
-                    backgroundColor: 'rgb(255, 125, 98)',
-                    borderColor: 'rgb(255, 82, 0)',
-                    data: [ {{m00}}, {{m10}}, {{m20}}, {{m30}}, {{m40}}, {{m50}}, {{m60}}, {{m70}}, {{m80}},{{m90}}, {{m100}}, {{m110}}]
-                },
-                {
-                    label: 'Año 2020',
-                    backgroundColor: 'rgb(136, 219, 255)',
-                    borderColor: 'rgb(0, 178, 255)',
-                    data: [ {{m01}}, {{m11}}, {{m21}}, {{m31}}, {{m41}}, {{m51}}, {{m61}}, {{m71}}, {{m81}},{{m91}}, {{m101}}, {{m111}}]
-                },
-                {
-                    label: 'Año 2021',
-                    backgroundColor: 'rgb(126, 255, 146)',
-                    borderColor: 'rgb(59, 222, 84)',
-                    data: [ {{m02}}, {{m12}}, {{m22}}, {{m32}}, {{m42}}, {{m52}}, {{m62}}, {{m72}}, {{m82}},{{m92}}, {{m102}}, {{m112}}]
-                },
-                {
-                    label: 'Año 2022',
-                    backgroundColor: 'rgb(11, 2, 16)',
-                    borderColor: 'rgb(33, 2, 150)',
-                    data: [ {{m03}}, {{m13}}, {{m23}}, {{m33}}, {{m43}}, {{m53}}, {{m63}}, {{m73}}, {{m83}},{{m93}}, {{m103}}, {{m113}}]
-                },
-            ]
-        };
-        const configLine = {
-            type: 'line',
-            data: dataLine,
-            options: {}
-        };
-
-        new Chart(
-            document.getElementById('myChart'),
-            configLine
-        );
-
-
         // BAR CHART
         const labels = [
             'January',
@@ -159,7 +87,6 @@
             labels: labels,
             datasets: [
                 {
-
                     label: '2022',
                     data: [65, 59, 70],
                     backgroundColor: [
@@ -175,72 +102,6 @@
                         'rgba(153, 102, 255, 0.8)',
                         'rgba(76, 83, 255, 0.8)',
                         'rgba(0, 91, 252, 0.8)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192)',
-                        'rgb(91, 231, 111)',
-                        'rgb(255, 245, 62)',
-                        'rgba(255, 205, 86)',
-                        'rgba(255, 159, 64)',
-                        'rgba(255, 114, 42)',
-                        'rgba(255, 58, 58)',
-                        'rgba(255, 99, 132)',
-                        'rgba(255, 121, 225)',
-                        'rgba(153, 102, 255)',
-                        'rgba(76, 83, 255)',
-                        'rgba(0, 91, 252)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: '2021',
-                    data: [67, 44, 55, 66, 56, 55, 44, 67, 34, 44, 34, 54],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgb(91, 231, 111, 0.6)',
-                        'rgb(255, 245, 62, 0.6)',
-                        'rgba(255, 205, 86, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 114, 42, 0.6)',
-                        'rgba(255, 58, 58, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(255, 121, 225, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(76, 83, 255, 0.6)',
-                        'rgba(0, 91, 252, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192)',
-                        'rgb(91, 231, 111)',
-                        'rgb(255, 245, 62)',
-                        'rgba(255, 205, 86)',
-                        'rgba(255, 159, 64)',
-                        'rgba(255, 114, 42)',
-                        'rgba(255, 58, 58)',
-                        'rgba(255, 99, 132)',
-                        'rgba(255, 121, 225)',
-                        'rgba(153, 102, 255)',
-                        'rgba(76, 83, 255)',
-                        'rgba(0, 91, 252)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: '2020',
-                    data: [56, 78, 68, 54, 76, 45, 40, 23, 33, 56, 23, 34],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.4)',
-                        'rgb(91, 231, 111, 0.4)',
-                        'rgb(255, 245, 62, 0.4)',
-                        'rgba(255, 205, 86, 0.4)',
-                        'rgba(255, 159, 64, 0.4)',
-                        'rgba(255, 114, 42, 0.4)',
-                        'rgba(255, 58, 58, 0.4)',
-                        'rgba(255, 99, 132, 0.4)',
-                        'rgba(255, 121, 225, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(76, 83, 255, 0.4)',
-                        'rgba(0, 91, 252, 0.4)'
                     ],
                     borderColor: [
                         'rgba(75, 192, 192)',

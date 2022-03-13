@@ -48,6 +48,13 @@ public class UserService {
         return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
     }
 
+    public int findByUserTypeAndDownloads(String type, int month, String year) {
+        String s = Integer.toString(month);
+        if (s.length() == 1)
+            s = "0" + s;
+        return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
+    }
+
     public Optional<User> findByEmail(String prueba) {
         return userRep.findByEmail(prueba);
     }

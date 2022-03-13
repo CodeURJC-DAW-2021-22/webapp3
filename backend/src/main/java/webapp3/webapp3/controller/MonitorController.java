@@ -117,7 +117,7 @@ public class MonitorController {
         Optional<User> mon = monServ.findById(id);
         if (mon.isPresent()) {
             model.addAttribute("member", mon.get());
-            return "USRMON_02Profile";
+            return "USRMON_02Pofile";
         }
         return "404";
     }

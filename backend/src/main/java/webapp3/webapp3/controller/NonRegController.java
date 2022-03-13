@@ -46,7 +46,7 @@ public class NonRegController {
 
             if(request.isUserInRole("member")){
                 //model.addAttribute("cli", true);
-                return "redirect:/MEMexercise";
+                return "redirect:/MEMstatistics";
             }else if(request.isUserInRole("monitor")){
                 //model.addAttribute("mon", true);
                 return "redirect:/MONactivities";
