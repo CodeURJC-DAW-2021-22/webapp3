@@ -37,5 +37,4 @@ public class ExerciseService {
         repository.deleteById(id);
     }
 
-
 }
