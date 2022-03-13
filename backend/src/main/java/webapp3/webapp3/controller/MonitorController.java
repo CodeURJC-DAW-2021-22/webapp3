@@ -50,31 +50,34 @@ public class MonitorController {
     public String schedule(Model model, HttpServletRequest request) {
         String name = request.getUserPrincipal().getName();
         Optional<User> user = monServ.findByEmail(name);
-        Activity act = user.get().getACT1();
-
-        model.addAttribute("name", act.getName());
-        model.addAttribute("description", act.getDescription());
         model.addAttribute("monitor", user.get());
-        if (!act.getMonday().equals("")) {
-            model.addAttribute("monAct", true);
-            model.addAttribute("monday", act.getMonday());
-        }
-        if (!act.getTuesday().equals("")) {
-            model.addAttribute("tusAct", true);
-            model.addAttribute("tuesday", act.getTuesday());
-        }
-        if (!act.getWednesday().equals("")) {
-            model.addAttribute("wenAct", true);
-            model.addAttribute("wednesday", act.getWednesday());
-        }
-        if (!act.getThursday().equals("")) {
-            model.addAttribute("thuAct", true);
-            model.addAttribute("thursday", act.getThursday());
-        }
-        if (!act.getFriday().equals("")) {
-            model.addAttribute("friAct", true);
-            model.addAttribute("friday", act.getFriday());
-        }
+        Activity act = user.get().getACT1();
+        if (act != null) {
+            model.addAttribute("getACT1", true);
+            model.addAttribute("name", act.getName());
+            model.addAttribute("description", act.getDescription());
+            if (!act.getMonday().equals("")) {
+                model.addAttribute("monAct", true);
+                model.addAttribute("monday", act.getMonday());
+            }
+            if (!act.getTuesday().equals("")) {
+                model.addAttribute("tusAct", true);
+                model.addAttribute("tuesday", act.getTuesday());
+            }
+            if (!act.getWednesday().equals("")) {
+                model.addAttribute("wenAct", true);
+                model.addAttribute("wednesday", act.getWednesday());
+            }
+            if (!act.getThursday().equals("")) {
+                model.addAttribute("thuAct", true);
+                model.addAttribute("thursday", act.getThursday());
+            }
+            if (!act.getFriday().equals("")) {
+                model.addAttribute("friAct", true);
+                model.addAttribute("friday", act.getFriday());
+            }
+        }else
+            model.addAttribute("getACT1", false);
         return "USRMON_01Schedule";
     }
 
