@@ -1,6 +1,7 @@
 package webapp3.webapp3.controller;
 
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -93,96 +94,76 @@ public class MonitorController {
 
     //profile page
     @GetMapping("/MON/{id}/image")
-    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException {
+    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
         Optional<User> optMon = monServ.findById(id);
 
-        if (optMon.isPresent()) {
-            User member = optMon.get();
-            if (member.getImage() != null) {
-                Resource file = new InputStreamResource(member.getImage().getBinaryStream());
+        if (optMon.isPresent()){
+            User monitor = optMon.get();
+            if (monitor.getImage() != null){
+                Resource file = new InputStreamResource(monitor.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                        .contentLength(member.getImage().length()).body(file);
+                        .contentLength(monitor.getImage().length()).body(file);
             }
         }
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/MONprofile/{id}")
-    public String profile(Model model, @PathVariable long id) {
-        model.addAttribute("id", "9");
-        Optional<User> mon = monServ.findById(id);
-        if (mon.isPresent()) {
-            model.addAttribute("member", mon.get());
-            return "USRMON_02Pofile";
-        }
-        return "404";
+    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mon = monServ.findByEmail(emailName);
+        User user = mon.orElseThrow();
+        model.addAttribute("id", user.getId());
+        model.addAttribute("monitor", user);
+        return "USRMON_02Profile";
     }
 
     //edit profile page
-    @GetMapping("/MONeditProfile")
-    public String editProfile(Model model) {
-        model.addAttribute("id", "9");
-        return "USRMON_05EditProfile";
-    }
-
     @GetMapping("/MONeditProfile/{id}")
-    public String editProfile(Model model, @PathVariable Long id) {
-        model.addAttribute("id", "9");
-        Optional<User> optMonitor = monServ.findById(id);
-        if (optMonitor.isPresent()) {
-            model.addAttribute("monitor", optMonitor.get());
-            return "USRMON_05EditProfile";
-        } else {
-            return "USRMON_02Profile";
-        }
+    public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mon = monServ.findByEmail(emailName);
+        User user = mon.orElseThrow();
+        model.addAttribute("id", user.getId());
+        model.addAttribute("monitor", user);
+        return "USRMON_05EditProfile";
     }
 
     @PostMapping("/MONeditProfile/{id}")
     public String addEditedProle(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
-                                 @RequestParam String usrname,
-                                 @RequestParam String password,
                                  @RequestParam String email,
                                  @RequestParam String NIF,
-                                 @RequestParam DateType birthday,
-                                 @RequestParam String gender,
+                                 @RequestParam String birthday,
                                  @RequestParam int height,
                                  @RequestParam Integer weight,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
-                                 @RequestParam String creditCard,
                                  @RequestParam String additionalInfo,
                                  @RequestParam("image") MultipartFile image) throws IOException {
         Optional<User> mon = monServ.findById(id);
-        String htmlFile;
-        if (mon.isPresent()) {
-            User monitor = mon.get();
-            monitor.setName(name);
-            monitor.setSurname(surname);
-            //member.setUsrname(usrname);
-            monitor.setEncodedPassword(password);
-            monitor.setEmail(email);
-            monitor.setNIF(NIF);
-            monitor.setBirthday(birthday);
-            //member.setGenre(genre);
-            monitor.setHeight(height);
-            //member.appendWeight(weight);
-            monitor.setAddress(address);
-            monitor.setPostalCode(postalCode);
-            monitor.setPhone(phone);
-            //member.setCreditCard(creditCard);
-            //member.setAdditionalInfo(additionalInfo);
-            //member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
-            monServ.save(monitor);
-            htmlFile = "redirect:/member";
-        } else {
-            //Gestionar error envío de formulario
-            htmlFile = "error-404";
+        User monitor = mon.orElseThrow();
+        monitor.setName(name);
+        monitor.setSurname(surname);
+        monitor.setEmail(email);
+        monitor.setNIF(NIF);
+        monitor.getBirthday().setDay(birthday.substring(8, 10));
+        monitor.getBirthday().setMonth(birthday.substring(5, 7));
+        monitor.getBirthday().setYear(birthday.substring(0,4));
+        monitor.setHeight(height);
+        monitor.setWeight(weight);
+        monitor.setAddress(address);
+        monitor.setPostalCode(postalCode);
+        monitor.setPhone(phone);
+        monitor.setMedicalInfo(additionalInfo);
+        if (!image.isEmpty()) {
+            monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
         }
-        return htmlFile;
+        monServ.save(monitor);
+        return "redirect:/MONprofile/{id}";
     }
 
     //exercise table page
