@@ -117,9 +117,8 @@ public class MonitorController {
     public String profile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
-        User user = mon.orElseThrow();
-        model.addAttribute("monitor", user);
-        return "USRMON_02Profile";
+        model.addAttribute("monitor", mon.get());
+        return "USRMON_02Pofile";
     }
 
     //edit profile page
