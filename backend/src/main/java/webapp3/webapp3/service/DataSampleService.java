@@ -386,12 +386,98 @@ public class DataSampleService {
         setExerciseTableImage(exerciseTable4, "/sample_images/gallery-13.jpeg");
         exerciseTableRep.save(exerciseTable4);
 
-        ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento jeje");
+        ExerciseTable exerciseTable5 = new ExerciseTable("Tabla 5", "Tabla de entrenamiento tonificar");
         exerciseTable5.getExercises().add(ex3);
         exerciseTable5.getExercises().add(ex4);
 
         setExerciseTableImage(exerciseTable5, "/sample_images/gallery-12.jpeg");
         exerciseTableRep.save(exerciseTable5);
+
+        ExerciseTable exerciseTable6 = new ExerciseTable("Tabla 6", "Tabla de entrenamiento de espalda.");
+        exerciseTable6.getExercises().add(exercise13);
+        exerciseTable6.getExercises().add(exercise12);
+        exerciseTable6.getExercises().add(exercise4);
+
+        exerciseTableRep.save(exerciseTable6);
+
+        ExerciseTable exerciseTable7 = new ExerciseTable("Tabla 7", "Tabla de entrenamiento de espalda y triceps.");
+        exerciseTable7.getExercises().add(exercise13);
+        exerciseTable7.getExercises().add(exercise12);
+        exerciseTable7.getExercises().add(exercise4);
+        exerciseTable7.getExercises().add(exercise15);
+        exerciseTable7.getExercises().add(exercise16);
+        exerciseTable7.getExercises().add(exercise17);
+
+        exerciseTableRep.save(exerciseTable7);
+
+        ExerciseTable exerciseTable8 = new ExerciseTable("Tabla 8", "Tabla de entrenamiento de triceps.");
+        exerciseTable8.getExercises().add(exercise15);
+        exerciseTable8.getExercises().add(exercise16);
+        exerciseTable8.getExercises().add(exercise17);
+        exerciseTable8.getExercises().add(exercise28);
+
+        exerciseTableRep.save(exerciseTable8);
+
+        ExerciseTable exerciseTable9 = new ExerciseTable("Tabla 9", "Tabla de entrenamiento de espalda y biceps.");
+        exerciseTable9.getExercises().add(exercise6);
+        exerciseTable9.getExercises().add(exercise14);
+        exerciseTable9.getExercises().add(exercise24);
+        exerciseTable9.getExercises().add(exercise4);
+        exerciseTable9.getExercises().add(exercise12);
+        exerciseTable9.getExercises().add(exercise13);
+
+        exerciseTableRep.save(exerciseTable9);
+
+        ExerciseTable exerciseTable10 = new ExerciseTable("Tabla 10", "Tabla de entrenamiento de biceps.");
+        exerciseTable10.getExercises().add(exercise6);
+        exerciseTable9.getExercises().add(exercise14);
+        exerciseTable9.getExercises().add(exercise24);
+
+        exerciseTableRep.save(exerciseTable10);
+
+        ExerciseTable exerciseTable11 = new ExerciseTable("Tabla 11", "Tabla de entrenamiento de biceps y triceps.");
+        exerciseTable11.getExercises().add(exercise6);
+        exerciseTable11.getExercises().add(exercise14);
+        exerciseTable11.getExercises().add(exercise24);
+        exerciseTable11.getExercises().add(exercise15);
+        exerciseTable11.getExercises().add(exercise16);
+        exerciseTable11.getExercises().add(exercise17);
+
+        exerciseTableRep.save(exerciseTable11);
+
+
+        ExerciseTable exerciseTable12 = new ExerciseTable("Tabla 12", "Tabla de entrenamiento de deltoides.");
+        exerciseTable12.getExercises().add(exercise2);
+        exerciseTable12.getExercises().add(exercise10);
+        exerciseTable12.getExercises().add(exercise11);
+
+        exerciseTableRep.save(exerciseTable12);
+
+        ExerciseTable exerciseTable13 = new ExerciseTable("Tabla 13", "Tabla de entrenamiento de biceps.");
+        exerciseTable13.getExercises().add(exercise1);
+        exerciseTable13.getExercises().add(exercise5);
+        exerciseTable13.getExercises().add(exercise9);
+        exerciseTable13.getExercises().add(exercise21);
+
+        exerciseTableRep.save(exerciseTable13);
+
+        ExerciseTable exerciseTable14 = new ExerciseTable("Tabla 14", "Tabla de entrenamiento de pecho y biceps.");
+        exerciseTable14.getExercises().add(exercise1);
+        exerciseTable14.getExercises().add(exercise5);
+        exerciseTable14.getExercises().add(exercise9);
+        exerciseTable14.getExercises().add(exercise21);
+        exerciseTable14.getExercises().add(exercise6);
+        exerciseTable14.getExercises().add(exercise14);
+
+        exerciseTableRep.save(exerciseTable14);
+
+        ExerciseTable exerciseTable15 = new ExerciseTable("Tabla 15", "Tabla de entrenamiento de pierna.");
+        exerciseTable15.getExercises().add(exercise3);
+        exerciseTable15.getExercises().add(exercise29);
+        exerciseTable15.getExercises().add(exercise7);
+        exerciseTable15.getExercises().add(exercise20);
+
+        exerciseTableRep.save(exerciseTable15);
 
         userRep.save(client1);
         userRep.save(client2);
