@@ -4,6 +4,8 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -95,9 +97,9 @@ public class ExerciseTableService {
                     tableDoc.addCell(ex.getName());
                     tableDoc.addCell(ex.getDescription());
                     tableDoc.addCell(ex.getMaterial());
-                    tableDoc.addCell(Image.getInstance(ex.getImage().getBytes(0, (int) ex.getImage().length())));
+                    tableDoc.addCell(Image.getInstance(ex.getImage().getBinaryStream().readAllBytes()));
                 }
-                //table.addCell(Image.getInstance(exTabGet.getImage().getBytes(0, (int) exTabGet.getImage().length())));
+
                 document.add(tableDoc);
             }
             // Close streams
