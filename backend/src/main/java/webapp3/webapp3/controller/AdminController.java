@@ -7,6 +7,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ import java.util.Optional;
 
 @Controller
 public class AdminController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private ActivityService actServ;
@@ -197,7 +201,7 @@ public class AdminController {
         DateType birthday = new DateType(birthdayDate.substring(0, 4), birthdayDate.substring(5, 7), birthdayDate.substring(8, 10));
         DateType hiring = new DateType(hiringDate.substring(0, 4), hiringDate.substring(5, 7), hiringDate.substring(8, 10));
         User monitor = new User(name, surname, NIF, email, address, postalCode, phone, birthday,
-                 hiring, description);
+                 hiring, description, passwordEncoder.encode("monitor"));
 
         if (activityName != -1) {
             Optional<Activity> activity = actServ.findById(activityName);

@@ -49,7 +49,7 @@ public class NonRegController {
                 return "redirect:/MEMexercise";
             }else if(request.isUserInRole("monitor")){
                 //model.addAttribute("mon", true);
-                return "redirect:/activities";
+                return "redirect:/MONactivities";
             }else{
                 //model.addAttribute("adm", true);
                 return "redirect:/statistics";

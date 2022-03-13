@@ -108,7 +108,7 @@ public class User {
 
     //Monitor constructor
     public User(String name, String surname, String NIF, String email, String address, String postalCode, String phone,
-                DateType birthday, DateType hiring, String description) {
+                DateType birthday, DateType hiring, String description, String password) {
         this.name = name;
         this.surname = surname;
         this.NIF = NIF;
@@ -120,7 +120,7 @@ public class User {
         this.hiringDate = hiring.getDate();
         this.description = description;
         this.userType = "monitor";
-        this.encodedPassword = NIF;
+        this.encodedPassword = password;
     }
 
 

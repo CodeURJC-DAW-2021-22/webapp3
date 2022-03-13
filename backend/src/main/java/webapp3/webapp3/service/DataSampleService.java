@@ -91,7 +91,7 @@ public class DataSampleService {
         DateType mon1H = new DateType("2018", "11", "04");
         User monitor1 = new User("Jose Luis", "García Hernández", "11111111A", "joselu@gmail.com", "C/ Alfonso Guerra, 2, 3ºA",
                 "12121", "686666888", mon1B, mon1H,  "Me gusta el deporte desde que nací." +
-                " Mi objetivo en la vida es zumbar como nadie");
+                " Mi objetivo en la vida es zumbar como nadie", passwordEncoder.encode("monitor"));
         setUserImage(monitor1, "/sample_images/Monitor1.jpeg");
         monitor1.setACT1(act1);
 
@@ -100,7 +100,7 @@ public class DataSampleService {
         DateType mon2H = new DateType("2018", "11", "08");
         User monitor2 = new User("Óscar", "Tesonero Minero", "11111111B", "tesomin@gmail.com", "C/ Los Cantos Rodaos, 7, 1ºD",
                 "12123", "711233233", mon2B, mon2H, "No me gusta el deporte, por eso hago yoga." +
-                " Busco la paz mental a base del estiramiento de dedo meñique.");
+                " Busco la paz mental a base del estiramiento de dedo meñique.", passwordEncoder.encode("monitor"));
         setUserImage(monitor2, "/sample_images/Monitor2.jpeg");
         monitor2.setACT1(act5);
 
@@ -108,7 +108,7 @@ public class DataSampleService {
         DateType mon3H = new DateType("2018", "10", "29");
         User monitor3 = new User("Sofía", "Borrón Hierro", "11111111C", "borronhierro@gmail.com", "C/ Los Azules, 12, Bajo D",
                 "12129", "611956456", mon3B, mon3H, "Salta, salta conmigo." +
-                " Digo salta, salta conmigo.");
+                " Digo salta, salta conmigo.", passwordEncoder.encode("monitor"));
         setUserImage(monitor3, "/sample_images/Monitor3.jpeg");
         monitor3.setACT1(act8);
 
@@ -116,7 +116,7 @@ public class DataSampleService {
         DateType mon4H = new DateType("2019", "01", "02");
         User monitor4 = new User("Laura", "García Rodríguez", "11111111D", "lagarroz@gmail.com", "C/ Guerra De La Independencia, 10, 3ºC",
                 "12121", "689444555", mon4B, mon4H, "Me gusta montar en bici pero no moverme del sitio." +
-                " ¡El spinning es mi pasión! ¡Es como el sofing pero dando pedales!");
+                " ¡El spinning es mi pasión! ¡Es como el sofing pero dando pedales!", passwordEncoder.encode("monitor"));
         setUserImage(monitor4, "/sample_images/Monitor4.jpg");
         monitor4.setACT1(act4);
 
@@ -124,7 +124,7 @@ public class DataSampleService {
         DateType mon5H = new DateType("2018", "11", "09");
         User monitor5 = new User("Martín", "Martínez Martinez", "11111111E", "martinx3@gmail.com", "C/ Los Cantos Rodaos, 4, 2ºA",
                 "12123", "792332313", mon5B, mon5H, "Realmente no sé qué es el body pump pero suena chulo." +
-                " He oido que se hacen buenas sentadillas profundas.");
+                " He oido que se hacen buenas sentadillas profundas.", passwordEncoder.encode("monitor"));
         setUserImage(monitor5, "/sample_images/Monitor5.jpeg");
         monitor5.setACT1(act2);
 
@@ -132,7 +132,7 @@ public class DataSampleService {
         DateType mon6H = new DateType("2018", "12", "19");
         User monitor6 = new User("Raffaella", "Carra Ca", "11111111F", "carraca@gmail.com", "C/ Las Baldosas Amarillas, 1",
                 "12139", "611422422", mon6B, mon6H, "Te miro y te golpeo." +
-                " Cuidado conmigo.");
+                " Cuidado conmigo.", passwordEncoder.encode("monitor"));
         setUserImage(monitor6, "/sample_images/Monitor6.jpg");
         monitor6.setACT1(act3);
 
