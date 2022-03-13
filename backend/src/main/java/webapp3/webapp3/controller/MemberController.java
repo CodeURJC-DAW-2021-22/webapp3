@@ -89,25 +89,14 @@ public class MemberController {
         }
     }
 
-    @GetMapping("/MEMeditProfile")
-    public String editProfile(Model model) {
-        //model.addAttribute("id", "9");
-        return "USRMEM_02EditProfile";
-    }
-
     @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
         String prueba = request.getUserPrincipal().getName();
         Optional<User> mem = memServ.findByEmail(prueba);
         User user = mem.orElseThrow();
         model.addAttribute("id", user.getId());
-        Optional<User> optMember = memServ.findById(id);
-        if (optMember.isPresent()){
-            model.addAttribute("monitor", optMember.get());
-            return "USRMEM_02EditProfile";
-        } else {
-            return "USRADM_02Profile";
-        }
+        model.addAttribute("member", user);
+        return "USRMEM_02EditProfile";
     }
 
     @PostMapping("/MEMeditProfile/{id}")
