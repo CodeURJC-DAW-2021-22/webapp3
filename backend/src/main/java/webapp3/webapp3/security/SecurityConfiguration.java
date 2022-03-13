@@ -57,13 +57,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/addNewActivity").hasAnyRole("administrator");
         http.authorizeRequests().antMatchers("/editActivity/{id}").hasAnyRole("administrator");
         http.authorizeRequests().antMatchers("/activity/{id}").hasAnyRole("administrator");
+        http.authorizeRequests().antMatchers("/activity/{id}/image").hasAnyRole("administrator");
+        http.authorizeRequests().antMatchers("/activity/delete/{id}").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/monitors").hasAnyRole("administrator");
         http.authorizeRequests().antMatchers("/addNewMonitor").hasAnyRole("administrator");
         http.authorizeRequests().antMatchers("/monitor/{id}").hasAnyRole("administrator");
+        http.authorizeRequests().antMatchers("/monitor/{id}/image").hasAnyRole("administrator");
         http.authorizeRequests().antMatchers("/editMonitor/{id}").hasAnyRole("administrator");
+        http.authorizeRequests().antMatchers("/delete/monitor/{id}").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/clients").hasAnyRole("administrator");
+        http.authorizeRequests().antMatchers("/deleteClients").hasAnyRole("administrator");
 
             //monitor
         http.authorizeRequests().antMatchers("/MONschedule{id}").hasAnyRole("monitor");
