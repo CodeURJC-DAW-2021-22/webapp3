@@ -3,6 +3,7 @@ package webapp3.webapp3.controller;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -50,8 +51,11 @@ public class MemberController {
     public String exercise (Model model, HttpServletRequest request){
         User user = memServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
         List<ExerciseTable> all = exerTabServ.findAll();
+        Page<ExerciseTable> exerTabPage = exerTabServ.findPage(0);
         model.addAttribute("MEMexercises", all);
         model.addAttribute("id", user.getId());
+        model.addAttribute("list", exerTabPage.toList());
+        model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRMEM_01ExerciseTable";
     }
 
@@ -86,6 +90,16 @@ public class MemberController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("Error");
         }
+    }
+
+    //ajax
+    @GetMapping("/MEMexerciseTable/page/{page}")
+    public String getExerciseTablePage(Model model, @PathVariable int page){
+        Page<ExerciseTable> exerTabPage = exerTabServ.findPage(page);
+        model.addAttribute("list", exerTabPage.toList());
+
+        return "USRMEM_01ExerciseTableAJAX";
+
     }
 
     @GetMapping("/MEMeditProfile/{id}")

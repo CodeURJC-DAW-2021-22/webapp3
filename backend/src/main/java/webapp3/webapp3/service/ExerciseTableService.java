@@ -5,6 +5,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.ExerciseTable;
@@ -103,5 +105,10 @@ public class ExerciseTableService {
         }
         baos.close();
         return baos;
+    }
+
+
+    public Page<ExerciseTable> findPage(int page){
+        return exerciseTabRep.findAll(PageRequest.of(page, 8));
     }
 }
