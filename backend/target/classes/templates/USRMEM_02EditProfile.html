@@ -47,15 +47,17 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group row">
-                                                                <label for="fname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="fname" value="{{member.name}}" pattern="[a-zA-Z ]+"/>
+                                                                    <input type="text" class="form-control " value="{{member.name}}"
+                                                                           name="name" pattern="[a-zA-Záéíóúü ]+"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="lname" value="{{member.surname}}" pattern="[a-zA-Z ]+"/>
+                                                                    <input type="text" class="form-control " value="{{member.surname}}"
+                                                                           name="surname" pattern="[a-zA-Záéíóúü ]+"/>
                                                                 </div>
                                                             </div>
                                                             <!--div class="form-group row">
@@ -65,38 +67,39 @@
                                                                 </div>
                                                             </div-->
                                                             <div class="form-group row">
-                                                                <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">DNI</label>
                                                                 <div class="col-sm-9 input-group">
-                                                                    <input type="text" class="form-control" id="NIF" value="{{member.NIF}}" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
+                                                                    <input type="text" class="form-control " value="{{member.NIF}}"
+                                                                           name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="email" value="{{member.email}}" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
+                                                                    <span type="text" class="form-control"
+                                                                          name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+">{{member.email}}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group row">
-                                                                <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
                                                                 <div class="col-sm-9 input-group">
-                                                                    <input type="text" class="form-control" id="datepicker-autoclose" value="{{member.birthday}}" pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
-                                                                    <div class="input-group-append">
-                                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                                    </div>
+                                                                    <input type="date" class="form-control " value="{{member.birthday}}"
+                                                                           name="birthday"
+                                                                           pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="height" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="height" value="{{member.height}}">
+                                                                    <input type="text" class="form-control" id="height" name="height" value="{{member.height}}">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="weight" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="weight" value="{{member.weight}}">
+                                                                    <input type="text" class="form-control" id="weight" name="weight" value="{{member.weight}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,6 +116,8 @@
                                                     <div class="col-md-9">
                                                         <div class="custom-file">
                                                             <input class="text control-label col-form-label" type='file' name='image' accept=".jpg, .jpeg"/>
+                                                            <img src="/monitor/{{id}}/image" width="100%" alt="user "
+                                                            style="text-align: center;;"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -127,21 +132,24 @@
                                                     <div class="row">
                                                         <div class="col-md-9">
                                                             <div class="form-group row">
-                                                                <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="street" value="{{member.address}}" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
+                                                                    <input type="text" class="form-control " value="{{member.address}}"
+                                                                           name="address" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="postalCode" value="{{member.postalCode}}" pattern="[0-9]{5}"/>>
+                                                                    <input type="text" class="form-control " value="{{member.postalCode}}"
+                                                                           name="postalCode" pattern="[0-9]{5}"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                                <label class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
                                                                 <div class="col-sm-9">
-                                                                    <input type="text" class="form-control" id="phone" value="{{member.phone}}" pattern="(6|7){1}[0-9]{8}"/>
+                                                                    <input type="text" class="form-control " value="{{member.phone}}"
+                                                                           name="phone" pattern="(6|7){1}[0-9]{8}"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -157,7 +165,7 @@
                                                     <h5 class="card-subtitle">Información Médica</h5>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
-                                                            <textarea type="text" class="form-control" id="cono1" >{{member.medicalInfo}}</textarea>
+                                                            <textarea type="text" class="form-control" id="cono1" name="additionalInfo">{{member.medicalInfo}}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -170,7 +178,7 @@
                                 <div class="col-12 buttonsAddActivity">
                                     <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit"
                                            value="Guardar cambios"/>
-                                    <input type="hidden" name="_csrf" value="{{token}}" />
+                                    <input type="hidden" name="_csrf" value="{{token}}"/>
                                     <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button"
                                             onclick='location.href="MEMprofile/{{id}}"'>Cancelar
                                     </button>

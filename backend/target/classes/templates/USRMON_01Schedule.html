@@ -21,6 +21,7 @@
         <!-- ============================================================== -->
 
         <div class="container-fluid">
+            {{#getACT1}}
             <h1 style="color: black;">
                 {{name}}
             </h1>
@@ -95,6 +96,13 @@
                     <img src="/MONschedule/image">
                 </div>
             </div>
+            {{/getACT1}}
+            {{^getACT1}}
+            <h1 style="color: black;">
+                No hay actividades disponibles
+            </h1>
+            {{/getACT1}}
+
         </div>
 
         <!-- ============================================================== -->
