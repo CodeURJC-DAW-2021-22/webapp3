@@ -523,12 +523,6 @@ public class DataSampleService {
         exercise.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
 
-    public void setUserImage(ExerciseTable exerciseTable, String classpathResource) throws IOException {
-
-        Resource image = new ClassPathResource(classpathResource);
-        exerciseTable.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-    }
-
     public void setExerciseTableImage(ExerciseTable exerciseTab, String classpathResource) throws IOException {
 
         Resource image = new ClassPathResource(classpathResource);
