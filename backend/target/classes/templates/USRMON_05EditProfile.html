@@ -32,12 +32,12 @@
                                 <h4 class="card-title text">Usuario</h4>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn default btn-outline el-link selector" type="button"><a
-                                        href="/editProfile">Resetear</a></button>
-                                <button class="btn default btn-outline el-link selector" type="button"><a
-                                        href="/editProfile">Cancelar</a></button>
-                                <button class="btn default btn-outline el-link selector" type="button"><a
-                                        href="/editProfile">Guardar</a></button>
+                                <button class="btn default btn-outline el-link selector colorWhiteText" type="button"
+                                        onclick="location.href='/MONprofile/{{id}}'">Cancelar
+                                </button>
+                                <input class="btn default btn-outline el-link selector colorWhiteText" type="submit"
+                                       value="Guardar"/>
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
                             </div>
                         </div>
 
@@ -49,8 +49,8 @@
                                         <div class="row">
                                             <div class="col-md-1">
                                                 <div class="card align-items-center">
-                                                    <div class="p-2"><img src="assets/images/users/1.jpg" alt="user"
-                                                                          width="80" class="rounded-circle"></div>
+                                                    <div class="p-2"><img src="/MON/{{id}}/image" alt="user" width="80"
+                                                                          class="rounded-circle"></div>
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
@@ -59,7 +59,7 @@
                                                            class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="fname"
-                                                               placeholder="Nombre" pattern="[a-zA-Z ]+"/>
+                                                               value="{{monitor.name}}" pattern="[a-zA-Z ]+"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -67,33 +67,22 @@
                                                            class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="lname"
-                                                               placeholder="Apellidos" pattern="[a-zA-Z ]+"/>
+                                                               value="{{monitor.surname}}" pattern="[a-zA-Z ]+"/>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label for="user"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Nombre
-                                                        de usuario</label>
+                                                <!--div class="form-group row">
+                                                    <label for="password" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="user"
-                                                               placeholder="@NombreUsuario" pattern="\@[a-zA-Z ]+"/>
+                                                        <input type="password" class="form-control" id="password" placeholder="Contraseña"/>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="password"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="password" class="form-control" id="password"
-                                                               placeholder="Contraseña"/>
-                                                    </div>
-                                                </div>
+                                                </div-->
                                                 <div class="form-group row">
                                                     <label for="email"
                                                            class="col-sm-3 text-right text control-label col-form-label">Correo
                                                         Electrónico</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="email"
-                                                               placeholder="Correo Electrónico"
+                                                               value="{{monitor.email}}"
                                                                pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+"/>
                                                     </div>
                                                 </div>
@@ -104,7 +93,7 @@
                                                            class="col-sm-3 text-right text control-label col-form-label">DNI</label>
                                                     <div class="col-sm-9 input-group">
                                                         <input type="text" class="form-control" id="NIF"
-                                                               placeholder="0000000-A"
+                                                               value="{{monitor.NIF}}"
                                                                pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
                                                     </div>
                                                 </div>
@@ -114,7 +103,7 @@
                                                         de nacimiento</label>
                                                     <div class="col-sm-9 input-group">
                                                         <input type="text" class="form-control"
-                                                               id="datepicker-autoclose" placeholder="dd/mm/yyyy"
+                                                               id="datepicker-autoclose" value="{{monitor.birthday}}"
                                                                pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i
@@ -123,25 +112,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
-                                                    <div class="col-sm-9 ">
-                                                        <select class="select2 form-control custom-select"
-                                                                style="width: 100%; height:36px;">
-                                                            <option>Mujer</option>
-                                                            <optgroup label="genre">
-                                                                <option value="H">Hombre</option>
-                                                                <option value="M">Mujer</option>
-                                                                <option value="B">No contesto</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label for="height"
                                                            class="col-sm-3 text-right text control-label col-form-label">Altura</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="height"
-                                                               placeholder="Ej. 180(cm)">
+                                                               value="{{monitor.height}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -149,7 +124,7 @@
                                                            class="col-sm-3 text-right text control-label col-form-label">Peso</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="weight"
-                                                               placeholder="Ej. 60(kg)">
+                                                               value="{{monitor.weight}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,8 +164,8 @@
                                                            class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="street"
-                                                               placeholder="Domicilio"
-                                                               pattern="[a-zA-Z,./ 0-9áéíóúü]+"/>
+                                                               value="{{monitor.address}}"
+                                                               pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -199,7 +174,7 @@
                                                         Postal</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="postalCode"
-                                                               placeholder="XXXXX" pattern="[0-9]{5}"/>>
+                                                               value="{{monitor.postalCode}}" pattern="[0-9]{5}"/>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,17 +185,7 @@
                                                         de contacto</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control" id="phone"
-                                                               placeholder="+XX-XXX XX XX XX"
-                                                               pattern="(6|7){1}[0-9]{8}"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="creditCard"
-                                                           class="col-sm-3 text-right text control-label col-form-label">Tarjeta
-                                                        Bancaria</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="creditCard"
-                                                               placeholder="000-000-000">
+                                                               value="{{monitor.phone}}" pattern="(6|7){1}[0-9]{8}"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,8 +204,7 @@
                                                    class="col-sm-3 text-right text control-label col-form-label">Información
                                                 médica adicional</label>
                                             <div class="col-sm-9">
-                                                <textarea type="text" class="form-control" id="cono1"
-                                                          placeholder="Indicar alergias a tratamientos o lesiones crónicas"></textarea>
+                                                <textarea type="text" class="form-control" id="cono1">{{monitor.medicalInfo}}</textarea>
                                             </div>
                                         </div>
                                     </div>

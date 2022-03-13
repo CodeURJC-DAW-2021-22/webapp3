@@ -48,7 +48,8 @@ public class MonitorController {
     //schedule page
     @GetMapping("/MONschedule")
     public String schedule(Model model, HttpServletRequest request) {
-        Optional<User> user = monServ.findByName(request.getUserPrincipal().getName());
+        String name  = request.getUserPrincipal().getName();
+        Optional<User> user = monServ.findByEmail(name);
         Activity act =user.get().getACT1();
 
         model.addAttribute("name", act.getName());
@@ -76,16 +77,19 @@ public class MonitorController {
         return "USRMON_01Schedule";
     }
 
-    @GetMapping("/MONschedule/{id}/image")
-    public ResponseEntity<Object> scheduleImage(@PathVariable long id) throws SQLException {
-        Optional<Activity> actividad = actServ.findById(id);
+    @GetMapping("/MONschedule/image")
+    public ResponseEntity<Object> scheduleImage(HttpServletRequest request) throws SQLException {
+        String name  = request.getUserPrincipal().getName();
+        Optional<User> user = monServ.findByEmail(name);
 
-        if (actividad.isPresent() && actividad.get().getImage() != null) {
+        Activity actividad =user.get().getACT1();
 
-            Resource file = new InputStreamResource(actividad.get().getImage().getBinaryStream());
+        if (actividad.getImage() != null) {
+
+            Resource file = new InputStreamResource(actividad.getImage().getBinaryStream());
 
             return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-                    .contentLength(actividad.get().getImage().length()).body(file);
+                    .contentLength(actividad.getImage().length()).body(file);
 
         } else {
             return ResponseEntity.notFound().build();
@@ -109,8 +113,8 @@ public class MonitorController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MONprofile/{id}")
-    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
+    @GetMapping("/MONprofile")
+    public String profile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
         User user = mon.orElseThrow();
