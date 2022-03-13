@@ -23,7 +23,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
@@ -113,30 +112,28 @@ public class MemberController {
     }
 
     @PostMapping("/MEMeditProfile/{id}")
-    public String addEditedProle(Model model, @PathVariable Long id,
+    public String addEditedProfile(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
-                                 @RequestParam String email,
                                  @RequestParam String NIF,
                                  @RequestParam String birthday,
-                                 @RequestParam int height,
-                                 @RequestParam Integer weight,
+                                 @RequestParam String height,
+                                 @RequestParam String weight,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
                                  @RequestParam String additionalInfo,
-                                 @RequestParam("image") MultipartFile image) throws IOException {
+                                 @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         Optional<User> mem = memServ.findById(id);
         User member = mem.orElseThrow();
         member.setName(name);
         member.setSurname(surname);
-        member.setEmail(email);
         member.setNIF(NIF);
         member.getBirthday().setDay(birthday.substring(8, 10));
         member.getBirthday().setMonth(birthday.substring(5, 7));
         member.getBirthday().setYear(birthday.substring(0,4));
-        member.setHeight(height);
-        member.setWeight(weight);
+        member.setHeight(Integer.parseInt(height));
+        member.setWeight(Integer.parseInt(weight));
         member.setAddress(address);
         member.setPostalCode(postalCode);
         member.setPhone(phone);
