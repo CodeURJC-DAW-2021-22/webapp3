@@ -1,4 +1,5 @@
-{{>USRMON_Header}}
+{{#mon}}{{>USRMON_Header}}{{/mon}}
+{{^mon}}{{>USRMEM_header}}{{/mon}}
 <!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
@@ -106,7 +107,8 @@
                         </div>
                         <div class="col-lg-3 col-md-12 col-12 image ">
                             <div class="el-card-avatar el-overlay-1 ">
-                                <img src="/MONactivity/{{activity.id}}/image" width="100%"  alt="user " />
+                                {{#mon}}<img src="/MONactivity/{{activity.id}}/image" width="100%"  alt="user " />{{/mon}}
+                                {{^mon}}<img src="/MEMactivity/{{activity.id}}/image" width="100%"  alt="user " />{{/mon}}
                             </div>
                         </div>
                     </div>
@@ -125,7 +127,7 @@
                 </div>
                 <div class="row el-element-overlay">
                     <div class="col-12 buttonsAddActivity">
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="/MONactivities">Cancelar</a></button>
+                        <button class="btn default btn-outline el-link selector2" type="button">{{#mon}}<a href="/MONactivities">{{/mon}}{{^mon}}<a href="/MEMactivities">{{/mon}}Cancelar</a></button>
                     </div>
                 </div>
             </div>
@@ -147,7 +149,8 @@
     <!-- ============================================================== -->
     <!-- footer -->
     <!-- ============================================================== -->
-    {{>USRMON_Footer}}
+    {{#mon}}{{>USRMON_Footer}}{{/mon}}
+    {{^mon}}{{>USRMEM_footer}}{{/mon}}
     <!-- ============================================================== -->
     <!-- End footer -->
     <!-- ============================================================== -->

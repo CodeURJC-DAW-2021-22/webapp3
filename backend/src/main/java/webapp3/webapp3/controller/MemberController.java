@@ -215,4 +215,16 @@ public class MemberController {
         usExServ.save(new UserExerciseTable(memServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow(), exerTabServ.findById(id).orElseThrow()));
         return "redirect:/MEMexercise";
     }
+
+    @GetMapping("/MEMseeActivityInfo/{id}")
+    public String seeActivityInfo(Model model, @PathVariable long id, HttpServletRequest request){
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(emailName);
+        User user = mem.orElseThrow();
+        model.addAttribute("id", user.getId());
+        Optional<Activity> activity = actServ.findById(id);
+        model.addAttribute("mon", false);
+        model.addAttribute("activity", activity.orElseThrow());
+        return "USRMON_08SeeActivityInfo";
+    }
 }

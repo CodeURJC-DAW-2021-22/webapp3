@@ -21,6 +21,7 @@ import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.ActivityService;
 import webapp3.webapp3.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -368,4 +369,19 @@ public class AdminController {
         return "redirect:/clients";
     }
 
+    @GetMapping("/adminimage")
+    public ResponseEntity<Object> downloadAdministratorImage(HttpServletRequest request) throws SQLException{
+        Optional<User> optAdm = userServ.findByEmail(request.getUserPrincipal().getName());
+
+        if (optAdm.isPresent()){
+            User monitor = optAdm.get();
+            if (monitor.getImage() != null){
+                Resource file = new InputStreamResource(monitor.getImage().getBinaryStream());
+
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                        .contentLength(monitor.getImage().length()).body(file);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
 }

@@ -349,6 +349,7 @@ public class MonitorController {
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         Optional<Activity> activity = actServ.findById(id);
         if (activity.isPresent()) {
+            model.addAttribute("mon", true);
             model.addAttribute("activity", activity.get());
             return "USRMON_08SeeActivityInfo";
         } else

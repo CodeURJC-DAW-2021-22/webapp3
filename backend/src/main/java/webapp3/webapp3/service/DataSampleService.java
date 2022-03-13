@@ -41,7 +41,7 @@ public class DataSampleService {
         DateType adminBirthday = new DateType("2018","02","10");
         User admin = new User("admin", "admin", "00000000A", "admin@admin.com", "Gym Street, 1", "12300", adminBirthday,
                 "123456789", passwordEncoder.encode("admin"));
-        setUserImage(admin, "/sample_images/zumba.jpeg");
+        setUserImage(admin, "/sample_images/admin.jpeg");
         userRep.save(admin);
 
         Activity act1 = new Activity("Zumba", 2200, "Zumba es un programa de ejercicios que combina música latina e internacional con movimientos de baile." +
