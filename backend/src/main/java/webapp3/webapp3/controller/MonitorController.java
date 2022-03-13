@@ -48,9 +48,9 @@ public class MonitorController {
     //schedule page
     @GetMapping("/MONschedule")
     public String schedule(Model model, HttpServletRequest request) {
-        String name  = request.getUserPrincipal().getName();
+        String name = request.getUserPrincipal().getName();
         Optional<User> user = monServ.findByEmail(name);
-        Activity act =user.get().getACT1();
+        Activity act = user.get().getACT1();
 
         model.addAttribute("name", act.getName());
         model.addAttribute("description", act.getDescription());
@@ -79,10 +79,10 @@ public class MonitorController {
 
     @GetMapping("/MONschedule/image")
     public ResponseEntity<Object> scheduleImage(HttpServletRequest request) throws SQLException {
-        String name  = request.getUserPrincipal().getName();
+        String name = request.getUserPrincipal().getName();
         Optional<User> user = monServ.findByEmail(name);
 
-        Activity actividad =user.get().getACT1();
+        Activity actividad = user.get().getACT1();
 
         if (actividad.getImage() != null) {
 
@@ -98,12 +98,12 @@ public class MonitorController {
 
     //profile page
     @GetMapping("/MON/{id}/image")
-    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException{
+    public ResponseEntity<Object> downloadMemberImage(@PathVariable long id) throws SQLException {
         Optional<User> optMon = monServ.findById(id);
 
-        if (optMon.isPresent()){
+        if (optMon.isPresent()) {
             User monitor = optMon.get();
-            if (monitor.getImage() != null){
+            if (monitor.getImage() != null) {
                 Resource file = new InputStreamResource(monitor.getImage().getBinaryStream());
 
                 return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
@@ -113,8 +113,8 @@ public class MonitorController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/MONprofile")
-    public String profile(Model model, HttpServletRequest request) {
+    @GetMapping("/MONprofile/{id}")
+    public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
         User user = mon.orElseThrow();
@@ -125,7 +125,7 @@ public class MonitorController {
 
     //edit profile page
     @GetMapping("/MONeditProfile/{id}")
-    public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
+    public String editProfile(Model model, @PathVariable Long id, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
         User user = mon.orElseThrow();
@@ -135,18 +135,17 @@ public class MonitorController {
     }
 
     @PostMapping("/MONeditProfile/{id}")
-    public String addEditedProle(Model model, @PathVariable Long id,
+    public String addEditedProfile(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
                                  @RequestParam String email,
                                  @RequestParam String NIF,
                                  @RequestParam String birthday,
-                                 @RequestParam int height,
-                                 @RequestParam Integer weight,
+                                 @RequestParam String hiring,
                                  @RequestParam String address,
                                  @RequestParam String postalCode,
                                  @RequestParam String phone,
-                                 @RequestParam String additionalInfo,
+                                 @RequestParam String description,
                                  @RequestParam("image") MultipartFile image) throws IOException {
         Optional<User> mon = monServ.findById(id);
         User monitor = mon.orElseThrow();
@@ -156,13 +155,14 @@ public class MonitorController {
         monitor.setNIF(NIF);
         monitor.getBirthday().setDay(birthday.substring(8, 10));
         monitor.getBirthday().setMonth(birthday.substring(5, 7));
-        monitor.getBirthday().setYear(birthday.substring(0,4));
-        monitor.setHeight(height);
-        monitor.setWeight(weight);
+        monitor.getBirthday().setYear(birthday.substring(0, 4));
+        monitor.getHiringDate().setDay(hiring.substring(8, 10));
+        monitor.getHiringDate().setMonth(hiring.substring(5, 7));
+        monitor.getHiringDate().setYear(hiring.substring(0, 4));
         monitor.setAddress(address);
         monitor.setPostalCode(postalCode);
         monitor.setPhone(phone);
-        monitor.setMedicalInfo(additionalInfo);
+        monitor.setDescription(description);
         if (!image.isEmpty()) {
             monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
         }
@@ -179,10 +179,10 @@ public class MonitorController {
     }
 
     @GetMapping("/MONexerciseTable/{id}")
-    public String seeExerciseTableInfo(Model model, @PathVariable long id){
+    public String seeExerciseTableInfo(Model model, @PathVariable long id) {
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
 
-        if (exerciseTable.isPresent()){
+        if (exerciseTable.isPresent()) {
             model.addAttribute("exerciseTable", exerciseTable.get());
             return "USRMON_09SeeExerciseTableInfo";
         } else
@@ -206,17 +206,17 @@ public class MonitorController {
 
     //add exercise table page
     @GetMapping("/MONaddNewExerciseTable")
-    public String newExerciseTable(Model model){
+    public String newExerciseTable(Model model) {
         return "USRMON_06AddExerciseTable";
     }
 
     // FALTA
     @PostMapping("/MONaddNewExerciseTable")
     public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String room,
-                                 @RequestParam int price, @RequestParam String description,
-                                 @RequestParam int capacity, @RequestParam String monday,
-                                 @RequestParam String tuesday, @RequestParam String wednesday,
-                                 @RequestParam String thursday, @RequestParam String friday, @RequestParam("image") MultipartFile image) throws IOException {
+                                      @RequestParam int price, @RequestParam String description,
+                                      @RequestParam int capacity, @RequestParam String monday,
+                                      @RequestParam String tuesday, @RequestParam String wednesday,
+                                      @RequestParam String thursday, @RequestParam String friday, @RequestParam("image") MultipartFile image) throws IOException {
         Activity activity = new Activity(name, price, description, room, capacity, monday, tuesday, wednesday, thursday, friday);
         if (image.isEmpty()) {
             //Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedActivity.jpeg");
@@ -231,10 +231,10 @@ public class MonitorController {
 
     //edit exercise table
     @GetMapping("/MONeditExerciseTable/{id}")
-    public String editExerciseTable(Model model, @PathVariable Long id){
+    public String editExerciseTable(Model model, @PathVariable Long id) {
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
         String htmlFile;
-        if (exerciseTable.isPresent()){
+        if (exerciseTable.isPresent()) {
             model.addAttribute("exerciseTable", exerciseTable.get());
             htmlFile = "USRMON_10EditExerciseTable";
         } else {
@@ -250,10 +250,10 @@ public class MonitorController {
                                     @RequestParam int capacity, @RequestParam String monday,
                                     @RequestParam String tuesday, @RequestParam String wednesday,
                                     @RequestParam String thursday, @RequestParam String friday, @PathVariable Long id,
-                                    @RequestParam("image") MultipartFile image) throws IOException{
+                                    @RequestParam("image") MultipartFile image) throws IOException {
         Optional<Activity> act = actServ.findById(id);
         String htmlFile;
-        if (act.isPresent()){
+        if (act.isPresent()) {
             Activity activity = act.get();
             activity.setName(name);
             activity.setRoom(room);
@@ -267,7 +267,7 @@ public class MonitorController {
             activity.setFriday(friday);
             if (!image.isEmpty())
                 //activity.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
-            actServ.save(activity);
+                actServ.save(activity);
             htmlFile = "redirect:/activities";
         } else {
             //Gestionar error en el envío del formulario
@@ -278,7 +278,7 @@ public class MonitorController {
 
     // delete exercise table page
     @GetMapping("/MONexerciseTable/delete/{id}")
-    public String deleteExerciseTable(Model model, @PathVariable long id){
+    public String deleteExerciseTable(Model model, @PathVariable long id) {
         Optional<ExerciseTable> exerciseTable = exerciseTableServ.findById(id);
 
         if (exerciseTable.isPresent()) {
