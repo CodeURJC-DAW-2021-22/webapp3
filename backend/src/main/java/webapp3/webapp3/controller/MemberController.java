@@ -1,5 +1,6 @@
 package webapp3.webapp3.controller;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -48,9 +49,7 @@ public class MemberController {
 
     @GetMapping("/MEMexercise")
     public String exercise (Model model, HttpServletRequest request){
-        String prueba = request.getUserPrincipal().getName();
-        Optional<User> mem = memServ.findByEmail(prueba);
-        User user = mem.orElseThrow();
+        User user = memServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
         List<ExerciseTable> all = exerTabServ.findAll();
         model.addAttribute("MEMexercises", all);
         model.addAttribute("id", user.getId());
@@ -75,8 +74,8 @@ public class MemberController {
     @GetMapping("/MEMexerciseTable/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id, HttpServletRequest request){
         try {
-            String prueba = request.getUserPrincipal().getName();
-            Optional<User> mem = memServ.findByEmail(prueba);
+            String emailName = request.getUserPrincipal().getName();
+            Optional<User> mem = memServ.findByEmail(emailName);
             User user = mem.orElseThrow();
             ByteArrayOutputStream baos = exerTabServ.generatePDF(user.getId(), id);
             return ResponseEntity
@@ -91,8 +90,8 @@ public class MemberController {
 
     @GetMapping("/MEMeditProfile/{id}")
     public String editProfile (Model model, @PathVariable Long id, HttpServletRequest request){
-        String prueba = request.getUserPrincipal().getName();
-        Optional<User> mem = memServ.findByEmail(prueba);
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
         model.addAttribute("id", user.getId());
         model.addAttribute("member", user);
@@ -103,10 +102,9 @@ public class MemberController {
     public String addEditedProle(Model model, @PathVariable Long id,
                                  @RequestParam String name,
                                  @RequestParam String surname,
-                                 @RequestParam String password,
                                  @RequestParam String email,
                                  @RequestParam String NIF,
-                                 @RequestParam DateType birthday,
+                                 @RequestParam String birthday,
                                  @RequestParam int height,
                                  @RequestParam Integer weight,
                                  @RequestParam String address,
@@ -115,29 +113,25 @@ public class MemberController {
                                  @RequestParam String additionalInfo,
                                  @RequestParam("image") MultipartFile image) throws IOException {
         Optional<User> mem = memServ.findById(id);
-        String htmlFile;
-        if (mem.isPresent()){
-            User member = mem.get();
-            member.setName(name);
-            member.setSurname(surname);
-            member.setEncodedPassword(password);
-            member.setEmail(email);
-            member.setNIF(NIF);
-            member.setBirthday(birthday);
-            member.setHeight(height);
-            member.setWeight(weight);
-            member.setAddress(address);
-            member.setPostalCode(postalCode);
-            member.setPhone(phone);
-            member.setMedicalInfo(additionalInfo);
-            //member.setImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
-            memServ.save(member);
-            htmlFile = "redirect:/member";
-        } else {
-            //Form error
-            htmlFile = "error-404";
+        User member = mem.orElseThrow();
+        member.setName(name);
+        member.setSurname(surname);
+        member.setEmail(email);
+        member.setNIF(NIF);
+        member.getBirthday().setDay(birthday.substring(8, 10));
+        member.getBirthday().setMonth(birthday.substring(5, 7));
+        member.getBirthday().setYear(birthday.substring(0,4));
+        member.setHeight(height);
+        member.setWeight(weight);
+        member.setAddress(address);
+        member.setPostalCode(postalCode);
+        member.setPhone(phone);
+        member.setMedicalInfo(additionalInfo);
+        if (!image.isEmpty()) {
+            member.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
         }
-        return htmlFile;
+        memServ.save(member);
+        return "redirect:/MEMprofile/{id}";
     }
 
     @GetMapping("/MEM/{id}/image")
@@ -158,8 +152,8 @@ public class MemberController {
 
     @GetMapping("/MEMprofile/{id}")
     public String profile(Model model, @PathVariable long id, HttpServletRequest request) {
-        String prueba = request.getUserPrincipal().getName();
-        Optional<User> mem = memServ.findByEmail(prueba);
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
         model.addAttribute("id", user.getId());
         model.addAttribute("member", user);
@@ -168,8 +162,8 @@ public class MemberController {
 
     @GetMapping("/MEMstatistics")
     public String statistics(Model model, HttpServletRequest request) {
-        String prueba = request.getUserPrincipal().getName();
-        Optional<User> mem = memServ.findByEmail(prueba);
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
         model.addAttribute("id", user.getId());
         int [] clients = new int [12];
@@ -187,8 +181,8 @@ public class MemberController {
 
     @GetMapping("/MEMactivities")
     public String activities(Model model, HttpServletRequest request) {
-        String prueba = request.getUserPrincipal().getName();
-        Optional<User> mem = memServ.findByEmail(prueba);
+        String emailName = request.getUserPrincipal().getName();
+        Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
         model.addAttribute("id", user.getId());
         List<Activity> all = actServ.findAll();

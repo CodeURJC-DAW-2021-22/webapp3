@@ -32,9 +32,9 @@
                                         <h4 class="card-title text">Usuario</h4>
                                     </div>
                                     <div class="col-md-6">
-                                        <button class="btn default btn-outline el-link selector" type="button"><a href="/editProfile">Resetear</a></button>
-                                        <button class="btn default btn-outline el-link selector" type="button"><a href="/editProfile">Cancelar</a></button>
-                                        <button class="btn default btn-outline el-link selector" type="button"><a href="/editProfile">Guardar</a></button>
+                                        <button class="btn default btn-outline el-link selector colorWhiteText" type="button" onclick="location.href='/MEMprofile/{{id}}'">Cancelar</button>
+                                        <input class="btn default btn-outline el-link selector colorWhiteText" type="submit" value="Guardar"/>
+                                        <input type="hidden" name="_csrf" value="{{token}}"/>
                                     </div>
                                 </div>
 
