@@ -1,26 +1,21 @@
 package webapp3.webapp3.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.User;
+
 import webapp3.webapp3.repository.ExerciseRepository;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+
 
 @Service
 public class ExerciseService {
 
     @Autowired
     private ExerciseRepository repository;
-
-    @Autowired
-    private UserService memberService;
 
     public Optional<Exercise> findById(long id){
         return repository.findById(id);
@@ -41,8 +36,5 @@ public class ExerciseService {
     public void delete(long id) {
         repository.deleteById(id);
     }
-
-
-
 
 }

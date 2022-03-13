@@ -4,6 +4,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import webapp3.webapp3.model.*;
@@ -20,6 +21,9 @@ import java.io.IOException;
 public class DataSampleService {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private ActivityRepository actRep;
 
     @Autowired
@@ -33,6 +37,13 @@ public class DataSampleService {
 
     @PostConstruct
     public void init() throws IOException {
+
+        DateType adminBirthday = new DateType("0000","00","00");
+        User admin = new User("admin", "admin", "00000000A", "admin@admin.com", passwordEncoder.encode("admin"),"admin", "00000", adminBirthday,
+                "123456789", "administrator", 11, 11, "soy admin");
+        setUserImage(admin, "/sample_images/zumba.jpeg");
+        userRep.save(admin);
+
         Activity act1 = new Activity("Zumba", 2200, "Zumba es un programa de ejercicios que combina música latina e internacional con movimientos de baile." +
                 " Las rutinas de Zumba incorporan el entrenamiento por intervalos en el que se alternan ritmos rápidos y lentos para ayudar a mejorar el estado cardiovascular.",
                 "Sala Actividades 1", 12, "12:00", "11:00", "10:00", "9:00", "10:00");
@@ -95,7 +106,7 @@ public class DataSampleService {
         DateType mon1H = new DateType("2018", "11", "04");
         User monitor1 = new User("Jose Luis", "García Hernández", "11111111A", "joselu@gmail.com", "C/ Alfonso Guerra, 2, 3ºA",
                 "12121", "686666888", mon1B, mon1H,  "Me gusta el deporte desde que nací." +
-                " Mi objetivo en la vida es zumbar como nadie");
+                " Mi objetivo en la vida es zumbar como nadie", passwordEncoder.encode("monitor"));
         setUserImage(monitor1, "/sample_images/Monitor1.jpeg");
         monitor1.setACT1(act1);
 
@@ -104,7 +115,7 @@ public class DataSampleService {
         DateType mon2H = new DateType("2018", "11", "08");
         User monitor2 = new User("Óscar", "Tesonero Minero", "11111111B", "tesomin@gmail.com", "C/ Los Cantos Rodaos, 7, 1ºD",
                 "12123", "711233233", mon2B, mon2H, "No me gusta el deporte, por eso hago yoga." +
-                " Busco la paz mental a base del estiramiento de dedo meñique.");
+                " Busco la paz mental a base del estiramiento de dedo meñique.", passwordEncoder.encode("monitor"));
         setUserImage(monitor2, "/sample_images/Monitor2.jpeg");
         monitor2.setACT1(act5);
 
@@ -112,7 +123,7 @@ public class DataSampleService {
         DateType mon3H = new DateType("2018", "10", "29");
         User monitor3 = new User("Sofía", "Borrón Hierro", "11111111C", "borronhierro@gmail.com", "C/ Los Azules, 12, Bajo D",
                 "12129", "611956456", mon3B, mon3H, "Salta, salta conmigo." +
-                " Digo salta, salta conmigo.");
+                " Digo salta, salta conmigo.", passwordEncoder.encode("monitor"));
         setUserImage(monitor3, "/sample_images/Monitor3.jpeg");
         monitor3.setACT1(act8);
 
@@ -120,7 +131,7 @@ public class DataSampleService {
         DateType mon4H = new DateType("2019", "01", "02");
         User monitor4 = new User("Laura", "García Rodríguez", "11111111D", "lagarroz@gmail.com", "C/ Guerra De La Independencia, 10, 3ºC",
                 "12121", "689444555", mon4B, mon4H, "Me gusta montar en bici pero no moverme del sitio." +
-                " ¡El spinning es mi pasión! ¡Es como el sofing pero dando pedales!");
+                " ¡El spinning es mi pasión! ¡Es como el sofing pero dando pedales!", passwordEncoder.encode("monitor"));
         setUserImage(monitor4, "/sample_images/Monitor4.jpg");
         monitor4.setACT1(act4);
 
@@ -128,7 +139,7 @@ public class DataSampleService {
         DateType mon5H = new DateType("2018", "11", "09");
         User monitor5 = new User("Martín", "Martínez Martinez", "11111111E", "martinx3@gmail.com", "C/ Los Cantos Rodaos, 4, 2ºA",
                 "12123", "792332313", mon5B, mon5H, "Realmente no sé qué es el body pump pero suena chulo." +
-                " He oido que se hacen buenas sentadillas profundas.");
+                " He oido que se hacen buenas sentadillas profundas.", passwordEncoder.encode("monitor"));
         setUserImage(monitor5, "/sample_images/Monitor5.jpeg");
         monitor5.setACT1(act2);
 
@@ -136,7 +147,7 @@ public class DataSampleService {
         DateType mon6H = new DateType("2018", "12", "19");
         User monitor6 = new User("Raffaella", "Carra Ca", "11111111F", "carraca@gmail.com", "C/ Las Baldosas Amarillas, 1",
                 "12139", "611422422", mon6B, mon6H, "Te miro y te golpeo." +
-                " Cuidado conmigo.");
+                " Cuidado conmigo.", passwordEncoder.encode("monitor"));
         setUserImage(monitor6, "/sample_images/Monitor6.jpg");
         monitor6.setACT1(act3);
 
@@ -301,9 +312,10 @@ public class DataSampleService {
 
         DateType cl2 = new DateType("1985", "02", "05");
         DateType ed2 = new DateType("2020", "07", "14");
-        User client2 = new User("Cristiano", "Ronaldo Dos Santos Aveiro", "22222222B", "suuu@gmail.com", "C/ G.O.A.T. , 12",
-                "33246", cl2, "621144674", ed2, 184, 83000, "IB12 9876 1230 1212",
+        User client2 = new User("Cristiano", "Ronaldo Dos Santos Aveiro", "22222222B", "suuu@gmail.com", passwordEncoder.encode("password"),"C/ G.O.A.T. , 12",
+                "33246", cl2, "621144674", "member", 184, 83000,
                 "Tengo alergia a Messi");
+
         setUserImage(client2, "/sample_images/Client2.jpeg");
 
         DateType cl3 = new DateType("2000", "04", "12");
@@ -333,21 +345,33 @@ public class DataSampleService {
         User client6= new User("Aitor", "Menta Irrállos", "22222222F", "tormentas@gmail.com", "C/ Tres Aguas, 12, 3ºC",
                 "41210", cl6, "666666666", ed6, 196, 100, "ES10 1010 1010 1010", "Alergia al deporte");
         setUserImage(client6, "/sample_images/Client6.jpeg");
-        client5.setACT1(act2);
-        client5.setACT2(act5);
+        client6.setACT1(act2);
+        client6.setACT2(act5);
 
         DateType cl7 = new DateType("1986", "05", "02");
         DateType ed7 = new DateType("2019", "04", "13");
         User client7= new User("Nadie", "Tyson Manson", "22222222G", "n0b0dy@gmail.com", "C/ Tres Aguas, 2, 6ºD",
                 "41210", cl7, "760000001", ed7, 76, 35, "ES59 5059 5150 5315", "Ninguna alergia conocida.");
         setUserImage(client7, "/sample_images/Client7.jpeg");
-        client5.setACT1(act3);
-        client5.setACT2(act1);
+        client7.setACT1(act3);
+        client7.setACT2(act1);
 
         Exercise ex1 = new Exercise("Curl de biceps alterno", "Coge una mancuerna en cada mano y dobla el brazo fijo 90 grados.", "Mancuernas.");
         Exercise ex2 = new Exercise("Biceps con barra Z", "Apoyate en el banco y haz 15 repeticiones agarrando la barra Z.", "Barra Z y discos.");
+        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
+                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
+        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
+                "Barra Z y discos.");
+        Exercise ex5 = new Exercise("Abdominales", "Apoya la espalda en el banco y haz 15 repeticiones de abdominal alto y completo. Con una pesa de 5 kilos apoyada en la tripa.",
+                "Pesa de 5 kilos.");
+        Exercise ex6 = new Exercise("Lumbares", "Tumbate boca arriba en el suelo y haz lumbares",
+                "Tu propio cuerpo");
         exeRep.save(ex1);
         exeRep.save(ex2);
+        exeRep.save(ex3);
+        exeRep.save(ex4);
+        exeRep.save(ex5);
+        exeRep.save(ex6);
 
         ExerciseTable exerciseTable1 = new ExerciseTable("Tabla 1", "Tabla de entrenamiento de biceps.");
         exerciseTable1.getExercises().add(ex1);
@@ -356,12 +380,6 @@ public class DataSampleService {
         setExerciseTableImage(exerciseTable1, "/sample_images/gallery-10.jpeg");
         exerciseTableRep.save(exerciseTable1);
 
-        Exercise ex3 = new Exercise("Extensión de triceps", "Coge una mancuerna en una mano y dobla el brazo fijo 90 grados por detrás de la cabeza." +
-                " Estira completamente el brazo sujetando el codo 15 veces.", "Mancuernas.");
-        Exercise ex4 = new Exercise("Triceps con barra Z", "Apoya la espalda en el banco y haz 15 repeticiones de extensiones agarrando la barra Z.",
-                "Barra Z y discos.");
-        exeRep.save(ex3);
-        exeRep.save(ex4);
         ExerciseTable exerciseTable2 = new ExerciseTable("Tabla 2", "Tabla de entrenamiento de brazo.");
         exerciseTable2.getExercises().add(ex1);
         exerciseTable2.getExercises().add(ex2);
@@ -370,7 +388,6 @@ public class DataSampleService {
 
         setExerciseTableImage(exerciseTable2, "/sample_images/gallery-11.jpeg");
         exerciseTableRep.save(exerciseTable2);
-
 
 
         ExerciseTable exerciseTable3 = new ExerciseTable("Tabla 3", "Tabla de entrenamiento mixta.");
@@ -505,6 +522,7 @@ public class DataSampleService {
         Resource image = new ClassPathResource(classpathResource);
         exercise.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
     }
+
     public void setUserImage(ExerciseTable exerciseTable, String classpathResource) throws IOException {
 
         Resource image = new ClassPathResource(classpathResource);

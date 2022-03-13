@@ -1,70 +1,62 @@
-{{>USRMEM_header}}
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Estadísticas</h4>
-                    </div>
-                </div>
+{{>USRMEM_Header}}
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Estadísticas</h4>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-
-                <!-- Charts -->
-                <!-- Chart-1 -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body colorBlackText">
-                                <h5 class="card-title">Progreso anual</h5>
-                                <canvas id="myChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Chart-1 -->
-
-                <!-- Chart-2 -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body colorBlackText">
-                                <h5 class="card-title">Peso</h5>
-                                <canvas id="myChartBar"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Chart-2 -->
-
-                <!-- End Charts -->
-                <!-- ============================================================== -->
-                <!-- End Page Content -->
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            {{>USRMEM_footer}}
         </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <!-- Chart-1 -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body colorBlackText">
+                        <h5 class="card-title">Progreso</h5>
+                        <canvas id="myChartP"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Chart-1 -->
+        <!-- ============================================================== -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Recent comment and chats -->
         <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    {{>USRADM_Footer}}
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
@@ -81,58 +73,6 @@
     <script src="assets/libs/flot/jquery.flot.js"></script>
     <script src="assets/libs/chartJs/chart.js"></script>
     <script>
-
-        // LINE CHART
-        const labelsLine = [
-            ' ',
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-            ' '
-        ];
-        const dataLine = {
-            labels: labelsLine,
-            datasets: [
-                {
-                    label: 'Año 2022',
-                    backgroundColor: 'rgb(255, 125, 98)',
-                    borderColor: 'rgb(255, 82, 0)',
-                    data: [ 0, 2, 6]
-                },
-                {
-                    label: 'Año 2021',
-                    backgroundColor: 'rgb(136, 219, 255)',
-                    borderColor: 'rgb(0, 178, 255)',
-                    data: [ 0, 1, 2, 3, 4, 2, 6, 4, 5, 3, 7, 4, 0]
-                },
-                {
-                    label: 'Año 2020',
-                    backgroundColor: 'rgb(126, 255, 146)',
-                    borderColor: 'rgb(59, 222, 84)',
-                    data: [ 0, 4, 7, 3, 5, 4, 8, 4, 3, 2, 5, 1, 0]
-                }
-            ]
-        };
-        const configLine = {
-            type: 'line',
-            data: dataLine,
-            options: {}
-        };
-
-        new Chart(
-            document.getElementById('myChart'),
-            configLine
-        );
-
 
         // BAR CHART
         const labels = [
@@ -153,7 +93,6 @@
             labels: labels,
             datasets: [
                 {
-
                     label: '2022',
                     data: [65, 59, 70],
                     backgroundColor: [
@@ -169,72 +108,6 @@
                         'rgba(153, 102, 255, 0.8)',
                         'rgba(76, 83, 255, 0.8)',
                         'rgba(0, 91, 252, 0.8)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192)',
-                        'rgb(91, 231, 111)',
-                        'rgb(255, 245, 62)',
-                        'rgba(255, 205, 86)',
-                        'rgba(255, 159, 64)',
-                        'rgba(255, 114, 42)',
-                        'rgba(255, 58, 58)',
-                        'rgba(255, 99, 132)',
-                        'rgba(255, 121, 225)',
-                        'rgba(153, 102, 255)',
-                        'rgba(76, 83, 255)',
-                        'rgba(0, 91, 252)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: '2021',
-                    data: [67, 44, 55, 66, 56, 55, 44, 67, 34, 44, 34, 54],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgb(91, 231, 111, 0.6)',
-                        'rgb(255, 245, 62, 0.6)',
-                        'rgba(255, 205, 86, 0.6)',
-                        'rgba(255, 159, 64, 0.6)',
-                        'rgba(255, 114, 42, 0.6)',
-                        'rgba(255, 58, 58, 0.6)',
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(255, 121, 225, 0.6)',
-                        'rgba(153, 102, 255, 0.6)',
-                        'rgba(76, 83, 255, 0.6)',
-                        'rgba(0, 91, 252, 0.6)'
-                    ],
-                    borderColor: [
-                        'rgba(75, 192, 192)',
-                        'rgb(91, 231, 111)',
-                        'rgb(255, 245, 62)',
-                        'rgba(255, 205, 86)',
-                        'rgba(255, 159, 64)',
-                        'rgba(255, 114, 42)',
-                        'rgba(255, 58, 58)',
-                        'rgba(255, 99, 132)',
-                        'rgba(255, 121, 225)',
-                        'rgba(153, 102, 255)',
-                        'rgba(76, 83, 255)',
-                        'rgba(0, 91, 252)'
-                    ],
-                    borderWidth: 1
-                },
-                {
-                    label: '2020',
-                    data: [56, 78, 68, 54, 76, 45, 40, 23, 33, 56, 23, 34],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.4)',
-                        'rgb(91, 231, 111, 0.4)',
-                        'rgb(255, 245, 62, 0.4)',
-                        'rgba(255, 205, 86, 0.4)',
-                        'rgba(255, 159, 64, 0.4)',
-                        'rgba(255, 114, 42, 0.4)',
-                        'rgba(255, 58, 58, 0.4)',
-                        'rgba(255, 99, 132, 0.4)',
-                        'rgba(255, 121, 225, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(76, 83, 255, 0.4)',
-                        'rgba(0, 91, 252, 0.4)'
                     ],
                     borderColor: [
                         'rgba(75, 192, 192)',
@@ -267,7 +140,7 @@
             },
         };
         new Chart(
-            document.getElementById('myChartBar'),
+            document.getElementById('myChartP'),
             configBar
         );
 

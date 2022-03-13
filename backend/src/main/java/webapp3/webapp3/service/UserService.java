@@ -2,6 +2,7 @@ package webapp3.webapp3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import webapp3.webapp3.model.Activity;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.UserRepository;
 
@@ -34,9 +35,27 @@ public class UserService {
         return userRep.findByUserType(userType);
     }
 
-    public User findByName(String name){
+    public Optional<User> findByName(String name){
         return userRep.findByName(name);
     }
 
+
     // generate data for graphics
+    public int findByUserTypeAndEntryDate(String type, int month, String year) {
+        String s = Integer.toString(month);
+        if (s.length() == 1)
+            s = "0" + s;
+        return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
+    }
+
+    public int findByUserTypeAndDownloads(String type, int month, String year) {
+        String s = Integer.toString(month);
+        if (s.length() == 1)
+            s = "0" + s;
+        return userRep.findByUserTypeAndEntryDate(type, year + "-" + s + "-");
+    }
+
+    public Optional<User> findByEmail(String prueba) {
+        return userRep.findByEmail(prueba);
+    }
 }
