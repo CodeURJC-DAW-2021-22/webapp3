@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.*;
-import webapp3.webapp3.service.ActivityService;
-import webapp3.webapp3.service.ExerciseService;
-import webapp3.webapp3.service.ExerciseTableService;
-import webapp3.webapp3.service.UserService;
+import webapp3.webapp3.repository.UserExerciseTableRepository;
+import webapp3.webapp3.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
@@ -28,11 +26,15 @@ import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
 @Controller
 public class MemberController {
+
+    @Autowired
+    private UserExerciseTableService usExServ;
 
     @Autowired
     private ExerciseService exerServ;
@@ -84,6 +86,7 @@ public class MemberController {
                     .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
                     .body(baos.toByteArray());
         } catch (Exception e){
+            e.printStackTrace();
             return ResponseEntity.badRequest().body("Error");
         }
     }
@@ -165,17 +168,9 @@ public class MemberController {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
+        Map<Long, Integer> ex = usExServ.findExercisesTables(user);
         model.addAttribute("id", user.getId());
-        int [] clients = new int [12];
-        String [][] months = new String [12][4];
-        String [] years = {"2019", "2020", "2021", "2022"};
-        for (int j = 0; j < years.length; j++) {
-            for (int i = 0; i < 12; i++) {
-                months[i][j] = "m" + i + j;
-                clients[i] = memServ.findByUserTypeAndEntryDate("member", i + 1, years[j]);
-                model.addAttribute(months[i][j], clients[i]);
-            }
-        }
+        model.addAttribute("TableList", ex);
         return "USRMEM_03Estatistics";
     }
 
