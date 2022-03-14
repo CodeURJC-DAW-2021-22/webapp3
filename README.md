@@ -285,7 +285,8 @@ I have worked in the monitors funcionality, introducing Mustache to the pages as
 My part was to create administrator functionality, adapt the DataBase to the system requirements, migrate from H2 database to PostgreSQL, fix monitors' pages, fix members' profile and edit profile, develop statistics for the administrator and for members (advanced consulting algorithm) and add images and some data to data base.
 
 ##### COMMITS DONE
-|Name | Description |
+| Name | Description |
+| - | - |
 | 1 | AdministratorController class' development (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/8c8c595c2fc519c0c7c44bd3a9fd5b6b5b69f3dc) |
 | 2 | Adapting html templates to data model (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/e09edbb1043c94808fec3c8b0705bfef91e6b949) |
 | 3 | Add some data to DataBase (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/c30d9967c7c3a7857a2ca5f09042d3586fa1e8b9) |
@@ -294,11 +295,12 @@ My part was to create administrator functionality, adapt the DataBase to the sys
 
 ##### FILES PARTICIPATED
 | File name | Link |
-| 1 | AdminController.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/controller/AdminController.java)
-| 2 | USRADM_03MonitorsList.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/resources/templates/USRADM_03MonitorsList.html)
-| 3 | DataSampleService.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/service/DataSampleService.java)
-| 4 | UserAdminStatistics.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/resources/templates/USRADM_01Statistics.html)
-| 5 | UserTableService.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/service/UserExerciseTableService.java)
+| - | - |
+| 1 | AdminController.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/controller/AdminController.java) |
+| 2 | USRADM_03MonitorsList.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/resources/templates/USRADM_03MonitorsList.html) |
+| 3 | DataSampleService.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/service/DataSampleService.java) |
+| 4 | UserAdminStatistics.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/resources/templates/USRADM_01Statistics.html) |
+| 5 | UserTableService.java (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/A-N-S-merge/backend/src/main/java/webapp3/webapp3/service/UserExerciseTableService.java) |
 #### Andrea Nuzzi Herrero
 
 ##### DESCRIPTION OF TASKS
