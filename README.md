@@ -96,53 +96,53 @@ In order to help clarifying the references to the amount of screens that conform
 The application consists of the following screens:
 
 * USRADM_01Statistics: This page shows the different statistics the administrator is able to see.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_01-Statistics.png)
+  ![](phase2_Doc_Imgs/admin/Statistics.png)
 * USRADM_02ActivitiesList: This screen shows the different grupal activities that are registered in the system.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_02-Activities.png)
+  ![](phase2_Doc_Imgs/admin/Activities.png)
 * USRADM_03MonitorsList: This screen contains a list of monitors that are working for the gym.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_03-Instructor.png)
+  ![](phase2_Doc_Imgs/admin/Monitors.png)
 * USRADM_04AddActivity: This screen is a form. On it, you can add the information needed for creating a new activity.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_04-AddActivity.png)
+  ![](phase2_Doc_Imgs/admin/AddActivity.png)
 * USRADM_05DeleteActivity: This screen shows all the activities and allows the administrator to select several activities to delete them.
   ![](phase1_Doc_Imgs/USRADM/USRADM_05-DeleteActivity.png)
 * USRADM_06SeeActivityInfo: This screen shows the information of an activity.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_06-ViewActivity.png)
+  ![](phase2_Doc_Imgs/admin/ctivityInfo.png)
 * USRADM_07EditActivity: This screen allows the administrator to change the information of an specific activities.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_07-EditActivity.png)
+  ![](phase2_Doc_Imgs/admin/EditActivity.png)
 * USRADM_08AddMonitor: This screen allows the admin to add a new monitor to the system.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_08-AddInstructor.png)
+  ![](phase2_Doc_Imgs/admin/AddMonitor.png)
 * USRADM_09DeleteMonitor: This screen shows a table with monitors. The administrator can select them and delete them from the system.
   ![](phase1_Doc_Imgs/USRADM/USRADM_09-DeleteInstructor.png)
 * USRADM_10SeeMonitorInfo: This screen shows the information about an specific monitor.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_10-ViewInfoInstructor.png)
+  ![](phase2_Doc_Imgs/admin/MonitorProfile.png)
 * USRADM_11EditMonitor: The administrator can edit the amount of instructors the gym has. The administrator can add a new instructor or delete an existing instructor.
-  ![](phase1_Doc_Imgs/USRADM/USRADM_11-EditInstructor.png)
+  ![](phase2_Doc_Imgs/admin/EditMonitorProfile.png)
 * USRADM_12EditMembers: The administrator can edit the amount of members the gym has. The administrator can add a new member or delete an existing member.
   ![](phase1_Doc_Imgs/USRADM/USARADM_12-EditMembers.png)
 * USRMEM_01ExerciseTable: The user can see the different exercise tables associated by the instructor.
-  ![](phase1_Doc_Imgs/USRMEM/USRMEM_01-ExerciseTables.png)
+  ![](phase2_Doc_Imgs/member/ExerciseTables.png)
 * USRMEM_02Profile: The member can see the information used in the register.
-  ![](phase1_Doc_Imgs/USRMEM/USRMEM_02-Profile.png)
+  ![](phase2_Doc_Imgs/member/profile.png)
 * USRMEM_03EditProfile: Members can edit their private information.
-  ![](phase1_Doc_Imgs/USRMEM/USRMEM_03-EditProfile.png)
+  ![](phase2_Doc_Imgs/member/editProfile.png)
 * USRMEM_03Statistics: User can see their progress along the season. This progress is going to be shown as different charts.
-  ![](phase1_Doc_Imgs/USRMEM/USRMEM_04-Statistics.png)
+  ![](phase2_Doc_Imgs/member/Statistics.png)
 * USRMEM_04Activities: The member can see the activities they are subscribed.
-  ![](phase1_Doc_Imgs/USRMEM/USRMEM_05-GrupalActivities.png)
+  ![](phase2_Doc_Imgs/members/Activities.png)
 * USRMON_01Schedule: This page shows monitor schedule.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_01-MonitorPage.png)
+  ![](phase2_Doc_Imgs/monitor/Schedule.png)
 * USRMON_02Profile: The monitor can see the information used in the register.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_02-EditProfile.png)
+  ![](phase2_Doc_Imgs/monitor/Profile.png)
 * USRMON_03ExerciseTable: This page shows the activities the monitor will teach.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_03-MonitorProfile.png)
+  ![](phase2_Doc_Imgs/monitor/ExerciseTables.png)
 * USRMON_04GrupalActivities: This page show the exercises tables the monitor uploads. Exercices tables can be uploaded and deleted.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_04-GrupalActivities.png)
+  ![](phase2_Doc_Imgs/monitor/Activities.png)
 * USRMON_05EditProfile: Monitors can edit their private information.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_05-ExerciseTables.png)
+  ![](phase2_Doc_Imgs/monitor/editProfile.png)
 * USRMON_06AddExerciseTable: This screen allows the monitor to add a new exercise table to the system.
-  ![](phase1_Doc_Imgs/USRMON/USRMON_06-DeleteTables.png)
-* USRMON_07DeleteExerciseTable: This screen shows a table with exercises tables. The monitor can select them and delete them from the system.
   ![](phase1_Doc_Imgs/USRMON/USRMON_07-AddTable.png)
+* USRMON_07DeleteExerciseTable: This screen shows a table with exercises tables. The monitor can select them and delete them from the system.
+   ![](phase1_Doc_Imgs/USRMON/USRMON_06-DeleteTables.png)
 * USRNR_01GymMainPage: Main page that all users will see upon entering and briefly explains the gym's services.
   ![](phase1_Doc_Imgs/USRNR/USRNR_01-GymMainPage.png)
 * USRNR_02Schedule: This page shows the schedule of activities available in the gym.
