@@ -3,9 +3,9 @@ package webapp3.webapp3.controller;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -22,9 +22,9 @@ import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -250,26 +250,28 @@ public class MonitorController {
     @GetMapping("/MONaddNewExerciseTable")
     public String newExerciseTable(Model model, HttpServletRequest request) {
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
+        model.addAttribute("exercises", exerServ.findAll());
         return "USRMON_06AddExerciseTable";
     }
 
-    // FALTA
     @PostMapping("/MONaddNewExerciseTable")
-    public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String room,
-                                      @RequestParam int price, @RequestParam String description,
-                                      @RequestParam int capacity, @RequestParam String monday,
-                                      @RequestParam String tuesday, @RequestParam String wednesday,
-                                      @RequestParam String thursday, @RequestParam String friday, @RequestParam("image") MultipartFile image) throws IOException {
-        Activity activity = new Activity(name, price, description, room, capacity, monday, tuesday, wednesday, thursday, friday);
-        if (image.isEmpty()) {
-            //Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedActivity.jpeg");
-            //activity.setImage(BlobProxy.generateProxy(imageNotAdded.getInputStream(), imageNotAdded.contentLength()));
-        } else {
-            //activity.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+    public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String description,
+                                      @RequestParam List<Long> id,@RequestParam("image") MultipartFile image) throws IOException {
+        ExerciseTable exerciseTable = new ExerciseTable(name, description);
+        List<Exercise> auxList = new ArrayList<>(id.size());
+        for (Long l: id){
+            auxList.add(exerServ.findById(l).orElseThrow());
         }
-        actServ.save(activity);
-        model.addAttribute("activitiesList", actServ.findAll());
-        return "redirect:/activities";
+        exerciseTable.setExercises(auxList);
+        if (image.isEmpty()) {
+            Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedActivity.jpeg");
+            exerciseTable.setImage(BlobProxy.generateProxy(imageNotAdded.getInputStream(), imageNotAdded.contentLength()));
+        } else {
+            exerciseTable.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+        }
+        exerciseTableServ.save(exerciseTable);
+        model.addAttribute("exerciseTableList", exerciseTableServ.findAll());
+        return "redirect:/MONexerciseTable";
     }
 
     //edit exercise table
@@ -287,32 +289,27 @@ public class MonitorController {
         return htmlFile;
     }
 
-    // FALTA
-    @PostMapping("/MONeditActivity/{id}")
-    public String addEditedActivity(Model model, @RequestParam String name, @RequestParam String room,
-                                    @RequestParam int price, @RequestParam String description,
-                                    @RequestParam int capacity, @RequestParam String monday,
-                                    @RequestParam String tuesday, @RequestParam String wednesday,
-                                    @RequestParam String thursday, @RequestParam String friday, @PathVariable Long id,
-                                    @RequestParam("image") MultipartFile image) throws IOException {
-        Optional<Activity> act = actServ.findById(id);
+    @PostMapping("/MONeditExerciseTable/{var}")
+    public String addEditedActivity(Model model, @RequestParam String name,
+                                    @RequestParam String description,
+                                    @PathVariable Long var,
+                                    @RequestParam("image") MultipartFile image,
+                                    @RequestParam(required = false) List<Long> id) throws IOException {
+        Optional<ExerciseTable> exTab = exerciseTableServ.findById(var);
         String htmlFile;
-        if (act.isPresent()) {
-            Activity activity = act.get();
-            activity.setName(name);
-            activity.setRoom(room);
-            activity.setPrice(price);
-            activity.setDescription(description);
-            activity.setCapacity(capacity);
-            activity.setMonday(monday);
-            activity.setTuesday(tuesday);
-            activity.setWednesday(wednesday);
-            activity.setThursday(thursday);
-            activity.setFriday(friday);
+        if (exTab.isPresent()) {
+            ExerciseTable ex = exTab.get();
+            ex.setName(name);
+            ex.setDescription(description);
+            List<Exercise> exList = new ArrayList<>(id.size());
+            for (Long l : id) {
+                exList.add(exerServ.findById(l).orElseThrow());
+            }
+            ex.setExercises(exList);
             if (!image.isEmpty())
-                //activity.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
-                actServ.save(activity);
-            htmlFile = "redirect:/activities";
+                ex.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+            exerciseTableServ.save(ex);
+            htmlFile = "redirect:/MONexerciseTable";
         } else {
             //Gestionar error en el envío del formulario
             htmlFile = "error-404";
@@ -369,4 +366,6 @@ public class MonitorController {
         }
         return ResponseEntity.notFound().build();
     }
+
+
 }

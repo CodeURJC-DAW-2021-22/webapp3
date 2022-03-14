@@ -27,34 +27,30 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
+        <form action="/MONaddNewExerciseTable" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title" style="color: black; margin-bottom: 20px; padding-left:9px;">Datos
-                            generales</h4>
-                        <div class="row mb-3">
-                            <div class="col-lg-2 col-md-4 col-12 ">
-                                <p style="color:black; " class="centerText"> Nombre: </p>
+                    <div class="row el-element-overlay">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                            <h4 class="card-title" style="color: black; margin-bottom: 20px;">Datos generales</h4>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="name" />
+                                </div>
                             </div>
-                            <div class="col-lg-10 col-md-8 col-12 ">
-                                <input type="text" class="form-control" placeholder="Nombre de la actividad">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-lg-2 col-md-4 col-12 ">
-                                <p style="color:black; " class="centerText"> Sala: </p>
-                            </div>
-                            <div class="col-lg-10 col-md-8 col-12">
-                                <input type="text" class="form-control" placeholder="Sala">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-lg-2 col-md-4 col-12 ">
-                                <p style="color:black; " class="centerText"> Monitor asignado: </p>
-                            </div>
-                            <div class="col-lg-10 col-md-8 col-12">
-                                <input type="text" class="form-control" placeholder="Monitor asignado">
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Añadir imagen: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input class="colorBlackText" type='file' name='image' accept=".jpg, .jpeg" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -63,47 +59,61 @@
                     </div>
 
                     <div class="card-body">
-                        <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
-                        <!-- Create the editor container -->
-                        <div id="editor" style="height: 300px; color: black;">
+                        <h5 class="card-title colorBlackText">Lista de Ejercicios</h5>
+                        <div class="table-responsive colorBlackText">
+                            <table id="zero_config" class="table table-striped table-bordered ">
 
+                                <thead class="colorOrangeText">
+                                <tr>
+                                    <th>Ejercicio</th>
+                                    <th>Descripcion</th>
+                                    <th>Seleccionar</th>
+                                </tr>
+                                </thead>
+                                <tbody class="colorBlackText">
+                                {{#exercises}}
+                                <tr>
+                                    <td>{{name}}</td>
+                                    <td>{{description}}</td>
+                                    <td><label class="customcheckbox m-b-20">
+                                        <input type="checkbox" id="mainCheckbox{{id}}" name="id" value="{{id}}"/>
+                                        <span class="checkmark"></span>
+                                    </label></td>
+                                </tr>
+                                {{/exercises}}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: black; margin-bottom: 20px;">Descripción</h4>
+                            <!-- Create the container -->
+                            <textarea style="height: 300px; color: black; width:100%" name="description"></textarea>
                         </div>
                     </div>
-
-                    <div class="card-body">
-                        <h4 class="card-title" style="color: black; margin-bottom: 20px;">Imagen</h4>
-                        <div class="col-md-9">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                <label class="custom-file-label" for="validatedCustomFile">Elige un fichero</label>
-                                <div class="invalid-feedback">Example invalid custom file feedback</div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
 
-        <div class="row el-element-overlay">
-            <div class="col-12 buttonsAddActivity">
-                <button class="btn default btn-outline el-link selector2" type="button"><a
-                        href="USRMON_03ExerciseTable.html">Guardar cambios</a></button>
-                <button class="btn default btn-outline el-link selector2" type="button"><a
-                        href="USRMON_03ExerciseTable.html">Cancelar</a></button>
+            <div class="row el-element-overlay">
+                <div class="col-12 buttonsAddActivity">
+                    <input class="btn default btn-outline el-link selector2" type="submit" />
+                    <input type="hidden" name="_csrf" value="{{token}}"/>
+                    <button class="btn default btn-outline el-link selector2" type="button"><a
+                            href="USRMON_03ExerciseTable.html">Cancelar</a></button>
+                </div>
             </div>
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
-    </div>
+        </form>
     <!-- ============================================================== -->
     <!-- End Container fluid  -->
     <!-- ============================================================== -->
