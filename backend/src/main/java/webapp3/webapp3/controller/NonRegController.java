@@ -207,7 +207,7 @@ public class NonRegController {
 
         DateType birthday_Date = new DateType(birthday.substring(0, 4), birthday.substring(5, 7), birthday.substring(8, 10));
         DateType entryDate = new DateType(Integer.toString(Calendar.getInstance().get(Calendar.YEAR)),
-                Integer.toString(Calendar.getInstance().get(Calendar.YEAR)), Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
+                Integer.toString(Calendar.getInstance().get(Calendar.MONTH) +1), Integer.toString(Calendar.getInstance().get(Calendar.DAY_OF_MONTH)));
 
         User newUser = new User(name, surname, NIF, email, address, postal_code, birthday_Date, phone_num,
                 entryDate, height, weight, medicalInfo, passwordEncoder.encode(password));
