@@ -1,0 +1,147 @@
+{{>USRMON_Header}}
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title" style="color: black;">Horario</h4>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+
+        <div class="container-fluid">
+            {{#getACT1}}
+            <h1 style="color: black;">
+                {{name}}
+            </h1>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2 style="color: black;">
+                                Descripcion
+                            </h2>
+                            <p style="color: black;">{{description}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <!--schedule header Begin-->
+                    <div>
+                        <h2 style="color: black;">Horario</h2>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2" style="color: black;">Lunes</div>
+                            {{#monAct}}
+                            <div class="col-lg-2 col-md-2">
+                                <h3 style="color: black;">{{monday}}</h3>
+                            </div>
+                            {{/monAct}}
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2" style="color: black;">Martes</div>
+                            {{#tusAct}}
+                            <div class="col-lg-2 col-md-2">
+                                <h3 style="color: black;">{{tuesday}}</h3>
+                            </div>
+                            {{/tusAct}}
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2" style="color: black;">Miercoles</div>
+                            {{#wenAct}}
+                            <div class="col-lg-2 col-md-2">
+                                <h3 style="color: black;">{{wednesday}}</h3>
+                            </div>
+                            {{/wenAct}}
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2" style="color: black;">Jueves</div>
+                            {{#thuAct}}
+                            <div class="col-lg-2 col-md-2">
+                                <h3 style="color: black;">{{thursday}}</h3>
+                            </div>
+                            {{/thuAct}}
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2" style="color: black;">Viernes</div>
+                            {{#friAct}}
+                            <div class="col-lg-2 col-md-2">
+                                <h3 style="color: black;">{{friday}}</h3>
+                            </div>
+                            {{/friAct}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img src="/MONschedule/image">
+                </div>
+            </div>
+            {{/getACT1}}
+            {{^getACT1}}
+            <h1 style="color: black;">
+                No hay actividades disponibles
+            </h1>
+            {{/getACT1}}
+
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+
+
+        {{>USRMON_Footer}}
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!-- this page js -->
+<script src="/assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+<script src="/assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+<script src="/assets/extra-libs/DataTables/datatables.min.js"></script>
+
+
+</body>
+
+</html>

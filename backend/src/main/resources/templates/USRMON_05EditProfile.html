@@ -1,0 +1,243 @@
+{{>USRMON_Header}}
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Perfil</h4>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <form action="/MONeditProfile" method="post" enctype="multipart/form-data">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row el-element-overlay">
+                                <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                                    <h4 class="card-title "
+                                        style="color: black; margin-bottom: 20px; padding-left:9px;">Datos
+                                        generales</h4>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Nombre: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.name}}"
+                                                   name="name" pattern="[a-zA-Záéíóúü ]+"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12">
+                                            <p style="color:black;" class="centerText"> Apellidos: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.surname}}"
+                                                   name="surname" pattern="[a-zA-Záéíóúü ]+"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> DNI/NIE: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.NIF}}"
+                                                   name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Email: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <span style="color:black;">{{monitor.email}}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Dirección: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.address}}"
+                                                   name="address" pattern="[a-zA-Z,./ 0-9áéíóúüº]+"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Código postal: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.postalCode}}"
+                                                   name="postalCode" pattern="[0-9]{5}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Teléfono: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="text" class="form-control " value="{{monitor.phone}}"
+                                                   name="phone" pattern="(6|7){1}[0-9]{8}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Fecha de nacimiento: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="date" class="form-control " value="{{monitor.birthday}}"
+                                                   name="birthdayDate"
+                                                   pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input type="date" class="form-control " value="{{monitor.hiringDate}}"
+                                                   name="hiringDate"
+                                                   pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 ">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Actividad: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <select name="activityName" type="number">
+
+                                                {{#monitor.ACT1.name}}
+                                                <option value="{{monitor.ACT1.id}}" selected>{{monitor.ACT1.name}}</option>
+                                                <option value="-1" >Ninguna</option>
+                                                {{/monitor.ACT1.name}}
+                                                {{^monitor.ACT1.name}}
+                                                <option value="-1" selected>Ninguna</option>
+                                                {{/monitor.ACT1.name}}
+                                                {{#freeAct}}
+                                                <option value="{{id}}">{{name}}</option>
+                                                {{/freeAct}}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-4 col-12 ">
+                                            <p style="color:black; " class="centerText"> Añadir imagen: </p>
+                                        </div>
+                                        <div class="col-lg-10 col-md-8 col-12 ">
+                                            <input class="colorBlackText" type='file' name='image'
+                                                   accept=".jpg, .jpeg"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-12 image ">
+                                    <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                        <br>
+                                        <br>
+                                        <img src="/MON/{{monitor.id}}/image" width="100%" alt="user "
+                                             style="text-align: center;;"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body ">
+                                <div class="border-top card "></div>
+                            </div>
+
+                            <div class="card-body ">
+                                <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y
+                                    carrera profesional</h4>
+                                <!-- Create the editor container -->
+                                <p><textarea style="height: 300px; color: black; width:100%" name="description">{{monitor.description}}
+                                    </textarea></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row el-element-overlay">
+                        <div class="col-12 buttonsAddActivity">
+                            <input class="btn default btn-outline el-link selector2 colorWhiteText" type="submit"
+                                   value="Guardar cambios"/>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
+                            <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button"
+                                    onclick='location.href="/MONprofile"'>Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+
+    {{>USRMON_Footer}}
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+<!-- Charts js Files -->
+<script src="/assets/libs/flot/excanvas.js"></script>
+<script src="/assets/libs/flot/jquery.flot.js"></script>
+<script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="/assets/libs/flot/jquery.flot.time.js"></script>
+<script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/dist/js/pages/chart/chart-page-init.js"></script>
+
+</body>
+
+</html>

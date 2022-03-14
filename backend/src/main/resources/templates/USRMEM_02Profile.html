@@ -1,0 +1,205 @@
+{{>USRMEM_header}}
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Perfil</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4 class="card-title text">Usuario</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn default btn-outline el-link selector" type="button"><a href="/MEMeditProfile/{{id}}"><i class="mdi mdi-grease-pencil"></i> Editar perfil</a></button>
+                                    </div>
+                                </div>
+                                <!--basic information-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="border-top card" style="margin-top:20px">
+                                            <div class="card-body">
+                                                <h5 class="card-subtitle">Información Básica</h5>
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        <div class="card align-items-center">
+                                                            <div class="p-2"><img src="/MEM/{{id}}/image" alt="user" width="80" class="rounded-circle"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="fname" placeholder="Nombre">{{member.name}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="lname" placeholder="Apellidos">{{member.surname}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="NIF" class="col-sm-3 text-right text control-label col-form-label">DNI-NIE</label>
+                                                            <div class="col-sm-9 input-group">
+                                                                <span type="text" class="form-control" id="NIF" placeholder="0000000-A">{{member.NIF}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="email" class="col-sm-3 text-right text control-label col-form-label">Correo Electrónico</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="email" placeholder="Correo Electrónico">{{member.email}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group row">
+                                                            <label for="datepicker-autoclose" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                            <div class="col-sm-9 input-group">
+                                                                <span type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">{{member.birthday}}</span>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="height" placeholder="height">{{member.height}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="weight" placeholder="weight">{{member.weight}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--aditional information-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="border-top card">
+                                            <div class="card-body">
+                                                <h5 class="card-subtitle">Información Adicional</h5>
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group row">
+                                                            <label for="street" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="street" placeholder="Domicilio">{{member.address}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="postalCode" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="postalCode" placeholder="00000">{{member.postalCode}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="phone" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                            <div class="col-sm-9">
+                                                                <span type="text" class="form-control" id="phone" placeholder="+XX-XXX XX XX XX">{{member.phone}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- medical information-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="border-top card">
+                                            <div class="card-body">
+                                                <h5 class="card-subtitle">Información Médica</h5>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12">
+                                                        <span type="text" class=" form-control" id="infoExtra" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{member.medicalInfo}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            {{>USRMEM_footer}}
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <!-- Charts js Files -->
+    <script src="/assets/libs/flot/excanvas.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="/dist/js/pages/chart/chart-page-init.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+{{>USRMON_Header}}
+<!-- ============================================================== -->
+<!-- Page wrapper  -->
+<!-- ============================================================== -->
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Perfil</h4>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title text">Usuario</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn default btn-outline el-link selector" type="button"><a
+                                        href="/MONeditProfile"><i class="mdi mdi-grease-pencil"></i> Editar
+                                    perfil</a></button>
+                            </div>
+                        </div>
+                        <!--basic information-->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row el-element-overlay">
+                                            <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                                                <h4 class="card-title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales</h4>
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Nombre: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.name}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Apellidos: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.surname}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> DNI/NIE: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.NIF}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Email: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.email}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Dirección: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.address}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Código postal: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.postalCode}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Teléfono: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="text " class="form-control ">{{monitor.phone}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-lg-2 col-md-4 col-12">
+                                                        <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="date" class="form-control">{{monitor.birthday.spanishFormat}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3 ">
+                                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                                        <p style="color:black; " class="centerText"> Fecha de alta: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        <span type="date" class="form-control ">{{monitor.hiringDate.spanishFormat}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3 ">
+                                                    <div class="col-lg-2 col-md-4 col-12 ">
+                                                        <p style="color:black; " class="centerText"> Actividad: </p>
+                                                    </div>
+                                                    <div class="col-lg-10 col-md-8 col-12 ">
+                                                        {{#monitor.ACT1}}
+                                                        <span type="text " class="form-control ">{{monitor.ACT1.name}}</span>
+                                                        {{/monitor.ACT1}}
+
+                                                        {{^monitor.ACT1}}
+                                                        <span type="text " class="form-control ">No hay actividades asignadas</span>
+                                                        {{/monitor.ACT1}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-12 col-12 image ">
+                                                <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                                    <img src="/MON/{{monitor.id}}/image" width="100%" alt="user " style="text-align: center;;" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body ">
+                                            <div class="border-top card "></div>
+                                        </div>
+
+                                        <div class="card-body ">
+                                            <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
+                                            <!-- Create the editor container -->
+                                            <textarea style="height: 300px; color: black; width:100%" readonly>{{monitor.description}}
+                                </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================== -->
+        <!-- Sales chart -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Recent comment and chats -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+
+
+    {{>USRMON_Footer}}
+</div>
+<!-- ============================================================== -->
+<!-- End Page wrapper  -->
+<!-- ============================================================== -->
+</div>
+
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap tether Core JavaScript -->
+<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<!--Wave Effects -->
+<script src="/dist/js/waves.js"></script>
+
+<!--Menu sidebar -->
+<script src="/dist/js/sidebarmenu.js"></script>
+<!--Custom JavaScript -->
+<script src="/dist/js/custom.min.js"></script>
+<!--This page JavaScript -->
+<!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
+<!-- Charts js Files -->
+<script src="/assets/libs/flot/excanvas.js"></script>
+<script src="/assets/libs/flot/jquery.flot.js"></script>
+<script src="/assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="/assets/libs/flot/jquery.flot.time.js"></script>
+<script src="/assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="/dist/js/pages/chart/chart-page-init.js"></script>
+
+</body>
+
+</html>
