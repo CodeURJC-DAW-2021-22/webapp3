@@ -120,7 +120,7 @@ The application consists of the following screens:
 * USRADM_12EditMembers: The administrator can edit the amount of members the gym has. The administrator can add a new member or delete an existing member.
   ![](phase1_Doc_Imgs/USRADM/USARADM_12-EditMembers.png)
 * USRMEM_01ExerciseTable: The user can see the different exercise tables associated by the instructor.
-  ![](phase1_Doc_Imgs/MEMBER/USRMEM_01-ExerciseTables.png)
+  ![](phase1_Doc_Imgs/USRMEM/USRMEM_01-ExerciseTables.png)
 * USRMEM_02Profile: The member can see the information used in the register.
   ![](phase2_Doc_Imgs/member/profile.png)
 * USRMEM_03EditProfile: Members can edit their private information.
