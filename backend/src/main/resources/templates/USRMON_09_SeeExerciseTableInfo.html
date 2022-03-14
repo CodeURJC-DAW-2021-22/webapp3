@@ -36,77 +36,15 @@
                                     <p style="color:black;" class="centerText"> Nombre: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.name}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 col-md-4 col-12 ">
-                                    <p style="color:black; " class="centerText"> Sala: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.room}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 col-md-4 col-12 ">
-                                    <p style="color:black; " class="centerText"> Precio: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.price}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Capacidad: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="number" class="form-control ">{{activity.capacity}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Lunes: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.monday}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Martes: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.tuesday}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Miércoles: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.wednesday}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Jueves: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.thursday}}</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Viernes: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{activity.friday}}</span>
+                                    <span type="text " class="form-control ">{{exerciseTable.name}}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-12 col-12 image ">
-                            <div class="el-card-avatar el-overlay-1 ">
-                                <img src="/activity/{{activity.id}}/image" width="100%"  alt="user " />
+                        <div class="col-lg-4 col-12">
+                            <div class="col-lg-3 col-md-12 col-12 image ">
+                                <div class="el-card-avatar el-overlay-1 ">
+                                    <img src="/MONexerciseTable/{{id}}/image" width="100%"  alt="user " />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,20 +52,34 @@
                     <div class="card-body ">
                         <div class="border-top card "></div>
                     </div>
+                        <div class="card-body">
+                            <h5 class="card-title colorBlackText">Lista de Ejercicios</h5>
+                            <div class="table-responsive colorBlackText">
+                                <table id="zero_config" class="table table-striped table-bordered ">
+
+                                    <thead class="colorOrangeText">
+                                    <tr>
+                                        <th>Ejercicio</th>
+                                        <th>Descripcion</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="colorBlackText">
+                                    {{#exerciseTable.exercises}}
+                                    <tr>
+                                        <td>{{name}}</td>
+                                        <td>{{description}}</td>
+                                    </tr>
+                                    {{/exerciseTable.exercises}}
+                                    </tbody>
+                                </table>
+                            </div>
 
                     <div class="card-body ">
                         <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Descripción</h4>
                         <!-- Create the editor container -->
                         <div style="height: 300px; color: black; ">
-                            <p>{{activity.description}}</p>
+                            <p>{{exerciseTable.description}}</p>
                         </div>
-                    </div>
-                </div>
-                <div class="row el-element-overlay">
-                    <div class="col-12 buttonsAddActivity">
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="/editActivity/{{id}}">Editar</a></button>
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="/activity/delete/{{id}}">Eliminar</a></button>
-                        <button class="btn default btn-outline el-link selector2" type="button"><a href="/activities">Cancelar</a></button>
                     </div>
                 </div>
             </div>

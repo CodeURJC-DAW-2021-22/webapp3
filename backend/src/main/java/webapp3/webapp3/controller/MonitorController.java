@@ -226,7 +226,7 @@ public class MonitorController {
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         if (exerciseTable.isPresent()) {
             model.addAttribute("exerciseTable", exerciseTable.get());
-            return "USRMON_09SeeExerciseTableInfo";
+            return "USRMON_09_SeeExerciseTableInfo";
         } else
             return "USRMON_03ExerciseTable";
     }
