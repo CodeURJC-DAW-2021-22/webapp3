@@ -147,7 +147,6 @@ public class MonitorController {
                                    @RequestParam String phone,
                                    @RequestParam String birthdayDate,
                                    @RequestParam String hiringDate,
-                                   @RequestParam(required = false) Long activityName,
                                    @RequestParam String description,
                                    @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         String emailName = request.getUserPrincipal().getName();
@@ -171,33 +170,6 @@ public class MonitorController {
             user.getHiringDate().setMonth(hiringDate.substring(5, 7));
             user.getHiringDate().setYear(hiringDate.substring(0, 4));
             user.getHiringDate().generateSpanishFormat();
-
-            if (activityName == -1) {
-                //Delete association to an activity
-                Activity act = user.getACT1();
-                act.setMonitorName(null);
-                actServ.save(act);
-                user.setACT1(null);
-            } else if (activityName != -1 && user.getACT1() == null) {
-                //Add activity to a monitor without previous activity
-                Optional<Activity> activityOptional = actServ.findById(activityName);
-                activityOptional.orElseThrow().setMonitorName(user.getName());
-                actServ.save(activityOptional.get());
-                user.setACT1(activityOptional.get());
-            } else if (activityName != -1 && user.getACT1() != null && !user.getACT1().getId().equals(activityName)) {
-                //Add activity to monitor with previous activity associated
-                //1 -> Change monitorName in old activity
-                if (user.getACT1() != null) {
-                    user.getACT1().setMonitorName(null);
-                    actServ.save(user.getACT1());
-                }
-                //2 -> Change monitor name in new Activity
-                Optional<Activity> activityOptional = actServ.findById(activityName);
-                activityOptional.orElseThrow().setMonitorName(user.getName());
-                actServ.save(activityOptional.get());
-                //3 -> Add activity to user
-                user.setACT1(activityOptional.get());
-            }
 
             user.setDescription(description);
             if (!image.isEmpty())

@@ -71,7 +71,7 @@
                                             <p style="color:black; " class="centerText"> Email: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <span style="color:black;">{{monitor.email}}</span>
+                                            <input type="text" class="form-control " value="{{monitor.email}}" name="email" readonly/>
                                         </div>
                                     </div>
 
@@ -133,19 +133,12 @@
                                             <p style="color:black; " class="centerText"> Actividad: </p>
                                         </div>
                                         <div class="col-lg-10 col-md-8 col-12 ">
-                                            <select name="activityName" type="number">
-
                                                 {{#monitor.ACT1.name}}
-                                                <option value="{{monitor.ACT1.id}}" selected>{{monitor.ACT1.name}}</option>
-                                                <option value="-1" >Ninguna</option>
+                                                <input type="text" class="form-control " value="{{monitor.ACT1.name}}" readonly/>
                                                 {{/monitor.ACT1.name}}
                                                 {{^monitor.ACT1.name}}
-                                                <option value="-1" selected>Ninguna</option>
+                                                <input type="text" class="form-control " value="Ninguna" readonly/>
                                                 {{/monitor.ACT1.name}}
-                                                {{#freeAct}}
-                                                <option value="{{id}}">{{name}}</option>
-                                                {{/freeAct}}
-                                            </select>
                                         </div>
                                     </div>
 
@@ -177,8 +170,7 @@
                                 <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y
                                     carrera profesional</h4>
                                 <!-- Create the editor container -->
-                                <p><textarea style="height: 300px; color: black; width:100%" name="description">{{monitor.description}}
-                                    </textarea></p>
+                                <p><textarea style="height: 300px; color: black; width:100%" name="description">{{monitor.description}}</textarea></p>
 
                             </div>
                         </div>
