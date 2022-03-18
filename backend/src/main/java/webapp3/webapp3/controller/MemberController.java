@@ -98,7 +98,6 @@ public class MemberController {
         model.addAttribute("list", exerTabPage.toList());
 
         return "USRMEM_01ExerciseTableAJAX";
-
     }
 
     @GetMapping("/MEMeditProfile/{id}")
@@ -227,4 +226,5 @@ public class MemberController {
         model.addAttribute("activity", activity.orElseThrow());
         return "USRMON_08SeeActivityInfo";
     }
+
 }

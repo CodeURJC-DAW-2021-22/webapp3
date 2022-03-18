@@ -32,8 +32,8 @@
                 </button>
             </div>
         </div>
-        <div class="row el-element-overlay">
-            {{#exerciseTableList}}
+        <div class="row el-element-overlay page">
+            {{#listMON}}
             <div class="col-lg-3 col-md-6 col-6">
                 <div class="card">
                     <div class="el-card-item">
@@ -42,16 +42,18 @@
                                 src="/MONexerciseTable/{{id}}/image" alt=" "/>
                             <div class="el-overlay">
                                 <ul class="list-style-none el-info">
-                                    <li class="el-item">
+                                    <!--  <li class="el-item">
                                         <button class="btn default btn-outline el-link colorOrangeText"
-                                                onclick='location.href="/MONexerciseTable/{{id}}"'><i class="mdi mdi-eye"></i>
+                                        onclick='location.href="/MONexerciseTable/{{id}}"'><i class="mdi mdi-eye"></i>
                                         </button>
-                                    </li>
-                                    <li class="el-item">
-                                        <button class="btn default btn-outline el-link colorOrangeText"
-                                                onclick='location.href="/MONeditExerciseTable/{{id}}"'><i
-                                                class="mdi mdi-pencil"></i></button>
-                                    </li>
+                                    </li> -->
+                                    <li class="el-item"><a class="btn default btn-outline el-link" href="/MONexerciseTable/{{id}}"><i class="mdi mdi-eye"></i></a></li>
+                                    <!-- <li class="el-item">
+                                         <button class="btn default btn-outline el-link colorOrangeText"
+                                                 onclick='location.href="/MONeditExerciseTable/{{id}}"'><i
+                                                 class="mdi mdi-pencil"></i></button>
+                                     </li> -->
+                                    <li class="el-item"><a class="btn default btn-outline el-link" href="/MONeditExerciseTable/{{id}}"><i class="mdi mdi-pencil"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -61,11 +63,12 @@
                     </div>
                 </div>
             </div>
-            {{/exerciseTableList}}
-
-
+            {{/listMON}}
         </div>
-
+        <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore">
+            Cargar más
+            <i class="" id="spinner"></i>
+        </button>
 
         <!-- ============================================================== -->
         <!-- End PAge Content -->
@@ -95,29 +98,49 @@
 <!-- ============================================================== -->
 <!-- All Jquery -->
 <!-- ============================================================== -->
-<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
-<script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-<script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+<script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+<script src="assets/extra-libs/sparkline/sparkline.js"></script>
 <!--Wave Effects -->
-<script src="/dist/js/waves.js"></script>
+<script src="dist/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="/dist/js/sidebarmenu.js"></script>
+<script src="dist/js/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="/dist/js/custom.min.js"></script>
+<script src="dist/js/custom.min.js"></script>
 <!--This page JavaScript -->
 <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
 <!-- Charts js Files -->
-<script src="/assets/libs/flot/excanvas.js"></script>
-<script src="/assets/libs/flot/jquery.flot.js"></script>
-<script src="/assets/libs/flot/jquery.flot.pie.js"></script>
-<script src="/assets/libs/flot/jquery.flot.time.js"></script>
-<script src="/assets/libs/flot/jquery.flot.stack.js"></script>
-<script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
-<script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-<script src="/dist/js/pages/chart/chart-page-init.js"></script>
+<script src="assets/libs/flot/excanvas.js"></script>
+<script src="assets/libs/flot/jquery.flot.js"></script>
+<script src="assets/libs/flot/jquery.flot.pie.js"></script>
+<script src="assets/libs/flot/jquery.flot.time.js"></script>
+<script src="assets/libs/flot/jquery.flot.stack.js"></script>
+<script src="assets/libs/flot/jquery.flot.crosshair.js"></script>
+<script src="assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<script src="dist/js/pages/chart/chart-page-init.js"></script>
+<script>
+    var contPage = 1;
+    $( "#loadMore" ).click(function() {
+        $.ajax({
+            url: "/MONexerciseTable/page/" + contPage,
+            method: "get",
+            beforeSend: ()=>{
+                $("#spinner").addClass("fa fa-circle-notch fa-spin");
+            }
+        }).done(function (answer) {
+            $(".page").last().after(answer);
+            contPage += 1;
+            $("#spinner").removeClass("fa fa-circle-notch fa-spin");
+            if(contPage === {{last}}){
+                $("#loadMore").off("click");
+                $("#loadMore").remove();
+            }
+        });
+    });
+</script>
 
 </body>
 

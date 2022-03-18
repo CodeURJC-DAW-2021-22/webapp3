@@ -5,6 +5,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
@@ -127,7 +128,6 @@ public class MonitorController {
 
     //edit profile page
     @GetMapping("/MONeditProfile")
-
     public String editProfile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
@@ -187,8 +187,11 @@ public class MonitorController {
     @GetMapping("/MONexerciseTable")
     public String exerciseTable(Model model, HttpServletRequest request) {
         List<ExerciseTable> all = exerciseTableServ.findAll();
+        Page<ExerciseTable> exerTabPage = exerciseTableServ.findPage(0);
         model.addAttribute("exerciseTableList", all);
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
+        model.addAttribute("listMON", exerTabPage.toList());
+        model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRMON_03ExerciseTable";
     }
 
@@ -201,6 +204,15 @@ public class MonitorController {
             return "USRMON_09_SeeExerciseTableInfo";
         } else
             return "USRMON_03ExerciseTable";
+    }
+
+    //ajax
+    @GetMapping("/MONexerciseTable/page/{page}")
+    public String getExerciseTablePageMonitor(Model model, @PathVariable int page){
+        Page<ExerciseTable> exerTabPage = exerciseTableServ.findPage(page);
+        model.addAttribute("listMON", exerTabPage.toList());
+
+        return "USRMON_03ExerciseTableAJAX";
     }
 
     @GetMapping("/MONexerciseTable/{id}/image")
@@ -303,7 +315,6 @@ public class MonitorController {
         return "redirect:/exerciseTable";
     }
 
-
     //grupal activities page
     @GetMapping("/MONactivities")
     public String activities(Model model, HttpServletRequest request) {
@@ -338,6 +349,5 @@ public class MonitorController {
         }
         return ResponseEntity.notFound().build();
     }
-
 
 }

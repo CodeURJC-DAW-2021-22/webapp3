@@ -109,7 +109,6 @@ public class ExerciseTableService {
         return baos;
     }
 
-
     public Page<ExerciseTable> findPage(int page){
         return exerciseTabRep.findAll(PageRequest.of(page, 8));
     }
