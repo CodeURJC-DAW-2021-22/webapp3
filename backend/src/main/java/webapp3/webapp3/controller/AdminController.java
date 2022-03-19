@@ -362,12 +362,13 @@ public class AdminController {
         return "USRADM_12Clients";
     }
 
+    //ajax
     @GetMapping("/clients/page/{page}")
     public String getClientPage(Model model, @PathVariable int page){
         Page<User> client = userServ.findPageClient(page, "member");
         model.addAttribute("list", client.toList());
 
-        return "USRADM_12CLientsAJAX";
+        return "USRMON_06AddExerciseTableAJAX";
 
     }
 

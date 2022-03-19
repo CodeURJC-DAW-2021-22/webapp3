@@ -233,9 +233,31 @@ public class MonitorController {
     //add exercise table page
     @GetMapping("/MONaddNewExerciseTable")
     public String newExerciseTable(Model model, HttpServletRequest request) {
+        List<User> all = monServ.findByUserType("monitor");
+        Page<User> userPage = monServ.findPageClient(0, "monitor");
+
+        List<Exercise> allEx = exerServ.findAll();
+        Page<Exercise> exerPage = exerServ.findPage(0);
+
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         model.addAttribute("exercises", exerServ.findAll());
+
+        model.addAttribute("exerList", allEx);
+        model.addAttribute("clientList", all);
+        model.addAttribute("list", exerPage.toList());
+        model.addAttribute("last", exerPage.getTotalPages());
+
         return "USRMON_06AddExerciseTable";
+    }
+
+    //ajax for adding new exercises
+    @GetMapping("/MONaddNewExercise/page/{page}")
+    public String getExercisesPageMonitor(Model model, @PathVariable int page){
+        Page<Exercise> exerTabPage = exerServ.findPage(page);
+        model.addAttribute("list", exerTabPage.toList());
+
+        return "USRMON_06AddExerciseTableAJAX";
+
     }
 
     @PostMapping("/MONaddNewExerciseTable")
