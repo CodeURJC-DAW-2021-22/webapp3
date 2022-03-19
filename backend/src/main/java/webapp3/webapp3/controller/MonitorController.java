@@ -261,14 +261,20 @@ public class MonitorController {
     }
 
     @PostMapping("/MONaddNewExerciseTable")
-    public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String description,
-                                      @RequestParam List<Long> id,@RequestParam("image") MultipartFile image) throws IOException {
+    public String addNewExerciseTable(Model model,
+                                      @RequestParam(required = false) List<Long> id,
+                                      @RequestParam String name,
+                                      @RequestParam String description,
+                                      @RequestParam("image") MultipartFile image) throws IOException {
         ExerciseTable exerciseTable = new ExerciseTable(name, description);
-        List<Exercise> auxList = new ArrayList<>(id.size());
-        for (Long l: id){
-            auxList.add(exerServ.findById(l).orElseThrow());
+        if (!id.isEmpty()){
+            List<Exercise> auxList = new ArrayList<>(id.size());
+
+            for (Long l: id){
+                auxList.add(exerServ.findById(l).orElseThrow());
+            }
+            exerciseTable.setExercises(auxList);
         }
-        exerciseTable.setExercises(auxList);
         if (image.isEmpty()) {
             Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedActivity.jpeg");
             exerciseTable.setImage(BlobProxy.generateProxy(imageNotAdded.getInputStream(), imageNotAdded.contentLength()));
