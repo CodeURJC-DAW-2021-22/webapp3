@@ -128,9 +128,8 @@ public class MemberController {
         member.setName(name);
         member.setSurname(surname);
         member.setNIF(NIF);
-        member.getBirthday().setDay(birthday.substring(8, 10));
-        member.getBirthday().setMonth(birthday.substring(5, 7));
-        member.getBirthday().setYear(birthday.substring(0,4));
+        DateType date = new DateType(birthday.substring(0,4), birthday.substring(5, 7), birthday.substring(8, 10));
+        member.setBirthday(date);
         member.setHeight(Integer.parseInt(height));
         member.setWeight(Integer.parseInt(weight));
         member.setAddress(address);

@@ -162,15 +162,10 @@ public class MonitorController {
             user.setAddress(address);
             user.setPostalCode(postalCode);
             user.setPhone(phone);
-            user.getBirthday().setDay(birthdayDate.substring(8, 10));
-            user.getBirthday().setMonth(birthdayDate.substring(5, 7));
-            user.getBirthday().setYear(birthdayDate.substring(0,4));
-            user.getBirthday().generateSpanishFormat();
-            user.getHiringDate().setDay(hiringDate.substring(8, 10));
-            user.getHiringDate().setMonth(hiringDate.substring(5, 7));
-            user.getHiringDate().setYear(hiringDate.substring(0, 4));
-            user.getHiringDate().generateSpanishFormat();
-
+            DateType date = new DateType(birthdayDate.substring(0,4), birthdayDate.substring(5, 7), birthdayDate.substring(8, 10));
+            user.setBirthday(date);
+            date = new DateType(hiringDate.substring(0,4), hiringDate.substring(5, 7), hiringDate.substring(8, 10));
+            user.setHiringDate(date);
             user.setDescription(description);
             if (!image.isEmpty())
                 user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
