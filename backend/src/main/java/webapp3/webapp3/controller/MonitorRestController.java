@@ -50,4 +50,35 @@ public class MonitorRestController {
         }
     }
 
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User createUser(@RequestBody User user) {
+
+        usrServ.save(user);
+
+        return user;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
+
+        if (usrServ.exist(id)) {
+
+            if (updatedUser.getImage() != null) {
+                User dbUser = usrServ.findById(id).orElseThrow();
+                if (dbUser.getImage() != null) {
+                    updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
+                            dbUser.getImage().length()));
+                }
+            }
+
+            updatedUser.setId(id);
+            usrServ.save(updatedUser);
+
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } else    {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
