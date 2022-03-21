@@ -354,9 +354,9 @@ public class AdminController {
     //Clients' management
     @GetMapping("/clients")
     public String clients(Model model){
-        List<User> all = userServ.findByUserType("member");
+        //List<User> all = userServ.findByUserType("member");
         Page<User> exerTabPage = userServ.findPageClient(0, "member");
-        model.addAttribute("clientList", all);
+        //model.addAttribute("clientList", all);
         model.addAttribute("list", exerTabPage.toList());
         model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRADM_12Clients";
@@ -366,9 +366,10 @@ public class AdminController {
     @GetMapping("/clients/page/{page}")
     public String getClientPage(Model model, @PathVariable int page){
         Page<User> client = userServ.findPageClient(page, "member");
-        model.addAttribute("list", client.toList());
+        List<User> users = client.toList();
+        model.addAttribute("list", users);
 
-        return "USRMON_06AddExerciseTableAJAX";
+        return "USRADM_12ClientsAJAX";
 
     }
 
