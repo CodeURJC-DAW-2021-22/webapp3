@@ -42,6 +42,8 @@ public class UserService {
         return userRep.findByName(name);
     }
 
+    public boolean exist(long id) {return userRep.existsById(id);}
+
 
     // generate data for graphics
     public int findByUserTypeAndEntryDate(String type, int month, String year) {

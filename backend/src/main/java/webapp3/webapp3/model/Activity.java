@@ -1,5 +1,6 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -41,6 +42,7 @@ public class Activity {
     private String monitorName;
 
     @Lob
+    @JsonIgnore
     private Blob image;
 
     public Activity(){

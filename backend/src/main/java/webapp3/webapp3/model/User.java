@@ -1,5 +1,6 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -48,6 +49,7 @@ public class User {
     private String postalCode = "";
 
     @Column(nullable = false)
+    @JsonIgnore
     @NotNull
     private Date birthday = new Date();
 
@@ -58,7 +60,9 @@ public class User {
     @NotNull
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description = "";
+
     @Lob
+    @JsonIgnore
     private Blob image;
 
     @Column(nullable = false)
@@ -66,6 +70,7 @@ public class User {
     private String userType = "";
 
     //Member
+    @JsonIgnore
     private Date entryDate;
     private int height;
     private int weight;
@@ -83,6 +88,7 @@ public class User {
 
 
     //Monitor
+    @JsonIgnore
     private Date hiringDate;
 
     public User() {}
