@@ -5,6 +5,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.core.io.Resource;
@@ -127,7 +128,6 @@ public class MonitorController {
 
     //edit profile page
     @GetMapping("/MONeditProfile")
-
     public String editProfile(Model model, HttpServletRequest request) {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mon = monServ.findByEmail(emailName);
@@ -147,7 +147,6 @@ public class MonitorController {
                                    @RequestParam String phone,
                                    @RequestParam String birthdayDate,
                                    @RequestParam String hiringDate,
-                                   @RequestParam(required = false) Long activityName,
                                    @RequestParam String description,
                                    @RequestParam(name = "image", required = false) MultipartFile image) throws IOException {
         String emailName = request.getUserPrincipal().getName();
@@ -163,42 +162,10 @@ public class MonitorController {
             user.setAddress(address);
             user.setPostalCode(postalCode);
             user.setPhone(phone);
-            user.getBirthday().setDay(birthdayDate.substring(8, 10));
-            user.getBirthday().setMonth(birthdayDate.substring(5, 7));
-            user.getBirthday().setYear(birthdayDate.substring(0,4));
-            user.getBirthday().generateSpanishFormat();
-            user.getHiringDate().setDay(hiringDate.substring(8, 10));
-            user.getHiringDate().setMonth(hiringDate.substring(5, 7));
-            user.getHiringDate().setYear(hiringDate.substring(0, 4));
-            user.getHiringDate().generateSpanishFormat();
-
-            if (activityName == -1) {
-                //Delete association to an activity
-                Activity act = user.getACT1();
-                act.setMonitorName(null);
-                actServ.save(act);
-                user.setACT1(null);
-            } else if (activityName != -1 && user.getACT1() == null) {
-                //Add activity to a monitor without previous activity
-                Optional<Activity> activityOptional = actServ.findById(activityName);
-                activityOptional.orElseThrow().setMonitorName(user.getName());
-                actServ.save(activityOptional.get());
-                user.setACT1(activityOptional.get());
-            } else if (activityName != -1 && user.getACT1() != null && !user.getACT1().getId().equals(activityName)) {
-                //Add activity to monitor with previous activity associated
-                //1 -> Change monitorName in old activity
-                if (user.getACT1() != null) {
-                    user.getACT1().setMonitorName(null);
-                    actServ.save(user.getACT1());
-                }
-                //2 -> Change monitor name in new Activity
-                Optional<Activity> activityOptional = actServ.findById(activityName);
-                activityOptional.orElseThrow().setMonitorName(user.getName());
-                actServ.save(activityOptional.get());
-                //3 -> Add activity to user
-                user.setACT1(activityOptional.get());
-            }
-
+            DateType date = new DateType(birthdayDate.substring(0,4), birthdayDate.substring(5, 7), birthdayDate.substring(8, 10));
+            user.setBirthday(date);
+            date = new DateType(hiringDate.substring(0,4), hiringDate.substring(5, 7), hiringDate.substring(8, 10));
+            user.setHiringDate(date);
             user.setDescription(description);
             if (!image.isEmpty())
                 user.setImage(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
@@ -215,8 +182,11 @@ public class MonitorController {
     @GetMapping("/MONexerciseTable")
     public String exerciseTable(Model model, HttpServletRequest request) {
         List<ExerciseTable> all = exerciseTableServ.findAll();
+        Page<ExerciseTable> exerTabPage = exerciseTableServ.findPage(0);
         model.addAttribute("exerciseTableList", all);
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
+        model.addAttribute("listMON", exerTabPage.toList());
+        model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRMON_03ExerciseTable";
     }
 
@@ -229,6 +199,15 @@ public class MonitorController {
             return "USRMON_09_SeeExerciseTableInfo";
         } else
             return "USRMON_03ExerciseTable";
+    }
+
+    //ajax
+    @GetMapping("/MONexerciseTable/page/{page}")
+    public String getExerciseTablePageMonitor(Model model, @PathVariable int page){
+        Page<ExerciseTable> exerTabPage = exerciseTableServ.findPage(page);
+        model.addAttribute("listMON", exerTabPage.toList());
+
+        return "USRMON_03ExerciseTableAJAX";
     }
 
     @GetMapping("/MONexerciseTable/{id}/image")
@@ -249,20 +228,48 @@ public class MonitorController {
     //add exercise table page
     @GetMapping("/MONaddNewExerciseTable")
     public String newExerciseTable(Model model, HttpServletRequest request) {
+        List<User> all = monServ.findByUserType("monitor");
+        Page<User> userPage = monServ.findPageClient(0, "monitor");
+
+        List<Exercise> allEx = exerServ.findAll();
+        Page<Exercise> exerPage = exerServ.findPage(0);
+
         model.addAttribute("monitor", monServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow());
         model.addAttribute("exercises", exerServ.findAll());
+
+        model.addAttribute("exerList", allEx);
+        model.addAttribute("clientList", all);
+        model.addAttribute("list", exerPage.toList());
+        model.addAttribute("last", exerPage.getTotalPages());
+
         return "USRMON_06AddExerciseTable";
     }
 
+    //ajax for adding new exercises
+    @GetMapping("/MONaddNewExercise/page/{page}")
+    public String getExercisesPageMonitor(Model model, @PathVariable int page){
+        Page<Exercise> exerTabPage = exerServ.findPage(page);
+        model.addAttribute("list", exerTabPage.toList());
+
+        return "USRMON_06AddExerciseTableAJAX";
+
+    }
+
     @PostMapping("/MONaddNewExerciseTable")
-    public String addNewExerciseTable(Model model, @RequestParam String name, @RequestParam String description,
-                                      @RequestParam List<Long> id,@RequestParam("image") MultipartFile image) throws IOException {
+    public String addNewExerciseTable(Model model,
+                                      @RequestParam(required = false) List<Long> id,
+                                      @RequestParam String name,
+                                      @RequestParam String description,
+                                      @RequestParam("image") MultipartFile image) throws IOException {
         ExerciseTable exerciseTable = new ExerciseTable(name, description);
-        List<Exercise> auxList = new ArrayList<>(id.size());
-        for (Long l: id){
-            auxList.add(exerServ.findById(l).orElseThrow());
+        if (!id.isEmpty()){
+            List<Exercise> auxList = new ArrayList<>(id.size());
+
+            for (Long l: id){
+                auxList.add(exerServ.findById(l).orElseThrow());
+            }
+            exerciseTable.setExercises(auxList);
         }
-        exerciseTable.setExercises(auxList);
         if (image.isEmpty()) {
             Resource imageNotAdded = new ClassPathResource("/sample_images/imageNotAddedActivity.jpeg");
             exerciseTable.setImage(BlobProxy.generateProxy(imageNotAdded.getInputStream(), imageNotAdded.contentLength()));
@@ -331,7 +338,6 @@ public class MonitorController {
         return "redirect:/exerciseTable";
     }
 
-
     //grupal activities page
     @GetMapping("/MONactivities")
     public String activities(Model model, HttpServletRequest request) {
@@ -366,6 +372,5 @@ public class MonitorController {
         }
         return ResponseEntity.notFound().build();
     }
-
 
 }

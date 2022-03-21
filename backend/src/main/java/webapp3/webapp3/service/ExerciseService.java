@@ -1,6 +1,8 @@
 package webapp3.webapp3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
 
@@ -37,4 +39,7 @@ public class ExerciseService {
         repository.deleteById(id);
     }
 
+    public Page<Exercise> findPage(int page){
+        return repository.findAll(PageRequest.of(page, 10));
+    }
 }
