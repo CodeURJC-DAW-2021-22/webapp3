@@ -48,9 +48,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**");
 
         // URLs that need authentication to access to it
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasAnyRole("member","admin","monitor");
-        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasAnyRole("member","admin","monitor");
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("admin");
+        //http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("admin");
+        //http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("admin");
+        //http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("admin");
 
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();
@@ -59,7 +59,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // Disable Http Basic Authentication
-        http.httpBasic().disable();
+        //http.httpBasic().disable();
 
         // Disable Form login Authentication
         http.formLogin().disable();
