@@ -270,7 +270,7 @@ public class DataSampleService {
         exeRep.save(exercise24);
 
         Exercise exercise25 = new Exercise("Curl de muñeca","Ejercicio de antebrazo","barra y discos");
-        setExcerciseImage(exercise25,"/sample_images/muñeca.jpg");
+        setExcerciseImage(exercise25, "/sample_images/wrist.jpg");
 
         exeRep.save(exercise25);
 
