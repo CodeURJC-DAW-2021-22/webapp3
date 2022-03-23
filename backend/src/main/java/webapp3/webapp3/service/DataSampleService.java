@@ -38,6 +38,10 @@ public class DataSampleService {
     @PostConstruct
     public void init() throws IOException {
 
+        if(actRep.count() > 0 & userRep.count() > 0 & exeRep.count() > 0 & exerciseTableRep.count() > 0 & userExerciseTableRepository.count() > 0) {
+            return;
+        }
+
         DateType adminBirthday = new DateType("2018","02","10");
         User admin = new User("admin", "admin", "00000000A", "admin@admin.com", "Gym Street, 1", "12300", adminBirthday,
                 "123456789", passwordEncoder.encode("admin"));
