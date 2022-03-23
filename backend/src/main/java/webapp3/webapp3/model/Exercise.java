@@ -1,5 +1,6 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -27,10 +28,13 @@ public class Exercise {
     private String material = "";
 
     @Lob
+    @JsonIgnore
     private Blob image;
 
     @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "exercises")
+    @JsonIgnore
     private List<ExerciseTable> exerciseTables = new ArrayList<>();
+    //JSON VIEWS BAELDUNG
 
     public Exercise(){
 

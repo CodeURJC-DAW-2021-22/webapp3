@@ -1,9 +1,11 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,16 +25,17 @@ public class ExerciseTable {
     private String description = "";
 
     @Lob
+    @JsonIgnore
     private Blob image;
 
     @OneToMany(cascade = CascadeType.MERGE, mappedBy = "exerciseTable")
+    @JsonIgnore
     private List<UserExerciseTable> users = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.MERGE)
     private List<Exercise> exercises = new ArrayList<>();
 
     public ExerciseTable(){
-
     }
 
     public ExerciseTable(String name, String description) {
@@ -71,6 +74,8 @@ public class ExerciseTable {
     public void setImage(Blob image) {
         this.image = image;
     }
+
+    public boolean hasImage() { return this.image != null; }
 
     public List<UserExerciseTable> getUsers() {
         return users;

@@ -19,9 +19,7 @@ public class UserExerciseTableService {
     @Autowired
     private UserExerciseTableRepository repository;
 
-    public boolean exist(long id){
-        return repository.existsById(id);
-    }
+    public boolean exist(long id){ return repository.existsById(id); }
 
     public List<UserExerciseTable> findAll() {
         return repository.findAll();

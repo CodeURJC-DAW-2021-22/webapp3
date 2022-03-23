@@ -30,9 +30,6 @@ public class ExerciseTableService {
     private UserService memberService;
 
     @Autowired
-    private ExerciseRepository repository;
-
-    @Autowired
     private ExerciseTableRepository exerciseTabRep;
 
     public Optional<ExerciseTable> findById(Long id){

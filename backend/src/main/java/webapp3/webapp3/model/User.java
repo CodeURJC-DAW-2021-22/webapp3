@@ -1,5 +1,6 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,6 +38,7 @@ public class User {
 
     @Column(nullable = false)
     @NotNull
+    @JsonIgnore
     private String encodedPassword = "";
 
     @Column(nullable = false)
@@ -58,7 +60,9 @@ public class User {
     @NotNull
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description = "";
+
     @Lob
+    @JsonIgnore
     private Blob image;
 
     @Column(nullable = false)
