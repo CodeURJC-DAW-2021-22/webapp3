@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         // Public pages
-        http.authorizeRequests().antMatchers("/USR_mainpage").permitAll();
+        http.authorizeRequests().antMatchers("/").permitAll();
 
         http.authorizeRequests().antMatchers("/USR_activities").permitAll();
         http.authorizeRequests().antMatchers("/USR_activities/schedule/{id}").permitAll();
@@ -112,11 +112,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/USR_log_in");
         http.formLogin().usernameParameter("email");
         http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/USR_mainpage");
+        http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/USR_log_inError");
 
         // Logout
         http.logout().logoutUrl("/logout");
-        http.logout().logoutSuccessUrl("/USR_mainpage");
+        http.logout().logoutSuccessUrl("/");
     }
 }

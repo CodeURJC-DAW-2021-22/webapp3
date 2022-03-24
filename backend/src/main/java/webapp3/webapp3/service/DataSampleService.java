@@ -38,7 +38,7 @@ public class DataSampleService {
     @PostConstruct
     public void init() throws IOException {
 
-        if(actRep.count() > 0 & userRep.count() > 0 & exeRep.count() > 0 & exerciseTableRep.count() > 0 & userExerciseTableRepository.count() > 0) {
+        if (userRep.count() > 0) {
             return;
         }
 
