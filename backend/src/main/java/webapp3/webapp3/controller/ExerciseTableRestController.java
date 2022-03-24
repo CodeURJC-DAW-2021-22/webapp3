@@ -96,7 +96,6 @@ public class ExerciseTableRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    //validations error
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
@@ -132,5 +131,7 @@ public class ExerciseTableRestController {
         return ResponseEntity.created(location).build(); // brings url from the image
         // created code is 201
     }
+
+    //validations error
 
 }

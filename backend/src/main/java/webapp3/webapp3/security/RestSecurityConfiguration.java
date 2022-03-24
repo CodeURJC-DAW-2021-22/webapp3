@@ -27,6 +27,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**");
 
         http.authorizeRequests().antMatchers("/api/exercises-tables/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/group-activities/**").permitAll();
 
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();
