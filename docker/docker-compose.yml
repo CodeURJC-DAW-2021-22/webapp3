@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  web:
+    image: alessandronuzziurjc/imagenprueba
+    ports:
+      - "8443:8443"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db/gym
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_PORT=5432
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+    image: postgres:14.2
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=gym
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
