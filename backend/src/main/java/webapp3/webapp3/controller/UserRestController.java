@@ -132,7 +132,36 @@ public class UserRestController {
         }
     }
 
+    //DELETE monitor
+    @DeleteMapping("/monitors/{id}")
+    public ResponseEntity<User> deleteMonitor(@PathVariable long id) {
+        if(usrServ.findById(id).get().getUserType().equals("monitor")){
+            try {
+                usrServ.delete(id);
+                return new ResponseEntity<>(null, HttpStatus.OK);
 
+            } catch (EmptyResultDataAccessException e) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
+    //DELETE member
+    @DeleteMapping("/members/{id}")
+    public ResponseEntity<User> deleteMembers(@PathVariable long id) {
+        if(usrServ.findById(id).get().getUserType().equals("member")){
+            try {
+                usrServ.delete(id);
+                return new ResponseEntity<>(null, HttpStatus.OK);
+
+            } catch (EmptyResultDataAccessException e) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }
