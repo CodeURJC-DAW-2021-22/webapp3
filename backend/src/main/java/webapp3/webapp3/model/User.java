@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.ArrayList;
@@ -54,6 +56,7 @@ public class User {
         //email
     @Column(nullable = false)
     @NotNull
+    @Email
     @JsonView({MemberLog.class, MonitorLog.class})
     private String email = "";
 
@@ -93,34 +96,34 @@ public class User {
     @JsonView(MonitorLog.class)
     private String description = "";
 
-        //image
+    //image
     @Lob
     @JsonIgnore
     private Blob image;
 
-        //type
+    //type
     @Column(nullable = false)
     @NotNull
     private String userType = "";
 
     //Member
-        //entryDate
+    //entryDate
     @JsonIgnore
     private Date entryDate;
 
-        //height
+    //height
     @JsonView(MemberLog.class)
     private int height;
 
-        //weight
+    //weight
     @JsonView(MemberLog.class)
     private int weight;
 
-        //medicalInfo
+    //medicalInfo
     @JsonView(MemberLog.class)
     private String medicalInfo;
 
-        //activities
+    //activities
     @JsonView(MonitorLog.class)
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Activity ACT1;
@@ -133,14 +136,14 @@ public class User {
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Activity ACT3;
 
-        //exerciseTables
+    //exerciseTables
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
     @JsonIgnore
     private List<UserExerciseTable> exerciseTables = new ArrayList<>();
 
 
     //Monitor
-        //hiringDate
+    //hiringDate
     @JsonIgnore
     private Date hiringDate;
 

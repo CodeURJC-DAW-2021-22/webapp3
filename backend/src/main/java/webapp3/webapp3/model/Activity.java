@@ -162,6 +162,8 @@ public class Activity {
         this.image = image;
     }
 
+    public boolean hasImage() { return this.image != null; }
+
     public String getMonitorName() {
         return monitorName;
     }
