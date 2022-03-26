@@ -70,5 +70,44 @@ public class UserRestController {
         return usrServ.findByUserType("member");
     }
 
+    //POST members
+    @PostMapping("/members/new/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<User> createMember(@RequestBody User user) {
+        if (user.getUserType().equals("member")) {
+            usrServ.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    //POST monitors
+    @PostMapping("/monitors/new/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<User> createMonitor(@RequestBody User user) {
+        if (user.getUserType().equals("monitor")) {
+            usrServ.save(user);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    //POST monitor image
+    @PostMapping("/monitors/{id}/image/")
+    public ResponseEntity<Object> uploadMonitorImage(@PathVariable long id, @RequestParam MultipartFile imageFile) throws IOException {
+        User mon = usrServ.findById(id).orElseThrow();
+
+        URI location = fromCurrentRequest().build().toUri();
+
+        mon.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+        usrServ.save(mon);
+
+        return ResponseEntity.created(location).build();
+    }
+
+
+
 
 }
