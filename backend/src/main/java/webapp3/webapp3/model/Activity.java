@@ -1,6 +1,7 @@
 package webapp3.webapp3.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Activity {
 
     @Column(nullable = false)
     @NotNull
+    @JsonView(User.MonitorLog.class)
     private String name = "";
 
     @Column(nullable = false)

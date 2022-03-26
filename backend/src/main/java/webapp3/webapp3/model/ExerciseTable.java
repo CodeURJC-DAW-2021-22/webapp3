@@ -92,5 +92,4 @@ public class ExerciseTable {
     public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
     }
-
 }

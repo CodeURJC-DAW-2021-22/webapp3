@@ -38,6 +38,10 @@ public class DataSampleService {
     @PostConstruct
     public void init() throws IOException {
 
+        if (userRep.count() > 0) {
+            return;
+        }
+
         DateType adminBirthday = new DateType("2018","02","10");
         User admin = new User("admin", "admin", "00000000A", "admin@admin.com", "Gym Street, 1", "12300", adminBirthday,
                 "123456789", passwordEncoder.encode("admin"));
@@ -270,7 +274,7 @@ public class DataSampleService {
         exeRep.save(exercise24);
 
         Exercise exercise25 = new Exercise("Curl de muñeca","Ejercicio de antebrazo","barra y discos");
-        setExcerciseImage(exercise25,"/sample_images/muñeca.jpg");
+        setExcerciseImage(exercise25, "/sample_images/wrist.jpg");
 
         exeRep.save(exercise25);
 
