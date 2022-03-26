@@ -1,6 +1,6 @@
 package webapp3.webapp3.security;
 
-import webapp3.webapp3.security.jwt.JwtRequestFilter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,31 +11,31 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import webapp3.webapp3.security.jwt.JwtRequestFilter;
+
+import java.security.SecureRandom;
 
 @Configuration
 @Order(1)
-public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
+public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    RepositoryUserDetailsService userDetailsService;
 
     @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+    JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
+    public PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
     }
 
-    //Expose AuthenticationManager as a Bean to be used in other services
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -47,10 +47,22 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.antMatcher("/api/**");
 
-        // URLs that need authentication to access to it
-        //http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("admin");
-        //http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("admin");
-        //http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("admin");
+        //exerciseTables
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/exercises-tables/**").hasRole("monitor");
+        http.authorizeRequests().antMatchers("/api/group-activities/**").permitAll();
+
+        //administrator
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("administrator");
+
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/monitors/{id}").hasRole("administrator");
+
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("administrator");
+
+        //monitor
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("monitor");
+
+        //member
+        http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("member");
 
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();
@@ -59,7 +71,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         // Disable Http Basic Authentication
-        //http.httpBasic().disable();
+        http.httpBasic().disable();
 
         // Disable Form login Authentication
         http.formLogin().disable();
@@ -69,6 +81,6 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Add JWT Token filter
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
     }
 }
+

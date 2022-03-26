@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     RepositoryUserDetailsService userDetailsService;
@@ -48,6 +48,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Private pages
             //administrator
+        /*http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/h2-console/**").hasAnyRole("administrator");*/
         http.authorizeRequests().antMatchers("/statistics").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/activities").hasAnyRole("administrator");
@@ -102,7 +105,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/MEMactivities").hasAnyRole("member");
         http.authorizeRequests().antMatchers("/MEMactivity/{id}/image").hasAnyRole("member");
-
 
 
         // Login form

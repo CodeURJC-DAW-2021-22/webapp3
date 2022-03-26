@@ -27,6 +27,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import webapp3.webapp3.security.RepositoryUserDetailsService;
 
 @Component
 public class JwtTokenProvider {
@@ -40,7 +41,7 @@ public class JwtTokenProvider {
 	private static Long REFRESH_TOKEN_EXPIRATION_MSEC = 10800000l;
 	
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private RepositoryUserDetailsService userDetailsService;
 
 	public Authentication getAuthentication(String token) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(getUsername(token));
