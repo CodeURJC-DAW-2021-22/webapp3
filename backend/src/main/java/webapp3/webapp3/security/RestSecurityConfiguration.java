@@ -52,7 +52,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/api/group-activities/**").permitAll();
 
         //administrator
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("administrator");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/monitors/**").hasRole("administrator");
 
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/monitors/{id}").hasRole("administrator");
 
@@ -60,9 +60,11 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //monitor
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("monitor");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "api/users/me/image/").hasRole("monitor");
 
         //member
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("member");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "api/users/me/image/").hasRole("member");
 
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();
