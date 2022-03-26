@@ -128,7 +128,9 @@ public class UserRestController {
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("member")) {
             usrServ.save(user);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            URI location = fromCurrentRequest().path("/members/{id}")
+                    .buildAndExpand(user.getId()).toUri();
+            return ResponseEntity.created(location).body(user);
         }else{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -140,7 +142,9 @@ public class UserRestController {
     public ResponseEntity<User> createMonitor(@RequestBody User user) {
         if (user.getUserType().equals("monitor")) {
             usrServ.save(user);
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            URI location = fromCurrentRequest().path("/monitors/{id}")
+                    .buildAndExpand(user.getId()).toUri();
+            return ResponseEntity.created(location).body(user);
         }else{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
