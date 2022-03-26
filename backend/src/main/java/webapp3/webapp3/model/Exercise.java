@@ -34,7 +34,6 @@ public class Exercise {
     @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "exercises")
     @JsonIgnore
     private List<ExerciseTable> exerciseTables = new ArrayList<>();
-    //JSON VIEWS BAELDUNG
 
     public Exercise(){
 
@@ -85,6 +84,8 @@ public class Exercise {
     public void setImage(Blob image) {
         this.image = image;
     }
+
+    public boolean hasImage() { return this.image != null; }
 
     public List<ExerciseTable> getExerciseTables() {
         return exerciseTables;

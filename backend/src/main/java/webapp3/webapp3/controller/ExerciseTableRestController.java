@@ -71,10 +71,9 @@ public class ExerciseTableRestController {
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public ExerciseTable createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
+    public ResponseEntity<ExerciseTable> createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
         exerTabServ.save(exerciseTable);
-
-        return exerciseTable;
+        return ResponseEntity.ok(exerciseTable);
     }
 
     @PutMapping("/{id}")
@@ -96,6 +95,8 @@ public class ExerciseTableRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    //delete exerciseTable
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
