@@ -42,7 +42,7 @@ public class NonRegController {
     //-------------------------------------------------Main page------------------------------------------------------//
 
     //Main page controller
-    @GetMapping("/USR_mainpage")
+    @GetMapping("/")
     public String mainPage(Model model,  HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         if (principal != null) {

@@ -10,8 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>webApp3</groupId>
-    <artifactId>webApp3</artifactId>
+
+    <groupId>webapp3</groupId>
+    <artifactId>webapp3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>RukyGymasticAPP</name>
     <packaging>jar</packaging>
@@ -77,6 +78,22 @@
                 <version>${project.parent.version}</version>
             </plugin>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <env>
+                            <BPE_OVERRIDE_JAVA_TOOL_OPTIONS>
+                                -Xss256K
+                                -XX:ReservedCodeCacheSize=64M
+                                -XX:MaxMetaspaceSize=100000K
+                                -Xmx64M
+                            </BPE_OVERRIDE_JAVA_TOOL_OPTIONS>
+                        </env>
+                    </image>
+                </configuration>
+            </plugin>
+           <plugin>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-maven-plugin</artifactId>
                 <version>1.3</version>
