@@ -14,8 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +30,20 @@ public class UserRestController {
 
     @Autowired
     private UserService usrServ;
+
+    //GET log monitor
+    @JsonView(User.MonitorLog.class)
+    @GetMapping("/monitors/me")
+    public ResponseEntity<User> monitorLog(HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null) {
+            return ResponseEntity.ok(usrServ.findByEmail(principal.getName()).orElseThrow());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     //GET monitors
     @JsonView(User.MonitorBasic.class)
@@ -70,6 +86,42 @@ public class UserRestController {
         return usrServ.findByUserType("member");
     }
 
+    //GET log member
+    @JsonView(User.MemberLog.class)
+    @GetMapping("/members/me")
+    public ResponseEntity<User> membersLog(HttpServletRequest request) {
+
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null) {
+            return ResponseEntity.ok(usrServ.findByEmail(principal.getName()).orElseThrow());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    //GET log user image
+    @GetMapping("/me/image")
+    public ResponseEntity<Object> meImage(HttpServletRequest request) throws SQLException {
+
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null) {
+            Optional<User> optionalUser = usrServ.findByEmail(principal.getName());
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                if (user.getImage() != null) {
+                    Resource file = new InputStreamResource(user.getImage().getBinaryStream());
+                    return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                            .contentLength(user.getImage().length()).body(file);
+                }
+            }
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     //POST members
     @PostMapping("/members/new/")
     @ResponseStatus(HttpStatus.CREATED)
@@ -107,6 +159,25 @@ public class UserRestController {
         return ResponseEntity.created(location).build();
     }
 
+    //POST user log image
+    @PostMapping("/me/image/")
+    public ResponseEntity<Object> uploadMyImage(HttpServletRequest request, @RequestParam MultipartFile imageFile) throws IOException {
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+            User me = usrServ.findByEmail(principal.getName()).orElseThrow();
+
+            URI location = fromCurrentRequest().build().toUri();
+
+            me.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+            usrServ.save(me);
+
+            return ResponseEntity.created(location).build();
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     //PUT monitor
     @PutMapping("/monitors/{id}/")
     public ResponseEntity<User> updateMonitor(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
@@ -128,6 +199,28 @@ public class UserRestController {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         } else	{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //PUT user log
+    @PutMapping("/me/")
+    public ResponseEntity<User> updateMe(HttpServletRequest request, @RequestBody User updatedUser) throws SQLException {
+        Principal principal = request.getUserPrincipal();
+        if (principal != null) {
+            if (updatedUser.getImage() != null) {
+                User dbUser = usrServ.findByEmail(principal.getName()).orElseThrow();
+                if (dbUser.getImage() != null) {
+                    updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
+                            dbUser.getImage().length()));
+                }
+            }
+
+            updatedUser.setId(usrServ.findByEmail(principal.getName()).get().getId());
+            usrServ.save(updatedUser);
+
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -163,5 +256,4 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
 }
