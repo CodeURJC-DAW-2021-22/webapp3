@@ -107,7 +107,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/MEMactivity/{id}/image").hasAnyRole("member");
 
 
-
         // Login form
         http.formLogin().loginPage("/USR_log_in");
         http.formLogin().usernameParameter("email");
