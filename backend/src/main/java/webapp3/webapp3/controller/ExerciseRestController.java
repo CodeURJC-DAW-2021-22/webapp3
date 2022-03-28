@@ -71,7 +71,7 @@ public class ExerciseRestController {
         }
     }
 
-   /* @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Exercise> deleteExercise(@PathVariable long id) {
         try {
             exerServ.delete(id);
@@ -80,7 +80,7 @@ public class ExerciseRestController {
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-    } */
+    }
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
