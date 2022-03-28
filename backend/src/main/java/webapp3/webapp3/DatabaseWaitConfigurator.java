@@ -1,4 +1,4 @@
-package webapp3.webapp3;
+/*package webapp3.webapp3;
 
 @SpringBootConfiguration
 public class DatabaseWaitConfigurator {
@@ -23,4 +23,4 @@ public class DatabaseWaitConfigurator {
                     .forEach(it -> it.setDependsOn("databaseStartupValidator"));
         };
     }
-}
+}*/
