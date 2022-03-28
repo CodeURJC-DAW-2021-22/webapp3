@@ -4,12 +4,14 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Activity;
+import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.service.ActivityService;
 
 import java.io.IOException;
@@ -66,6 +68,17 @@ public class GroupActivitiesRestController {
             return new ResponseEntity<>(updatedAct, HttpStatus.OK);
         } else	{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Activity> deleteGroupActivities(@PathVariable long id) {
+        try {
+            actServ.delete(id);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 

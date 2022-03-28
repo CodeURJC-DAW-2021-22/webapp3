@@ -4,6 +4,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -96,7 +97,16 @@ public class ExerciseTableRestController {
         }
     }
 
-    //delete exerciseTable
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ExerciseTable> deleteExerciseTable(@PathVariable long id) {
+        try {
+            exerTabServ.delete(id);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
