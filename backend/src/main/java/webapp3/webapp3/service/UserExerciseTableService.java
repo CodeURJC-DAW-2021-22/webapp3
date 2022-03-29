@@ -37,10 +37,10 @@ public class UserExerciseTableService {
         return repository.findByUser(user);
     }
 
-    public TreeMap<String, Integer> findExercisesTables(Long id){
+    public HashMap<String, Integer> findExercisesTables(Long id){
         List<Long> topExercises = repository.findTopExercises(id);
-        TreeMap<String, Integer> map = new TreeMap<>();
-        List<Integer> rep = repository.findHowMany();
+        HashMap<String, Integer> map = new HashMap<>();
+        List<Integer> rep = repository.findHowMany(id);
         while (!topExercises.isEmpty()){
             Long removed = topExercises.remove(0);
             map.put(exTabRep.findById(removed).orElseThrow().getName(), rep.remove(0));
