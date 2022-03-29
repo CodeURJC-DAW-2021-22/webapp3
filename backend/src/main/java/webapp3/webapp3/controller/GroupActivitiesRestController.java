@@ -46,9 +46,10 @@ public class GroupActivitiesRestController {
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Activity createActivity(@RequestBody Activity activity) {
+    public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
+        URI location = fromCurrentRequest().build().toUri();
         actServ.save(activity);
-        return activity;
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")

@@ -49,8 +49,9 @@ public class ExerciseRestController {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Exercise> createExercise(@RequestBody Exercise exer) {
+        URI location = fromCurrentRequest().build().toUri();
         exerServ.save(exer);
-        return ResponseEntity.ok(exer);
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")

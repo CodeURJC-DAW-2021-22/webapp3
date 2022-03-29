@@ -73,8 +73,9 @@ public class ExerciseTableRestController {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ExerciseTable> createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
+        URI location = fromCurrentRequest().build().toUri();
         exerTabServ.save(exerciseTable);
-        return ResponseEntity.ok(exerciseTable);
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
