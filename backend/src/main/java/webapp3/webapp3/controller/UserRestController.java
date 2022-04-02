@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.UserService;
 
@@ -154,15 +155,19 @@ public class UserRestController {
     @PutMapping("/monitors/{id}/image/")
     // this method is a PUT because uploading an image in API REST is a form-data type, not a JSON.
     // I can't create an exercise table and introduce an image in the same petition
-    public ResponseEntity<Object> uploadMonitorImage(@PathVariable long id, @RequestParam MultipartFile imageFile) throws IOException {
+    public ResponseEntity<Object> uploadMonitorImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+            throws IOException {
+
         User mon = usrServ.findById(id).orElseThrow();
 
         URI location = fromCurrentRequest().build().toUri();
+
 
         mon.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         usrServ.save(mon);
 
         return ResponseEntity.created(location).build();
+
     }
 
     //PUT user log image
@@ -181,6 +186,7 @@ public class UserRestController {
             usrServ.save(me);
 
             return ResponseEntity.created(location).build();
+
         }else {
             return ResponseEntity.notFound().build();
         }

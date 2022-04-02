@@ -136,7 +136,7 @@ public class ExerciseTableRestController {
 
         URI location = fromCurrentRequest().build().toUri(); // brings URI from the actual get
 
-        exerTab.hasImage();
+
         exerTab.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         exerTabServ.save(exerTab);
 

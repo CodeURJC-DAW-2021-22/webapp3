@@ -4,7 +4,6 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.net.URI;
@@ -20,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Exercise;
-import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.service.ExerciseService;
 
 
@@ -110,7 +108,6 @@ public class ExerciseRestController {
 
         URI location = fromCurrentRequest().build().toUri(); // brings URI from the actual get
 
-        exerTab.hasImage();
         exerTab.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         exerServ.save(exerTab);
 

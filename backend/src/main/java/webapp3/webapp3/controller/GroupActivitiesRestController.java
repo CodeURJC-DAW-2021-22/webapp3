@@ -110,7 +110,6 @@ public class GroupActivitiesRestController {
 
         URI location = fromCurrentRequest().build().toUri(); // brings URI from the actual get
 
-        actGroup.hasImage();
         actGroup.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         actServ.save(actGroup);
 
