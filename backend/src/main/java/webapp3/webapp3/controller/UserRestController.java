@@ -1,6 +1,12 @@
 package webapp3.webapp3.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jdk.jfr.ContentType;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -33,13 +39,31 @@ public class UserRestController {
     private UserService usrServ;
 
     //GET log monitor
+    @Operation(summary = "Get monitor logged in the application")
+
+    @ApiResponses(value = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "Found the monitor",
+            content = {@Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = User.class)
+            )}
+        ),
+        @ApiResponse(
+                responseCode = "404",
+                description = "Not found",
+                content = @Content
+        )
+    })
+
     @JsonView(User.MonitorLog.class)
     @GetMapping("/monitors/me")
     public ResponseEntity<User> monitorLog(HttpServletRequest request) {
 
         Principal principal = request.getUserPrincipal();
 
-        if(principal != null) {
+        if (principal != null) {
             return ResponseEntity.ok(usrServ.findByEmail(principal.getName()).orElseThrow());
         } else {
             return ResponseEntity.notFound().build();
@@ -47,6 +71,24 @@ public class UserRestController {
     }
 
     //GET monitors
+    @Operation(summary = "Get all monitors")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the monitor",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @JsonView(User.MonitorBasic.class)
     @GetMapping("/monitors")
     public List<User> getMonitors() {
@@ -54,6 +96,29 @@ public class UserRestController {
     }
 
     //GET monitor with id
+    @Operation(summary = "Get a monitor by id")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the monitor",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "monitor not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/monitors/{id}")
     public ResponseEntity<User> getMonitor(@PathVariable long id) {
         Optional<User> op = usrServ.findById(id);
@@ -66,6 +131,29 @@ public class UserRestController {
     }
 
     //GET monitor image
+    @Operation(summary = "Get a monitor image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the image",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/monitors/{id}/image")
     public ResponseEntity<Object> downloadMonitorImage(@PathVariable long id) throws SQLException {
         Optional<User> optionalUser = usrServ.findById(id);
@@ -81,6 +169,24 @@ public class UserRestController {
     }
 
     //GET members
+    @Operation(summary = "Get all members")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the members",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @JsonView(User.MemberBasic.class)
     @GetMapping("/members")
     public List<User> getMembers() {
@@ -88,13 +194,31 @@ public class UserRestController {
     }
 
     //GET log member
+    @Operation(summary = "Get member logged in the application")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the member",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @JsonView(User.MemberLog.class)
     @GetMapping("/members/me")
     public ResponseEntity<User> membersLog(HttpServletRequest request) {
 
         Principal principal = request.getUserPrincipal();
 
-        if(principal != null) {
+        if (principal != null) {
             return ResponseEntity.ok(usrServ.findByEmail(principal.getName()).orElseThrow());
         } else {
             return ResponseEntity.notFound().build();
@@ -102,12 +226,30 @@ public class UserRestController {
     }
 
     //GET log user image
+    @Operation(summary = "Get the logged member image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the image",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/me/image")
     public ResponseEntity<Object> meImage(HttpServletRequest request) throws SQLException {
 
         Principal principal = request.getUserPrincipal();
 
-        if(principal != null) {
+        if (principal != null) {
             Optional<User> optionalUser = usrServ.findByEmail(principal.getName());
             if (optionalUser.isPresent()) {
                 User user = optionalUser.get();
@@ -124,6 +266,24 @@ public class UserRestController {
     }
 
     //POST members
+    @Operation(summary = "Post a new member")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+
     @PostMapping("/members/new/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
@@ -132,12 +292,30 @@ public class UserRestController {
             URI location = fromCurrentRequest().path("/members/{id}")
                     .buildAndExpand(user.getId()).toUri();
             return ResponseEntity.created(location).body(user);
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     //POST monitors
+    @Operation(summary = "Post a new monitor")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
+
     @PostMapping("/monitors/new/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMonitor(@RequestBody User user) {
@@ -146,7 +324,7 @@ public class UserRestController {
             URI location = fromCurrentRequest().path("/monitors/{id}")
                     .buildAndExpand(user.getId()).toUri();
             return ResponseEntity.created(location).body(user);
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -186,17 +364,44 @@ public class UserRestController {
             usrServ.save(me);
 
             return ResponseEntity.created(location).build();
-
         }else {
             return ResponseEntity.notFound().build();
         }
     }
 
     //PUT monitor
+    @Operation(summary = "PUT monitor")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Monitor found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "monitor not found",
+                    content = @Content
+            )
+    })
+
     @PutMapping("/monitors/{id}/")
     public ResponseEntity<User> updateMonitor(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
         if (usrServ.exist(id)) {
-            if(usrServ.findById(id).get().getUserType().equals("monitor") && updatedUser.getUserType().equals("monitor")){
+            if (usrServ.findById(id).get().getUserType().equals("monitor") && updatedUser.getUserType().equals("monitor")) {
                 if (updatedUser.getImage() != null) {
                     User dbUser = usrServ.findById(id).orElseThrow();
                     if (dbUser.getImage() != null) {
@@ -209,15 +414,38 @@ public class UserRestController {
                 usrServ.save(updatedUser);
 
                 return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-            }else{
+            } else {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
-        } else	{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     //PUT user log
+    @Operation(summary = "Put user logged")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "user found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "user not found",
+                    content = @Content
+            )
+    })
+
     @PutMapping("/me/")
     public ResponseEntity<User> updateMe(HttpServletRequest request, @RequestBody User updatedUser) throws SQLException {
         Principal principal = request.getUserPrincipal();
@@ -234,15 +462,42 @@ public class UserRestController {
             usrServ.save(updatedUser);
 
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     //DELETE monitor
+    @Operation(summary = "Delete monitor")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "monitor delete",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "user not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
     @DeleteMapping("/monitors/{id}")
     public ResponseEntity<User> deleteMonitor(@PathVariable long id) {
-        if(usrServ.findById(id).get().getUserType().equals("monitor")){
+        if (usrServ.findById(id).get().getUserType().equals("monitor")) {
             try {
                 usrServ.delete(id);
                 return new ResponseEntity<>(null, HttpStatus.OK);
@@ -250,15 +505,42 @@ public class UserRestController {
             } catch (EmptyResultDataAccessException e) {
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
             }
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     //DELETE member
+    @Operation(summary = "Delete member")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "member delete",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "user not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
     @DeleteMapping("/members/{id}")
     public ResponseEntity<User> deleteMembers(@PathVariable long id) {
-        if(usrServ.findById(id).get().getUserType().equals("member")){
+        if (usrServ.findById(id).get().getUserType().equals("member")) {
             try {
                 usrServ.delete(id);
                 return new ResponseEntity<>(null, HttpStatus.OK);
@@ -266,7 +548,7 @@ public class UserRestController {
             } catch (EmptyResultDataAccessException e) {
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
             }
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

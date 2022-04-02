@@ -25,4 +25,5 @@ public class DatabaseWaitConfigurator {
                     .forEach(it -> it.setDependsOn("databaseStartupValidator"));
         };
     }
+
 } */
