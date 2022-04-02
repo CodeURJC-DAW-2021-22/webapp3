@@ -1,5 +1,7 @@
 /*package webapp3.webapp3;
 
+import org.springframework.boot.SpringBootConfiguration;
+
 @SpringBootConfiguration
 public class DatabaseWaitConfigurator {
     @Bean
@@ -23,4 +25,5 @@ public class DatabaseWaitConfigurator {
                     .forEach(it -> it.setDependsOn("databaseStartupValidator"));
         };
     }
-}*/
+
+} */

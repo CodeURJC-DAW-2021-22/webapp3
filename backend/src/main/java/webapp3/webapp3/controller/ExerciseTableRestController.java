@@ -4,6 +4,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -72,8 +73,9 @@ public class ExerciseTableRestController {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ExerciseTable> createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
+        URI location = fromCurrentRequest().build().toUri();
         exerTabServ.save(exerciseTable);
-        return ResponseEntity.ok(exerciseTable);
+        return ResponseEntity.created(location).build();
     }
 
     @PutMapping("/{id}")
@@ -96,7 +98,16 @@ public class ExerciseTableRestController {
         }
     }
 
-    //delete exerciseTable
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ExerciseTable> deleteExerciseTable(@PathVariable long id) {
+        try {
+            exerTabServ.delete(id);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
@@ -125,7 +136,7 @@ public class ExerciseTableRestController {
 
         URI location = fromCurrentRequest().build().toUri(); // brings URI from the actual get
 
-        exerTab.hasImage();
+
         exerTab.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         exerTabServ.save(exerTab);
 

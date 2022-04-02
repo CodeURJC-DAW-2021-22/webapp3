@@ -300,6 +300,8 @@ public class User {
         this.image = image;
     }
 
+    public boolean hasImage() { return this.image != null; }
+
     public String getUserType() {
         return userType;
     }
