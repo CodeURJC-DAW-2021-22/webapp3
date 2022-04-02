@@ -22,9 +22,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.TreeMap;
+
 
 
 @Controller
@@ -174,7 +175,7 @@ public class MemberController {
         String emailName = request.getUserPrincipal().getName();
         Optional<User> mem = memServ.findByEmail(emailName);
         User user = mem.orElseThrow();
-        TreeMap<String, Integer> ex = usExServ.findExercisesTables(user.getId());
+        HashMap<String, Integer> ex = usExServ.findExercisesTables(user.getId());
         model.addAttribute("id", user.getId());
         model.addAttribute("TableList", ex.keySet());
         model.addAttribute("List", ex.values());

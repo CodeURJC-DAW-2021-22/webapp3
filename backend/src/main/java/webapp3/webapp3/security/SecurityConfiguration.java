@@ -117,5 +117,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // Logout
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
+
+        // Activate if you need a H2DB
+        /* http.csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().disable().and()
+                .cors().disable();;*/
     }
 }

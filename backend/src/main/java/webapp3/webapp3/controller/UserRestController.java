@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.User;
+import webapp3.webapp3.service.UserExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +40,9 @@ public class UserRestController {
 
     @Autowired
     private UserService usrServ;
+
+    @Autowired
+    private UserExerciseTableService usExServ;
 
     //GET log monitor
     @Operation(summary = "Get monitor logged in the application")
@@ -552,5 +558,18 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    //Admin statistics
+    @GetMapping("/admin/statistics")
+    public ResponseEntity<ArrayList<ArrayList<Integer>>> adminStats(){
+        return new ResponseEntity<>(usrServ.getStatistics(), HttpStatus.OK);
+    }
+
+    //Member statistics
+    @GetMapping("/members/statistics")
+    public ResponseEntity<HashMap<String, Integer>> memberStats(HttpServletRequest request){
+        User user = usrServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
+        return new ResponseEntity<>(usExServ.findExercisesTables(user.getId()), HttpStatus. OK);
     }
 }
