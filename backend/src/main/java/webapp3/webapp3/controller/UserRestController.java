@@ -12,6 +12,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -193,9 +194,9 @@ public class UserRestController {
     })
 
     @JsonView(User.MemberBasic.class)
-    @GetMapping("/members?page={numPage}")
-    public ResponseEntity<Page<User>> getMembers(@PathVariable int numPage) {
-        return new ResponseEntity<>(usrServ.findPageClient(numPage, "member"), HttpStatus.OK);
+    @GetMapping("/members")
+    public ResponseEntity<List<User>> getMembers(Pageable page) {
+        return new ResponseEntity<>(usrServ.findPageClient(page.getPageNumber(), "member").getContent(), HttpStatus.OK);
     }
 
     //GET log member
