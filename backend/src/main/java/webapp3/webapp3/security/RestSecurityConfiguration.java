@@ -48,28 +48,37 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**");
 
         //exerciseTables
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/exercises/**").hasRole("monitor");
+
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/exercises-tables/**").hasRole("monitor");
-        http.authorizeRequests().antMatchers("/api/group-activities/**").permitAll();
-        http.authorizeRequests().antMatchers("/api/exercises/**").hasRole("monitor");
+
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/exercises/**").hasRole("monitor");
 
         //administrator
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/statistics").hasRole("administrator");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/statistics").hasRole("administrator");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/monitors/**").hasRole("administrator");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members").hasRole("administrator");
+
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/monitors/**").hasRole("administrator");
 
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/monitors/{id}").hasRole("administrator");
 
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("administrator");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/statistics").hasRole("administrator");
 
         //monitor
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/monitors/me").hasRole("monitor");
+
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("monitor");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/image/").hasRole("monitor");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/monitors/{id}/image/").hasRole("monitor");
 
         //member
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/me").hasRole("monitor");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/statistics").hasRole("member");
+
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("member");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/image/").hasRole("member");
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/statistics").hasRole("member");
 
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();

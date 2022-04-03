@@ -48,9 +48,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         // Private pages
             //administrator
-        /*http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/h2-console/**").hasAnyRole("administrator");*/
         http.authorizeRequests().antMatchers("/statistics").hasAnyRole("administrator");
 
         http.authorizeRequests().antMatchers("/activities").hasAnyRole("administrator");
