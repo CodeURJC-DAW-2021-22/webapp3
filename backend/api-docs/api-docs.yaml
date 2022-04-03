@@ -1,0 +1,1282 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8443
+  description: Generated server url
+paths:
+  /api/users/monitors/{id}/image/:
+    put:
+      tags:
+      - user-rest-controller
+      summary: PUT a monitor image
+      operationId: uploadMonitorImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "400":
+          description: Invalid id supplied
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/users/monitors/{id}/:
+    put:
+      tags:
+      - user-rest-controller
+      summary: PUT monitor
+      operationId: updateMonitor
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+        "200":
+          description: Monitor found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/users/me/image/:
+    put:
+      tags:
+      - user-rest-controller
+      summary: PUT a monitor image
+      operationId: uploadMyImage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "400":
+          description: Invalid id supplied
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/users/me/:
+    put:
+      tags:
+      - user-rest-controller
+      summary: Put user logged
+      operationId: updateMe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+        "200":
+          description: user found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/group-activities/{id}:
+    get:
+      tags:
+      - group-activities-rest-controller
+      summary: Get a group activity by id
+      operationId: getGroupActivity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: group activity not found
+        "200":
+          description: Found the group activity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+    put:
+      tags:
+      - group-activities-rest-controller
+      summary: PUT group activity
+      operationId: updateActivity
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+        required: true
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: group activity not found
+        "200":
+          description: group activity found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        "403":
+          description: Forbidden
+  /api/group-activities/{id}/image:
+    get:
+      tags:
+      - group-activities-rest-controller
+      summary: Get a group activity image
+      operationId: downloadImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Image not found
+        "200":
+          description: Found the group activity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+    put:
+      tags:
+      - group-activities-rest-controller
+      summary: PUT a group activity image
+      operationId: uploadImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "400":
+          description: Invalid id supplied
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        "403":
+          description: Forbidden
+  /api/exercises/{id}:
+    get:
+      tags:
+      - exercise-rest-controller
+      summary: Get a exercise by id
+      operationId: getExercise
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+    put:
+      tags:
+      - exercise-rest-controller
+      summary: PUT a exercise
+      operationId: updateExercise
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+        required: true
+      responses:
+        "400":
+          description: Invalid id supplied
+        "403":
+          description: Forbidden
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+  /api/exercises/{id}/image:
+    get:
+      tags:
+      - exercise-rest-controller
+      summary: Get exercise image
+      operationId: downloadImage_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the exercise
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+    put:
+      tags:
+      - exercise-rest-controller
+      summary: Put exercise
+      operationId: uploadImage_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+  /api/exercises-tables/{id}:
+    get:
+      tags:
+      - exercise-table-rest-controller
+      summary: Get exercise table
+      operationId: getExerciseTable
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found exercise table
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+    put:
+      tags:
+      - exercise-table-rest-controller
+      summary: PUT a exercise table
+      operationId: updateExerciseTable
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExerciseTable'
+        required: true
+      responses:
+        "400":
+          description: Invalid id supplied
+        "403":
+          description: Forbidden
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+  /api/exercises-tables/{id}/image:
+    get:
+      tags:
+      - exercise-table-rest-controller
+      summary: Get image downloaded
+      operationId: downloadImage_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: image downloaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+    put:
+      tags:
+      - exercise-table-rest-controller
+      summary: PUT a image
+      operationId: uploadImage_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - imageFile
+              type: object
+              properties:
+                imageFile:
+                  type: string
+                  format: binary
+      responses:
+        "400":
+          description: Invalid id supplied
+        "403":
+          description: Forbidden
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+  /api/users/monitors/new/:
+    post:
+      tags:
+      - user-rest-controller
+      summary: Post a new monitor
+      operationId: createMonitor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "404":
+          description: Not found
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/users/members/new/:
+    post:
+      tags:
+      - user-rest-controller
+      summary: Post a new member
+      operationId: createMember
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/group-activities/:
+    get:
+      tags:
+      - group-activities-rest-controller
+      summary: Get all group activities
+      operationId: getGroupActivities
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the group activity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+    post:
+      tags:
+      - group-activities-rest-controller
+      summary: Post a group activity
+      operationId: createActivity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+        required: true
+      responses:
+        "404":
+          description: group activity not found
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        "403":
+          description: Forbidden
+  /api/exercises/:
+    get:
+      tags:
+      - exercise-rest-controller
+      summary: Get all exercise
+      operationId: getExercises
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+    post:
+      tags:
+      - exercise-rest-controller
+      summary: Post a exercise
+      operationId: createExercise
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+        required: true
+      responses:
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+  /api/exercises-tables/:
+    get:
+      tags:
+      - exercise-table-rest-controller
+      summary: Get all exercises tables
+      operationId: getExerciseTables
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the exercises tables
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+    post:
+      tags:
+      - exercise-table-rest-controller
+      summary: Post a new exercise table
+      operationId: createExerciseTable
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExerciseTable'
+        required: true
+      responses:
+        "403":
+          description: Forbidden
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+  /api/auth/refresh:
+    post:
+      tags:
+      - login-controller
+      operationId: refreshToken
+      parameters:
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/logout:
+    post:
+      tags:
+      - login-controller
+      operationId: logOut
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/login:
+    post:
+      tags:
+      - login-controller
+      operationId: login
+      parameters:
+      - name: accessToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      - name: refreshToken
+        in: cookie
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/users/monitors:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all monitors
+      operationId: getMonitors
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the monitor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_MonitorBasic'
+  /api/users/monitors/{id}:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a monitor by id
+      operationId: getMonitor
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: monitor not found
+        "200":
+          description: Found the monitor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Delete monitor
+      operationId: deleteMonitor
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Not found
+        "200":
+          description: monitor delete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+  /api/users/monitors/{id}/image:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a monitor image
+      operationId: downloadMonitorImage
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Found the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Image not found
+  /api/users/monitors/me:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get monitor logged in the application
+      operationId: monitorLog
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the monitor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_MonitorLog'
+  /api/users/members:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all members
+      operationId: getMembers
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_MemberBasic'
+  /api/users/members/statistics:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get members statistics
+      operationId: memberStats
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/users/members/me:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get member logged in the application
+      operationId: membersLog
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found the member
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User_MemberLog'
+  /api/users/me/image:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get the logged member image
+      operationId: meImage
+      responses:
+        "200":
+          description: Found the image
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "404":
+          description: Not found
+  /api/users/admin/statistics:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get admin statistics
+      operationId: adminStats
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/exercises-tables/{id}/pdf:
+    get:
+      tags:
+      - exercise-table-rest-controller
+      summary: Get pdf generated
+      operationId: pdfGenerator
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Not found
+        "200":
+          description: pdf generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseTable'
+  /api/users/members/{id}:
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Delete member
+      operationId: deleteMembers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "400":
+          description: Invalid id supplied
+        "404":
+          description: Not found
+        "403":
+          description: Forbidden
+        "200":
+          description: member delete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+components:
+  schemas:
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        room:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        price:
+          type: integer
+          format: int32
+        monday:
+          type: string
+        tuesday:
+          type: string
+        wednesday:
+          type: string
+        thursday:
+          type: string
+        friday:
+          type: string
+        monitorName:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        NIF:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        phone:
+          type: string
+        description:
+          type: string
+        userType:
+          type: string
+        height:
+          type: integer
+          format: int32
+        weight:
+          type: integer
+          format: int32
+        medicalInfo:
+          type: string
+        ACT1:
+          $ref: '#/components/schemas/Activity'
+        ACT2:
+          $ref: '#/components/schemas/Activity'
+        ACT3:
+          $ref: '#/components/schemas/Activity'
+        act3:
+          $ref: '#/components/schemas/Activity'
+        act2:
+          $ref: '#/components/schemas/Activity'
+        nif:
+          type: string
+        act1:
+          $ref: '#/components/schemas/Activity'
+    Exercise:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        material:
+          type: string
+        exercisesTables:
+          type: array
+          writeOnly: true
+          items:
+            $ref: '#/components/schemas/ExerciseTable'
+    ExerciseTable:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        exercises:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exercise'
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        message:
+          type: string
+        error:
+          type: string
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Activity_MonitorBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        room:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        price:
+          type: integer
+          format: int32
+        monday:
+          type: string
+        tuesday:
+          type: string
+        wednesday:
+          type: string
+        thursday:
+          type: string
+        friday:
+          type: string
+        monitorName:
+          type: string
+    User_MonitorBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userType:
+          type: string
+        act3:
+          $ref: '#/components/schemas/Activity_MonitorBasic'
+        act2:
+          $ref: '#/components/schemas/Activity_MonitorBasic'
+        nif:
+          type: string
+        act1:
+          $ref: '#/components/schemas/Activity_MonitorBasic'
+    Activity_MonitorLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        room:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        price:
+          type: integer
+          format: int32
+        monday:
+          type: string
+        tuesday:
+          type: string
+        wednesday:
+          type: string
+        thursday:
+          type: string
+        friday:
+          type: string
+        monitorName:
+          type: string
+    User_MonitorLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        NIF:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        phone:
+          type: string
+        description:
+          type: string
+        userType:
+          type: string
+        ACT1:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+        ACT2:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+        ACT3:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+        act3:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+        act2:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+        nif:
+          type: string
+        act1:
+          $ref: '#/components/schemas/Activity_MonitorLog'
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string
+    Activity_MemberBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        room:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        price:
+          type: integer
+          format: int32
+        monday:
+          type: string
+        tuesday:
+          type: string
+        wednesday:
+          type: string
+        thursday:
+          type: string
+        friday:
+          type: string
+        monitorName:
+          type: string
+    User_MemberBasic:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        NIF:
+          type: string
+        userType:
+          type: string
+        act3:
+          $ref: '#/components/schemas/Activity_MemberBasic'
+        act2:
+          $ref: '#/components/schemas/Activity_MemberBasic'
+        nif:
+          type: string
+        act1:
+          $ref: '#/components/schemas/Activity_MemberBasic'
+    Activity_MemberLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        room:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        description:
+          type: string
+        price:
+          type: integer
+          format: int32
+        monday:
+          type: string
+        tuesday:
+          type: string
+        wednesday:
+          type: string
+        thursday:
+          type: string
+        friday:
+          type: string
+        monitorName:
+          type: string
+    User_MemberLog:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        NIF:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        phone:
+          type: string
+        userType:
+          type: string
+        height:
+          type: integer
+          format: int32
+        weight:
+          type: integer
+          format: int32
+        medicalInfo:
+          type: string
+        act3:
+          $ref: '#/components/schemas/Activity_MemberLog'
+        act2:
+          $ref: '#/components/schemas/Activity_MemberLog'
+        nif:
+          type: string
+        act1:
+          $ref: '#/components/schemas/Activity_MemberLog'
