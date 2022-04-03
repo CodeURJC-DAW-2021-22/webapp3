@@ -1,11 +1,11 @@
 #!/bin/bash
 
-cd ../backend
+docker pull alessandronuzziurjc/codeurjc-daw-2021-22-webapp3
 
-mvn spring-boot:build-image -Dspring-boot.build-image.imageName=registry.heroku.com/$1/web
+docker tag alessandronuzziurjc/codeurjc-daw-2021-22-webapp3 registry.heroku.com/codeurjc-daw-2021-22-webapp3/web
 
-docker push registry-host:registry.heroku.com/$1/web #alessandronuzziurjc/codeurjc-daw-2021-22-webapp3
+docker push registry.heroku.com/codeurjc-daw-2021-22-webapp3/web
 
-heroku container:release web -a $1
+heroku container:release web -a codeurjc-daw-2021-22-webapp3
 
-heroku logs --tail -a $1
+heroku logs --tail -a codeurjc-daw-2021-22-webapp3
