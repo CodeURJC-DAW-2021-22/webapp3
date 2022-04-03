@@ -1,0 +1,996 @@
+{
+	"info": {
+		"_postman_id": "051543bf-9eab-4b1a-8321-b87ba8ef61d0",
+		"name": "rukyGym",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Exercise_table",
+			"item": [
+				{
+					"name": "getExerciseTables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/?page=1",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getExerciseTable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/49",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								"49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pdfGenerator",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/49/pdf",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								"49",
+								"pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createExerciseTable",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tabla 666\",\n    \"description\": \"Tabla de entrenamiento jeje\",\n    \"exercises\": [\n        {\n            \"id\": 3,\n            \"name\": \"Press Militar\",\n            \"description\": \"Ejercicio de hombro \",\n            \"material\": \"Barra y discos\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExerciseTable",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 49,\n        \"name\": \"Tabla 666\",\n        \"description\": \"Tabla de entrenamiento jejeje\",\n        \"exercises\": [\n            {\n                \"id\": 2,\n                \"name\": \"Press De Banca Con Barra\",\n                \"description\": \"Ejercicio de pectoral medio\",\n                \"material\": \"banco, barra y discos\"\n            }\n        ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/49",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								"49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "downloadImage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/49/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								"49",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/Users/andreanuzziherrero/IdeaProjects/webapp3-2/src/assets/images/logo.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises-tables/49/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises-tables",
+								"49",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Group_activities",
+			"item": [
+				{
+					"name": "getGroupActivities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGroupActivity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/32",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createActivity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Judo\",\n    \"room\": \"Sala de Artes Marciales\",\n    \"capacity\": 23,\n    \"description\": \"jeje\",\n    \"price\": 1500,\n    \"monday\": \"21:00\",\n    \"tuesday\": \"21:00\",\n    \"wednesday\": \"21:00\",\n    \"thursday\": \"21:00\",\n    \"friday\": \"21:00\",\n    \"monitorName\": \"Sofía\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateActivity",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 32,\n        \"name\": \"Zu\",\n        \"room\": \"Sala Actividades 34\",\n        \"capacity\": 12,\n        \"description\": \"je ke ke ke \",\n        \"price\": 2200,\n        \"monday\": \"12:00\",\n        \"tuesday\": \"11:00\",\n        \"wednesday\": \"10:00\",\n        \"friday\": \"10:00\",\n        \"monitorName\": \"pepe\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/32",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "downloadImage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/32/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								"32",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/Users/andreanuzziherrero/Desktop/space-stars-planet-campfire-wallpaper-preview.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/group-activities/32/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"group-activities",
+								"32",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exercise",
+			"item": [
+				{
+					"name": "getExercises",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/?page=0",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getExercise",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/2",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createExercise",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Curl en polea2\",\n    \"description\": \"Ejercicio de biceps5\",\n    \"material\": \"polea baja jeje\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateExercise",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"+++\",\n    \"description\": \"5\",\n    \"material\": \"jeje\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/28",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								"28"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "downloadImage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/11/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								"11",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadImage",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/Users/andreanuzziherrero/IdeaProjects/webapp3-2/src/assets/images/logo-icon.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{MAIN_URL}}/exercises/11/image",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"exercises",
+								"11",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Log",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"joselu@gmail.com\",\r\n    \"password\": \"monitor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/auth/login",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logOut",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/auth/logout",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Monitor",
+					"item": [
+						{
+							"name": "monitorLog",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/me",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMonitors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMonitor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/43",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"43"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createMonitor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Luis Jose, Pepe\",\r\n    \"userType\": \"monitor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/new/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"new",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateMonitor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Luis Jose hola\",\r\n    \"userType\": \"monitor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/43/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"43",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "downloadMonitorImage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/43/image",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"43",
+										"image"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadMonitorImage",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageFile",
+											"type": "file",
+											"src": "/Users/andreanuzziherrero/Desktop/23c1d646-b60c-4120-9dfc-60457289e8b7.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/43/image/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"43",
+										"image",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteMonitor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Luis Jose\",\r\n    \"userType\": \"monitor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/monitors/43",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"monitors",
+										"43"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Member",
+					"item": [
+						{
+							"name": "membersLog",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/members/me",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"members",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMembers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/members?page=1",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"members"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateMe",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Gerard P\",\r\n    \"NIF\": \"22222222A\",\r\n    \"userType\": \"member\",\r\n    \"email\":\"suuu@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/me/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createMember",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Gerard PO\",\r\n    \"NIF\": \"22222222A\",\r\n    \"userType\": \"member\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/members/new/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"members",
+										"new",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "meImage",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MAIN_URL}}/users/me/image",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"me",
+										"image"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "uploadMyImage",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageFile",
+											"type": "file",
+											"src": "/Users/andreanuzziherrero/IdeaProjects/webapp3-2/src/assets/images/favicon.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/me/image/",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"me",
+										"image",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteMembers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Gerard\",\r\n    \"NIF\": \"22222222A\",\r\n    \"userType\": \"member\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{MAIN_URL}}/users/me/image",
+									"host": [
+										"{{MAIN_URL}}"
+									],
+									"path": [
+										"users",
+										"me",
+										"image"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "adminStats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/users/admin/statistics",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"users",
+								"admin",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "memberStats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{MAIN_URL}}/users/members/statistics",
+							"host": [
+								"{{MAIN_URL}}"
+							],
+							"path": [
+								"users",
+								"members",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "MAIN_URL",
+			"value": "https://localhost:8443/api",
+			"type": "default"
+		}
+	]
+}
