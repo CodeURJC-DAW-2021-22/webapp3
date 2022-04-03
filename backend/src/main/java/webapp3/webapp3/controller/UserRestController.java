@@ -243,7 +243,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Image not found",
+                    description = "Not found",
                     content = @Content
             )
     })
@@ -320,7 +320,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "Image not found",
+                    description = "Not found",
                     content = @Content
             )
     })
@@ -448,7 +448,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "monitor not found",
+                    description = "Not found",
                     content = @Content
             )
     })
@@ -496,7 +496,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "user not found",
+                    description = "Not found",
                     content = @Content
             )
     })
@@ -541,7 +541,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "user not found",
+                    description = "Not found",
                     content = @Content
             ),
             @ApiResponse(
@@ -584,7 +584,7 @@ public class UserRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "user not found",
+                    description = "Not found",
                     content = @Content
             ),
             @ApiResponse(
@@ -610,12 +610,46 @@ public class UserRestController {
     }
 
     //Admin statistics
+    @Operation(summary = "Get admin statistics")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
     @GetMapping("/admin/statistics")
     public ResponseEntity<ArrayList<ArrayList<Integer>>> adminStats(){
         return new ResponseEntity<>(usrServ.getStatistics(), HttpStatus.OK);
     }
 
     //Member statistics
+    @Operation(summary = "Get members statistics")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
     @GetMapping("/members/statistics")
     public ResponseEntity<HashMap<String, Integer>> memberStats(HttpServletRequest request){
         User user = usrServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
