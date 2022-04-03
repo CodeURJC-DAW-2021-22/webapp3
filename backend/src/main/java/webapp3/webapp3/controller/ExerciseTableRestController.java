@@ -43,7 +43,7 @@ public class ExerciseTableRestController {
 
     // GET getting all exercise tables
 
-    @Operation(summary = "Get all excercises tables")
+    @Operation(summary = "Get all exercises tables")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -201,7 +201,7 @@ public class ExerciseTableRestController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "user not found",
+                    description = "Not found",
                     content = @Content
             ),
             @ApiResponse(
