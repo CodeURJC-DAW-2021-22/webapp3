@@ -18,7 +18,7 @@ import webapp3.webapp3.security.jwt.UserLoginService;
 import webapp3.webapp3.security.jwt.AuthResponse.Status;
 
 @RestController
-@RequestMapping("/api/auth")
+            @RequestMapping("/api/auth")
 public class LoginController {
 
     @Autowired

@@ -1,5 +1,10 @@
 package webapp3.webapp3.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -36,26 +41,97 @@ public class ExerciseTableRestController {
     @Autowired
     private UserService usrServ;
 
-    // getting all exercise tables
+    // GET getting all exercise tables
+
+    @Operation(summary = "Get all excercises tables")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the exercises tables",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/")
-    public ResponseEntity<List<ExerciseTable>> getExerciseTables(){
+    public ResponseEntity<List<ExerciseTable>> getExerciseTables() {
         return ResponseEntity.ok(exerTabServ.findAll());
     }
 
+    //GET getExerciseTable
+    @Operation(summary = "Get exercise table")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found exercise table",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/{id}")
-    public ResponseEntity<ExerciseTable> getExerciseTable(@PathVariable Long id){
+    public ResponseEntity<ExerciseTable> getExerciseTable(@PathVariable Long id) {
         Optional<ExerciseTable> exerTab = exerTabServ.findById(id);
-        if (exerTab.isPresent()){
+        if (exerTab.isPresent()) {
             return ResponseEntity.ok(exerTab.get());
-        } else{
+        } else {
             return ResponseEntity.notFound().build();
         }
     }
 
+    @Operation(summary = "Get pdf generated")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "pdf generated",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
     @GetMapping("/{id}/pdf")
-    public ResponseEntity<?> pdfGenerator(@PathVariable Long id, HttpServletRequest request){
+    public ResponseEntity<?> pdfGenerator(@PathVariable Long id, HttpServletRequest request) {
         return exerTabServ.getPdf(id, request);
     }
+
+    //POST  exerciseTable
+    @Operation(summary = "Post a new exercise table")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            )
+    })
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
@@ -65,11 +141,33 @@ public class ExerciseTableRestController {
         return ResponseEntity.created(location).build();
     }
 
+    //PUT updateExerciseTables
+    @Operation(summary = "PUT a exercise table")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
     @PutMapping("/{id}")
     public ResponseEntity<ExerciseTable> updateExerciseTable(@PathVariable long id, @RequestBody ExerciseTable updatedExerTab) throws SQLException {
 
-        if (exerTabServ.findById(id).isPresent()){
-            if (updatedExerTab.hasImage()){
+        if (exerTabServ.findById(id).isPresent()) {
+            if (updatedExerTab.hasImage()) {
                 ExerciseTable dbExerTab = exerTabServ.findById(id).orElseThrow();
                 if (dbExerTab.hasImage()) {
                     updatedExerTab.setImage(BlobProxy.generateProxy(dbExerTab.getImage().getBinaryStream(),
@@ -80,11 +178,38 @@ public class ExerciseTableRestController {
             exerTabServ.save(updatedExerTab);
 
             return new ResponseEntity<>(updatedExerTab, HttpStatus.OK);
-        } else	{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+    //DELETE exerciseTable
+    @Operation(summary = "Delete ExerciseTable")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Exercise Table delete",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "user not found",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<ExerciseTable> deleteExerciseTable(@PathVariable long id) {
         try {
@@ -95,6 +220,24 @@ public class ExerciseTableRestController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+    //GET downloadImage
+    @Operation(summary = "Get image downloaded")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "image downloaded",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
@@ -113,6 +256,28 @@ public class ExerciseTableRestController {
         }
     }
 
+    //PUT uploadImage
+    @Operation(summary = "PUT a image")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ExerciseTable.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
     @PutMapping("/{id}/image")
     // this method is a PUT because uploading an image in API REST is a form-data type, not a JSON.
     // I can't create an exercise table and introduce an image in the same petition
