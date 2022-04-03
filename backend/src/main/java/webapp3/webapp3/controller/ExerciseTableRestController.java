@@ -139,7 +139,7 @@ public class ExerciseTableRestController {
     public ResponseEntity<ExerciseTable> createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
         URI location = fromCurrentRequest().build().toUri();
         exerTabServ.save(exerciseTable);
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(exerciseTable);
     }
 
     //PUT updateExerciseTables

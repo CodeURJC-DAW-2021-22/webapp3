@@ -122,7 +122,7 @@ public class GroupActivitiesRestController {
     public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
         URI location = fromCurrentRequest().build().toUri();
         actServ.save(activity);
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(activity);
     }
 
     //PUT group activity

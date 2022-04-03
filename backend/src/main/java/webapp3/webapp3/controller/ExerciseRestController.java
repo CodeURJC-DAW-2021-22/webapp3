@@ -94,7 +94,7 @@ public class ExerciseRestController {
     }
 
     //POST new exercise
-    @Operation(summary = "Post a new exercise")
+    @Operation(summary = "Post a exercise")
 
     @ApiResponses(value = {
             @ApiResponse(
@@ -102,12 +102,17 @@ public class ExerciseRestController {
                     description = "Created",
                     content = {@Content(
                             mediaType = "application/json",
-                            schema = @Schema(implementation=Exercise.class)
+                            schema = @Schema(implementation= Exercise.class)
                     )}
             ),
             @ApiResponse(
                     responseCode = "403",
                     description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
                     content = @Content
             )
     })
@@ -117,7 +122,7 @@ public class ExerciseRestController {
     public ResponseEntity<Exercise> createExercise(@RequestBody Exercise exer) {
         URI location = fromCurrentRequest().build().toUri();
         exerServ.save(exer);
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(exer);
     }
 
     //PUT exercise
