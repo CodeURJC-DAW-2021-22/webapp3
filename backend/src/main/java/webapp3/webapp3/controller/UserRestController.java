@@ -192,8 +192,9 @@ public class UserRestController {
     })
 
     @JsonView(User.MemberBasic.class)
-    @GetMapping("/members")
-    public ResponseEntity<List<User>> getMembers() {
+    @GetMapping("/members?page={numPage}")
+    public ResponseEntity<List<User>> getMembers(@PathVariable int numPage) {
+        usrServ.findPageClient(numPage, "member");
         return new ResponseEntity<>(usrServ.findByUserType("member"), HttpStatus.OK);
     }
 
