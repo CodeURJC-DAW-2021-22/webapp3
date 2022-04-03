@@ -1,88 +1,147 @@
 package webapp3.webapp3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.sql.Blob;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name="userTable")
 public class User {
 
+    //Interface for monitors columns: id and name
+    public interface MonitorBasic{}
+    //Interface for monitors columns: id, name, surname, NIF, email, address, PC, phone, activity, description
+    public interface MonitorLog{}
+    //Interface for members columns: id, name and NIF
+    public interface MemberBasic{}
+    //Interface for members columns: id, name, surname, NIF, email, address, PC, phone, height, weight, medical info
+    public interface MemberLog{}
+
+    //Columns
+        //ID
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
+    @JsonView({MonitorBasic.class, MonitorLog.class, MemberBasic.class, MemberLog.class})
     private long id;
 
+        //name
     @Column(nullable = false)
     @NotNull
+    @JsonView({MonitorBasic.class, MonitorLog.class, MemberBasic.class, MemberLog.class})
     private String name = "";
 
+        //surmane
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberLog.class, MonitorLog.class})
     private String surname = "";
 
+        //NIF
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberBasic.class, MemberLog.class, MonitorLog.class})
     private String NIF = "";
 
+        //email
     @Column(nullable = false)
     @NotNull
+    @Email
+    @JsonView({MemberLog.class, MonitorLog.class})
     private String email = "";
 
+        //password
     @Column(nullable = false)
     @NotNull
+    @JsonIgnore
     private String encodedPassword = "";
 
+        //address
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberLog.class, MonitorLog.class})
     private String address = "";
 
+        //PC
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberLog.class, MonitorLog.class})
     private String postalCode = "";
 
+        //birthday
     @Column(nullable = false)
+    @JsonIgnore
     @NotNull
     private Date birthday = new Date();
 
+        //phone
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberLog.class, MonitorLog.class})
     private String phone = "";
 
+        //description
     @NotNull
     @Column(columnDefinition = "TEXT", nullable = false)
+    @JsonView(MonitorLog.class)
     private String description = "";
+
+    //image
     @Lob
+    @JsonIgnore
     private Blob image;
 
+    //type
     @Column(nullable = false)
     @NotNull
     private String userType = "";
 
     //Member
+    //entryDate
+    @JsonIgnore
     private Date entryDate;
+
+    //height
+    @JsonView(MemberLog.class)
     private int height;
+
+    //weight
+    @JsonView(MemberLog.class)
     private int weight;
+
+    //medicalInfo
+    @JsonView(MemberLog.class)
     private String medicalInfo;
 
+    //activities
+    @JsonView(MonitorLog.class)
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Activity ACT1;
+
+    @JsonView(MonitorLog.class)
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Activity ACT2;
+
+    @JsonView(MonitorLog.class)
     @OneToOne(fetch = FetchType.EAGER, optional = true)
     private Activity ACT3;
 
+    //exerciseTables
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
+    @JsonIgnore
     private List<UserExerciseTable> exerciseTables = new ArrayList<>();
 
 
     //Monitor
+    //hiringDate
+    @JsonIgnore
     private Date hiringDate;
 
     public User() {}
@@ -142,6 +201,8 @@ public class User {
         this.userType = "member";
         this.encodedPassword = password;
     }
+
+    //Getters and Setters
 
     public long getId() {
         return id;
@@ -238,6 +299,8 @@ public class User {
     public void setImage(Blob image) {
         this.image = image;
     }
+
+    public boolean hasImage() { return this.image != null; }
 
     public String getUserType() {
         return userType;

@@ -9,6 +9,7 @@ import webapp3.webapp3.model.ExerciseTable;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,8 @@ public class UserService {
         return userRep.findByName(name);
     }
 
+    public boolean exist(long id) {return userRep.existsById(id);}
+
 
     // generate data for graphics
     public int findByUserTypeAndEntryDate(String type, int month, String year) {
@@ -57,5 +60,26 @@ public class UserService {
 
     public Page<User> findPageClient(int page, String s){
         return userRep.findByUserType(PageRequest.of(page, 3), s);
+    }
+
+    public ArrayList<ArrayList<Integer>> getStatistics() {
+        String [] years = {"2019", "2020", "2021", "2022"};
+        ArrayList<ArrayList<Integer>> listOfLists = new ArrayList<>(4);
+        for (int i = 0; i < 4; i++) {
+            listOfLists.add(i, new ArrayList<Integer>(12));
+        }
+
+        ArrayList<Integer> yearComp = new ArrayList<>(12);
+
+        int j = 0;
+        for (String year : years) {
+            for (int i = 0; i < 12; i++) {
+                yearComp.add(this.findByUserTypeAndEntryDate("member", i + 1, year));
+            }
+            listOfLists.get(j++).addAll(yearComp);
+            yearComp.clear();
+        }
+
+        return listOfLists;
     }
 }

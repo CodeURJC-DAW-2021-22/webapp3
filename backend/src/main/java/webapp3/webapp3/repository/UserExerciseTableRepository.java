@@ -19,6 +19,6 @@ public interface UserExerciseTableRepository extends JpaRepository<UserExerciseT
     @Query(value = "SELECT EXERCISE_TABLE_ID FROM USER_EXERCISE_TABLE WHERE USER_ID = :user GROUP BY EXERCISE_TABLE_ID ORDER BY COUNT(EXERCISE_TABLE_ID) DESC", nativeQuery = true)
     List<Long> findTopExercises(Long user);
 
-    @Query(value = "SELECT count(EXERCISE_TABLE_ID) FROM USER_EXERCISE_TABLE GROUP BY EXERCISE_TABLE_ID ORDER BY COUNT(EXERCISE_TABLE_ID) DESC", nativeQuery = true)
-    List<Integer> findHowMany();
+    @Query(value = "SELECT count(EXERCISE_TABLE_ID) FROM USER_EXERCISE_TABLE WHERE USER_ID = :user GROUP BY EXERCISE_TABLE_ID ORDER BY COUNT(EXERCISE_TABLE_ID) DESC", nativeQuery = true)
+    List<Integer> findHowMany(Long user);
 }

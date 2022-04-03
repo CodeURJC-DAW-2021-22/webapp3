@@ -42,7 +42,7 @@ public class NonRegController {
     //-------------------------------------------------Main page------------------------------------------------------//
 
     //Main page controller
-    @GetMapping("/USR_mainpage")
+    @GetMapping("/")
     public String mainPage(Model model,  HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         if (principal != null) {
@@ -188,13 +188,13 @@ public class NonRegController {
     public String login(){return "USR_06log_in";}
 
     @RequestMapping("/USR_log_inError")
-    public String loginErr(){return "/USR_08log_inError";}
+    public String loginErr(){return "USR_08log_inError";}
 
     //-------------------------------------------------Sign in page---------------------------------------------------//
 
     //Sign in page controller
     @GetMapping("/USR_sign_in")
-    public String signin(Model model){return "/USR_07sign_in";}
+    public String signin(Model model){return "USR_07sign_in";}
 
     //Add user
     @PostMapping("/USR_sign_in")
@@ -221,6 +221,6 @@ public class NonRegController {
 
         userServ.save(newUser);
 
-        return "/USR_06log_in";
+        return "USR_06log_in";
     }
 }

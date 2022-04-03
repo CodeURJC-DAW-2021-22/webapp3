@@ -26,6 +26,7 @@ import webapp3.webapp3.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,14 +46,10 @@ public class AdminController {
 
     @GetMapping("/statistics")
     public String statistics(Model model){
-        int [] clients = new int [12];
-        String [][] months = new String [12][4];
-        String [] years = {"2019", "2020", "2021", "2022"};
-        for (int j = 0; j < years.length; j++) {
+        ArrayList<ArrayList<Integer>> statistics = userServ.getStatistics();
+        for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 12; i++) {
-                months[i][j] = "m" + i + j;
-                clients[i] = userServ.findByUserTypeAndEntryDate("member", i + 1, years[j]);
-                model.addAttribute(months[i][j], clients[i]);
+                model.addAttribute("m" + i + j, statistics.get(j).get(i));
             }
         }
         return "USRADM_01Statistics";
@@ -354,9 +351,9 @@ public class AdminController {
     //Clients' management
     @GetMapping("/clients")
     public String clients(Model model){
-        List<User> all = userServ.findByUserType("member");
+        //List<User> all = userServ.findByUserType("member");
         Page<User> exerTabPage = userServ.findPageClient(0, "member");
-        model.addAttribute("clientList", all);
+        //model.addAttribute("clientList", all);
         model.addAttribute("list", exerTabPage.toList());
         model.addAttribute("last", exerTabPage.getTotalPages());
         return "USRADM_12Clients";
@@ -366,9 +363,10 @@ public class AdminController {
     @GetMapping("/clients/page/{page}")
     public String getClientPage(Model model, @PathVariable int page){
         Page<User> client = userServ.findPageClient(page, "member");
-        model.addAttribute("list", client.toList());
+        List<User> users = client.toList();
+        model.addAttribute("list", users);
 
-        return "USRMON_06AddExerciseTableAJAX";
+        return "USRADM_12ClientsAJAX";
 
     }
 
