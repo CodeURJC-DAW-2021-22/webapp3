@@ -63,7 +63,7 @@ public class ExerciseTableRestController {
 
     @GetMapping("/")
     public ResponseEntity<List<ExerciseTable>> getExerciseTables(Pageable page) {
-        return ResponseEntity.ok(exerTabServ.findPage(page.getPageNumber()).getContent());
+        return new ResponseEntity<>(exerTabServ.findPage(page.getPageNumber()).getContent(), HttpStatus.OK);
     }
 
     //GET getExerciseTable
