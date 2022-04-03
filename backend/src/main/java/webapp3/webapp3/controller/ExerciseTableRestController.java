@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -61,8 +62,8 @@ public class ExerciseTableRestController {
     })
 
     @GetMapping("/")
-    public ResponseEntity<List<ExerciseTable>> getExerciseTables() {
-        return ResponseEntity.ok(exerTabServ.findAll());
+    public ResponseEntity<List<ExerciseTable>> getExerciseTables(Pageable page) {
+        return ResponseEntity.ok(exerTabServ.findPage(page.getPageNumber()).getContent());
     }
 
     //GET getExerciseTable
