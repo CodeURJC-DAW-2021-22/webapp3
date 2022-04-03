@@ -69,19 +69,21 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("administrator");
 
-        //monitor
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/monitors/me").hasRole("monitor");
+
 
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("monitor");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/image/").hasRole("monitor");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/monitors/{id}/image/").hasRole("monitor");
 
         //member
-        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/me").hasRole("monitor");
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/me").hasRole("member");
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/members/statistics").hasRole("member");
 
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me").hasRole("member");
         http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/image/").hasRole("member");
+
+        //monitor
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/monitors/me").hasRole("monitor");
 
         //exercise
         //http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/exercises/").hasRole("monitor");
