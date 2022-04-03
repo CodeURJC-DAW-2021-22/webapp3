@@ -62,7 +62,7 @@ public class ExerciseTableRestController {
             return ResponseEntity
                     .ok()
                     .contentType(MediaType.APPLICATION_PDF)
-                    //.header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
+                    .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
                     .body(baos.toByteArray());
         } catch (Exception e){
             e.printStackTrace();
