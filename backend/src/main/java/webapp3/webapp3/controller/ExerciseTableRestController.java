@@ -54,20 +54,7 @@ public class ExerciseTableRestController {
 
     @GetMapping("/{id}/pdf")
     public ResponseEntity<?> pdfGenerator(@PathVariable Long id, HttpServletRequest request){
-        try {
-            String emailName = request.getUserPrincipal().getName();
-            Optional<User> mem = usrServ.findByEmail(emailName);
-            User user = mem.orElseThrow();
-            ByteArrayOutputStream baos = exerTabServ.generatePDF(user.getId(), id);
-            return ResponseEntity
-                    .ok()
-                    .contentType(MediaType.APPLICATION_PDF)
-                    .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
-                    .body(baos.toByteArray());
-        } catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error");
-        }
+        return exerTabServ.getPdf(id, request);
     }
 
     @PostMapping("/")

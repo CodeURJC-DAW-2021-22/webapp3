@@ -9,6 +9,8 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.ExerciseTable;
@@ -16,6 +18,7 @@ import webapp3.webapp3.model.User;
 import webapp3.webapp3.repository.ExerciseRepository;
 import webapp3.webapp3.repository.ExerciseTableRepository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -108,5 +111,22 @@ public class ExerciseTableService {
 
     public Page<ExerciseTable> findPage(int page){
         return exerciseTabRep.findAll(PageRequest.of(page, 8));
+    }
+
+    public ResponseEntity<?> getPdf(Long id, HttpServletRequest request){
+        try {
+            String emailName = request.getUserPrincipal().getName();
+            Optional<User> mem = memberService.findByEmail(emailName);
+            User user = mem.orElseThrow();
+            ByteArrayOutputStream baos = this.generatePDF(user.getId(), id);
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_PDF)
+                    .header("Content-disposition", "attachment;filename=\"TablaDeEjercicios.pdf\"")
+                    .body(baos.toByteArray());
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error");
+        }
     }
 }
