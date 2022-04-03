@@ -168,7 +168,7 @@ public class ExerciseRestController {
     }
 
     //DELETE exercise
-    @Operation(summary = "Delete exercise")
+    /*@Operation(summary = "Delete exercise")
 
     @ApiResponses(value = {
             @ApiResponse(
@@ -205,7 +205,7 @@ public class ExerciseRestController {
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-    }
+    } */
 
     //GET exercise image
     @Operation(summary = "Get exercise image")

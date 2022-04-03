@@ -175,7 +175,7 @@ public class GroupActivitiesRestController {
     }
 
     //DELETE group activity
-    @Operation(summary = "Delete group activity")
+    /*@Operation(summary = "Delete group activity")
 
     @ApiResponses(value = {
             @ApiResponse(
@@ -212,7 +212,7 @@ public class GroupActivitiesRestController {
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-    }
+    } */
 
     //GET group activity image
     @Operation(summary = "Get a group activity image")

@@ -185,7 +185,7 @@ public class ExerciseTableRestController {
     }
 
     //DELETE exerciseTable
-    @Operation(summary = "Delete ExerciseTable")
+    /*@Operation(summary = "Delete ExerciseTable")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -211,6 +211,7 @@ public class ExerciseTableRestController {
                     content = @Content
             )
     })
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ExerciseTable> deleteExerciseTable(@PathVariable long id) {
         try {
@@ -220,7 +221,7 @@ public class ExerciseTableRestController {
         } catch (EmptyResultDataAccessException e) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-    }
+    } */
 
     //GET downloadImage
     @Operation(summary = "Get image downloaded")
