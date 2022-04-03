@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jdk.jfr.ContentType;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -17,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import webapp3.webapp3.model.Exercise;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.UserExerciseTableService;
 import webapp3.webapp3.service.UserService;
@@ -97,8 +95,8 @@ public class UserRestController {
 
     @JsonView(User.MonitorBasic.class)
     @GetMapping("/monitors")
-    public List<User> getMonitors() {
-        return usrServ.findByUserType("monitor");
+    public ResponseEntity<List<User>> getMonitors() {
+        return new ResponseEntity<>(usrServ.findByUserType("monitor"), HttpStatus.OK);
     }
 
     //GET monitor with id
@@ -195,8 +193,8 @@ public class UserRestController {
 
     @JsonView(User.MemberBasic.class)
     @GetMapping("/members")
-    public List<User> getMembers() {
-        return usrServ.findByUserType("member");
+    public ResponseEntity<List<User>> getMembers() {
+        return new ResponseEntity<>(usrServ.findByUserType("member"), HttpStatus.OK);
     }
 
     //GET log member
@@ -319,6 +317,11 @@ public class UserRestController {
                     responseCode = "403",
                     description = "Forbidden",
                     content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Image not found",
+                    content = @Content
             )
     })
 
@@ -336,6 +339,29 @@ public class UserRestController {
     }
 
     //PUT monitor image
+    @Operation(summary = "PUT a monitor image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
+
     @PutMapping("/monitors/{id}/image/")
     // this method is a PUT because uploading an image in API REST is a form-data type, not a JSON.
     // I can't create an exercise table and introduce an image in the same petition
@@ -355,6 +381,29 @@ public class UserRestController {
     }
 
     //PUT user log image
+    @Operation(summary = "PUT a monitor image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
+
     @PutMapping("/me/image/")
     // this method is a PUT because uploading an image in API REST is a form-data type, not a JSON.
     // I can't create an exercise table and introduce an image in the same petition
