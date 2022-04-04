@@ -427,6 +427,15 @@ If you haven't uploaded the app image  to DockerHub is time to do it ;).
 
 (Optional. This one allows you to see the information related to the app on your commands console)
 
+In /docker you can find two scripts that automates this task. After the execution of 
+
+```$ heroku container:login````
+
+Execute:
+
+``` $ ./createApp.sh <app_name>```
+
+``` $ ./deployApp.sh <app_name>```
 
 #### HEROKU LINK
 
