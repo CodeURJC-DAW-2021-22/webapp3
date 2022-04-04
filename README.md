@@ -458,10 +458,8 @@ There are different types of users to test the app. These are some examples:
 ### API DOCS
 The links to access to API DOCS documentation are:
 
-* .yaml file
-  ![](https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/main/api-docs/api-docs.yaml)
-* link to .html
-  ![](https://rawcdn.githack.com/CodeURJC-DAW-2021-22/webapp3/560155efa464a38baf89c8d12083b8c46e7b6fd3/api-docs/api-docs.html)
+* .yaml file (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/main/api-docs/api-docs.yaml)
+* link to .html (https://rawcdn.githack.com/CodeURJC-DAW-2021-22/webapp3/560155efa464a38baf89c8d12083b8c46e7b6fd3/api-docs/api-docs.html)
 
 ### UPDATE DIAGRAM CLASS
 
