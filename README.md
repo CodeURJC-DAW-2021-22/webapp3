@@ -429,7 +429,7 @@ If you haven't uploaded the app image  to DockerHub is time to do it ;).
 
 In /docker you can find two scripts that automates this task. After the execution of 
 
-```$ heroku container:login````
+```$ heroku container:login```
 
 Execute:
 
