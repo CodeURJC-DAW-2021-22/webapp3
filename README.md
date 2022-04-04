@@ -355,7 +355,7 @@ ___
 
 ### EXECUTION INSTRUCTIONS
 
-#### EXECUTION INSTRUCTIONS TO DOCKERIZE THE APP  
+#### DOCKERIZED APP EXECUTION
 
 Firstly, install Docker in your computer. (You can download this program on: https://www.docker.com/get-started/)
 Next, open command console. Change your working directory to the file where docker-compose.yml is. (/docker)
@@ -363,13 +363,13 @@ Execute
 
 ```$ docker-compose up```
 
-Once the app is running, open in your browser on https://localhost:8443/
+Once the app is running, open it in your browser on https://localhost:8443/
 
 #### DOCKER IMAGE CONSTRUCTION
 
-You need to log in to DockerHub before you execute the create_image.sh script. This script creates the new image and pushes it to DockerHub.
+You need to log in to DockerHub before you execute the create_image.sh script (/docker). This script creates the new image and pushes it to DockerHub.
 
-Create an account in DockerHub and execute in your command console:
+Create an account in DockerHub (https://hub.docker.com/signup) and execute in your command console:
 
 ``` $ docker login ```
 
