@@ -512,7 +512,6 @@ I have worked on the functionalities of the ExcercisesRestControler and I used p
 |4 | Api Docs Update(https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/c19c9ea37efe93cbe4a4a4858716fda571ddbe29) |
 |5 | ExerciseTableRestController API DOCS update (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/5bfff6a0d5ec00bd13ea289034ec6ee844d7e04c) |
 
-: (Security structure,login error page and private and public pages control
 
 ##### FILES PARTICIPATED
 
@@ -542,7 +541,6 @@ I have worked on the functionalities of the UserRestController, I have helped ou
 |4 | User Rest Controller DELETE(https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/bc1ce67aeffb3baddb6106cbb6f62c6e467abe67) |
 |5 | GroupActivitiesRestController api docs update (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/44922edb5b1c4e6bef9e38f7d191161cda25c97c) |
 
-: (Security structure,login error page and private and public pages control
 
 ##### FILES PARTICIPATED
 
