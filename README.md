@@ -435,7 +435,9 @@ Execute:
 
 ``` $ ./createApp.sh <app_name>```
 
-``` $ ./deployApp.sh <app_name>```
+``` $ ./deployApp.sh <image_name> <app_name>```
+
+Remember that the image is going to be downloaded from DockerHub in the second script.
 
 #### HEROKU LINK
 
