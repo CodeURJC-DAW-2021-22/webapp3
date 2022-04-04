@@ -585,7 +585,7 @@ I have worked on the functionalities of the ExerciseTableRestController, Exercis
 
 ##### DESCRIPTION OF TASKS
 
-I have worked on the deployment of the application, development of REST APIs and correcting errors. I have extracted some functionallity to the corresponding services to avoid duplication of code. I have also collaborated in open api generation.
+I have worked on the deployment of the application, development of REST APIs and correcting errors. I have extracted some functionallity to the corresponding services to avoid duplicated code. I have also collaborated in open api generation.
 
 ##### COMMITS DONE
 
