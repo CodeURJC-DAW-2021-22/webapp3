@@ -355,57 +355,83 @@ ___
 
 ### EXECUTION INSTRUCTIONS
 
-#### EXECUTION INSTRUCTIONS TO DOCKERIZED APP
+#### EXECUTION INSTRUCTIONS TO DOCKERIZE THE APP  
 
 Firstly, install Docker in your computer. (You can download this program on: https://www.docker.com/get-started/)
 Next, open command console. Change your working directory to the file where docker-compose.yml is. (/docker)
-Execute $ docker-compose up.
-Once the app is running open in your browser https://localhost:8443/
+Execute 
+
+```$ docker-compose up```
+
+Once the app is running, open in your browser on https://localhost:8443/
 
 #### DOCKER IMAGE CONSTRUCTION
 
 You need to log in to DockerHub before you execute the create_image.sh script. This script creates the new image and pushes it to DockerHub.
 
 Create an account in DockerHub and execute in your command console:
-` $ docker login `
 
-Execute .create_image.sh ` <username>/<name_of_the_new_image> `
+``` $ docker login ```
+
+Execute 
+
+``` $ ./create_image.sh  <name_of_the_new_image> ```
+
+Note that you must edit the script in order to **add your DockerHub user**. If not, you won't be able to upload the image.
 
 
 #### DEPLOYMENT IN HEROKU
 
-Deployment documentation (in Heroku)
 If you aren't signed up in Heroku, create a new account in https://signup.heroku.com/
 Before all, execute in your command console:
 
-` $ heroku login `
-` $ heroku container:login `
+``` $ heroku login ```
+
+``` $ heroku container:login ```
 
 Execute these commands
-` $ heroku create <application_name> `
+
+``` $ heroku create <application_name> ```
+
 (Creates a new application on Heroku)
-` $ heroku addons:create heroku-postgresql --app <application_name> `
+
+``` $ heroku addons:create heroku-postgresql --app <application_name> ```
+
 (Adds the postgresql database to the application)
-` $ heroku config:set SERVER_SSL_ENABLED=false --app <application_name> `
-` $ heroku config:set SPRING_JPA_HIBERNATE_DDL-AUTO=update --app <application_name> `
+
+``` $ heroku config:set SERVER_SSL_ENABLED=false --app <application_name> ```
+
+``` $ heroku config:set SPRING_JPA_HIBERNATE_DDL-AUTO=update --app <application_name> ```
+
 (These commands stablish some environment variables)
+
 If you haven't uploaded the app image  to DockerHub is time to do it ;).
-` $ docker pull <dockerHub_image_name> `
+
+``` $ docker pull <dockerHub_image_name> ```
+
 (Downloads the image from DockerHub)
-` $ docker tag <dockerHub_image_name> registry.heroku.com/<application_name>/web `
+
+``` $ docker tag <dockerHub_image_name> registry.heroku.com/<application_name>/web ```
+
 (Prepares it to be pushed to Heroku)
-` $ docker push registry.heroku.com/<application_name>/web `
+
+``` $ docker push registry.heroku.com/<application_name>/web ```
+
 (Pushes it into Heroku private registry)
-` $ heroku container:release web -a <application_name> `
+
+``` $ heroku container:release web -a <application_name> ```
+
 (Releases the web app)
-` $ heroku logs --tail -a <application_name> `  
+
+``` $ heroku logs --tail -a <application_name> ```
+
 (Optional. This one allows you to see the information related to the app on your commands console)
 
 
 #### HEROKU LINK
 
 The link needed in order to access to the Heroku app ![](https://codeurjc-daw-2021-22-webapp3.herokuapp.com/)
-In order to test the app, as there are different types of users, these are some examples:
+There are different types of users to test the app. These are some examples:
 
 * CLIENT
     * Client name: suuu@gmail.com
