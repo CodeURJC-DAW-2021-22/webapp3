@@ -1,0 +1,26 @@
+<div class="row nopadding">
+    <nav class="navbar-personalized">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-6 col-md-3 col-lg-3 nopadding">
+                    <button id="buttonMenu" aria-expanded="false" aria-controls="sideMenu" class="buttonMenu" (click)="sideMenu.changeStatus(); content.changeClasses()">☰</button>
+                    <a class="buttonHome" href="#"><img src="/assets/logo.png" width="150px" height="30px" /></a>
+                </div>
+
+                <div class="col-0 col-md-5 col-lg-6 nopadding">
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3 nopadding">
+                    <img class="headerItem" src="/userAvatar.png" />
+                    <p class="headerItem">Administrador</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<sidemenu #sideMenu></sidemenu>
+<content #content></content>
+
+
+<footer></footer>
