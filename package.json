@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "@angular/cli": "^13.3.3"
+    "@angular/cli": "^13.3.3",
+    "chart.js": "^2.9.4"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.37"
   }
 }

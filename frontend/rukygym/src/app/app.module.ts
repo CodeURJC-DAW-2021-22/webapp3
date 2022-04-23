@@ -8,10 +8,11 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminStatistics } from './components/adminStatistics/adminStatistics.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, SidemenuComponent, ContentComponent, FooterComponent,
+    AppComponent, NavbarComponent, SidemenuComponent, ContentComponent, FooterComponent, AdminStatistics,
   ],
   imports: [
     BrowserModule, 
