@@ -12,17 +12,17 @@ export class BooksService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all group activities
-  getActivities(): Observable<Activity[]>{
+  getActivities() {
     return this.httpClient.get(BASE_URL).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Activity[]>;
+		);
   }
 
   // Get activity by id
-  getActivity(id: number | string): Observable<Activity> {
+  getActivity(id: number | string) {
 		return this.httpClient.get(BASE_URL + id).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Activity>;
+		);
 	}
 
   // Falta buscar activity por monitor id?
@@ -56,12 +56,9 @@ export class BooksService {
 	}
 
   // Error handler
-  private handleError(error: any) {
+  private handleError(error: any): any  {
 		console.log("ERROR:");
 		console.error(error);
-    // dice que esta deprecated
-		return throwError("Server error (" + error.status + "): " + error.text())
-    // mejor esto?
-    //return new Error("Server error (" + error.status + "): " + error.text())
+    return throwError("Server error (" + error.status + "): " + error.text())
 	}
 }

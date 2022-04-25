@@ -1,12 +1,10 @@
-import { Activity } from './../models/Activity.model';
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-//??
 import { Exercise } from './../models/Exercise.model';
 
-const BASE_URL = '/api/group-activities/';
+const BASE_URL = '/api/exercises/';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -14,17 +12,17 @@ export class BooksService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all Exercise
-  getExercises(): Observable<Exercise[]>{
+  getExercises(){
     return this.httpClient.get(BASE_URL).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Exercise[]>;
+		);
   }
 
   // Get Exercise by id
-  getExercise(id: number | string): Observable<Exercise> {
+  getExercise(id: number | string){
 		return this.httpClient.get(BASE_URL + id).pipe(
 			catchError(error => this.handleError(error))
-		) as Observable<Exercise>;
+		);
 	}
 
   // Delete Exercise
@@ -36,7 +34,7 @@ export class BooksService {
 
   // Add Exercise
   addExercise(exercise: Exercise) {
-		if (!Exercise.id) {
+		if (!exercise.id) {
 			return this.httpClient.post(BASE_URL, exercise)
 				.pipe(
 					catchError(error => this.handleError(error))

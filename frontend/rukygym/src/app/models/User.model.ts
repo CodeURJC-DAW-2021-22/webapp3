@@ -1,6 +1,6 @@
 import { Activity } from './Activity.model';
 
-export interface Book {
+export interface User {
   id?: number;
   name: string;
   surname: string;
