@@ -1,10 +1,10 @@
 <div *ngIf="visible" id="sideMenu" class="navColor">
     <div class="col-12">
         <ul class="nav navPillsPersonalized nav-stacked fixNav">
-            <li><a href="#">Estadísticas</a></li>
-            <li><a href="/user">Actividades</a></li>
-            <li><a href="#">Monitores</a></li>
-            <li class="active"><a href="/bicycleMenu">Clientes</a></li>
+            <li [ngClass]="classStatistics"><a href="new/statistics">Estadísticas</a></li>
+            <li [ngClass]="classActivities"><a href="new/activities">Actividades</a></li>
+            <li [ngClass]="classMonitors"><a href="new/monitors">Monitores</a></li>
+            <li [ngClass]="classClients"><a href="new/clients">Clientes</a></li>
         </ul>
     </div>
 </div>

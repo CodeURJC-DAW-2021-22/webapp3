@@ -1,8 +1,4 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { routing } from './app.routing';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
@@ -15,26 +11,18 @@ import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 import { ClientTable } from './components/clients/client.component';
 import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
 
-@NgModule({
-  declarations: [
-    AppComponent, 
-    NavbarComponent, 
-    SidemenuComponent, 
-    ContentComponent, 
-    FooterComponent, 
-    AdminStatistics, 
-    AdminActivities, 
-    ActivityInfo,
-    ClientTable,
-    MonitorInfo
-  ],
-  imports: [
-    BrowserModule, 
-    FormsModule, 
-    NgbModule,
-    routing,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+
+const appRoutes = [
+    {path: 'new/activities', component: AdminActivities},
+    {path: 'new/activity/:id', component: ActivityInfo},
+    {path: 'new/activity/edit/:id', component: ActivityInfo},
+    {path: 'new/monitors', component: AdminActivities},
+    {path: 'new/monitor/:id', component: MonitorInfo},
+    {path: 'new/clients', component: ClientTable},
+    {path: 'new/statistics', component: AdminStatistics},
+    {path: 'new/activities', component: AdminActivities},
+    {path: 'new/activities', component: AdminActivities},
+    {path: 'new/activities', component: AdminActivities},
+]
+
+export const routing = RouterModule.forRoot(appRoutes);

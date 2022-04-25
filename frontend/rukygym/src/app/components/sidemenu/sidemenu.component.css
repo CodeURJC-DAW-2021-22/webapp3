@@ -38,3 +38,7 @@ a {
 .active {
     background-color: #f36100;
 }
+
+.notActive {
+    background-color: #111111;
+}

@@ -36,3 +36,7 @@ img {
     background-color: #fff;
     background-clip: border-box;
 }
+
+.whiteText {
+    color: white;
+}
