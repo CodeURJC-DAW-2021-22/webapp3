@@ -1,0 +1,25 @@
+.colorBlackText {
+    color: black;
+}
+
+.selector2 {
+    background-color: black;
+    color: white;
+}
+
+.selector2:hover {
+    background-color: #f36100;
+}
+
+.buttonsAddActivity {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.separate {
+    margin-right: 20px;
+}
+
+.loadMore {
+    text-align: center;
+}
