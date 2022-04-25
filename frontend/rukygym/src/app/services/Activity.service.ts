@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 const BASE_URL = '/api/group-activities/';
 
 @Injectable({ providedIn: 'root' })
-export class BooksService {
+export class ActivityService {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,15 +21,6 @@ export class BooksService {
   // Get activity by id
   getActivity(id: number | string) {
 		return this.httpClient.get(BASE_URL + id).pipe(
-			catchError(error => this.handleError(error))
-		);
-	}
-
-  // Falta buscar activity por monitor id?
-
-  // Delete activity
-  deleteActivity(activity: Activity) {
-		return this.httpClient.delete(BASE_URL + activity.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
@@ -50,9 +41,32 @@ export class BooksService {
 
   // Update activity
   updateActivity(activity: Activity) {
-		return this.httpClient.put(BASE_URL + activity.id, activity).pipe(
+    return this.httpClient.put(BASE_URL + activity.id, activity).pipe(
+      catchError(error => this.handleError(error))
+    );
+  }
+
+  // Delete activity
+  /*deleteActivity(activity: Activity) {
+		return this.httpClient.delete(BASE_URL + activity.id).pipe(
 			catchError(error => this.handleError(error))
 		);
+	}*/
+
+  // Set Activity Image
+  setActivityImage(activity: Activity, formData: FormData) {
+		return this.httpClient.post(BASE_URL + activity.id + '/image', formData)
+			.pipe(
+				catchError(error => this.handleError(error))
+			);
+	}
+
+  // Delete Activity Image
+  deleteActivityImage(activity: Activity) {
+		return this.httpClient.delete(BASE_URL + activity.id + '/image')
+			.pipe(
+				catchError(error => this.handleError(error))
+			);
 	}
 
   // Error handler

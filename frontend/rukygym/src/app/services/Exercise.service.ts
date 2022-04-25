@@ -7,7 +7,7 @@ import { Exercise } from './../models/Exercise.model';
 const BASE_URL = '/api/exercises/';
 
 @Injectable({ providedIn: 'root' })
-export class BooksService {
+export class ExerciseService {
 
   constructor(private httpClient: HttpClient) { }
 
@@ -21,13 +21,6 @@ export class BooksService {
   // Get Exercise by id
   getExercise(id: number | string){
 		return this.httpClient.get(BASE_URL + id).pipe(
-			catchError(error => this.handleError(error))
-		);
-	}
-
-  // Delete Exercise
-  deleteExercise(exercise: Exercise) {
-		return this.httpClient.delete(BASE_URL + exercise.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
@@ -53,15 +46,33 @@ export class BooksService {
 		);
 	}
 
-  // find page??
+  // Delete Exercise
+  /*deleteExercise(exercise: Exercise) {
+		return this.httpClient.delete(BASE_URL + exercise.id).pipe(
+			catchError(error => this.handleError(error))
+		);
+	}*/
+
+  // Set Exercise Image
+  setExerciseImage(exercise: Exercise, formData: FormData) {
+		return this.httpClient.post(BASE_URL + exercise.id + '/image', formData)
+			.pipe(
+				catchError(error => this.handleError(error))
+			);
+	}
+
+  // Delete Exercise Image
+  deleteExerciseImage(exercise: Exercise) {
+		return this.httpClient.delete(BASE_URL + exercise.id + '/image')
+			.pipe(
+				catchError(error => this.handleError(error))
+			);
+	}
 
   // Error handler
   private handleError(error: any) {
 		console.log("ERROR:");
 		console.error(error);
-    // dice que esta deprecated
 		return throwError("Server error (" + error.status + "): " + error.text())
-    // mejor esto?
-    //return new Error("Server error (" + error.status + "): " + error.text())
 	}
 }
