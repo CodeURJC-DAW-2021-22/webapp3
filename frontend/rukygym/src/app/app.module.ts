@@ -12,6 +12,7 @@ import { AdminStatistics } from './components/adminStatistics/adminStatistics.co
 import { AdminActivities } from './components/adminActivities/adminActivities.component';
 import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 import { ClientTable } from './components/clients/client.component';
+import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ClientTable } from './components/clients/client.component';
     AdminStatistics, 
     AdminActivities, 
     ActivityInfo,
-    ClientTable
+    ClientTable,
+    MonitorInfo
   ],
   imports: [
     BrowserModule, 
