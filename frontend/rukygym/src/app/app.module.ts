@@ -10,10 +10,18 @@ import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminStatistics } from './components/adminStatistics/adminStatistics.component';
 import { AdminActivities } from './components/adminActivities/adminActivities.component';
+import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, SidemenuComponent, ContentComponent, FooterComponent, AdminStatistics, AdminActivities,
+    AppComponent, 
+    NavbarComponent, 
+    SidemenuComponent, 
+    ContentComponent, 
+    FooterComponent, 
+    AdminStatistics, 
+    AdminActivities, 
+    ActivityInfo,
   ],
   imports: [
     BrowserModule, 
