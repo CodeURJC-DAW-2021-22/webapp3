@@ -9,7 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { ContentComponent } from './content/content.component';
 import { ProfileComponent } from './profile/profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component'
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ActivitiesComponent } from './activities/activities.component'
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component'
     ContentComponent,
     ProfileComponent,
     EditProfileComponent,
+    ActivitiesComponent,
   ],
   imports: [
     BrowserModule,
