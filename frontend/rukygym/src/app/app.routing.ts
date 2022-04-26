@@ -10,13 +10,14 @@ import { AdminActivities } from './components/adminActivities/adminActivities.co
 import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 import { ClientTable } from './components/clients/client.component';
 import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
+import { AdminMonitors } from './components/adminMonitors/adminmonitors.component';
 
 
 const appRoutes = [
     {path: 'new/activities', component: AdminActivities},
     {path: 'new/activity/:id', component: ActivityInfo},
     {path: 'new/activity/edit/:id', component: ActivityInfo},
-    {path: 'new/monitors', component: AdminActivities},
+    {path: 'new/monitors', component: AdminMonitors},
     {path: 'new/monitor/:id', component: MonitorInfo},
     {path: 'new/clients', component: ClientTable},
     {path: 'new/statistics', component: AdminStatistics},

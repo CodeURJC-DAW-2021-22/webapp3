@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Activity } from "src/app/models/activity.model";
+import { Activity } from "src/app/models/Activity.model";
 
 
 @Component({

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Activity } from "../models/activity.model";
+import { Activity } from "../models/Activity.model";
 
 const BASE_URL = '/api/group-activities/';
 
