@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { ContentComponent } from './content/content.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ActivitiesComponent } from './activities/activities.component';
-import { ExercisetablesComponent } from './exercisetables/exercisetables.component';
-import { StatisticsComponent } from './statistics/statistics.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { ContentComponent } from './components/content/content.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
+import { ExercisetablesComponent } from './components/exercisetables/exercisetables.component';
+import { StatisticsComponent } from './components/statistics/statistics.component'
 
 
 @NgModule({
