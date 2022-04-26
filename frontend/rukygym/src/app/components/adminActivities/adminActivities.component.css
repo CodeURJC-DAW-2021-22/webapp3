@@ -18,10 +18,6 @@
     margin-bottom: 20px;
 }
 
-.item {
-    background-color: rgb(113, 113, 113);
-}
-
 .text {
     height: 42px;
     padding: 10px;
@@ -56,4 +52,14 @@ p {
 
 .but:hover {
     background-color: #f36100;
+}
+
+.objetfitcover>img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.objetfitcover {
+    text-align: center;
 }

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { Activity } from "../models/activity.model";
 
 const BASE_URL = '/api/group-activities/';
 
@@ -18,6 +19,13 @@ export class ActivityService {
 			catchError(error => this.handleError(error))
 		);
   }
+
+  getActivityImage(activity: Activity) {
+    return this.httpClient.get(BASE_URL + activity.id + '/image')
+        .pipe(
+            catchError(error => this.handleError(error))
+        );
+}
 
 
   // Error handler
