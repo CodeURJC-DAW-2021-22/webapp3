@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { ExercisetablesComponent } from './components/exercisetables/exercisetables.component';
 import { StatisticsComponent } from './components/statistics/statistics.component'
-
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,15 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     ExercisetablesComponent,
     StatisticsComponent,
   ],
+
   imports: [
     BrowserModule,
-    FormsModule, NgbModule
+    FormsModule,
+    NgbModule,
+    routing,
+    CommonModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

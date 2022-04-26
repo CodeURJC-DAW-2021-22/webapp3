@@ -1,71 +1,32 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <div class="row el-element-overlay">
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="card">
-                        <div class="el-card-item">
-                            <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-10.jpeg" alt="user" />
-                                <div class="el-overlay">
-                                    <ul class="list-style-none el-info">
-                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-eye"></i></a></li>
-                                    </ul>
+        <div *ngFor="let elem of exerciseTabs" class="col-lg-3 col-md-6 col-6">
+            <div class="col-md-12">
+                <div class="row el-element-overlay page">
+                    <!--{{#list}}-->
+                    <div class="col-lg-3 col-md-6 col-6">
+                        <div class="card">
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> <img style="width:200px; height: 280px; object-fit:cover; margin:auto" src="/api/exercises-tables/{{elem.id}}/image" alt="user" />
+                                    <div class="el-overlay">
+                                        <ul class="list-style-none el-info">
+                                            <li class="el-item"><a class="btn default btn-outline el-link" href="/api/exercises-tables/{{elem.id}}/pdf"><i class="mdi mdi-download"></i></a></li>
+                                            <li class="el-item"><a class="btn default btn-outline el-link" href="/api/exercises-tables/{{elem.id}}/done"><i class="mdi mdi-checkbox-marked-circle"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="el-card-content">
-                                <h4 class="m-b-0"><a href="javascript:void(0);">Zumba</a></h4>
+                                <div class="el-card-content">
+                                    <h4 class="m-b-0">{{elem.name}}</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!--{{/list}}-->
                 </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="card">
-                        <div class="el-card-item">
-                            <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-11.jpeg" alt="user" />
-                                <div class="el-overlay">
-                                    <ul class="list-style-none el-info">
-                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-eye"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="el-card-content">
-                                <h4 class="m-b-0"><a href="javascript:void(0);">Body Combat</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="card">
-                        <div class="el-card-item">
-                            <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-12.jpeg" alt="user" />
-                                <div class="el-overlay">
-                                    <ul class="list-style-none el-info">
-                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-eye"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="el-card-content">
-                                <h4 class="m-b-0"><a href="javascript:void(0);">Body Pump</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="card">
-                        <div class="el-card-item">
-                            <div class="el-card-avatar el-overlay-1"> <img src="img/gallery/gallery-13.jpeg" alt="user" />
-                                <div class="el-overlay">
-                                    <ul class="list-style-none el-info">
-                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="mdi mdi-eye"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="el-card-content">
-                                <h4 class="m-b-0"><a href="javascript:void(0);">Spinning</a></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore">
+                Cargar más
+                <i class="" id="spinner"></i>
+                </button>
             </div>
         </div>
     </div>
