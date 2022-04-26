@@ -35,6 +35,11 @@ a {
     background-color: transparent;
 }
 
+.notActive:hover {
+    background-color: white;
+    color: black
+}
+
 .active {
     background-color: #f36100;
 }

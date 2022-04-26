@@ -11,7 +11,7 @@ import { ActivityService } from "src/app/services/activities.service";
 
 export class AdminActivities {
 
-    activities : Activity [] = [];
+    activities : Activity [] | undefined;
 
     constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService, 
         /*public loginService: LoginService*/) {
