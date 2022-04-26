@@ -1,0 +1,55 @@
+.navbar-personalized {
+    background-color: #111111;
+    height: 80px;
+    width: 100vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#buttonMenu {
+    float: left;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 20px;
+    border: none;
+    background-color: transparent;
+    margin-right: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    top: 15px;
+}
+
+#buttonMenu:active {
+    background-color: rgba(255, 255, 255, .50);
+    border-radius: 70px;
+    width: 50px;
+}
+
+.headerItem {
+    float: right;
+    color: white;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+p {
+    color: white;
+}
+
+.image {
+    text-align: center;
+    padding-top: 10px !important;
+}

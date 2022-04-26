@@ -1,18 +1,43 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { ContentComponent } from './components/content/content.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
+import { ExercisetablesComponent } from './components/exercisetables/exercisetables.component';
+import { StatisticsComponent } from './components/statistics/statistics.component'
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent,
+    NavbarComponent,
+    SidemenuComponent,
+    ContentComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    ActivitiesComponent,
+    ExercisetablesComponent,
+    StatisticsComponent,
   ],
+
   imports: [
-    BrowserModule, 
-    FormsModule, NgbModule
+    BrowserModule,
+    FormsModule,
+    NgbModule,
+    routing,
+    CommonModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
