@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routing } from './app.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
@@ -33,6 +34,7 @@ import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
     FormsModule, 
     NgbModule,
     routing,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
