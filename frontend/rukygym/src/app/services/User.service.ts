@@ -57,15 +57,41 @@ export class UserService {
 	}
 
   // Delete monitor
-  deleteExercise(monitor: User) {
-		return this.httpClient.delete(BASE_URL + 'monitor/' + monitor.id).pipe(
+  deleteMonitor(monitor: User) {
+		return this.httpClient.delete(BASE_URL + 'monitors/' + monitor.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
   // Members
 
+    // Get all members
+    getMembers(){
+      return this.httpClient.get(BASE_URL + 'members').pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
+    // Add member
+    addMembers(member: User) {
+      if (!member.id) {
+        return this.httpClient.post(BASE_URL + 'member/new/', member)
+          .pipe(
+            catchError(error => this.handleError(error))
+          );
+      } else {
+        return this.httpClient.put(BASE_URL + 'members/' + member.id, member).pipe(
+          catchError(error => this.handleError(error))
+        );
+      }
+    }
+
+    // Delete member
+    deleteMember(member: User) {
+      return this.httpClient.delete(BASE_URL + 'members/' + member.id).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
   // Error handler
   private handleError(error: any) {
