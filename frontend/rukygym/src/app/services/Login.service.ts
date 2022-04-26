@@ -7,11 +7,13 @@ const BASE_URL = '/api/auth';
 @Injectable({ providedIn: 'root' })
 export class LoginService {
 
-    logged: boolean;
-    user: User;
+    logged: boolean | undefined;
+    user: User | undefined;
 
     constructor(private http: HttpClient) {
         this.reqIsLogged();
+        this.logged;
+
     }
 
     reqIsLogged() {
