@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainPageComponent } from './components/mainPage/mainPage.component';
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { contactUsComponent } from './components/contactUs/contactUs.component';
 
 
 const appRoutes = [
@@ -21,7 +22,8 @@ const appRoutes = [
     {path: 'new/activities', component: AdminActivities},
     {path: 'new/activities', component: AdminActivities},*/
     {path: 'new/mainPage', component: MainPageComponent},
-    {path: 'new/prices', component: PricesComponent}
+    {path: 'new/prices', component: PricesComponent},
+    {path: 'new/contactUs', component: contactUsComponent}
 ]
 
 export const routing = RouterModule.forRoot(appRoutes);
