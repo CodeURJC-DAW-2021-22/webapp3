@@ -1,4 +1,7 @@
+import { UserService } from './../../services/User.service';
 import { Component } from "@angular/core";
+import { User } from "src/app/models/User.model";
+import { Router, ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -8,6 +11,16 @@ import { Component } from "@angular/core";
 })
 export class MainPageComponent {
 
+  monitors : User[] | undefined;
 
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
+    /*public loginService: LoginService*/){
+      service.getMonitors().subscribe(
+        monitors  => this.monitors = monitors as User [],
+        (error: any)                => console.error(error),
+      );
+
+      console.log(this.monitors);
+    }
 
 }

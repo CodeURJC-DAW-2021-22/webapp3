@@ -150,62 +150,25 @@
 
 <section class="team-section spad">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-          <div class="team-title">
-              <div class="section-title">
-                  <span>Nuestro equipo</span>
-                  <h2>Entrena con expertos</h2>
-              </div>
-              <a href="new/contactUs" class="primary-btn btn-normal appoinment-btn">Contactanos</a>
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="team-title">
+            <div class="section-title">
+                <span>Nuestro equipo</span>
+                <h2>Entrena con expertos</h2>
+            </div>
+            <a href="new/contactUs" class="primary-btn btn-normal appoinment-btn">Contactanos</a>
+        </div>
+    </div>
+    <div *ngFor="let elem of monitors" class="col-lg-4">
+      <div class="ts-item set-bg" data-setbg="" style="background-image: url(/api/users/monitors/{{elem.id}}/image/);">
+          <div class="ts_text">
+              <h4>{{elem.name}}</h4>
+              <span>Gym Trainer</span>
           </div>
       </div>
     </div>
-    <div class="slide-monitor">
-      <div class="slide-inner-monitor">
-        <input class="slide-open-monitor" type="radio" id="slide-1-monitor" name="slide-monitor" aria-hidden="true" hidden="" checked="checked">
-        <div class="slide-item-monitor">
-          <img src="/assets/img/team/team-1.jpg">
-          <div class="ts_text slide-text-monitor">
-            <h4 style="color: #f36100;">Athart Rachel</h4>
-            <span>Gym Trainer</span>
-          </div>
-        </div>
-        <input class="slide-open-monitor" type="radio" id="slide-2-monitor" name="slide-monitor" aria-hidden="true" hidden="">
-        <div class="slide-item-monitor">
-          <img src="/assets/img/team/team-2.jpg">
-          <div class="ts_text slide-text-monitor">
-            <h4 style="color: #f36100;">Athart Rachel</h4>
-            <span>Gym Trainer</span>
-          </div>
-        </div>
-        <input class="slide-open-monitor" type="radio" id="slide-3-monitor" name="slide-monitor" aria-hidden="true" hidden="">
-        <div class="slide-item-monitor">
-          <img src="/assets/img/team/team-3.jpg">
-          <div class="ts_text slide-text-monitor">
-            <h4 style="color: #f36100;">Athart Rachel</h4>
-            <span>Gym Trainer</span>
-          </div>
-        </div>
-        <label for="slide-3-monitor" class="slide-control-monitor prev control-1-monitor">‹</label>
-        <label for="slide-2-monitor" class="slide-control-monitor next control-1-monitor">›</label>
-        <label for="slide-1-monitor" class="slide-control-monitor prev control-2-monitor">‹</label>
-        <label for="slide-3-monitor" class="slide-control-monitor next control-2-monitor">›</label>
-        <label for="slide-2-monitor" class="slide-control-monitor prev control-3-monitor">‹</label>
-        <label for="slide-1-monitor" class="slide-control-monitor next control-3-monitor">›</label>
-        <ol class="slide-indicador-monitor">
-          <li>
-            <label for="slide-1-monitor" class="slide-circulo-monitor">•</label>
-          </li>
-          <li>
-            <label for="slide-2-monitor" class="slide-circulo-monitor">•</label>
-          </li>
-          <li>
-            <label for="slide-3-monitor" class="slide-circulo-monitor">•</label>
-          </li>
-        </ol>
-      </div>
-    </div>
+  </div>
   </div>
 </section>
 
