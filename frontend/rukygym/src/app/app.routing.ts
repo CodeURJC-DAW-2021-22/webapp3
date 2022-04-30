@@ -8,7 +8,7 @@ import { MainPageComponent } from './components/mainPage/mainPage.component';
 import { ContentComponent } from './components/content/content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { contactUsComponent } from './components/contactUs/contactUs.component';
-
+import { ActivitiesComponent } from './components/activities/activities.component';
 
 const appRoutes = [
     /*{path: 'new/activities', component: AdminActivities},
@@ -23,7 +23,8 @@ const appRoutes = [
     {path: 'new/activities', component: AdminActivities},*/
     {path: 'new/mainPage', component: MainPageComponent},
     {path: 'new/prices', component: PricesComponent},
-    {path: 'new/contactUs', component: contactUsComponent}
+    {path: 'new/contactUs', component: contactUsComponent},
+    {path: 'new/main-activities', component: ActivitiesComponent}
 ]
 
 export const routing = RouterModule.forRoot(appRoutes);
