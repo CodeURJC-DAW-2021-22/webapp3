@@ -1,0 +1,21 @@
+.page-wrapper {
+  margin: - var(--bs-gutter-x, .75rem);
+  padding: 25px;
+  background-color: #e0dfdf;
+  min-height: 85vh;
+}
+
+.page {
+  background-color: white;
+  padding: 20px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.closed {
+  padding-left: 20px;
+}
+
+.opened {
+  padding-left: 270px;
+}

@@ -1,0 +1,27 @@
+<div class="row nopadding">
+  <nav class="navbar-personalized">
+      <div class="container-fluid ">
+          <div class="row">
+              <div class="col-xs-6 col-md-5 col-lg-3 nopadding">
+                  <button id="buttonMenu" aria-expanded="false" aria-controls="sideMenu" class="buttonMenu" (click)="sideMenu.changeStatus(); content.changeClasses()">☰</button>
+
+              </div>
+
+              <div class="d-none d-md-block col-md-2 col-lg-6 nopadding image">
+                  <a href="#"><img src="/assets/logo.png" width="140px" height="30px" /></a>
+              </div>
+
+              <div class="col-xs-6 col-md-5 col-lg-3 nopadding">
+                  <img class="headerItem" src="/userAvatar.png" />
+                  <p class="headerItem">Monitor</p>
+              </div>
+          </div>
+      </div>
+  </nav>
+</div>
+
+<sidemenu #sideMenu></sidemenu>
+<content #content></content>
+
+
+<footer></footer>
