@@ -2,7 +2,7 @@ export interface Activity {
 	id?: number;
 	name: string;
 	room: string;
-    apacity: number;
+    capacity: number;
     description: string;
     price: number;
     monday:	string;

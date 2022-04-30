@@ -11,19 +11,23 @@ import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 import { ClientTable } from './components/clients/client.component';
 import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
 import { AdminMonitors } from './components/adminMonitors/adminmonitors.component';
+import { MonitorEditInfo } from './components/monitorEditInfo/monitorEditinfo.component';
+import { EditActivity } from './components/editActivity/editActivity.component';
 
 
 const appRoutes = [
     {path: 'new/activities', component: AdminActivities},
     {path: 'new/activity/:id', component: ActivityInfo},
-    {path: 'new/activity/edit/:id', component: ActivityInfo},
+    {path: 'new/activity/edit/:id', component: EditActivity},
     {path: 'new/monitors', component: AdminMonitors},
     {path: 'new/monitor/:id', component: MonitorInfo},
+    {path: 'new/monitor/edit/:id', component : MonitorEditInfo},
     {path: 'new/clients', component: ClientTable},
     {path: 'new/statistics', component: AdminStatistics},
     {path: 'new/activities', component: AdminActivities},
     {path: 'new/activities', component: AdminActivities},
     {path: 'new/activities', component: AdminActivities},
+    
 ]
 
 export const routing = RouterModule.forRoot(appRoutes);

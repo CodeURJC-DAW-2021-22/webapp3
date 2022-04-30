@@ -16,6 +16,8 @@ import { ActivityInfo } from './components/activityInfo/activityInfo.component'
 import { ClientTable } from './components/clients/client.component';
 import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
 import { AdminMonitors } from './components/adminMonitors/adminmonitors.component';
+import { MonitorEditInfo } from './components/monitorEditInfo/monitorEditinfo.component';
+import { EditActivity } from './components/editActivity/editActivity.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AdminMonitors } from './components/adminMonitors/adminmonitors.componen
     ClientTable,
     MonitorInfo,
     AdminMonitors,
+    MonitorEditInfo,
+    EditActivity
   ],
   imports: [
     BrowserModule, 
