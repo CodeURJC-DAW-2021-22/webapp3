@@ -4,7 +4,7 @@
   <br>
   <div class="container">
       <h1 style="color: #f36100; font-size: 32px; text-transform: uppercase; margin-top: 5px; font-weight: 800; text-align: center;">
-          Nombre
+          {{activity?.name}}
       </h1>
       <br>
       <br>
@@ -15,7 +15,7 @@
                       <h2 style="color: #ffffff; font-size: 32px; font-weight: 600; text-transform: uppercase; margin-top: 8px; margin-bottom: 45px;">
                           Descripcion
                       </h2>
-                      <p class="activitieBoxIntext">Descripcion</p>
+                      <p class="activitieBoxIntext">{{activity?.description}}</p>
                   </div>
               </div>
               <br>
@@ -25,56 +25,46 @@
                   <br>
                   <div class="row boxAling">
                       <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Lunes</div>
-                      <!--{{#monAct}}-->
                       <div class="col-lg-2 col-md-2 activitieBox activitieAling">
-                          <h3 class="activitieBoxTitle">Horas:Lunes</h3>
+                          <h3 class="activitieBoxTitle">{{activity?.monday}}</h3>
                       </div>
-                      <!--{{/monAct}}-->
                   </div>
                   <br>
                   <br>
                   <div class="row boxAling">
                       <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Martes</div>
-                      <!--{{#tusAct}}-->
                       <div class="col-lg-2 col-md-2 activitieBox activitieAling">
-                          <h3 class="activitieBoxTitle">Horas:Marters</h3>
+                          <h3 class="activitieBoxTitle">{{activity?.tuesday}}</h3>
                       </div>
-                      <!--{{/tusAct}}-->
                   </div>
                   <br>
                   <br>
                   <div class="row boxAling">
                       <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Miercoles</div>
-                      <!--{{#wenAct}}-->
                       <div class="col-lg-2 col-md-2 activitieBox activitieAling">
-                          <h3 class="activitieBoxTitle">Horas:Miercoles</h3>
+                          <h3 class="activitieBoxTitle">{{activity?.wednesday}}</h3>
                       </div>
-                      <!--{{/wenAct}}-->
                   </div>
                   <br>
                   <br>
                   <div class="row boxAling">
                       <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Jueves</div>
-                      <!--{{#thuAct}}-->
                       <div class="col-lg-2 col-md-2 activitieBox activitieAling">
-                          <h3 class="activitieBoxTitle">Horas:Jueves</h3>
+                          <h3 class="activitieBoxTitle">{{activity?.thursday}}</h3>
                       </div>
-                      <!--{{/thuAct}}-->
                   </div>
                   <br>
                   <br>
                   <div class="row boxAling">
                       <div class="col-lg-2 col-md-2 scheduleBox activitieBoxTitle">Viernes</div>
-                      <!--{{#friAct}}-->
                       <div class="col-lg-2 col-md-2 activitieBox activitieAling">
-                          <h3 class="activitieBoxTitle">Horas:Viernes</h3>
+                          <h3 class="activitieBoxTitle">{{activity?.friday}}</h3>
                       </div>
-                      <!--{{/friAct}}-->
                   </div>
               </div>
           </div>
           <div class="col-4">
-              <img src="/assets/logo.png" style="border-style: solid; border-width: 5px; border-color: #f36100; border-radius: 100%; width:300px; height:300px; object-fit:cover; margin: auto;">
+              <img src="/api/group-activities/{{activity?.id}}/image" style="border-style: solid; border-width: 5px; border-color: #f36100; border-radius: 100%; width:300px; height:300px; object-fit:cover; margin: auto;">
           </div>
       </div>
   </div>
