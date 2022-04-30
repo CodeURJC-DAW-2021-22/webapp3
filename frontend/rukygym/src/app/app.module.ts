@@ -15,6 +15,8 @@ import { PricesComponent } from './components/prices/prices.component';
 import { ContentComponent } from './components/content/content.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
+import { LoginComponent } from './components/log-in/log-in.component';
+import { SigninComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ActivitiesComponent } from './components/activities/activities.componen
     ContentComponent,
     ScheduleComponent,
     ContactUsComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    LoginComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
