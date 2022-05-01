@@ -16,8 +16,7 @@ export class EditActivity {
 
     constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService,
         public loginService: LoginService) {
-            this.loginService.logOut();
-        this.loginService.logIn("admin@admin.com", "admin");
+        
         const id = activatedRoute.snapshot.params['id'];
         service.getActivity(id).subscribe(
             (activity) => this.activity = activity as Activity,
@@ -28,7 +27,7 @@ export class EditActivity {
 
 
     save() {
-        //
-        this.service.updateActivity(this.activity as Activity);
+        //this.loginService.logIn("admin@admin.com", "admin");
+        this.service.addActivity(this.activity as Activity);
     }
 }

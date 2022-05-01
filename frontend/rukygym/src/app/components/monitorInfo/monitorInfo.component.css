@@ -1,6 +1,32 @@
+.centerText {
+    padding-top: 6px;
+    padding-left: 10px;
+}
+
 .selector2 {
     background-color: black;
     border-radius: 5px;
+    border: solid 2px #eee;
+    color: white;
+}
+
+.buttonsAddActivity {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.selector2:hover {
+    background-color: #f36100;
+}
+
+.selector2 {
+    background-color: black;
+    border-radius: 5px;
+    border: solid 2px #eee;
 }
 
 .selector2:hover {
@@ -36,6 +62,6 @@ img {
     background-clip: border-box;
 }
 
-.colorWhiteText {
-    color: white !important;
+.whiteText {
+    color: white;
 }

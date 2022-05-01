@@ -1,71 +1,83 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
-import { ChartConfiguration, Chart} from "chart.js";
+import { Component } from "@angular/core";
+import { EChartsOption } from "echarts";
 
 
-const labelsLine = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-];
+const option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    legend: {},
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [
+      {
+        type: 'category',
+        data: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value'
+      }
+    ],
+    series: [
+      {
+        name: '2019',
+        type: 'bar',
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0,0,1,4,0,0,0,0,0,0,0,0]
+      },
+      {
+        name: '2020',
+        type: 'bar',
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0,0,0,0,0,0,1,0,0,0,0,0]
+      },
+      {
+        name: '2021',
+        type: 'bar',
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0,1,0,0,0,0,0,0,0,0,0,0]
+      },
+      {
+        name: '2022',
+        type: 'bar',
+        emphasis: {
+          focus: 'series'
+        },
+        data: [0,0,0,2,0,0,0,0,0,0,0,0]
+      },
+    ]
+  };
 
-const dataLine = {
-    labels: labelsLine,
-    datasets: [{
-        label: 'Año 2019',
-        backgroundColor: 'rgb(255, 125, 98)',
-        borderColor: 'rgb(255, 82, 0)',
-        data: [0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0]
-    }, {
-        label: 'Año 2020',
-        backgroundColor: 'rgb(136, 219, 255)',
-        borderColor: 'rgb(0, 178, 255)',
-        data: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
-    }, {
-        label: 'Año 2021',
-        backgroundColor: 'rgb(126, 255, 146)',
-        borderColor: 'rgb(59, 222, 84)',
-        data: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    }, {
-        label: 'Año 2022',
-        backgroundColor: 'rgb(11, 2, 16)',
-        borderColor: 'rgb(33, 2, 150)',
-        data: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
-    }, ]
-};
 
-const configLine : ChartConfiguration = {
-    type: 'line',
-    data: dataLine,
-    options: {}
-};
 
 @Component({
     selector:'adminstatistics',
     templateUrl: './adminStatistics.component.html',
     styleUrls: ['./adminStatistics.component.css']
 })
-export class AdminStatistics implements OnInit{
+export class AdminStatistics{
 
-    myChart:any;
-   constructor(private elementRef: ElementRef) {
-   }
+    _echartOption: EChartsOption ;
 
-  ngOnInit(){
-   this.chartit();
-  }
+    constructor(){
+        this._echartOption = option as EChartsOption;
+    }
 
-  chartit(){
-     let htmlRef = this.elementRef.nativeElement.querySelector(`#chart`);
-     this.myChart = new Chart(htmlRef, configLine);
-  }
-
+    ngOnInit(): void {
+    }
 }

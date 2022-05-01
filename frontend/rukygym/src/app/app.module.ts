@@ -18,6 +18,8 @@ import { MonitorInfo } from './components/monitorInfo/monitorInfo.component';
 import { AdminMonitors } from './components/adminMonitors/adminmonitors.component';
 import { MonitorEditInfo } from './components/monitorEditInfo/monitorEditinfo.component';
 import { EditActivity } from './components/editActivity/editActivity.component';
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,9 @@ import { EditActivity } from './components/editActivity/editActivity.component';
     NgbModule,
     routing,
     HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
