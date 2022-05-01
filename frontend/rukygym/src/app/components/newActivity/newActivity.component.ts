@@ -38,7 +38,7 @@ export class NewActivity{
             this.activity.thursday === "" || this.activity.friday === ""){
                 alert("Rellena el formulario")
                 return ;
-            }
+        }
 
         this.service.addActivity(this.activity as Activity).subscribe(
             activity => this.uploadImg(activity),

@@ -21,6 +21,7 @@ import { EditActivity } from './components/editActivity/editActivity.component';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NewActivity } from './components/newActivity/newActivity.component';
+import { NewMonitor } from './components/newMonitor/newMonitor.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NewActivity } from './components/newActivity/newActivity.component';
     AdminMonitors,
     MonitorEditInfo,
     EditActivity,
-    NewActivity
+    NewActivity,
+    NewMonitor
   ],
   imports: [
     BrowserModule, 

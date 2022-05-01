@@ -14,6 +14,7 @@ import { AdminMonitors } from './components/adminMonitors/adminmonitors.componen
 import { MonitorEditInfo } from './components/monitorEditInfo/monitorEditinfo.component';
 import { EditActivity } from './components/editActivity/editActivity.component';
 import { NewActivity } from './components/newActivity/newActivity.component';
+import { NewMonitor } from './components/newMonitor/newMonitor.component';
 
 
 const appRoutes = [
@@ -22,6 +23,7 @@ const appRoutes = [
     {path: 'new/activity/edit/:id', component: EditActivity},
     {path: 'new/monitors', component: AdminMonitors},
     {path: 'new/monitor/:id', component: MonitorInfo},
+    {path: 'new/create/monitor', component: NewMonitor},
     {path: 'new/monitor/edit/:id', component : MonitorEditInfo},
     {path: 'new/clients', component: ClientTable},
     {path: 'new/statistics', component: AdminStatistics},
