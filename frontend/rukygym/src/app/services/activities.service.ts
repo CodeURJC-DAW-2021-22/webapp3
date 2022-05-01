@@ -43,7 +43,7 @@ export class ActivityService {
 
   // Update activity
   updateActivity(activity: Activity) {
-    return this.httpClient.put(BASE_URL, activity).pipe(
+    return this.httpClient.put(BASE_URL + activity.id, activity).pipe(
 		catchError(error => this.handleError(error))
 	)
   }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Activity } from "../../models/Activity.model";
 
 import { ActivityService } from "src/app/services/activities.service";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
     selector:'adminactivities',
@@ -15,7 +16,7 @@ export class AdminActivities {
     activities : Activity [] | undefined;
 
     constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService, 
-        /*public loginService: LoginService*/) {
+        public loginService: LoginService) {
             
         service.getActivities().subscribe(
             activities  => this.activities = activities as Activity [],
