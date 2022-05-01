@@ -24,6 +24,9 @@ export class MonitorInfo {
     }
 
     delete(){
-        this.service.deleteMonitor(this.monitor as User);
+        this.service.deleteMonitor(this.monitor as User).subscribe(
+            _ => window.history.back(),
+            error => alert("No es posible borrar el monitor"),
+        );
     }
 }
