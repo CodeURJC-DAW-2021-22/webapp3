@@ -28,6 +28,11 @@ export class EditActivity {
 
     save() {
         //this.loginService.logIn("admin@admin.com", "admin");
-        this.service.addActivity(this.activity as Activity);
+        this.service.updateActivity(this.activity as Activity).subscribe(
+            _=>alert("Updated"),
+            error => alert('Error updating activity: ' + error)
+        );
+        
+        this.router.navigate(["new/activity/" + this.activity?.id]);
     }
 }

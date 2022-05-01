@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Activity } from "../models/Activity.model";
 
@@ -43,9 +43,9 @@ export class ActivityService {
 
   // Update activity
   updateActivity(activity: Activity) {
-    return this.httpClient.put(BASE_URL + activity.id, activity).pipe(
-      catchError(error => this.handleError(error))
-    );
+    return this.httpClient.put(BASE_URL, activity).pipe(
+		catchError(error => this.handleError(error))
+	)
   }
 
   // Delete activity
@@ -56,8 +56,8 @@ export class ActivityService {
 	}
 
   // Set Activity Image
-  setActivityImage(activity: Activity, formData: FormData) {
-		return this.httpClient.post(BASE_URL + activity.id + '/image', formData)
+  setActivityImage (activity: Activity, formData: FormData){
+		return this.httpClient.put(BASE_URL + activity.id + '/image', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);

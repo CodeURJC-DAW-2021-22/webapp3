@@ -25,7 +25,10 @@ export class ActivityInfo{
     }
 
     delete(){
-        this.service.deleteActivity(this.activity as Activity);
+        this.service.deleteActivity(this.activity as Activity).subscribe(
+            _ => alert("Deleted"),
+            error => alert("Cannot be deleted")
+        );
     }
 
 
