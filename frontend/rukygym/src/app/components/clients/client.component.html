@@ -11,28 +11,31 @@
                 <th>Seleccionar</th>
             </tr>
         </thead>
-        <tbody class="colorBlackText">
+        <tbody *ngFor="let elem of clients" class="colorBlackText">
+
             <tr>
-                <td>Gerard</td>
+                <td>{{elem.name}}</td>
                 <td>02/02/1987</td>
-                <td>22222222A</td>
-                <td><label class="customcheckbox m-b-20">
-                <input type="checkbox" id="mainCheckbox64" name="id" value="64">
+                <td>{{elem.NIF}}</td>
+                <td>
+                    <label class="customcheckbox m-b-20">
+                <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
                 <span class="checkmark"></span>
-            </label></td>
+                </label>
+                </td>
             </tr>
+
         </tbody>
     </table>
 </div>
 
-<div class="loadMore">
-    <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore">
+<div *ngIf="show" class="loadMore">
+    <button #MoreClients class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore" (click)="more()">
         Cargar más
-        <i class="" id="spinner"></i>
     </button>
 </div>
 
 <div class="col-12 buttonsAddActivity">
-    <input class="btn default btn-outline el-link selector2 colorWhiteText separate" type="submit" value="Eliminar">
+    <button class="btn default btn-outline el-link selector2 colorWhiteText separate" type="submit" (click)="delete()">Eliminar</button>
     <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick="location.href='/new/clients'">Cancelar</button>
 </div>

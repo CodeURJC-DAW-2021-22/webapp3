@@ -66,8 +66,8 @@ export class UserService {
   // Members
 
     // Get all members
-    getMembers(){
-      return this.httpClient.get(BASE_URL + 'members').pipe(
+    getMembers(n:  number){
+      return this.httpClient.get(BASE_URL + 'members/?page=' + n).pipe(
         catchError(error => this.handleError(error))
       );
     }
