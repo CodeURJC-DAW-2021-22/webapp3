@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Activity } from "src/app/models/Activity.model";
+import { ActivityService } from "src/app/services/Activity.service";
 
 
 @Component({
@@ -10,17 +11,15 @@ import { Activity } from "src/app/models/Activity.model";
 })
 export class ActivityInfo{
 
-/*    private activity: Activity;
+  activity: Activity | undefined;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivitiesService,
-        public loginService: LoginService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService) {
 
-        const id = activatedRoute.snapshot.params['id'];
-        service.getActivity(id).subscribe(
-            activity => this.activity = activity,
-            error => console.error(error),
-        );
-    }*/
-
+      const id = activatedRoute.snapshot.params['id'];
+      service.getActivity(id).subscribe(
+          activity => this.activity = activity as Activity,
+          error => console.error(error),
+      );
+  }
 
 }
