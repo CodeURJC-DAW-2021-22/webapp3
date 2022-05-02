@@ -1,0 +1,97 @@
+<div class="page-wrapper">
+<div class="container-fluid">
+
+  <div *ngIf="monitor; else otherCont">
+    <h2 style="color: black;">{{monitor.ACT1.name}}</h2>
+
+  <br>
+  <br>
+
+  <div class="row">
+      <div class="col-8">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h3> Descripcion </h3>
+                  <br>
+                  <p>{{monitor.ACT1.description}}</p>
+              </div>
+          </div>
+          <br>
+
+          <div>
+              <h3>Horario</h3>
+              <br>
+              <div class="row">
+                  <div class="col-lg-2 col-md-2">
+                    <h3>Lunes</h3>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2">
+                      <h3>{{monitor.ACT1.monday}}</h3>
+                  </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                  <div class="col-lg-2 col-md-2">
+                    <h3>Martes</h3>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2">
+                      <h3>{{monitor.ACT1.tuesday}}</h3>
+                  </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                  <div class="col-lg-2 col-md-2">
+                    <h3>Miercoles</h3>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2">
+                      <h3>{{monitor.ACT1.wednesday}}</h3>
+                  </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                  <div class="col-lg-2 col-md-2">
+                    <h3>Jueves</h3>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2">
+                      <h3>{{monitor.ACT1.thursday}}</h3>
+                  </div>
+
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                  <div class="col-lg-2 col-md-2">
+                    <h3>Viernes</h3>
+                  </div>
+
+                  <div class="col-lg-2 col-md-2">
+                      <h3>{{monitor.ACT1.friday}}</h3>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <div class="col-4">
+          <!-- falta traerse la imagen de la actividad-->
+          <img src="/api/group-activities/{{monitor.ACT1.id}}/image" width=100%>
+      </div>
+  </div>
+
+</div>
+
+<ng-template #otherCont>
+  <h2 style="color: black;">No tienes actividades</h2>
+</ng-template>
+
+</div>
+</div>

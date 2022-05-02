@@ -18,5 +18,4 @@ export class ContentComponent{
         this.classes.opened = !this.classes.opened;
     }
 
-    
 }

@@ -18,5 +18,4 @@ export class AppComponent {
       _ => this.visible = true,
     );
   }
-
 }
