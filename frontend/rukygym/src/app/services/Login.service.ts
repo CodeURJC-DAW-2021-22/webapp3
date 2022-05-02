@@ -18,10 +18,20 @@ export class LoginService {
 
     reqIsLogged() {
 
-        this.http.get('/api/users/me', { withCredentials: true }).subscribe(
+        this.http.get('/api/users/monitors/me', { withCredentials: true }).subscribe(
             response => {
                 this.user = response as User;
                 this.logged = true;
+                switch(this.user.userType){
+
+                  case "monitor": window.location.href = 'http://localhost:4200/new/mainPage';
+                  break;
+                  case "administrator": window.location.href = 'http://localhost:4200/new/mainPage';
+                  break;
+                  case "member": window.location.href = 'http://localhost:4200/new/mainPage';
+                  break;
+
+                }
             },
             error => {
                 if (error.status != 404) {
@@ -58,7 +68,7 @@ export class LoginService {
     }
 
     isAdmin() {
-        return this.user && this.user.userType.indexOf('ADMIN') !== -1;
+        return this.user && this.user.userType.indexOf('administrator') !== -1;
     }
 
     currentUser() {
