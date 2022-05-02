@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ExerciseTable } from './../models/ExerciseTable.model';
 
-const BASE_URL = '/api/exercises-tables';
+const BASE_URL = '/api/exercises-tables/';
 
 @Injectable({ providedIn: 'root' })
 export class ExerciseTableService {

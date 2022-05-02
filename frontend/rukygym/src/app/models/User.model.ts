@@ -14,7 +14,7 @@ export interface User {
   height?: number;
   weight?: number;
   medicalInfo?: string;
-  ACT1?: Activity;
-  ACT2?: Activity;
-  ACT3?: Activity;
+  ACT1: Activity;
+  ACT2: Activity;
+  ACT3: Activity;
 }
