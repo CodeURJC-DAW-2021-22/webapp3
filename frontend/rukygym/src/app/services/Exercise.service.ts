@@ -12,8 +12,8 @@ export class ExerciseService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all Exercise
-  getExercises(){
-    return this.httpClient.get(BASE_URL).pipe(
+  getExercises(id : number){
+    return this.httpClient.get(BASE_URL + '/?page=' + id).pipe(
 			catchError(error => this.handleError(error))
 		);
   }

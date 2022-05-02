@@ -24,15 +24,20 @@
                     <p style="color: white;">{{elem.name}}</p>
                 </div>
                 <div class="buttons row">
+                    <div class="col-3"></div>
                     <div class="col-6">
                         <a href='/new/monitorExerciseTableInfo/{{elem.id}}'><button class="but">Ver</button></a>
                     </div>
-                    <div class="col-6">
-                        <a href='new/monitorEditExerciseTable/{{elem.id}}'><button class="but">Editar</button></a>
-                    </div>
+                    <div class="col-3"></div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div *ngIf="show" class="loadMore">
+        <button #MoreClients class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore" (click)="more()">
+            Cargar más
+        </button>
     </div>
 
 </div>
