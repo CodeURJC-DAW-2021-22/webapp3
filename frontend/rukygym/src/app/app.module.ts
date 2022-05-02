@@ -16,6 +16,7 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { ExercisetablesComponent } from './components/exercisetables/exercisetables.component';
 import { StatisticsComponent } from './components/statistics/statistics.component'
 import { routing } from './app.routing';
+import { ActivityInfoComponent } from './components/activity-info/activity-info.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { routing } from './app.routing';
     ActivitiesComponent,
     ExercisetablesComponent,
     StatisticsComponent,
+    ActivityInfoComponent,
   ],
 
   imports: [

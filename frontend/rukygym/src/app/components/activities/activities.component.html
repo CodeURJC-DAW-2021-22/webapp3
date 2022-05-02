@@ -10,10 +10,15 @@
             <div class="card">
                 <div class="item">
                     <div class="objetfitcover">
-                        <img class="img" src="/new/activities{{elem.id}}/image" alt="">
+                        <img class="img" src="/api/group-activities/{{elem.id}}/image" alt="">
                     </div>
                     <div class="text">
                         <p style="color: white;">{{elem.name}}</p>
+                    </div>
+                    <div class="buttons row">
+                        <div class="col-12">
+                            <a href='/new/activity/{{elem.id}}'><button class="but">Ver</button></a>
+                        </div>
                     </div>
                 </div>
             </div>
