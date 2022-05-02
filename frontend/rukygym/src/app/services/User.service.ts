@@ -64,6 +64,17 @@ export class UserService {
 	}
 
   // Members
+  getMembers(){
+    return this.httpClient.get(BASE_URL + 'members').pipe(
+			catchError(error => this.handleError(error))
+		);
+  }
+
+  getMember(id: number | string){
+		return this.httpClient.get(BASE_URL + 'members/' + id).pipe(
+			catchError(error => this.handleError(error))
+		);
+	}
 
 
 
