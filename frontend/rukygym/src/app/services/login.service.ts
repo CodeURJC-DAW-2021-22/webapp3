@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User.model';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 const BASE_URL = '/api/auth';
 
@@ -61,7 +61,7 @@ export class LoginService {
                     break;
                     case "administrator": window.location.href = 'http://localhost:4200/new/statistics';
                     break;
-                    case "member": window.location.href = 'http://localhost:4200/new/mainPage';
+                    case "member": window.location.href = 'http://localhost:4200/new/memberexercise-tables';
                     break;
 
                   }
@@ -100,6 +100,6 @@ export class LoginService {
     }
 
     currentUser2(){
-      return this.http.get('/api/users/monitors/me', { withCredentials: true }) as Observable<User>;
-  }
+        return this.http.get('/api/users/monitors/me', { withCredentials: true }) as Observable<User>;
+    }
 }

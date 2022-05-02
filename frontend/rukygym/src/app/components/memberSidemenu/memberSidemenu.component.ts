@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
     templateUrl: './memberSidemenu.component.html',
     styleUrls: ['./memberSidemenu.component.css']
 })
-export class SidemenuComponent {
+export class MemberSidemenuComponent {
 
     visible: boolean = false;
 

@@ -11,7 +11,7 @@ import { LoginService } from "src/app/services/login.service";
   templateUrl: './memberProfile.component.html',
   styleUrls: ['./memberProfile.component.css']
 })
-export class ProfileComponent {
+export class MemberProfileComponent {
 
   member: User | undefined;
 

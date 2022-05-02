@@ -14,20 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MonitorFooter } from './components/monitorFooter/monitorFooter.component';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/memberFooter/memberFooter.component';
-import { NavbarComponent } from './components/memberNavbar/memberNavbar.component';
-import { SidemenuComponent } from './components/memberSidemenu/memberSidemenu.component';
-import { ContentComponent } from './components/memberContent/memberContent.component';
-import { ProfileComponent } from './components/memberProfile/memberProfile.component';
-import { EditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
-import { ActivitiesComponent } from './components/memberActivities/memberActivities.component';
-import { ExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component';
+import { MemberFooterComponent } from './components/memberFooter/memberFooter.component';
+import { MemberNavbarComponent } from './components/memberNavbar/memberNavbar.component';
+import { MemberSidemenuComponent } from './components/memberSidemenu/memberSidemenu.component';
+import { MemberContentComponent } from './components/memberContent/memberContent.component';
+import { MemberProfileComponent } from './components/memberProfile/memberProfile.component';
+import { MemberEditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
+import { MemberActivitiesComponent } from './components/memberActivities/memberActivities.component';
+import { MemberExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component';
 import { MemberStatistics } from './components/memberStatistics/memberStatistics.component'
-import { routing } from './app.routing';
-import { ActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
-
-import * as echarts from 'echarts';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { MemberActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
 
 import { MonitorNavbar } from './components/monitorNavbar/monitorNavbar.component';
 import { MonitorSidemenu } from './components/monitorSidemenu/monitorSidemenu.component';
@@ -74,20 +70,17 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
-
-    FooterComponent,
+    MemberFooterComponent,
     NavbarComponent,
-    SidemenuComponent,
-    ContentComponent,
-    ProfileComponent,
-    EditProfileComponent,
-    ActivitiesComponent,
-    ExercisetablesComponent,
+    MemberSidemenuComponent,
+    MemberContentComponent,
+    MemberProfileComponent,
+    MemberEditProfileComponent,
+    MemberActivitiesComponent,
+    MemberExercisetablesComponent,
     MemberStatistics,
-    ActivityInfoComponent,
-
-
-    NavbarComponent,
+    MemberActivityInfoComponent,
+    MemberNavbarComponent,
     SidemenuComponent,
     ContentComponent,
     FooterComponent,
@@ -130,7 +123,6 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
     MonitorSidemenu,
     MonitorContent,
     MonitorActivityInfo ,
-
   ],
 
   imports: [

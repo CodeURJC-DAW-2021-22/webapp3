@@ -6,7 +6,7 @@ import { Component, ElementRef } from "@angular/core";
     templateUrl: './memberContent.component.html',
     styleUrls: ['./memberContent.component.css']
 })
-export class ContentComponent{
+export class MemberContentComponent{
 
     classes = {
         "closed" : true,

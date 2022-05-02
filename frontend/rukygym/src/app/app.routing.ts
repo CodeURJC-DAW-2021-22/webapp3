@@ -37,12 +37,12 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 
 
 
-import { ActivitiesComponent } from './components/memberActivities/memberActivities.component';
-import { ExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component'
-import { EditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
-import { ProfileComponent } from './components/memberProfile/memberProfile.component';
+import { MemberActivitiesComponent } from './components/memberActivities/memberActivities.component';
+import { MemberExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component'
+import { MemberEditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
+import { MemberProfileComponent } from './components/memberProfile/memberProfile.component';
 import { MemberStatistics } from './components/memberStatistics/memberStatistics.component';
-import { ActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
+import { MemberActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
 
 
 const appRoutes = [
@@ -72,14 +72,12 @@ const appRoutes = [
     {path: 'new/monitorEditExerciseTable/:id', component: MonitorEditExerciseTable},
     {path: 'new/monitorAddExerciseTable', component: MonitorAddExerciseTable},
     {path: 'new/monitorActivityInfo/:id', component: MonitorActivityInfo},
-  
-  
-  {path: 'new/activities', component: ActivitiesComponent},
-    {path: 'new/exercise-tables', component: ExercisetablesComponent},
-    {path: 'new/profile/edit/:id', component: EditProfileComponent},
-    {path: 'new/profile', component: ProfileComponent},
-    {path: 'new/statistics', component: MemberStatistics},
-    {path: 'new/activity/edit/:id', component: ActivityInfoComponent},
+    {path: 'new/memberactivities', component: MemberActivitiesComponent},
+    {path: 'new/memberexercise-tables', component: MemberExercisetablesComponent},
+    {path: 'new/profile/edit/:id', component: MemberEditProfileComponent},
+    {path: 'new/memberprofile', component: MemberProfileComponent},
+    {path: 'new/memberstatistics', component: MemberStatistics},
+    {path: 'new/memberactivity/:id', component: MemberActivityInfoComponent},
 ]
 
 export const routing = RouterModule.forRoot(appRoutes);

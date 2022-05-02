@@ -11,7 +11,7 @@ import { LoginService } from './services/login.service';
 export class AppComponent {
   title = 'rukygym';
 
-
+  mem = false;
   notReg = true;
   admin = false;
   mon = false;
@@ -24,21 +24,25 @@ export class AppComponent {
             this.admin = false;
             this.notReg = false;
             this.mon = true;
+            this.mem = false;
             break;
           case 'administrator':
             this.admin = true;
             this.notReg = false;
             this.mon = false;
+            this.mem = false;
             break;
           case 'member':
             this.admin = false;
             this.notReg = false;
             this.mon = false;
+            this.mem = true;
             break;
           default:
             this.admin = false;
             this.notReg = true;
             this.mon = false;
+            this.mem = false;
             break;
         }
       },

@@ -72,6 +72,13 @@ export class UserService {
       );
     }
 
+    // Get one member
+    getMember(n:  number){
+      return this.httpClient.get(BASE_URL + 'members/me').pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
     // Add member
     addMembers(member: User) {
       if (!member.id) {

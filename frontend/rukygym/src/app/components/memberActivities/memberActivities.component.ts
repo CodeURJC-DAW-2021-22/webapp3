@@ -9,7 +9,7 @@ import { ActivityService } from 'src/app/services/Activity.service';
   templateUrl: './memberActivities.component.html',
   styleUrls: ['./memberActivities.component.css']
 })
-export class ActivitiesComponent{
+export class MemberActivitiesComponent{
 
   activities : Activity [] | undefined;
 
@@ -20,9 +20,6 @@ export class ActivitiesComponent{
         activities  => this.activities = activities as Activity [],
         (error: any)                => console.error(error),
     );
-
-    console.log(this.activities);
-
-    }
+  }
 
 }

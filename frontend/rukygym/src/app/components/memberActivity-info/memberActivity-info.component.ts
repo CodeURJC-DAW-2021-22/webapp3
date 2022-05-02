@@ -9,7 +9,7 @@ import { ActivityService } from "src/app/services/Activity.service";
     templateUrl: './memberActivity-info.component.html',
     styleUrls: ['./memberActivity-info.component.css']
 })
-export class ActivityInfoComponent {
+export class MemberActivityInfoComponent {
 
     activity: Activity | undefined;
 

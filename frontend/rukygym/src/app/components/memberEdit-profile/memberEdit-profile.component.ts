@@ -9,7 +9,7 @@ import { User } from 'src/app/models/User.model';
   templateUrl: './memberEdit-profile.component.html',
   styleUrls: ['./memberEdit-profile.component.css']
 })
-export class EditProfileComponent {
+export class MemberEditProfileComponent {
 
     member: User | undefined;
     name: string = " ";
