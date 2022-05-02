@@ -43,7 +43,7 @@ export class UserService {
 
   // Set monitor Image
   setMonitorImage(monitor: User, formData: FormData) {
-		return this.httpClient.post(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
+		return this.httpClient.put(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);

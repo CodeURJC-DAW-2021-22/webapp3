@@ -1,8 +1,18 @@
 import { Component } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import { EChartsOption } from "echarts";
+import { LoginService } from "src/app/services/login.service";
+import { StatisticsService } from "src/app/services/statistics.service";
 
 
-const option = {
+@Component({
+    selector:'adminstatistics',
+    templateUrl: './adminStatistics.component.html',
+    styleUrls: ['./adminStatistics.component.css']
+})
+export class AdminStatistics{
+
+  option = {
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -34,7 +44,7 @@ const option = {
         emphasis: {
           focus: 'series'
         },
-        data: [0,0,1,4,0,0,0,0,0,0,0,0]
+        data: []
       },
       {
         name: '2020',
@@ -42,7 +52,7 @@ const option = {
         emphasis: {
           focus: 'series'
         },
-        data: [0,0,0,0,0,0,1,0,0,0,0,0]
+        data: []
       },
       {
         name: '2021',
@@ -50,7 +60,7 @@ const option = {
         emphasis: {
           focus: 'series'
         },
-        data: [0,1,0,0,0,0,0,0,0,0,0,0]
+        data: []
       },
       {
         name: '2022',
@@ -58,24 +68,26 @@ const option = {
         emphasis: {
           focus: 'series'
         },
-        data: [0,0,0,2,0,0,0,0,0,0,0,0]
+        data: []
       },
     ]
   };
 
+    _echartOption!: EChartsOption;
 
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: StatisticsService,
+      public loginService: LoginService){
 
-@Component({
-    selector:'adminstatistics',
-    templateUrl: './adminStatistics.component.html',
-    styleUrls: ['./adminStatistics.component.css']
-})
-export class AdminStatistics{
+        service.getAdminStats().subscribe(
+          (result : any)=> {
+            for(let i = 0; i < 4; i++){
+              this.option.series[i].data = result[i];
+            }
+            this._echartOption = this.option as EChartsOption;
+          },
+          error => alert("No se ha podido cargar los datos en estos momentos.")
+        )
 
-    _echartOption: EChartsOption ;
-
-    constructor(){
-        this._echartOption = option as EChartsOption;
     }
 
     ngOnInit(): void {
