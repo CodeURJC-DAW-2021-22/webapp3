@@ -2,7 +2,7 @@ import { Component } from "@angular/core"
 import { Router, ActivatedRoute } from "@angular/router";
 import { ExerciseTable } from 'src/app/models/ExerciseTable.model';
 import { ExerciseTableService } from 'src/app/services/ExerciseTable.service';
-import { LoginService } from "src/app/services/Login.service";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: 'exercisetables',

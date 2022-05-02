@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { LoginService } from "src/app/services/Login.service";
 import { UserService } from 'src/app/services/User.service';
 import { User } from 'src/app/models/User.model';
+import { LoginService } from "src/app/services/login.service";
+
 
 
 @Component({
@@ -22,6 +23,13 @@ export class ProfileComponent {
             (member) => this.member = member as User,
             (error: any)    => console.error(error)
         );
+
+
+      if (this.loginService.currentUser() === undefined){
+        console.error("no hay usuario");
+      } else{
+        this.loginService.currentUser()?.id;
+      }
 
 
     }

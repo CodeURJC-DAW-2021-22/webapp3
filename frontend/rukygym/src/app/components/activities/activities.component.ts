@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { LoginService } from "src/app/services/Login.service";
+import { LoginService } from "src/app/services/login.service";
 import { Activity } from 'src/app/models/Activity.model';
 import { ActivityService } from 'src/app/services/Activity.service';
 
