@@ -4,7 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ExerciseTable } from './../models/ExerciseTable.model';
 
-const BASE_URL = '/api/exercises-tables';
+
+const BASE_URL = '/api/exercises-tables/';
+
 
 @Injectable({ providedIn: 'root' })
 export class ExerciseTableService {
@@ -12,8 +14,9 @@ export class ExerciseTableService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all Exercise Table
-  getExercisesTables(){
-    return this.httpClient.get(BASE_URL).pipe(
+
+  getExercisesTables(id : number){
+    return this.httpClient.get(BASE_URL + "?page=" + id).pipe(
 			catchError(error => this.handleError(error))
 		);
   }
@@ -55,7 +58,7 @@ export class ExerciseTableService {
 
   // Set Exercise table Image
   setExerciseTableImage(exerciseTable: ExerciseTable, formData: FormData) {
-		return this.httpClient.post(BASE_URL + exerciseTable.id + '/image', formData)
+		return this.httpClient.put(BASE_URL + exerciseTable.id + '/image', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);

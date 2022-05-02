@@ -1,3 +1,6 @@
 <div class="container-fluid nopadding">
     <membernavbar></membernavbar>
+    <navbar *ngIf="notReg"></navbar>
+    <adminnavbar *ngIf="admin"></adminnavbar>
+    <monitornavbar *ngIf="mon"></monitornavbar>
 </div>

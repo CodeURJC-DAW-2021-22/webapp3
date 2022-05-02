@@ -1,0 +1,110 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Perfil</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div *ngIf="monitor" class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row el-element-overlay">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+                            <h4 class="card-  title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales
+                            </h4>
+                            <br>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="name" pattern="[A-Za-z ]+" [(ngModel)]="monitor.name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Apellidos: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="surname" pattern="[a-zA-Záéíóúü ]+" [(ngModel)]="monitor.surname">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> DNI/NIE: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="nif" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="monitor.NIF" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Dirección: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="address" pattern="[a-zA-Z,./ 0-9áéíóúüº]+" [(ngModel)]="monitor.address">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Código postal: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="postalCode" pattern="[0-9]{5}" [(ngModel)]="monitor.postalCode">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Teléfono: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="phone" pattern="(6|7){1}[0-9]{8}" [(ngModel)]="monitor.phone">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Añadir imagen: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input #file class="colorBlackText" type="file" name="image" accept=".jpg, .jpeg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-12 image ">
+                            <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                <br>
+                                <br>
+                                <img src="/api/users/monitors/{{monitor?.id}}/image" width="100%" alt="user " style="text-align: center;;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <div class="border-top card "></div>
+                    </div>
+
+                    <div class="card-body ">
+                        <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
+                        <!-- Create the editor container -->
+                        <p><textarea style="height: 300px; color: black; width:100%" name="description" [(ngModel)]="monitor.description"></textarea></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="btn default btn-outline el-link selector" type="button"><a href="/new/monitorEditProfile">Resetear</a></button>
+                <button class="btn default btn-outline el-link selector" type="button"><a href="/new/profile">Cancelar</a></button>
+                <button class="btn default btn-outline el-link selector colorWhiteText " type="button" (click)="save();">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

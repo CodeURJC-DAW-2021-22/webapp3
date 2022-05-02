@@ -1,0 +1,116 @@
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card2">
+                <div class="card-body">
+                    <div class="row el-element-overlay">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                            <h4 class="card-title ">Datos generales</h4>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.name}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Apellidos: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.surname}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> DNI/NIE: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.NIF}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Email: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.email}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Dirección: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.address}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Código postal: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.postalCode}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Teléfono: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{monitor?.phone}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-12 image ">
+                            <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                <img src="/api/users/monitors/{{monitor?.id}}/image" width="100%" alt="user " style="text-align: center;;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <div class="border-top card "></div>
+                    </div>
+
+                    <div class="card-body ">
+                        <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
+                        <!-- Create the editor container -->
+                        <textarea style="height: 300px; color: black; width:100%" readonly="">{{monitor?.description}}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row el-element-overlay">
+                <div class="col-12 buttonsAddActivity">
+                    <a href="new/monitor/edit/{{monitor?.id}}"><button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" >Editar</button></a>
+                    <a (click)="delete();"><button class="btn default btn-outline el-link selector2 colorWhiteText " type="button " >Eliminar</button></a>
+                    <a href="new/monitors"><button class="btn default btn-outline el-link selector2 colorWhiteText " type="button " >Cancelar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>

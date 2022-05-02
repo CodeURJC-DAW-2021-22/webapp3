@@ -101,6 +101,7 @@ public class User {
     //type
     @Column(nullable = false)
     @NotNull
+    @JsonView({MemberLog.class, MonitorLog.class, MonitorBasic.class, MemberBasic.class})
     private String userType = "";
 
     //Member

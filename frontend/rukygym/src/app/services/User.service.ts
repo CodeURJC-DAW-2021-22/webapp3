@@ -43,7 +43,7 @@ export class UserService {
 
   // Set monitor Image
   setMonitorImage(monitor: User, formData: FormData) {
-		return this.httpClient.post(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
+		return this.httpClient.put(BASE_URL + 'monitors/' + monitor.id + '/image/', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);
@@ -51,32 +51,47 @@ export class UserService {
 
   // Update monitor
   updateMonitor(monitor: User) {
-		return this.httpClient.put(BASE_URL + 'monitor/' + monitor.id + '/', monitor).pipe(
+		return this.httpClient.put(BASE_URL + 'monitors/' + monitor.id + '/', monitor).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
   // Delete monitor
-  deleteExercise(monitor: User) {
-		return this.httpClient.delete(BASE_URL + 'monitor/' + monitor.id).pipe(
+  deleteMonitor(monitor: User) {
+		return this.httpClient.delete(BASE_URL + 'monitors/' + monitor.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
   // Members
-  getMembers(){
-    return this.httpClient.get(BASE_URL + 'members').pipe(
-			catchError(error => this.handleError(error))
-		);
-  }
 
-  getMember(id: number | string){
-		return this.httpClient.get(BASE_URL + 'members/' + id).pipe(
-			catchError(error => this.handleError(error))
-		);
-	}
+    // Get all members
+    getMembers(n:  number){
+      return this.httpClient.get(BASE_URL + 'members/?page=' + n).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
+    // Add member
+    addMembers(member: User) {
+      if (!member.id) {
+        return this.httpClient.post(BASE_URL + 'members/new/', member)
+          .pipe(
+            catchError(error => this.handleError(error))
+          );
+      } else {
+        return this.httpClient.put(BASE_URL + 'members/' + member.id, member).pipe(
+          catchError(error => this.handleError(error))
+        );
+      }
+    }
 
+    // Delete member
+    deleteMember(member: User) {
+      return this.httpClient.delete(BASE_URL + 'members/' + member.id).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
   // Error handler
   private handleError(error: any) {
@@ -84,4 +99,5 @@ export class UserService {
 		console.error(error);
 		return throwError("Server error (" + error.status + "): " + error.text())
 	}
+
 }

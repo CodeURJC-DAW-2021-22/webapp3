@@ -1,0 +1,18 @@
+<div *ngIf="visible" id="sideMenu" class="navColor">
+    <div class="col-12">
+        <ul class="nav navPillsPersonalized nav-stacked fixNav">
+            <a href="new/schedule">
+                <li [ngClass]="classStatistics">Horario</li>
+            </a>
+            <a href="new/profile">
+                <li [ngClass]="classActivities">Perfil</li>
+            </a>
+            <a href="new/monitorExerciseTable">
+                <li [ngClass]="classMonitors">Tablas de ejercicios</li>
+            </a>
+            <a href="new/monitorActivities">
+                <li [ngClass]="classClients">Actividades</li>
+            </a>
+        </ul>
+    </div>
+</div>
