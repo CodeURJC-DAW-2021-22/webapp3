@@ -13,7 +13,7 @@ import { LoginService } from "src/app/services/login.service";
 export class LoginComponent {
 
 
-  constructor(public loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }
 
   logIn(event: any, user: string, pass: string) {
 
@@ -21,7 +21,7 @@ export class LoginComponent {
 
     this.loginService.logIn(user, pass);
 
-    
+
   }
 
   logOut() {
