@@ -14,7 +14,7 @@ export class UserService {
   // Monitors
 
   // Get all monitors
-  getMonitors(){
+  getMonitors() {
     return this.httpClient.get(BASE_URL + 'monitors').pipe(
 			catchError(error => this.handleError(error))
 		);
@@ -43,7 +43,7 @@ export class UserService {
 
   // Set monitor Image
   setMonitorImage(monitor: User, formData: FormData) {
-		return this.httpClient.post(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
+		return this.httpClient.put(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);
@@ -57,15 +57,41 @@ export class UserService {
 	}
 
   // Delete monitor
-  deleteExercise(monitor: User) {
-		return this.httpClient.delete(BASE_URL + 'monitor/' + monitor.id).pipe(
+  deleteMonitor(monitor: User) {
+		return this.httpClient.delete(BASE_URL + 'monitors/' + monitor.id).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
   // Members
 
+    // Get all members
+    getMembers(n:  number){
+      return this.httpClient.get(BASE_URL + 'members/?page=' + n).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
+    // Add member
+    addMembers(member: User) {
+      if (!member.id) {
+        return this.httpClient.post(BASE_URL + 'member/new/', member)
+          .pipe(
+            catchError(error => this.handleError(error))
+          );
+      } else {
+        return this.httpClient.put(BASE_URL + 'members/' + member.id, member).pipe(
+          catchError(error => this.handleError(error))
+        );
+      }
+    }
+
+    // Delete member
+    deleteMember(member: User) {
+      return this.httpClient.delete(BASE_URL + 'members/' + member.id).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
 
   // Error handler
   private handleError(error: any) {
@@ -73,4 +99,5 @@ export class UserService {
 		console.error(error);
 		return throwError("Server error (" + error.status + "): " + error.text())
 	}
+
 }

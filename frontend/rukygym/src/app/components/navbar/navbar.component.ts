@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 
 @Component({
@@ -8,6 +8,16 @@ import { Component } from "@angular/core";
 })
 export class NavbarComponent {
 
+  num = 0;
+
+  
+  responsiveMenu(){
+    if(this.num == 0){
+      this.num = 1;
+    }else{
+      this.num = 0;
+    }
+  }
+
 
 }
-

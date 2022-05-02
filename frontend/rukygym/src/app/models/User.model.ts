@@ -11,10 +11,10 @@ export interface User {
   phone: string;
   description: string;
   userType: string;
-  height?: number;
-  weight?: number;
+  height?: string;
+  weight?: string;
   medicalInfo?: string;
-  ACT1: Activity;
-  ACT2: Activity;
-  ACT3: Activity;
+  ACT1?: Activity;
+  ACT2?: Activity;
+  ACT3?: Activity;
 }
