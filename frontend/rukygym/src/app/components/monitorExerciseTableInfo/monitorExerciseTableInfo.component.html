@@ -1,0 +1,78 @@
+<div class="page-wrapper">
+
+  <div class="page-breadcrumb">
+      <div class="row">
+          <div class="col-12 d-flex no-block align-items-center">
+              <h4 class="page-title">Información de actividad</h4>
+          </div>
+      </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-12">
+              <div class="card">
+                  <div class="row el-element-overlay">
+                      <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                          <h4 class="card-title" style="color: black; margin-bottom: 20px; padding-left: 9px;">Datos generales</h4>
+                          <div class="row mb-3">
+                              <div class="col-lg-2 col-md-4 col-12">
+                                  <p style="color:black;" class="centerText"> Nombre: </p>
+                              </div>
+                              <div class="col-lg-10 col-md-8 col-12 ">
+                                  <span type="text " class="form-control ">{{exerciseTables?.name}}</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-12">
+                          <div class="col-lg-3 col-md-12 col-12 image ">
+                              <div class="el-card-avatar el-overlay-1 ">
+                                  <img src="/api/exercises-tables/{{exerciseTables?.id}}/image" width="100%"  alt="user " />
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="card-body ">
+                      <div class="border-top card "></div>
+                  </div>
+                      <div class="card-body">
+                          <h5 class="card-title colorBlackText">Lista de Ejercicios</h5>
+                          <div class="table-responsive colorBlackText">
+                              <table id="zero_config" class="table table-striped table-bordered ">
+
+                                  <thead class="colorOrangeText">
+                                  <tr>
+                                      <th>Ejercicio</th>
+                                      <th>Descripcion</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody class="colorBlackText">
+
+                                  <tr>
+                                      <td>name</td>
+                                      <td>descripcion</td>
+                                  </tr>
+
+                                  </tbody>
+                              </table>
+                          </div>
+
+                  <div class="card-body ">
+                      <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Descripcion </h4>
+
+                      <div style="height: 300px; color: black; ">
+                          <p>{{exerciseTables?.description}}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
