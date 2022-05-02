@@ -10,14 +10,6 @@
     -moz-transform: rotate(45deg)
 }
 
-
-/*!
- * Bootstrap v4.1.0 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
 :root {
     --blue: #2255a4;
     --indigo: #6610f2;
@@ -10567,8 +10559,6 @@ html[dir=ltr] body .p-l-0 {
     padding-left: 0
 }
 
-#main-wrapper {}
-
 #main-wrapper .topbar .top-navbar .navbar-header[data-logobg=skin5] {
     background: #111111
 }
@@ -10609,14 +10599,11 @@ html[dir=ltr] body .p-l-0 {
     padding: 15px 20px
 }
 
-#main-wrapper {}
-
 #main-wrapper[data-sidebartype=full] .page-wrapper {
     margin-left: 250px
 }
 
 @media (min-width:768px) {
-    #main-wrapper {}
     #main-wrapper[data-sidebartype=full] .topbar .top-navbar .navbar-header {
         width: 250px
     }
@@ -10662,7 +10649,6 @@ html[dir=ltr] body .p-l-0 {
 }
 
 @media (max-width:766px) {
-    #main-wrapper {}
     #main-wrapper[data-sidebartype=mini-sidebar] .page-wrapper {
         margin-left: 0px
     }
@@ -11008,7 +10994,6 @@ ul.list-style-none li a:hover {
 }
 
 .card-hover:hover {
-    webkit-transform: translateY(-4px) scale(1.01);
     -moz-transform: translateY(-4px) scale(1.01);
     -ms-transform: translateY(-4px) scale(1.01);
     -o-transform: translateY(-4px) scale(1.01);
@@ -11505,10 +11490,6 @@ ul.list-style-none li a:hover {
     position: relative
 }
 
-.sidebar-nav ul {}
-
-.sidebar-nav ul .sidebar-item {}
-
 .sidebar-nav ul .sidebar-item .sidebar-link {
     color: #fff;
     padding: 14px 15px;
@@ -11580,8 +11561,6 @@ ul.list-style-none li a:hover {
     line-height: 30px;
     margin: 0 5px
 }
-
-.sidebar-nav>#sidebarnav>.sidebar-item>.sidebar-link:hover {}
 
 .sidebar-nav ul {
     margin: 0px;
@@ -15294,7 +15273,7 @@ body .jqstooltip {
     padding: 10px 20px;
     background: #2255a4;
     color: #fff;
-    ext-align: center;
+    text-align: center;
     pointer-events: none;
     z-index: 1;
     -webkit-transition: opacity .2s linear;

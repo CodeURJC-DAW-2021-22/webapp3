@@ -1,19 +1,24 @@
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-12">
             <div class="card2">
                 <div class="card-body">
-                    <div class="row el-element-overlay">
+                    <div class="row">
                         <div class="col-lg-8 col-md-12 col-12 card-body">
 
                             <h4 class="card-title ">Datos generales</h4>
+                            <hr>
+                            <div class="col-lg-3 col-md-12 col-12 image ">
+                                <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                    <img src="/users/members/{{member?.id}}/image" width="100%" alt="user " style="text-align: center;">
+                                </div>
+                            </div>
                             <div class="row mb-3">
                                 <div class="col-lg-2 col-md-4 col-12">
                                     <p style="color:black;" class="centerText"> Nombre: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="text " class="form-control ">{{member?.name}}</span>
+                                    <span type="text " class="form-control centerText ">{{member?.name}}</span>
                                 </div>
                             </div>
 
@@ -99,16 +104,10 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-3 col-md-12 col-12 image ">
-                            <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
-                                <img src="/api/users/members/{{member?.id}}/image" width="100%" alt="user " style="text-align: center;;">
-                            </div>
-                        </div>
+
                     </div>
 
-                    <div class="card-body ">
-                        <div class="border-top card "></div>
-                    </div>
+                    <hr>
 
                     <div class="card-body ">
                         <h4 class="card-title " style="color: black; margin-bottom: 20px;">Información Médica</h4>
@@ -118,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row el-element-overlay">
+            <div class="row">
                 <div class="col-12 buttonsAddActivity">
                     <a href="new/member/edit/{{member?.id}}"><button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" >Editar</button></a>
                     <a href="new/members"><button class="btn default btn-outline el-link selector2 colorWhiteText " type="button " >Cancelar</button></a>
