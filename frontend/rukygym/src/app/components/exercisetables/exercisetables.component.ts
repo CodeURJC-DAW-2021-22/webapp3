@@ -2,6 +2,7 @@ import { Component } from "@angular/core"
 import { Router, ActivatedRoute } from "@angular/router";
 import { ExerciseTable } from 'src/app/models/ExerciseTable.model';
 import { ExerciseTableService } from 'src/app/services/ExerciseTable.service';
+import { LoginService } from "src/app/services/Login.service";
 
 @Component({
   selector: 'exercisetables',
@@ -13,7 +14,7 @@ export class ExercisetablesComponent {
   exerciseTabs : ExerciseTable [] | undefined;
 
     constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService,
-        /*public loginService: LoginService*/) {
+        public loginService: LoginService) {
 
         service.getExercisesTables().subscribe(
             exerciseTabs  => this.exerciseTabs = exerciseTabs as ExerciseTable [],

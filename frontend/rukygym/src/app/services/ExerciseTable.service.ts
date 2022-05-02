@@ -81,6 +81,6 @@ export class ExerciseTableService {
   private handleError(error: any) {
 		console.log("ERROR:");
 		console.error(error);
-		return throwError("Server error (" + error.status + "): " + error.text())
+		return throwError("Server error (" + error.status + "): " + error)
 	}
 }

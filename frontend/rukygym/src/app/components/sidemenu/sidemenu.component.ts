@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+
 @Component({
     selector:'sidemenu',
     templateUrl: './sidemenu.component.html',
@@ -57,5 +58,6 @@ export class SidemenuComponent {
     changeStatus() {
         this.visible = !this.visible;
     }
+
 
 }

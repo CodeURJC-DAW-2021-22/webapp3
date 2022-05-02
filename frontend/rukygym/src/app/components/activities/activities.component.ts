@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
+import { LoginService } from "src/app/services/Login.service";
+import { Activity } from 'src/app/models/Activity.model';
+import { ActivityService } from 'src/app/services/Activity.service';
 
 @Component({
   selector: 'activities',
   templateUrl: './activities.component.html',
   styleUrls: ['./activities.component.css']
 })
-export class ActivitiesComponent implements OnInit {
+export class ActivitiesComponent{
 
-  constructor() { }
+  activities : Activity [] | undefined;
 
-  ngOnInit(): void {
-  }
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService,
+    public loginService: LoginService) {
+
+      service.getActivities().subscribe(
+        activities  => this.activities = activities as Activity [],
+        (error: any)                => console.error(error),
+    );
+
+    console.log(this.activities);
+
+    }
+
+
 
 }
