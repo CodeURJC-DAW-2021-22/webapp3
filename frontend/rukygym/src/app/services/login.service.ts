@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User.model';
@@ -97,4 +98,8 @@ export class LoginService {
     currentUser() {
         return this.user;
     }
+
+    currentUser2(){
+      return this.http.get('/api/users/monitors/me', { withCredentials: true }) as Observable<User>;
+  }
 }

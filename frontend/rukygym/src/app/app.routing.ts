@@ -52,7 +52,7 @@ const appRoutes = [
     {path: 'new/main-activities/schedule/:id', component: ScheduleComponent},
     {path: 'new/log-in', component: LoginComponent},
     {path: 'new/sign-in', component: SigninComponent},
-    {path: 'new/activities', component: MonitorActivities}, 
+    {path: 'new/monitorActivities', component: MonitorActivities},
     {path: 'new/schedule', component: MonitorSchedule},
     {path: 'new/profile', component: MonitorProfile},
     {path: 'new/monitorEditProfile', component: MonitorEditProfile},
@@ -60,7 +60,7 @@ const appRoutes = [
     {path: 'new/monitorExerciseTableInfo/:id', component: MonitorExerciseTableInfo},
     {path: 'new/monitorEditExerciseTable/:id', component: MonitorEditExerciseTable},
     {path: 'new/monitorAddExerciseTable', component: MonitorAddExerciseTable},
-    {path: 'new/monitorActiityInfo', component: MonitorActivityInfo},
+    {path: 'new/monitorActivityInfo/:id', component: MonitorActivityInfo},
 ]
 
 
