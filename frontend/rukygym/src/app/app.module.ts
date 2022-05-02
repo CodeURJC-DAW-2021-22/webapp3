@@ -1,8 +1,9 @@
+import { ContactUsComponent } from './components/contactUs/contactUs.component';
+import { routing } from './app.routing';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,16 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NewActivity } from './components/adminNewActivity/newActivity.component';
 import { NewMonitor } from './components/adminNewMonitor/newMonitor.component';
 
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { MainPageComponent } from './components/mainPage/mainPage.component';
+import { PricesComponent } from './components/prices/prices.component';
+import { ContentComponent } from './components/content/content.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
+import { LoginComponent } from './components/log-in/log-in.component';
+import { SigninComponent } from './components/sign-in/sign-in.component';
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -39,7 +50,14 @@ import { NewMonitor } from './components/adminNewMonitor/newMonitor.component';
     MonitorEditInfo,
     EditActivity,
     NewActivity,
-    NewMonitor
+    NewMonitor,
+    MainPageComponent,
+    PricesComponent,
+    ScheduleComponent,
+    ContactUsComponent,
+    ActivitiesComponent,
+    LoginComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule, 

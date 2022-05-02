@@ -1,0 +1,30 @@
+<!-- log in Section Begin -->
+<section class="classes-section spad">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+      <div class="row">
+      </div>
+      <div style="background-color: rgb(32, 32, 32); border-radius: 5px; width: 400px; margin-left: 31%; margin-top: -10%;">
+          <br>
+          <img src="assets/logo.png" alt="" style=" display: block; margin-left: auto; margin-right: auto;" width="200px">
+          <h2 style="color: white; text-align: center;">Gymastic <strong style="color: rgb(255, 123, 0);">Log in</strong></h2>
+          <br>
+          <br>
+          <form *ngIf="!loginService.isLogged()" method="post" style="text-align: center;">
+
+              <input #user type="text" name="email" placeholder="Usuario" required><br><br>
+              <input #pass type="password" name="password" placeholder="Contraseña" required><br><br>
+
+              <button type="submit" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn" (click)="logIn($event, user.value, pass.value)">Acceder</button>
+              <!--<input type="hidden" name="_csrf" value="{{token}}"/>-->
+          </form>
+          <button *ngIf="loginService.isLogged()" type="submit" class="primary-btn btn-normal primary-btn btn-normal new-appoinment-btn" (click)="logOut()">salir</button>
+          <br>
+      </div>
+
+  </div>
+</section>
+<!-- log in Section End -->
