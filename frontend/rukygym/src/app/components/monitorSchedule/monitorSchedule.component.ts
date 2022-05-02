@@ -2,7 +2,6 @@ import { Component } from "@angular/core"
 import { Router, ActivatedRoute } from "@angular/router";
 import { Activity } from "src/app/models/Activity.model";
 import { ActivityService } from "src/app/services/Activity.service";
-import { LoginService } from "src/app/services/Login.service";
 import { UserService } from "src/app/services/User.service";
 import { User } from "../../models/User.model";
 
@@ -18,8 +17,7 @@ export class MonitorSchedule {
 
   monitor: User | undefined;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
-      public loginService: LoginService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService) {
 
       const id = activatedRoute.snapshot.params['id'];
       service.getMonitor(43).subscribe(

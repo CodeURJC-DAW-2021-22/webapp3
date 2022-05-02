@@ -1,43 +1,38 @@
-
-<div class="page-wrapper">
-
 <div class="row">
-  <div class="col-12">
-      <h5>Lista de Tablas de ejercicios</h5>
-  </div>
+    <div class="col-12">
+        <h5>Lista de Tablas de ejercicios</h5>
+    </div>
 </div>
 
 
 <div class="row">
-  <div class="col-12">
-      <a href="new/monitorAddExerciseTable"><button class="but" style="margin-bottom: 20px;">Añadir nueva tabla de ejercicios</button></a>
-  </div>
+    <div class="col-12">
+        <a href="new/monitorAddExerciseTable"><button class="but" style="margin-bottom: 20px;">Añadir nueva tabla de ejercicios</button></a>
+    </div>
 </div>
 
 <div class="row" style="z-index: 0;">
 
 
-  <div *ngFor="let elem of exerciseTables" class="col-lg-3 col-md-6 col-6">
-      <div class="card">
-          <div class="item">
-              <div class="objetfitcover">
-                  <img class="img" src="/api/exercises-tables/{{elem.id}}/image" alt="">
-              </div>
-              <div class="text">
-                  <p style="color: white;">{{elem.name}}</p>
-              </div>
-              <div class="buttons row">
-                  <div class="col-6">
-                      <a href='/new/monitorExerciseTableInfo/{{elem.id}}'><button class="but">Ver</button></a>
-                  </div>
-                  <div class="col-6">
-                      <a href='new/monitorEditExerciseTable/{{elem.id}}'><button class="but">Editar</button></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-</div>
+    <div *ngFor="let elem of exerciseTables" class="col-lg-3 col-md-6 col-6">
+        <div class="card">
+            <div class="item">
+                <div class="objetfitcover">
+                    <img class="img" src="/api/exercises-tables/{{elem.id}}/image" alt="">
+                </div>
+                <div class="text">
+                    <p style="color: white;">{{elem.name}}</p>
+                </div>
+                <div class="buttons row">
+                    <div class="col-6">
+                        <a href='/new/monitorExerciseTableInfo/{{elem.id}}'><button class="but">Ver</button></a>
+                    </div>
+                    <div class="col-6">
+                        <a href='new/monitorEditExerciseTable/{{elem.id}}'><button class="but">Editar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

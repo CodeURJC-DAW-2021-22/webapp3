@@ -8,14 +8,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { FooterComponent } from './components/footer/footer.component';
+import { MonitorFooter } from './components/monitorFooter/monitorFooter.component';
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
-import { ContentComponent } from './components/content/content.component';
+import { MonitorNavbar } from './components/monitorNavbar/monitorNavbar.component';
+import { MonitorSidemenu } from './components/monitorSidemenu/monitorSidemenu.component';
+import { MonitorContent } from './components/monitorContent/monitorContent.component';
 import { MonitorActivities } from './components/monitorActivities/monitorActivities.component';
-import { ActivityInfo } from './components/activityInfo/activityInfo.component';
+import { MonitorActivityInfo } from './components/monitorActivityInfo/monitorActivityInfo.component';
 import { MonitorSchedule } from './components/monitorSchedule/monitorSchedule.component';
 import { MonitorProfile } from './components/monitorProfile/monitorProfile.component';
 import { MonitorEditProfile } from './components/monitorEditProfile/monitorEditProfile.component';
@@ -94,6 +94,11 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
     AdminFooterComponent,
     AdminNavbarComponent,
     AdminContentComponent,
+    MonitorNavbar,
+    MonitorFooter,
+    MonitorSidemenu,
+    MonitorContent,
+    MonitorActivityInfo ,
   ],
   imports: [
     BrowserModule, 

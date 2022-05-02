@@ -14,8 +14,7 @@ export class MonitorExerciseTable {
 
   exerciseTables : ExerciseTable [] | undefined;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService,
-      /*public loginService: LoginService*/) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService) {
 
       service.getExercisesTables().subscribe(
         exerciseTables  => this.exerciseTables = exerciseTables as ExerciseTable [],

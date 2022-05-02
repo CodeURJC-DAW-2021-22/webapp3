@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ExerciseTable } from "src/app/models/ExerciseTable.model";
 import { ExerciseTableService } from "src/app/services/ExerciseTable.service";
-import { LoginService } from "src/app/services/Login.service";
+
 
 @Component({
     selector:'monitorExerciseTableInfo',
@@ -14,8 +14,7 @@ export class MonitorExerciseTableInfo{
 
   exerciseTables: ExerciseTable | undefined;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService,
-      public loginService: LoginService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService) {
 
       const id = activatedRoute.snapshot.params['id'];
       service.getExerciseTable(id).subscribe(

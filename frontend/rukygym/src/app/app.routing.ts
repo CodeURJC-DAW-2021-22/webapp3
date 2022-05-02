@@ -1,11 +1,6 @@
 import { MonitorAddExerciseTable } from './components/monitorAddExerciseTable/monitorAddExerciseTable.component';
 import { MonitorExerciseTableInfo } from './components/monitorExerciseTableInfo/monitorExerciseTableInfo.component';
-import { AppComponent } from './app.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { ContentComponent } from './components/content/content.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ActivityInfo } from './components/activityInfo/activityInfo.component';
+import { MonitorActivityInfo } from './components/monitorActivityInfo/monitorActivityInfo.component';
 import { MonitorActivities } from './components/monitorActivities/monitorActivities.component';
 import { MonitorSchedule } from './components/monitorSchedule/monitorSchedule.component';
 import { MonitorProfile } from './components/monitorProfile/monitorProfile.component';
@@ -65,6 +60,7 @@ const appRoutes = [
     {path: 'new/monitorExerciseTableInfo/:id', component: MonitorExerciseTableInfo},
     {path: 'new/monitorEditExerciseTable/:id', component: MonitorEditExerciseTable},
     {path: 'new/monitorAddExerciseTable', component: MonitorAddExerciseTable},
+    {path: 'new/monitorActiityInfo', component: MonitorActivityInfo},
 ]
 
 

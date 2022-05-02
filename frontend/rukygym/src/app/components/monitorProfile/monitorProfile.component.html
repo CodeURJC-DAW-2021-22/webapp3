@@ -1,144 +1,142 @@
-<div class="page-wrapper">
 <div class="container-fluid">
-  <div class="row">
-      <div class="col-md-12">
-          <div class="card">
-              <div class="card-body">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <h4 class="card-title text">Usuario</h4>
-                      </div>
-                      <div class="col-md-6">
-                          <button class="btn default btn-outline el-link selector" type="button"><a href="/new/monitorEditProfile"><i class="mdi mdi-grease-pencil"></i> Editar perfil</a></button>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="card-title text">Usuario</h4>
                         </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card" style="margin-top:20px">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Básica</h5>
-                                  <div class="row">
-                                      <div class="col-md-1">
-                                          <div class="card align-items-center">
-                                              <div class="p-2"><img src="/assets/logo.png" alt="user" width="80" class="rounded-circle"></div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-5">
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="fname" placeholder="Nombre">{{monitor?.name}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="lname" placeholder="Apellidos">{{monitor?.surname}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="user" placeholder="@NombreUsuario">{{monitor?.email}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                              <div class="col-sm-9">
-                                                  <span type="password" class="form-control" id="password" placeholder="Contraseña">**</span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-5">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
-                                              <div class="col-sm-9 input-group">
-                                                  <span type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">08/03/2000</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">helicoptero de guerra</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">{{monitor?.height}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">{{monitor?.weight}}</span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!--aditional information-->
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Adicional</h5>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="cono1" placeholder="Domicilio">{{monitor?.address}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="cono1" placeholder="00000">{{monitor?.postalCode}}</span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="cono1" placeholder="+XX-XXX XX XX XX">{{monitor?.phone}}</span>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
-                                              <div class="col-sm-9">
-                                                  <span type="text" class="form-control" id="cono1" placeholder="000-000-000">tarjeta</span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- medical information-->
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Médica</h5>
-                                  <div class="form-group row">
-                                      <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
-                                      <div class="col-sm-9">
-                                          <span type="text" class="form-control" id="cono1" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{monitor?.medicalInfo}}</span>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+                        <div class="col-md-6">
+                            <button class="btn default btn-outline el-link selector" type="button"><a href="/new/monitorEditProfile"><i class="mdi mdi-grease-pencil"></i> Editar perfil</a></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="border-top card" style="margin-top:20px">
+                                <div class="card-body">
+                                    <h5 class="card-subtitle">Información Básica</h5>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <div class="card align-items-center">
+                                                <div class="p-2"><img src="/assets/logo.png" alt="user" width="80" class="rounded-circle"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="fname" placeholder="Nombre">{{monitor?.name}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="lname" placeholder="Apellidos">{{monitor?.surname}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="user" placeholder="@NombreUsuario">{{monitor?.email}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
+                                                <div class="col-sm-9">
+                                                    <span type="password" class="form-control" id="password" placeholder="Contraseña">**</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group row">
+                                                <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
+                                                <div class="col-sm-9 input-group">
+                                                    <span type="text" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">08/03/2000</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">helicoptero de guerra</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">{{monitor?.height}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">{{monitor?.weight}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--aditional information-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="border-top card">
+                                <div class="card-body">
+                                    <h5 class="card-subtitle">Información Adicional</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="cono1" placeholder="Domicilio">{{monitor?.address}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="cono1" placeholder="00000">{{monitor?.postalCode}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="cono1" placeholder="+XX-XXX XX XX XX">{{monitor?.phone}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
+                                                <div class="col-sm-9">
+                                                    <span type="text" class="form-control" id="cono1" placeholder="000-000-000">tarjeta</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- medical information-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="border-top card">
+                                <div class="card-body">
+                                    <h5 class="card-subtitle">Información Médica</h5>
+                                    <div class="form-group row">
+                                        <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
+                                        <div class="col-sm-9">
+                                            <span type="text" class="form-control" id="cono1" placeholder="Indicar alergias a tratamientos o lesiones crónicas">{{monitor?.medicalInfo}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

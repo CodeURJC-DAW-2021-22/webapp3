@@ -1,6 +1,5 @@
 <div class="container-fluid nopadding">
-    <navbar *ngIf="visible; else a"></navbar>
-    <ng-template #a>
-        <adminnavbar></adminnavbar>
-    </ng-template>
+    <navbar *ngIf="notReg"></navbar>
+    <adminnavbar *ngIf="admin"></adminnavbar>
+    <monitornavbar *ngIf="mon"></monitornavbar>
 </div>

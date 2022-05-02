@@ -56,7 +56,7 @@ export class LoginService {
                 this.logged = true;
                 switch(this.user?.userType){
 
-                    case "monitor": window.location.href = 'http://localhost:4200/new/mainPage';
+                    case "monitor": window.location.href = 'http://localhost:4200/new/schedule';
                     break;
                     case "administrator": window.location.href = 'http://localhost:4200/new/statistics';
                     break;

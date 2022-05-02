@@ -28,8 +28,6 @@ export class ActivityInfo{
             error => alert("Cannot be deleted")
         );
     }
-
-
             
     
 }
