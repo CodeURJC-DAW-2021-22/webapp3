@@ -1,3 +1,4 @@
+
 import { Exercise } from "./Exercise.model";
 
 export interface ExerciseTable {
@@ -6,3 +7,4 @@ export interface ExerciseTable {
   description: string;
   exercises : Exercise [];
 }
+

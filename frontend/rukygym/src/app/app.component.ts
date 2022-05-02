@@ -11,6 +11,7 @@ import { LoginService } from './services/login.service';
 export class AppComponent {
   title = 'rukygym';
 
+
   notReg = true;
   admin = false;
   mon = false;
@@ -46,4 +47,5 @@ export class AppComponent {
         this.mon = false;}
     );
   }
+
 }

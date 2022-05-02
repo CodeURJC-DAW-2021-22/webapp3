@@ -14,7 +14,7 @@ export class UserService {
   // Monitors
 
   // Get all monitors
-  getMonitors() {
+  getMonitors(){
     return this.httpClient.get(BASE_URL + 'monitors').pipe(
 			catchError(error => this.handleError(error))
 		);

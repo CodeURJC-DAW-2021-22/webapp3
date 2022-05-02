@@ -1,0 +1,40 @@
+#sidemenu {
+    display: none;
+}
+
+.navColor {
+    width: 250px;
+    height: 100%;
+    background-color: #111111;
+    position: fixed;
+    top: 80px;
+}
+
+.fixNav {
+    position: sticky;
+    top: 100px;
+    clear: left;
+}
+
+li {
+    width: 250px;
+    height: 54px;
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-decoration-line: black;
+    background-color: transparent;
+    padding: 14px 15px;
+    padding-left: 40px;
+}
+
+a {
+    width: 250px;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.active {
+    background-color: #f36100;
+}

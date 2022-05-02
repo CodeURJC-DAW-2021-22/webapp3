@@ -14,6 +14,7 @@ export class ExerciseService {
   // Get all Exercise
   getExercises(id : number){
     return this.httpClient.get(BASE_URL + '/?page=' + id).pipe(
+
 			catchError(error => this.handleError(error))
 		);
   }

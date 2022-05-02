@@ -11,6 +11,7 @@ export interface User {
   phone: string;
   description: string;
   userType: string;
+
   height?: string;
   weight?: string;
   medicalInfo?: string;

@@ -4,7 +4,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ExerciseTable } from './../models/ExerciseTable.model';
 
+
 const BASE_URL = '/api/exercises-tables/';
+
 
 @Injectable({ providedIn: 'root' })
 export class ExerciseTableService {
@@ -12,6 +14,7 @@ export class ExerciseTableService {
   constructor(private httpClient: HttpClient) { }
 
   // Get all Exercise Table
+
   getExercisesTables(id : number){
     return this.httpClient.get(BASE_URL + "?page=" + id).pipe(
 			catchError(error => this.handleError(error))
@@ -81,6 +84,6 @@ export class ExerciseTableService {
   private handleError(error: any) {
 		console.log("ERROR:");
 		console.error(error);
-		return throwError("Server error (" + error.status + "): " + error.text())
+		return throwError("Server error (" + error.status + "): " + error)
 	}
 }

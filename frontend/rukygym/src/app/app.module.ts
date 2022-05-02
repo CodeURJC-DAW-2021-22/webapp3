@@ -1,5 +1,9 @@
+
+import { CommonModule } from '@angular/common';
+
 import { ContactUsComponent } from './components/contactUs/contactUs.component';
 import { routing } from './app.routing';
+
 
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +14,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MonitorFooter } from './components/monitorFooter/monitorFooter.component';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './components/memberFooter/memberFooter.component';
+import { NavbarComponent } from './components/memberNavbar/memberNavbar.component';
+import { SidemenuComponent } from './components/memberSidemenu/memberSidemenu.component';
+import { ContentComponent } from './components/memberContent/memberContent.component';
+import { ProfileComponent } from './components/memberProfile/memberProfile.component';
+import { EditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
+import { ActivitiesComponent } from './components/memberActivities/memberActivities.component';
+import { ExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component';
+import { MemberStatistics } from './components/memberStatistics/memberStatistics.component'
+import { routing } from './app.routing';
+import { ActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
+
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { MonitorNavbar } from './components/monitorNavbar/monitorNavbar.component';
 import { MonitorSidemenu } from './components/monitorSidemenu/monitorSidemenu.component';
@@ -56,6 +74,19 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
+
+    FooterComponent,
+    NavbarComponent,
+    SidemenuComponent,
+    ContentComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    ActivitiesComponent,
+    ExercisetablesComponent,
+    MemberStatistics,
+    ActivityInfoComponent,
+
+
     NavbarComponent,
     SidemenuComponent,
     ContentComponent,
@@ -99,18 +130,22 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
     MonitorSidemenu,
     MonitorContent,
     MonitorActivityInfo ,
+
   ],
+
   imports: [
-    BrowserModule, 
-    FormsModule, 
+
+    BrowserModule,
+    FormsModule,
     NgbModule,
     routing,
+    CommonModule,
     HttpClientModule,
     NgxEchartsModule.forRoot({
       echarts
     }),
-
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

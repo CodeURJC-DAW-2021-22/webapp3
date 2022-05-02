@@ -61,6 +61,12 @@ export class ActivityService {
 			);
 	}
 
+  getActivityImage(activity: Activity) {
+    return this.httpClient.get(BASE_URL + activity.id + '/image').pipe(
+			catchError(error => this.handleError(error))
+		);
+  }
+
   // Delete Activity Image
   deleteActivityImage(activity: Activity) {
 		return this.httpClient.delete(BASE_URL + activity.id + '/image')
