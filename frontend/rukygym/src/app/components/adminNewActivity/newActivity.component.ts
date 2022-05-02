@@ -52,12 +52,12 @@ export class NewActivity{
             let formData = new FormData();
             formData.append("imageFile", image);
             this.service.setActivityImage(activity as Activity, formData).subscribe(
-                _ => { },
+                _ => {this.router.navigate(["new/activities"]); },
                 error => alert('Error uploading activity image: ' + error)
             );
         }
     
-        this.router.navigate(["new/activities"]);
+        
     }
 }
 

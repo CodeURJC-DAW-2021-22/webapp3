@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.service.UserExerciseTableService;
 import webapp3.webapp3.service.UserService;
@@ -27,10 +28,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -294,6 +295,9 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("member")) {
+            LocalDate currentdate = LocalDate.now();
+            DateType adminBirthday = new DateType(Integer.toString(currentdate.getYear()), Integer.toString(currentdate.getMonthValue()), Integer.toString(currentdate.getDayOfMonth()));
+            user.setEntryDate(adminBirthday);
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/members/{id}")
                     .buildAndExpand(user.getId()).toUri();

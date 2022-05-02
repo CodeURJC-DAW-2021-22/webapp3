@@ -14,9 +14,22 @@ export class SigninComponent {
 
   signIn (name: string, surname: string, nif: string, phone: string, cp: string, address: string, email: string, password: string, height: string, weight: string, medicalInfo: string) {
 
-    const user = {name : name, surname : surname, NIF : nif, phone : phone, postalCode : cp, address: address, email: email, height: height, weight:weight, medicalInfo:medicalInfo, userType: "monitor"} as User;
+    const user = {name : name, 
+      surname : surname, 
+      NIF : nif, 
+      phone : phone, 
+      postalCode : cp, 
+      address: address, 
+      email: email, 
+      height: height, 
+      weight:weight, 
+      medicalInfo:medicalInfo, 
+      userType: "member"} as User;
 
-    this.userService.addMonitor(user);
+    this.userService.addMembers(user).subscribe(
+      _ => window.location.href = "/new/log-in",
+      _ => _
+    );
   }
 
 }

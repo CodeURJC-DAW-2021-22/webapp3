@@ -43,7 +43,7 @@ export class UserService {
 
   // Set monitor Image
   setMonitorImage(monitor: User, formData: FormData) {
-		return this.httpClient.put(BASE_URL + 'monitor/' + monitor.id + '/image/', formData)
+		return this.httpClient.put(BASE_URL + 'monitors/' + monitor.id + '/image/', formData)
 			.pipe(
 				catchError(error => this.handleError(error))
 			);
@@ -51,7 +51,7 @@ export class UserService {
 
   // Update monitor
   updateMonitor(monitor: User) {
-		return this.httpClient.put(BASE_URL + 'monitor/' + monitor.id + '/', monitor).pipe(
+		return this.httpClient.put(BASE_URL + 'monitors/' + monitor.id + '/', monitor).pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
@@ -75,7 +75,7 @@ export class UserService {
     // Add member
     addMembers(member: User) {
       if (!member.id) {
-        return this.httpClient.post(BASE_URL + 'member/new/', member)
+        return this.httpClient.post(BASE_URL + 'members/new/', member)
           .pipe(
             catchError(error => this.handleError(error))
           );
