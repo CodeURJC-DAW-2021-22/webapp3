@@ -76,4 +76,14 @@ h2 {
   margin-bottom: 20px;
 }
 
+.page-wrapper {
+  background: #eeeeee;
+  position: relative;
+  margin-left: 250px
+}
+
+.page-wrapper>.container-fluid {
+  padding: 20px;
+  min-height: calc(100vh - 180px)
+}
 

@@ -1,7 +1,10 @@
 import { Component } from "@angular/core"
 import { Router, ActivatedRoute } from "@angular/router";
+import { Activity } from "src/app/models/Activity.model";
 import { ActivityService } from "src/app/services/Activity.service";
-import { Activity } from "../../models/Activity.model";
+import { LoginService } from "src/app/services/Login.service";
+import { UserService } from "src/app/services/User.service";
+import { User } from "../../models/User.model";
 
 
 
@@ -13,18 +16,16 @@ import { Activity } from "../../models/Activity.model";
 
 export class MonitorSchedule {
 
-    activities : Activity [] | undefined;
+  monitor: User | undefined;
 
-    // falta, ya que hay que sacar las actividades de un monitor
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService,
-        /*public loginService: LoginService*/) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
+      public loginService: LoginService) {
 
-        service.getActivities().subscribe(
-            activities  => this.activities = activities as Activity [],
-            (error: any)                => console.error(error),
-        );
-
-        console.log(this.activities);
-    }
+      const id = activatedRoute.snapshot.params['id'];
+      service.getMonitor(43).subscribe(
+          monitor => this.monitor = monitor as User,
+          error => console.error(error),
+      );
+  }
 
 }

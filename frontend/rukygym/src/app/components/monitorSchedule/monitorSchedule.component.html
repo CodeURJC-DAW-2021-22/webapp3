@@ -1,7 +1,8 @@
-
+<div class="page-wrapper">
 <div class="container-fluid">
 
-  <h2> Zumba </h2>
+  <div *ngIf="monitor; else otherCont">
+    <h2 style="color: black;">{{monitor.ACT1.name}}</h2>
 
   <br>
   <br>
@@ -12,7 +13,7 @@
               <div class="col-lg-12">
                   <h3> Descripcion </h3>
                   <br>
-                  <p>Zumba es un programa de ejercicios que combina música latina e internacional con movimientos de baile. Las rutinas de Zumba incorporan el entrenamiento por intervalos en el que se alternan ritmos rápidos y lentos para ayudar a mejorar el estado cardiovascular.</p>
+                  <p>{{monitor.ACT1.description}}</p>
               </div>
           </div>
           <br>
@@ -26,7 +27,7 @@
                   </div>
 
                   <div class="col-lg-2 col-md-2">
-                      <h3>10:00</h3>
+                      <h3>{{monitor.ACT1.monday}}</h3>
                   </div>
 
               </div>
@@ -38,7 +39,7 @@
                   </div>
 
                   <div class="col-lg-2 col-md-2">
-                      <h3>10:00</h3>
+                      <h3>{{monitor.ACT1.tuesday}}</h3>
                   </div>
 
               </div>
@@ -50,7 +51,7 @@
                   </div>
 
                   <div class="col-lg-2 col-md-2">
-                      <h3>10:00</h3>
+                      <h3>{{monitor.ACT1.wednesday}}</h3>
                   </div>
 
               </div>
@@ -62,7 +63,7 @@
                   </div>
 
                   <div class="col-lg-2 col-md-2">
-                      <h3>10:00</h3>
+                      <h3>{{monitor.ACT1.thursday}}</h3>
                   </div>
 
               </div>
@@ -74,7 +75,7 @@
                   </div>
 
                   <div class="col-lg-2 col-md-2">
-                      <h3>10:00</h3>
+                      <h3>{{monitor.ACT1.friday}}</h3>
                   </div>
 
               </div>
@@ -82,8 +83,15 @@
       </div>
       <div class="col-4">
           <!-- falta traerse la imagen de la actividad-->
-          <img src="/assets/logo.png" width=100%>
+          <img src="/api/group-activities/{{monitor.ACT1.id}}/image" width=100%>
       </div>
   </div>
 
+</div>
+
+<ng-template #otherCont>
+  <h2 style="color: black;">No tienes actividades</h2>
+</ng-template>
+
+</div>
 </div>
