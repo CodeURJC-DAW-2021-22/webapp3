@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "src/app/models/User.model";
 import { UserService } from "src/app/services/User.service";
@@ -12,8 +12,10 @@ import { UserService } from "src/app/services/User.service";
 export class MonitorEditInfo {
 
     monitor: User | undefined;
-    name: string = "";
-
+    
+    @ViewChild("file")
+    file: any;
+   
     constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService) {
 
         const id = activatedRoute.snapshot.params['id'];
@@ -22,10 +24,27 @@ export class MonitorEditInfo {
             (error: any)    => console.error(error)
         );
             
-        this.name = this.monitor?.name as string;
     }
 
     save(){
-        this.service.updateMonitor(this.monitor as User);
+        this.service.updateMonitor(this.monitor as User).subscribe(
+            monitor => this.updateImg(monitor as User),
+            _ => alert("No se ha añadido el nuevo monitor")
+        );
+    }
+
+    updateImg(monitor: User): void {
+        const image = this.file.nativeElement.files[0];
+    
+        if (image) {
+            let formData = new FormData();
+            formData.append("imageFile", image);
+            this.service.setMonitorImage(monitor, formData).subscribe(
+                _ => { 
+                    this.router.navigate(["new/monitors"]); 
+                },
+                error => alert('Error uploading monitor image: ' + error)
+            );
+        }
     }
 }

@@ -36,7 +36,7 @@
                                     <p style="color:black; " class="centerText "> DNI/NIE: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="monitor.NIF">
+                                    <input type="text " class="form-control " name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="monitor.NIF" readonly>
                                 </div>
                             </div>
 
@@ -78,46 +78,10 @@
 
                             <div class="row mb-3 ">
                                 <div class="col-lg-2 col-md-4 col-12 ">
-                                    <p style="color:black; " class="centerText "> Fecha de nacimiento: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="date " class="form-control " value="1992-02-28 " name="birthdayDate " pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4} ">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 col-md-4 col-12 ">
-                                    <p style="color:black; " class="centerText "> Fecha de alta: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="date " class="form-control " value="2018-11-04 " name="hiringDate " pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4} ">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 col-md-4 col-12 ">
-                                    <p style="color:black; " class="centerText "> Actividad: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <select name="activityName " type="number ">
-
-                                            <option value="32 " selected=" ">Zumba</option>
-                                            <option value="-1 ">Ninguna</option>
-                                            <option value="37 ">Body Balance</option>
-                                            <option value="38 ">Pilates</option>
-                                            <option value="40 ">Kick Boxing</option>
-                                            <option value="41 ">Mantente On</option>
-                                            <option value="42 ">Aqua Mamis</option>
-                                        </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 ">
-                                <div class="col-lg-2 col-md-4 col-12 ">
                                     <p style="color:black; " class="centerText "> Añadir imagen: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input class="colorBlackText " type="file " name="image " accept=".jpg, .jpeg ">
+                                    <input #file class="colorBlackText " type="file" name="image " accept=".jpg, .jpeg ">
                                 </div>
                             </div>
                         </div>
@@ -125,7 +89,7 @@
                             <div class="el-card-avatar el-overlay-1 " style="margin: auto; ">
                                 <br>
                                 <br>
-                                <img src="/api/users/monitors/{{monitor?.id}}/image" width="100% " alt="user " style="text-align: center;; ">
+                                <img #file src="/api/users/monitors/{{monitor?.id}}/image" width="100% " alt="user " style="text-align: center;; ">
                             </div>
                         </div>
                     </div>
@@ -137,7 +101,7 @@
                     <div class="card-body ">
                         <h4 class="card-title " style="color: black; margin-bottom: 20px; ">Experiencia y carrera profesional</h4>
                         <!-- Create the editor container -->
-                        <p><textarea style="height: 300px; color: black; width:100% " name="description ">Me gusta el deporte desde que nací. Mi objetivo en la vida es zumbar como nadie</textarea></p>
+                        <p><textarea style="height: 300px; color: black; width:100% " name="description" [(ngModel)]="monitor.description"></textarea></p>
 
                     </div>
                 </div>
