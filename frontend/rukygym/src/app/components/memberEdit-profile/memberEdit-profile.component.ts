@@ -5,9 +5,9 @@ import { UserService } from 'src/app/services/User.service';
 import { User } from 'src/app/models/User.model';
 
 @Component({
-  selector: 'editprofile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.css']
+  selector: 'membereditprofile',
+  templateUrl: './memberEdit-profile.component.html',
+  styleUrls: ['./memberEdit-profile.component.css']
 })
 export class EditProfileComponent {
 

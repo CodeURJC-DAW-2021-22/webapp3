@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector:'sidemenu',
-    templateUrl: './sidemenu.component.html',
-    styleUrls: ['./sidemenu.component.css']
+    selector:'membersidemenu',
+    templateUrl: './memberSidemenu.component.html',
+    styleUrls: ['./memberSidemenu.component.css']
 })
 export class SidemenuComponent {
 

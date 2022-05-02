@@ -5,9 +5,9 @@ import { ExerciseTableService } from 'src/app/services/ExerciseTable.service';
 import { LoginService } from "src/app/services/login.service";
 
 @Component({
-  selector: 'exercisetables',
-  templateUrl: './exercisetables.component.html',
-  styleUrls: ['./exercisetables.component.css']
+  selector: 'memberexercisetables',
+  templateUrl: './memberExercisetables.component.html',
+  styleUrls: ['./memberExercisetables.component.css']
 })
 export class ExercisetablesComponent {
 

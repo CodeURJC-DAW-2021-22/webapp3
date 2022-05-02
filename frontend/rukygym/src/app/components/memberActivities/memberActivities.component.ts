@@ -5,9 +5,9 @@ import { Activity } from 'src/app/models/Activity.model';
 import { ActivityService } from 'src/app/services/Activity.service';
 
 @Component({
-  selector: 'activities',
-  templateUrl: './activities.component.html',
-  styleUrls: ['./activities.component.css']
+  selector: 'memberactivities',
+  templateUrl: './memberActivities.component.html',
+  styleUrls: ['./memberActivities.component.css']
 })
 export class ActivitiesComponent{
 

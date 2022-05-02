@@ -7,9 +7,9 @@ import { LoginService } from "src/app/services/login.service";
 
 
 @Component({
-  selector: 'profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'memberprofile',
+  templateUrl: './memberProfile.component.html',
+  styleUrls: ['./memberProfile.component.css']
 })
 export class ProfileComponent {
 

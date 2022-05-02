@@ -6,7 +6,8 @@
     padding-bottom: 15px;
     display: block;
     position: fixed;
-    top: 0px
+    top: 0px;
+    z-index: 10;
 }
 
 .nopadding {
@@ -51,4 +52,9 @@ p {
 .image {
     text-align: center;
     padding-top: 10px !important;
+}
+
+.b {
+    background-color: #f1423f;
+    border: none;
 }

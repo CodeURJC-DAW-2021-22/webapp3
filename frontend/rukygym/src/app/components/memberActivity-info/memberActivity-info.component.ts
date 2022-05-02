@@ -5,9 +5,9 @@ import { ActivityService } from "src/app/services/Activity.service";
 
 
 @Component({
-    selector:'activityinfo',
-    templateUrl: './activity-info.component.html',
-    styleUrls: ['./activity-info.component.css']
+    selector:'memberactivityinfo',
+    templateUrl: './memberActivity-info.component.html',
+    styleUrls: ['./memberActivity-info.component.css']
 })
 export class ActivityInfoComponent {
 

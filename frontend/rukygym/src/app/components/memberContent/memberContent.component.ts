@@ -2,9 +2,9 @@ import { Component, ElementRef } from "@angular/core";
 
 
 @Component({
-    selector:'content',
-    templateUrl: './content.component.html',
-    styleUrls: ['./content.component.css']
+    selector:'membercontent',
+    templateUrl: './memberContent.component.html',
+    styleUrls: ['./memberContent.component.css']
 })
 export class ContentComponent{
 

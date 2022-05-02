@@ -6,17 +6,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
-import { ContentComponent } from './components/content/content.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { ActivitiesComponent } from './components/activities/activities.component';
-import { ExercisetablesComponent } from './components/exercisetables/exercisetables.component';
-import { StatisticsComponent } from './components/statistics/statistics.component'
+import { FooterComponent } from './components/memberFooter/memberFooter.component';
+import { NavbarComponent } from './components/memberNavbar/memberNavbar.component';
+import { SidemenuComponent } from './components/memberSidemenu/memberSidemenu.component';
+import { ContentComponent } from './components/memberContent/memberContent.component';
+import { ProfileComponent } from './components/memberProfile/memberProfile.component';
+import { EditProfileComponent } from './components/memberEdit-profile/memberEdit-profile.component';
+import { ActivitiesComponent } from './components/memberActivities/memberActivities.component';
+import { ExercisetablesComponent } from './components/memberExercisetables/memberExercisetables.component';
+import { MemberStatistics } from './components/memberStatistics/memberStatistics.component'
 import { routing } from './app.routing';
-import { ActivityInfoComponent } from './components/activity-info/activity-info.component';
+import { ActivityInfoComponent } from './components/memberActivity-info/memberActivity-info.component';
+
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,9 @@ import { ActivityInfoComponent } from './components/activity-info/activity-info.
     EditProfileComponent,
     ActivitiesComponent,
     ExercisetablesComponent,
-    StatisticsComponent,
+    MemberStatistics,
     ActivityInfoComponent,
+
   ],
 
   imports: [
@@ -40,6 +44,9 @@ import { ActivityInfoComponent } from './components/activity-info/activity-info.
     routing,
     CommonModule,
     HttpClientModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    }),
   ],
 
   providers: [],
