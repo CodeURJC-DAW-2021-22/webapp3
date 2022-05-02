@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ExerciseTable } from "src/app/models/ExerciseTable.model";
 import { ExerciseTableService } from "src/app/services/ExerciseTable.service";
+import { HttpBackend } from '@angular/common/http';
 
 
 @Component({
@@ -18,9 +19,17 @@ export class MonitorExerciseTableInfo{
 
       const id = activatedRoute.snapshot.params['id'];
       service.getExerciseTable(id).subscribe(
-          exerciseTables => this.exerciseTables = exerciseTables as ExerciseTable,
+          exerciseTables => {
+              this.exerciseTables = exerciseTables as ExerciseTable
+          },
           error => console.error(error),
       );
+      
+      
   }
+
+    back() {
+        window.location.href = '/new/monitorExerciseTable';
+    }
 
 }

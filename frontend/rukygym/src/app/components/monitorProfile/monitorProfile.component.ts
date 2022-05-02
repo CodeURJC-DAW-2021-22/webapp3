@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/User.model';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/User.service';
 
 @Component({
@@ -12,13 +13,16 @@ export class MonitorProfile {
 
   monitor: User | undefined;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService, loginService: LoginService) {
 
-      const id = activatedRoute.snapshot.params['id'];
-      service.getMonitor(43).subscribe(
-          (monitor) => this.monitor = monitor as User,
-          (error: any)    => console.error(error)
+    loginService.currentUser2().subscribe(
+      user => {
+        service.getMonitor(user.id as number).subscribe(
+        monitor => this.monitor = monitor as User,
+        error => console.error(error),
       );
-  }
+      },
+       _ =>  _);
 
+  }
 }

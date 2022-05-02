@@ -1,165 +1,110 @@
+<div class="page-breadcrumb">
+    <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+            <h4 class="page-title">Perfil</h4>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
-  <div class="row">
-      <div class="col-md-12">
-          <div class="card">
-              <div class="card-body">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <h4 class="card-title text">Usuario</h4>
-                      </div>
-                      <div class="col-md-6">
-                          <button class="btn default btn-outline el-link selector" type="button"><a href="/new/monitorEditProfile">Resetear</a></button>
-                          <button class="btn default btn-outline el-link selector" type="button"><a href="/new/profile">Cancelar</a></button>
-                          <button class="btn default btn-outline el-link selector" type="button"><a href="/new/profile">Guardar</a></button>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card" style="margin-top:20px">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Básica</h5>
-                                  <div class="row">
-                                      <div class="col-md-1">
-                                          <div class="card align-items-center">
-                                              <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="80" class="rounded-circle"></div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-5">
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="fname" placeholder="Nombre">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Apellidos</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="lname" placeholder="Apellidos">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Nombre de usuario</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="user" placeholder="@NombreUsuario">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Contraseña</label>
-                                              <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-5">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Fecha de nacimiento</label>
-                                              <div class="col-sm-9 input-group">
-                                                  <input type="date" class="form-control" id="datepicker-autoclose" placeholder="dd/mm/yyyy">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-sm-3 text-right text control-label col-form-label">Sexo</label>
-                                              <div class="col-sm-9 ">
-                                                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                                    <option>Mujer</option>
-                                                    <optgroup label="Sexo" >
-                                                        <option value="H">Hombre</option>
-                                                        <option value="M">Mujer</option>
-                                                        <option value="B">No contesto</option>
-                                                    </optgroup>
-                                                </select>
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Altura</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="heigh" placeholder="Ej. 180(cm)">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="lname" class="col-sm-3 text-right text control-label col-form-label">Peso</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="weight" placeholder="Ej. 60(kg)">
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card">
-                              <div class="card-body">
-                                  <h4 class="card-subtitle">Imagen</h4>
-                                  <div class="col-md-9">
-                                      <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                          <label class="custom-file-label" for="validatedCustomFile">Elige un fichero</label>
-                                          <div class="invalid-feedback">Example invalid custom file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Adicional</h5>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Domicilio</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="cono1" placeholder="Domicilio">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Código Postal</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="cono1" placeholder="XXXXX">
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Teléfono de contacto</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="cono1" placeholder="+XX-XXX XX XX XX">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Tarjeta Bancaria</label>
-                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control" id="cono1" placeholder="000-000-000">
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="border-top card">
-                              <div class="card-body">
-                                  <h5 class="card-subtitle">Información Médica</h5>
-                                  <div class="form-group row">
-                                      <label for="cono1" class="col-sm-3 text-right text control-label col-form-label">Información médica adicional</label>
-                                      <div class="col-sm-9">
-                                          <textarea type="text" class="form-control" id="cono1" placeholder="Indicar alergias a tratamientos o lesiones crónicas"></textarea>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+
+    <div *ngIf="monitor" class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row el-element-overlay">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+                            <h4 class="card-  title " style="color: black; margin-bottom: 20px; padding-left:9px;">Datos generales
+                            </h4>
+                            <br>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="name" pattern="[A-Za-z ]+" [(ngModel)]="monitor.name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Apellidos: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="surname" pattern="[a-zA-Záéíóúü ]+" [(ngModel)]="monitor.surname">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> DNI/NIE: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="nif" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="monitor.NIF" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Dirección: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="address" pattern="[a-zA-Z,./ 0-9áéíóúüº]+" [(ngModel)]="monitor.address">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Código postal: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="postalCode" pattern="[0-9]{5}" [(ngModel)]="monitor.postalCode">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 ">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Teléfono: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control" name="phone" pattern="(6|7){1}[0-9]{8}" [(ngModel)]="monitor.phone">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12 ">
+                                    <p style="color:black; " class="centerText"> Añadir imagen: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input #file class="colorBlackText" type="file" name="image" accept=".jpg, .jpeg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-12 image ">
+                            <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                <br>
+                                <br>
+                                <img src="/api/users/monitors/{{monitor?.id}}/image" width="100%" alt="user " style="text-align: center;;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <div class="border-top card "></div>
+                    </div>
+
+                    <div class="card-body ">
+                        <h4 class="card-title " style="color: black; margin-bottom: 20px;">Experiencia y carrera profesional</h4>
+                        <!-- Create the editor container -->
+                        <p><textarea style="height: 300px; color: black; width:100%" name="description" [(ngModel)]="monitor.description"></textarea></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="btn default btn-outline el-link selector" type="button"><a href="/new/monitorEditProfile">Resetear</a></button>
+                <button class="btn default btn-outline el-link selector" type="button"><a href="/new/profile">Cancelar</a></button>
+                <button class="btn default btn-outline el-link selector colorWhiteText " type="button" (click)="save();">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
 </div>

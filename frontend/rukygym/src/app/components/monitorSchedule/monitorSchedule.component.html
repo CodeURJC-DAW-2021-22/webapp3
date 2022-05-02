@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
-    <div *ngIf="monitor; else otherCont">
-        <h2 style="color: black;">{{monitor.ACT1?.name}}</h2>
+    <div *ngIf="monitor?.ACT1; else otherCont">
+        <h2 style="color: black;">{{monitor?.ACT1?.name}}</h2>
 
         <br>
         <br>
@@ -12,7 +12,7 @@
                     <div class="col-lg-12">
                         <h3> Descripcion </h3>
                         <br>
-                        <p>{{monitor.ACT1?.description}}</p>
+                        <p>{{monitor?.ACT1?.description}}</p>
                     </div>
                 </div>
                 <br>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-2">
-                            <h3>{{monitor.ACT1?.monday}}</h3>
+                            <h3>{{monitor?.ACT1?.monday}}</h3>
                         </div>
 
                     </div>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-2">
-                            <h3>{{monitor.ACT1?.tuesday}}</h3>
+                            <h3>{{monitor?.ACT1?.tuesday}}</h3>
                         </div>
 
                     </div>
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-2">
-                            <h3>{{monitor.ACT1?.wednesday}}</h3>
+                            <h3>{{monitor?.ACT1?.wednesday}}</h3>
                         </div>
 
                     </div>
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-2">
-                            <h3>{{monitor.ACT1?.thursday}}</h3>
+                            <h3>{{monitor?.ACT1?.thursday}}</h3>
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="col-lg-2 col-md-2">
-                            <h3>{{monitor.ACT1?.friday}}</h3>
+                            <h3>{{monitor?.ACT1?.friday}}</h3>
                         </div>
 
                     </div>
@@ -82,7 +82,7 @@
             </div>
             <div class="col-4">
                 <!-- falta traerse la imagen de la actividad-->
-                <img src="/api/group-activities/{{monitor.ACT1?.id}}/image" width=100%>
+                <img src="/api/group-activities/{{monitor?.ACT1?.id}}/image" width=100%>
             </div>
         </div>
 
