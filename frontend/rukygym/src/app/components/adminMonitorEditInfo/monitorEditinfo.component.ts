@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "src/app/models/User.model";
-import { LoginService } from "src/app/services/login.service";
 import { UserService } from "src/app/services/User.service";
 
 
@@ -15,8 +14,7 @@ export class MonitorEditInfo {
     monitor: User | undefined;
     name: string = "";
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
-        public loginService: LoginService) {
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService) {
 
         const id = activatedRoute.snapshot.params['id'];
         service.getMonitor(id).subscribe(
@@ -28,7 +26,6 @@ export class MonitorEditInfo {
     }
 
     save(){
-        this.loginService.logIn("admin@admin.com", "admin");
         this.service.updateMonitor(this.monitor as User);
     }
 }

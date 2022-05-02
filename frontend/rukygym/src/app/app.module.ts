@@ -8,9 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SidemenuComponent } from './components/adminSidemenu/sidemenu.component';
-import { NavbarComponent } from './components/adminNavbar/navbar.component';
-import { ContentComponent } from './components/adminContent/content.component';
-import { FooterComponent } from './components/adminFooter/footer.component';
+import { AdminNavbarComponent } from './components/adminNavbar/navbar.component';
+import { AdminContentComponent } from './components/adminContent/content.component';
+import { AdminFooterComponent } from './components/adminFooter/footer.component';
 import { AdminStatistics } from './components/adminStatistics/adminStatistics.component';
 import { AdminActivities } from './components/adminActivities/adminActivities.component';
 import { ActivityInfo } from './components/adminActivityInfo/activityInfo.component'
@@ -57,7 +57,10 @@ import { SigninComponent } from './components/sign-in/sign-in.component';
     ContactUsComponent,
     ActivitiesComponent,
     LoginComponent,
-    SigninComponent
+    SigninComponent,
+    AdminFooterComponent,
+    AdminNavbarComponent,
+    AdminContentComponent,
   ],
   imports: [
     BrowserModule, 

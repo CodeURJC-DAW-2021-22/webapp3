@@ -18,7 +18,7 @@ export class LoginService {
 
     reqIsLogged() {
 
-        this.http.get('/api/users/me', { withCredentials: true }).subscribe(
+        this.http.get('/api/users/monitors/me', { withCredentials: true }).subscribe(
             response => {
                 this.user = response as User;
                 this.logged = true;
@@ -36,11 +36,41 @@ export class LoginService {
 
         this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
             .subscribe(
-                (response) => this.reqIsLogged(),
+                (response) => 
+                    this.reqIsLoggedAux()
+                ,
                 (error) => alert("Wrong credentials")
             );
 
     }
+
+    
+    reqIsLoggedAux(): void {
+        
+        this.http.get('/api/users/monitors/me', { withCredentials: true }).subscribe(
+            response => {
+                this.user = response as User;
+                this.logged = true;
+                switch(this.user?.userType){
+
+                    case "monitor": window.location.href = 'http://localhost:4200/new/mainPage';
+                    break;
+                    case "administrator": window.location.href = 'http://localhost:4200/new/statistics';
+                    break;
+                    case "member": window.location.href = 'http://localhost:4200/new/mainPage';
+                    break;
+            
+                  }
+            },
+            error => {
+                if (error.status != 404) {
+                    console.error('Error when asking if logged: ' + JSON.stringify(error));
+                }
+            }
+        );
+
+    }
+    
 
     logOut() {
 
@@ -58,7 +88,7 @@ export class LoginService {
     }
 
     isAdmin() {
-        return this.user && this.user.userType.indexOf('ADMIN') !== -1;
+        return this.user && this.user.userType.indexOf('administrator') !== -1;
     }
 
     currentUser() {

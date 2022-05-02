@@ -1,7 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "src/app/models/User.model";
-import { LoginService } from "src/app/services/login.service";
 import { UserService } from "src/app/services/User.service";
 
 @Component({
@@ -27,12 +26,10 @@ export class NewMonitor {
     @ViewChild("file")
     file: any;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
-        public loginService: LoginService) {
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService) {
     }
 
     save(){
-        this.loginService.logIn("admin@admin.com", "admin");
         this.service.addMonitor(this.monitor as User).subscribe(
             monitor => this.updateImg(monitor as User),
             _ => alert("No se ha añadido el nuevo monitor")

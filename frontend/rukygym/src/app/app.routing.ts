@@ -1,10 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { SidemenuComponent } from './components/adminSidemenu/sidemenu.component';
-import { NavbarComponent } from './components/adminNavbar/navbar.component';
-import { ContentComponent } from './components/adminContent/content.component';
-import { FooterComponent } from './components/adminFooter/footer.component';
 import { AdminStatistics } from './components/adminStatistics/adminStatistics.component';
 import { AdminActivities } from './components/adminActivities/adminActivities.component';
 import { ActivityInfo } from './components/adminActivityInfo/activityInfo.component'
@@ -20,14 +15,10 @@ import { NewMonitor } from './components/adminNewMonitor/newMonitor.component';
 import { SigninComponent } from './components/sign-in/sign-in.component';
 import { LoginComponent } from './components/log-in/log-in.component';
 import { PricesComponent } from './components/prices/prices.component';
-import { Component } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 
 
-import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { MainPageComponent } from './components/mainPage/mainPage.component';
-import { ContentComponent } from './components/content/content.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ContactUsComponent } from './components/contactUs/contactUs.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';

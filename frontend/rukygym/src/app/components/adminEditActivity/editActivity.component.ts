@@ -2,7 +2,6 @@ import { Component, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Activity } from "src/app/models/Activity.model";
 import { ActivityService } from "src/app/services/activities.service";
-import { LoginService } from "src/app/services/login.service";
 
 @Component({
     selector: 'EditActivity',
@@ -20,8 +19,7 @@ export class EditActivity {
     @ViewChild("image")
     imageAux: any;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService,
-        public loginService: LoginService) {
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService) {
         
         const id = activatedRoute.snapshot.params['id'];
         service.getActivity(id).subscribe(

@@ -1,7 +1,9 @@
 import { Component, ResolvedReflectiveFactory } from "@angular/core";
 import { User } from "src/app/models/User.model";
+import { LoginService } from "src/app/services/login.service";
 
-import { LoginService } from '../../services/Login.service';
+
+
 
 @Component({
     selector:'log-in',

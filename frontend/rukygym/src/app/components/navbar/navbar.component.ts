@@ -7,7 +7,10 @@ import { Component } from "@angular/core";
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
   num = 0;
+
+  
   responsiveMenu(){
     if(this.num == 0){
       this.num = 1;

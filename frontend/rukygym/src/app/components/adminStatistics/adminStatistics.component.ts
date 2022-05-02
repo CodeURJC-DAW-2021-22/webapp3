@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { EChartsOption } from "echarts";
-import { LoginService } from "src/app/services/login.service";
 import { StatisticsService } from "src/app/services/statistics.service";
 
 
@@ -75,8 +74,7 @@ export class AdminStatistics{
 
     _echartOption!: EChartsOption;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: StatisticsService,
-      public loginService: LoginService){
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: StatisticsService){
 
         service.getAdminStats().subscribe(
           (result : any)=> {

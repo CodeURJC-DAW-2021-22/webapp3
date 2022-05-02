@@ -1,7 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ActivityService } from "src/app/services/activities.service";
-import { LoginService } from "src/app/services/login.service";
 import { Activity } from "../../models/Activity.model";
 
 @Component({
@@ -28,8 +27,7 @@ export class NewActivity{
     @ViewChild("file")
     file: any;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService,
-        public loginService: LoginService) {
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService) {
     }
 
     save() {

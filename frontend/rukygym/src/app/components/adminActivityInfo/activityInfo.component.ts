@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Activity } from "src/app/models/Activity.model";
 import { ActivityService } from "src/app/services/activities.service";
-import { LoginService } from "src/app/services/login.service";
 
 
 @Component({
@@ -14,8 +13,7 @@ export class ActivityInfo{
 
     activity: Activity | undefined;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService, 
-        public loginService: LoginService) {
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ActivityService) {
 
         const id = activatedRoute.snapshot.params['id'];
         service.getActivity(id).subscribe(

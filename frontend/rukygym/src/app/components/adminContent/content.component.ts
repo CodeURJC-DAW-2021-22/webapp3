@@ -2,11 +2,11 @@ import { Component, ElementRef } from "@angular/core";
 
 
 @Component({
-    selector:'content',
+    selector:'admincontent',
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.css']
 })
-export class ContentComponent{
+export class AdminContentComponent{
 
     classes = {
         "closed" : true,
