@@ -48,6 +48,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.antMatcher("/api/**");
 
         //exerciseTables
+        /*
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/exercises/**").hasRole("monitor");
 
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/exercises-tables/**").hasRole("monitor");
@@ -87,7 +88,7 @@ public class RestSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //exercise
         //http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/exercises/").hasRole("monitor");
-
+*/
         // Other URLs can be accessed without authentication
         http.authorizeRequests().anyRequest().permitAll();
 

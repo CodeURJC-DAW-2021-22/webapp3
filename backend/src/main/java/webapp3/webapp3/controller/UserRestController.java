@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.User;
@@ -37,6 +38,9 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 @RestController
 @RequestMapping("/api/users")
 public class UserRestController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private UserService usrServ;
@@ -331,6 +335,7 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMonitor(@RequestBody User user) {
         if (user.getUserType().equals("monitor")) {
+            user.setEncodedPassword( passwordEncoder.encode("monitor"));
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/monitors/{id}")
                     .buildAndExpand(user.getId()).toUri();
