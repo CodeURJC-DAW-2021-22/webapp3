@@ -1,4 +1,4 @@
-import { Component, ElementRef } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Output } from "@angular/core";
 
 
 @Component({
@@ -17,5 +17,6 @@ export class ContentComponent{
         this.classes.closed = ! this.classes.closed;
         this.classes.opened = !this.classes.opened;
     }
+
     
 }

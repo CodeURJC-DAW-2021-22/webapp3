@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { LoginService } from "src/app/services/login.service";
 
 
 @Component({
@@ -8,6 +10,14 @@ import { Component } from "@angular/core";
 })
 export class AdminNavbarComponent {
 
+    constructor(private router: Router,private service: LoginService) {
+        
+    }
+
+    logout(){
+       this.service.logOut();
+       
+    }
 
 }
 

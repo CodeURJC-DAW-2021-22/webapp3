@@ -20,7 +20,7 @@ export class MainPageComponent {
         (error: any)                => console.error(error),
       );
 
-      console.log(this.monitors);
+      
     }
 
 }

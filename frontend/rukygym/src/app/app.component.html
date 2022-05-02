@@ -1,11 +1,6 @@
 <div class="container-fluid nopadding">
-
-    <div *ngIf="!logged; else otherCont">
-        <navbar></navbar>
-    </div>
-
-    <ng-template #otherCont>
-        <adminactivities></adminactivities>
+    <navbar *ngIf="visible; else a"></navbar>
+    <ng-template #a>
+        <adminnavbar></adminnavbar>
     </ng-template>
-
 </div>

@@ -1,4 +1,4 @@
-import { Component, ResolvedReflectiveFactory } from "@angular/core";
+import { Component, EventEmitter, Output, ResolvedReflectiveFactory } from "@angular/core";
 import { User } from "src/app/models/User.model";
 import { LoginService } from "src/app/services/login.service";
 
@@ -12,6 +12,7 @@ import { LoginService } from "src/app/services/login.service";
 })
 export class LoginComponent {
 
+
   constructor(public loginService: LoginService) { }
 
   logIn(event: any, user: string, pass: string) {
@@ -19,6 +20,8 @@ export class LoginComponent {
     event.preventDefault();
 
     this.loginService.logIn(user, pass);
+
+    
   }
 
   logOut() {

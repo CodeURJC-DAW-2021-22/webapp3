@@ -34,6 +34,7 @@ import { ActivitiesComponent } from './components/activities/activities.componen
 import { LoginComponent } from './components/log-in/log-in.component';
 import { SigninComponent } from './components/sign-in/sign-in.component';
 
+
 @NgModule({
   declarations: [
     AppComponent, 

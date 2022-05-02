@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/User.model';
+import { Router } from '@angular/router';
 
 const BASE_URL = '/api/auth';
 
@@ -12,7 +13,7 @@ export class LoginService {
 
     constructor(private http: HttpClient) {
         this.reqIsLogged();
-        this.logged;
+        this.logged = false;
 
     }
 
@@ -22,14 +23,16 @@ export class LoginService {
             response => {
                 this.user = response as User;
                 this.logged = true;
-            },
+                
+            } ,
             error => {
                 if (error.status != 404) {
                     console.error('Error when asking if logged: ' + JSON.stringify(error));
                 }
+            
             }
         );
-
+        
     }
 
     logIn(user: string, pass: string) {
@@ -70,7 +73,6 @@ export class LoginService {
         );
 
     }
-    
 
     logOut() {
 
@@ -79,6 +81,7 @@ export class LoginService {
                 console.log("LOGOUT: Successfully");
                 this.logged = false;
                 this.user = undefined;
+                document.location.href = './new/mainPage';
             });
 
     }

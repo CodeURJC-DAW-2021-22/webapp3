@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 
 @Component({
@@ -18,5 +18,6 @@ export class NavbarComponent {
       this.num = 0;
     }
   }
+
 
 }

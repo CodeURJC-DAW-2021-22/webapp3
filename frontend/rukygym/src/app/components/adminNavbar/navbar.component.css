@@ -53,3 +53,8 @@ p {
     text-align: center;
     padding-top: 10px !important;
 }
+
+.b {
+    background-color: #f1423f;
+    border: none;
+}

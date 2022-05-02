@@ -41,7 +41,8 @@ const appRoutes = [
     {path: 'new/main-activities', component: ActivitiesComponent},
     {path: 'new/main-activities/schedule/:id', component: ScheduleComponent},
     {path: 'new/log-in', component: LoginComponent},
-    {path: 'new/sign-in', component: SigninComponent}
+    {path: 'new/sign-in', component: SigninComponent},
+
     
 ]
 

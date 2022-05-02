@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { LoginService } from './services/login.service';
 
@@ -9,10 +10,13 @@ import { LoginService } from './services/login.service';
 export class AppComponent {
   title = 'rukygym';
 
-  logged: boolean = false;
+  visible = true;
 
-  constructor(service: LoginService) {
-    this.logged = service.isLogged() as boolean;
+  constructor(private http: HttpClient){
+    this.http.get('/api/users/monitors/me', { withCredentials: true }).subscribe( 
+      _ => this.visible = false,
+      _ => this.visible = true,
+    );
   }
 
 }
