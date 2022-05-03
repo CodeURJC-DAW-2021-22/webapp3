@@ -21,6 +21,7 @@ export class NewMonitor {
         description: "",
         userType: "monitor",
         medicalInfo: "",
+        encodedPassword: ""
       }
 
     @ViewChild("file")

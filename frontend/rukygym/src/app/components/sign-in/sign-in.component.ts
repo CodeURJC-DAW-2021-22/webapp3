@@ -15,6 +15,7 @@ export class SigninComponent {
   signIn (name: string, surname: string, nif: string, phone: string, cp: string, address: string, email: string, password: string, height: string, weight: string, medicalInfo: string) {
 
     const user = {name : name, 
+      encodedPassword: password,
       surname : surname, 
       NIF : nif, 
       phone : phone, 
