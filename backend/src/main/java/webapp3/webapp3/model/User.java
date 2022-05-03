@@ -60,7 +60,6 @@ public class User {
         //password
     @Column(nullable = false)
     @NotNull
-    @JsonIgnore
     private String encodedPassword = "";
 
         //address

@@ -298,6 +298,8 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("member")) {
+            System.err.println("ERROR: " + user.getEncodedPassword());
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/members/{id}")
                     .buildAndExpand(user.getId()).toUri();
