@@ -8,9 +8,9 @@
 
                             <h4 class="card-title ">Datos generales</h4>
                             <hr>
-                            <div class="col-lg-3 col-md-12 col-12 image ">
-                                <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
-                                    <img src="/api/users/me/image" width="100%" alt="user " style="text-align: center;">
+                            <div class="col-lg-12 col-md-12 col-12 image " style="padding-left: 600px; padding-right: 600px">
+                                <div class="el-card-avatar el-overlay-1">
+                                    <img src="/api/users/me/image" alt="user" style="text-align: center !important;; margin-bottom: 20px;">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -94,15 +94,6 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <span type="date" class="form-control">28/02/1992</span>
-                                </div>
-                            </div>
-
                         </div>
 
                     </div>
@@ -110,9 +101,9 @@
                     <hr>
 
                     <div class="card-body ">
-                        <h4 class="card-title " style="color: black; margin-bottom: 20px;">Información Médica</h4>
+                        <h4 class="card-title" style="color: black; margin-bottom: 20px;">Información Médica</h4>
                         <!-- Create the editor container -->
-                        <textarea style="height: 300px; color: black; width:100%" readonly="">{{member?.description}}
+                        <textarea style="height: 300px; color: black; width:100%" readonly="">{{member?.medicalInfo}}
                       </textarea>
                     </div>
                 </div>

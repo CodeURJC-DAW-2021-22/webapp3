@@ -28,8 +28,10 @@ export class MemberEditProfileComponent {
     }
 
     save(){
-      this.loginService.logIn("suuu@gmail.com", "password");
-      this.service.updateMonitor(this.member as User);
+      this.service.addMembers(this.member as User).subscribe(
+        _ => window.location.href = '/new/memberprofile',
+        _ => _
+      )
     }
 
 }

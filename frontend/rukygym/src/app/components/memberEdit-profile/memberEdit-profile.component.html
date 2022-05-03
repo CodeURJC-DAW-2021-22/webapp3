@@ -41,7 +41,7 @@
                                     <p style="color:black;" class="centerText"> Email: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+" [(ngModel)]="member.email">
+                                    <input type="text " class="form-control " name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+" [(ngModel)]="member.email" readonly>
                                 </div>
                             </div>
 
@@ -90,19 +90,10 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Fecha de nacimiento: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="date " class="form-control " value="1992-02-28 " name="birthdayDate " pattern="([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/[0-9]{4} ">
-                                </div>
-                            </div>
-
                         </div>
                         <div class="col-lg-3 col-md-12 col-12 image ">
                             <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
-                                <img src="/api/users/members/{{member?.id}}/image" width="100%" alt="user " style="text-align: center;;">
+                                <img src="/api/users/me/image" width="100%" alt="user " style="text-align: center;">
                             </div>
                         </div>
                     </div>
@@ -114,14 +105,15 @@
                     <div class="card-body ">
                         <h4 class="card-title " style="color: black; margin-bottom: 20px;">Información Médica</h4>
                         <!-- Create the editor container -->
-                        <textarea style="height: 300px; color: black; width:100%" readonly="">{{member?.description}}
+                        <textarea style="height: 300px; color: black; width:100%" [(ngModel)]="member.medicalInfo">
                     </textarea>
                     </div>
                 </div>
             </div>
             <div class="row el-element-overlay">
                 <div class="col-12 buttonsAddActivity">
-                    <a href='new/memberprofile'><button class="btn default btn-outline el-link selector2 colorWhiteText" style="color: white;">Guardar</button></a>
+                    <button class="btn default btn-outline el-link selector2 colorWhiteText" style="color: white;" (click)="save()">Guardar</button>
+                    <button class="btn default btn-outline el-link selector2 colorWhiteText" style="color: white;" onclick="window.location.href = '/new/memberprofile'">Cancelar</button>
                 </div>
             </div>
         </div>
