@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { EChartsOption } from "echarts";
+import { LoginService } from "src/app/services/login.service";
+import { StatisticsService } from "src/app/services/statistics.service";
 
 //import { StatisticsService } from "src/app/services/statistics.service";
 
@@ -29,7 +31,7 @@ export class MemberStatistics{
     xAxis: [
       {
         type: 'category',
-        data: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        data: [''] ,
       }
     ],
     yAxis: [
@@ -39,56 +41,34 @@ export class MemberStatistics{
     ],
     series: [
       {
-        name: '2019',
-        type: 'bar',
-        emphasis: {
-          focus: 'series'
-        },
-        data: []
-      },
-      {
-        name: '2020',
-        type: 'bar',
-        emphasis: {
-          focus: 'series'
-        },
-        data: []
-      },
-      {
-        name: '2021',
-        type: 'bar',
-        emphasis: {
-          focus: 'series'
-        },
-        data: []
-      },
-      {
         name: '2022',
         type: 'bar',
         emphasis: {
           focus: 'series'
         },
-        data: []
+        data: [0]
       },
     ]
   };
 
-    _echartOption: EChartsOption;
+    _echartOption!: EChartsOption;
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, ){
-      //public service: StatisticsService
+    constructor(private router: Router, activatedRoute: ActivatedRoute, service: StatisticsService, login: LoginService){
 
-        /*service.getAdminStats().subscribe(
-          (result : any)=> {
-            for(let i = 0; i < 4; i++){
-              this.option.series[i].data = result[i];
-            }*/
-            this._echartOption = this.option as EChartsOption;
-        /*  },
-          error => alert("No se ha podido cargar los datos en estos momentos.")
-        )*/
-
-    }
+      service.getUserStats().subscribe(
+            (result: any)=> {
+              //console.log(result[0])
+              for(let i = 0; i < 20; i++){
+                this.option.xAxis[0].data.push('Tabla ' + i);
+              }
+              for (let i = 0; i < 20; i++){
+                this.option.series[0].data.push(result[i]);
+              }
+              this._echartOption = this.option as EChartsOption;
+            },
+            error => alert("No se ha podido cargar los datos en estos momentos.")
+          )}
+    
 
     ngOnInit(): void {
     }
