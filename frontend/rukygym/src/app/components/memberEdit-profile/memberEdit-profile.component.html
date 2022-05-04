@@ -32,16 +32,7 @@
                                     <p style="color:black;" class="centerText"> DNI/NIE: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="member.NIF">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-lg-2 col-md-4 col-12">
-                                    <p style="color:black;" class="centerText"> Email: </p>
-                                </div>
-                                <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="email" pattern="[a-zA-Z0-9]+\@[a-zA-Z]+\.[a-zA-Z]+" [(ngModel)]="member.email" readonly>
+                                    <input type="text " class="form-control " name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="member.NIF" readonly>
                                 </div>
                             </div>
 
@@ -50,7 +41,7 @@
                                     <p style="color:black;" class="centerText"> Altura: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="email" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.height">
+                                    <input type="text " class="form-control " name="height" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.height">
                                 </div>
                             </div>
 
@@ -59,7 +50,7 @@
                                     <p style="color:black;" class="centerText"> Peso: </p>
                                 </div>
                                 <div class="col-lg-10 col-md-8 col-12 ">
-                                    <input type="text " class="form-control " name="email" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.weight">
+                                    <input type="text " class="form-control " name="weight" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.weight">
                                 </div>
                             </div>
 
@@ -105,7 +96,7 @@
                     <div class="card-body ">
                         <h4 class="card-title " style="color: black; margin-bottom: 20px;">Información Médica</h4>
                         <!-- Create the editor container -->
-                        <textarea style="height: 300px; color: black; width:100%" [(ngModel)]="member.medicalInfo">
+                        <textarea style="height: 300px; color: black; width:100%" [(ngModel)]="member.medicalInfo" name="medicalInfo">
                     </textarea>
                     </div>
                 </div>

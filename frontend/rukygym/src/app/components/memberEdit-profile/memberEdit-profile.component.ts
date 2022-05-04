@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { LoginService } from "src/app/services/login.service";
 import { UserService } from 'src/app/services/User.service';
@@ -12,26 +12,30 @@ import { User } from 'src/app/models/User.model';
 export class MemberEditProfileComponent {
 
     member: User | undefined;
-    name: string = " ";
 
-    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService,
-    public loginService: LoginService) {
+    @ViewChild("file")
+    file: any;
 
-      const id = activatedRoute.snapshot.params['id'];
-      service.getMember(id).subscribe(
-      (member) => this.member = member as User,
-      (error: any)    => console.error(error)
-    );
+    @ViewChild("image")
+    imageAux: any;
 
-    this.name = this.member?.name as string;
+    constructor(private router: Router, activatedRoute: ActivatedRoute, public service: UserService, loginService: LoginService) {
+
+      loginService.currentUser2().subscribe(
+        user => {
+          service.getMember(user.id as number).subscribe(
+          mem => this.member = mem as User,
+          error => console.error(error),
+          );
+        },
+         _ =>_  );
 
     }
 
-    save(){
-      this.service.addMembers(this.member as User).subscribe(
-        _ => window.location.href = '/new/memberprofile',
-        _ => _
-      )
-    }
-
+    save() {
+      this.service.updateMember(this.member as User).subscribe(
+          _ => window.location.href = "http://localhost:4200/new/memberprofile",
+          error => alert('Error updating member: ' + error)
+      );
+  }
 }

@@ -93,6 +93,22 @@ export class UserService {
       }
     }
 
+     // Update monitor
+    updateMember(member: User) {
+      return this.httpClient.put(BASE_URL + 'members/' + member.id + '/', member).pipe(
+        catchError(error => this.handleError(error))
+      );
+    }
+
+    // Set monitor Image
+    setMemberImage(member: User, formData: FormData) {
+      return this.httpClient.put(BASE_URL + 'members/' + member.id + '/image/', formData)
+        .pipe(
+          catchError(error => this.handleError(error))
+        );
+    }
+
+
     // Delete member
     deleteMember(member: User) {
       return this.httpClient.delete(BASE_URL + 'members/' + member.id).pipe(
