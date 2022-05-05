@@ -93,6 +93,12 @@ export class UserService {
       }
     }
 
+    addTableToUser(id : number){
+      return this.httpClient.post(BASE_URL + 'members/addTableExercise/' + id, null).pipe(
+        catchError(error => this.handleError(error))
+      )
+    }
+
      // Update monitor
     updateMember(member: User) {
       return this.httpClient.put(BASE_URL + 'members/' + member.id + '/', member).pipe(

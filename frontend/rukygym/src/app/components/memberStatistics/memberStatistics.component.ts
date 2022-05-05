@@ -58,15 +58,15 @@ export class MemberStatistics{
       service.getUserStats().subscribe(
             (result: any)=> {
               //console.log(result[0])
-              for(let i = 0; i < 20; i++){
-                this.option.xAxis[0].data.push('Tabla ' + i);
-              }
-              for (let i = 0; i < 20; i++){
-                this.option.series[0].data.push(result[i]);
-              }
+              this.option.xAxis[0].data = result[0];
+
+              this.option.series[0].data= result[1];
+            
               this._echartOption = this.option as EChartsOption;
             },
-            error => alert("No se ha podido cargar los datos en estos momentos.")
+            error => {
+              window.location.href = '/new/mainPage'
+          }
           )}
     
 

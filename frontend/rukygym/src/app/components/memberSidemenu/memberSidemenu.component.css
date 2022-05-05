@@ -24,7 +24,7 @@ li {
     font-weight: 400;
     text-decoration-line: black;
     background-color: transparent;
-    padding: 14px 15px;
+    padding: 15px 15px;
     padding-left: 40px;
 }
 
@@ -35,6 +35,15 @@ a {
     background-color: transparent;
 }
 
+.notActive:hover {
+    background-color: white;
+    color: black
+}
+
 .active {
     background-color: #f36100;
+}
+
+.notActive {
+    background-color: #111111;
 }

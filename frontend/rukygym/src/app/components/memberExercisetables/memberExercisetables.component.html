@@ -21,7 +21,7 @@
                         <a href='/api/exercises-tables/{{elem.id}}/pdf'><button class="but">Ver</button></a>
                     </div>
                     <div class="col-6">
-                        <a href='/api/exercises-tables/{{elem.id}}/pdf'><button class="but">Hacer</button></a>
+                        <button class="but" (click)="save(elem.id)">Hacer</button>
                     </div>
                 </div>
             </div>

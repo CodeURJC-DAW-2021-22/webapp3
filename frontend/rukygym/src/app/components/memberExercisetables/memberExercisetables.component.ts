@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { ExerciseTable } from 'src/app/models/ExerciseTable.model';
 import { ExerciseTableService } from 'src/app/services/ExerciseTable.service';
 import { LoginService } from "src/app/services/login.service";
+import { UserService } from "src/app/services/User.service";
 
 @Component({
   selector: 'memberexercisetables',
@@ -15,7 +16,7 @@ export class MemberExercisetablesComponent {
   exerciseTables : ExerciseTable [] | undefined;
   show: boolean = true;
 
-  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService) {
+  constructor(private router: Router, activatedRoute: ActivatedRoute, public service: ExerciseTableService, private userService: UserService) {
 
       service.getExercisesTables(0).subscribe(
         exerciseTables  => this.exerciseTables = exerciseTables as ExerciseTable [],
@@ -37,6 +38,13 @@ export class MemberExercisetablesComponent {
             },
             error => alert("No fue posible cargar los clientes del servidor. Inténtelo más tarde.")
         )
+  }
+
+  save(id: number | undefined) {
+    this.userService.addTableToUser(id as number).subscribe(
+      _ => alert("Guardado"),
+      _ => alert("Error")
+    )
   }
 
 }
