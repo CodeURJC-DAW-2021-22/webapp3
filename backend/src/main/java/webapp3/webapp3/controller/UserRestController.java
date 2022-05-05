@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,18 +19,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.User;
+import webapp3.webapp3.model.UserExerciseTable;
+import webapp3.webapp3.service.ExerciseService;
+import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
+import javax.persistence.Tuple;
+import javax.persistence.TupleElement;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -47,6 +48,9 @@ public class UserRestController {
 
     @Autowired
     private UserExerciseTableService usExServ;
+
+    @Autowired
+    private ExerciseTableService exerciseTableService;
 
     //GET log monitor
     @Operation(summary = "Get monitor logged in the application")
@@ -755,8 +759,25 @@ public class UserRestController {
             )
     })
     @GetMapping("/members/statistics")
-    public ResponseEntity<HashMap<String, Integer>> memberStats(HttpServletRequest request){
+    public ResponseEntity<List<List>> memberStats(HttpServletRequest request){
         User user = usrServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
-        return new ResponseEntity<>(usExServ.findExercisesTables(user.getId()), HttpStatus. OK);
+        HashMap<String, Integer> exercisesTables = usExServ.findExercisesTables(user.getId());
+        List<List> l = new ArrayList<>(2);
+        ArrayList<String> strings = new ArrayList<>(exercisesTables.size());
+        ArrayList<Integer> integers = new ArrayList<>(exercisesTables.size());
+        for (Map.Entry<String, Integer> e: exercisesTables.entrySet()) {
+            strings.add(e.getKey());
+            integers.add(e.getValue());
+        }
+        l.add(strings);
+        l.add(integers);
+        return new ResponseEntity<>(l, HttpStatus. OK);
+    }
+
+    @PostMapping("/members/addTableExercise/{id}")
+    public ResponseEntity<UserExerciseTable> addTableToUser(HttpServletRequest req, @PathVariable long id){
+        UserExerciseTable userExerciseTable = new UserExerciseTable(usrServ.findByEmail(req.getUserPrincipal().getName()).orElseThrow(), exerciseTableService.findById(id).orElseThrow());
+        usExServ.save(userExerciseTable);
+        return new ResponseEntity<>(userExerciseTable, HttpStatus. OK);
     }
 }
