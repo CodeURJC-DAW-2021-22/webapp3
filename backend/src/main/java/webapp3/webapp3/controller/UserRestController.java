@@ -520,13 +520,9 @@ public class UserRestController {
     public ResponseEntity<User> updateMonitor(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
         if (usrServ.exist(id)) {
             if (usrServ.findById(id).get().getUserType().equals("monitor") && updatedUser.getUserType().equals("monitor")) {
-                if (updatedUser.getImage() != null) {
-                    User dbUser = usrServ.findById(id).orElseThrow();
-                    if (dbUser.getImage() != null) {
-                        updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
-                                dbUser.getImage().length()));
-                    }
-                }
+                User dbUser = usrServ.findById(id).orElseThrow();
+                updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
+                        dbUser.getImage().length()));
 
                 updatedUser.setId(id);
                 usrServ.save(updatedUser);
@@ -573,13 +569,9 @@ public class UserRestController {
     public ResponseEntity<User> updateMember(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
         if (usrServ.exist(id)) {
             if (usrServ.findById(id).get().getUserType().equals("member") && updatedUser.getUserType().equals("member")) {
-                if (updatedUser.getImage() != null) {
-                    User dbUser = usrServ.findById(id).orElseThrow();
-                    if (dbUser.getImage() != null) {
-                        updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
-                                dbUser.getImage().length()));
-                    }
-                }
+                User dbUser = usrServ.findById(id).orElseThrow();
+                updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
+                        dbUser.getImage().length()));
 
                 updatedUser.setId(id);
                 usrServ.save(updatedUser);

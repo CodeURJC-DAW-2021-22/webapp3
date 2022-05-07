@@ -158,13 +158,9 @@ public class GroupActivitiesRestController {
     public ResponseEntity<Activity> updateActivity(@PathVariable long id, @RequestBody Activity updatedAct) throws SQLException {
 
         if (actServ.findById(id).isPresent()){
-            if (updatedAct.hasImage()){
-                Activity dbAct = actServ.findById(id).orElseThrow();
-                if (dbAct.hasImage()) {
-                    updatedAct.setImage(BlobProxy.generateProxy(dbAct.getImage().getBinaryStream(),
-                            dbAct.getImage().length()));
-                }
-            }
+            Activity dbAct = actServ.findById(id).orElseThrow();
+            updatedAct.setImage(BlobProxy.generateProxy(dbAct.getImage().getBinaryStream(),
+                    dbAct.getImage().length()));
             updatedAct.setId(id);
             actServ.save(updatedAct);
 
