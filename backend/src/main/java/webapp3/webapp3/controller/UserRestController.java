@@ -11,18 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.User;
+import webapp3.webapp3.model.UserExerciseTable;
+import webapp3.webapp3.service.ExerciseService;
+import webapp3.webapp3.service.ExerciseTableService;
 import webapp3.webapp3.service.UserExerciseTableService;
 import webapp3.webapp3.service.UserService;
 
+import javax.persistence.Tuple;
+import javax.persistence.TupleElement;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
@@ -31,6 +36,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
+
 import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -40,10 +46,16 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 public class UserRestController {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserService usrServ;
 
     @Autowired
     private UserExerciseTableService usExServ;
+
+    @Autowired
+    private ExerciseTableService exerciseTableService;
 
     //GET log monitor
     @Operation(summary = "Get monitor logged in the application")
@@ -295,9 +307,11 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("member")) {
+
             LocalDate currentdate = LocalDate.now();
             DateType adminBirthday = new DateType(Integer.toString(currentdate.getYear()), Integer.toString(currentdate.getMonthValue()), Integer.toString(currentdate.getDayOfMonth()));
             user.setEntryDate(adminBirthday);
+            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/members/{id}")
                     .buildAndExpand(user.getId()).toUri();
@@ -335,6 +349,7 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMonitor(@RequestBody User user) {
         if (user.getUserType().equals("monitor")) {
+            user.setEncodedPassword( passwordEncoder.encode("monitor"));
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/monitors/{id}")
                     .buildAndExpand(user.getId()).toUri();
@@ -381,6 +396,48 @@ public class UserRestController {
 
         mon.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
         usrServ.save(mon);
+
+        return ResponseEntity.created(location).build();
+
+    }
+
+    //PUT member image
+    @Operation(summary = "PUT a member image")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Created",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            )
+    })
+
+    @PutMapping("/members/{id}/image/")
+    // this method is a PUT because uploading an image in API REST is a form-data type, not a JSON.
+    // I can't create an exercise table and introduce an image in the same petition
+    public ResponseEntity<Object> uploadMemberImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+            throws IOException {
+
+        User mem = usrServ.findById(id).orElseThrow();
+
+        URI location = fromCurrentRequest().build().toUri();
+
+
+        mem.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+        usrServ.save(mem);
 
         return ResponseEntity.created(location).build();
 
@@ -463,6 +520,59 @@ public class UserRestController {
     public ResponseEntity<User> updateMonitor(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
         if (usrServ.exist(id)) {
             if (usrServ.findById(id).get().getUserType().equals("monitor") && updatedUser.getUserType().equals("monitor")) {
+                if (updatedUser.getImage() != null) {
+                    User dbUser = usrServ.findById(id).orElseThrow();
+                    if (dbUser.getImage() != null) {
+                        updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
+                                dbUser.getImage().length()));
+                    }
+                }
+
+                updatedUser.setId(id);
+                usrServ.save(updatedUser);
+
+                return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //PUT member
+    @Operation(summary = "PUT member")
+
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Monitor found",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation=User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "403",
+                    description = "Forbidden",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid id supplied",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
+    })
+
+    @PutMapping("/members/{id}/")
+    public ResponseEntity<User> updateMember(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
+        if (usrServ.exist(id)) {
+            if (usrServ.findById(id).get().getUserType().equals("member") && updatedUser.getUserType().equals("member")) {
                 if (updatedUser.getImage() != null) {
                     User dbUser = usrServ.findById(id).orElseThrow();
                     if (dbUser.getImage() != null) {
@@ -657,8 +767,25 @@ public class UserRestController {
             )
     })
     @GetMapping("/members/statistics")
-    public ResponseEntity<HashMap<String, Integer>> memberStats(HttpServletRequest request){
+    public ResponseEntity<List<List>> memberStats(HttpServletRequest request){
         User user = usrServ.findByEmail(request.getUserPrincipal().getName()).orElseThrow();
-        return new ResponseEntity<>(usExServ.findExercisesTables(user.getId()), HttpStatus. OK);
+        HashMap<String, Integer> exercisesTables = usExServ.findExercisesTables(user.getId());
+        List<List> l = new ArrayList<>(2);
+        ArrayList<String> strings = new ArrayList<>(exercisesTables.size());
+        ArrayList<Integer> integers = new ArrayList<>(exercisesTables.size());
+        for (Map.Entry<String, Integer> e: exercisesTables.entrySet()) {
+            strings.add(e.getKey());
+            integers.add(e.getValue());
+        }
+        l.add(strings);
+        l.add(integers);
+        return new ResponseEntity<>(l, HttpStatus. OK);
+    }
+
+    @PostMapping("/members/addTableExercise/{id}")
+    public ResponseEntity<UserExerciseTable> addTableToUser(HttpServletRequest req, @PathVariable long id){
+        UserExerciseTable userExerciseTable = new UserExerciseTable(usrServ.findByEmail(req.getUserPrincipal().getName()).orElseThrow(), exerciseTableService.findById(id).orElseThrow());
+        usExServ.save(userExerciseTable);
+        return new ResponseEntity<>(userExerciseTable, HttpStatus. OK);
     }
 }

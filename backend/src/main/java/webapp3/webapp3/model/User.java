@@ -60,7 +60,6 @@ public class User {
         //password
     @Column(nullable = false)
     @NotNull
-    @JsonIgnore
     private String encodedPassword = "";
 
         //address
@@ -101,7 +100,7 @@ public class User {
     //type
     @Column(nullable = false)
     @NotNull
-    @JsonView({MemberLog.class, MonitorLog.class, MonitorBasic.class, MemberBasic.class})
+    @JsonView({MemberLog.class, MonitorLog.class, MemberBasic.class, MonitorBasic.class})
     private String userType = "";
 
     //Member
