@@ -1,8 +1,8 @@
+import { ExerciseTable } from 'src/app/models/ExerciseTable.model';
 import { ExerciseTableService } from './../../services/ExerciseTable.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ExerciseTable } from '../../models/ExerciseTable.model';
 
 
 @Component({
@@ -12,6 +12,10 @@ import { ExerciseTable } from '../../models/ExerciseTable.model';
 })
 
 export class MonitorEditExerciseTable {
+
+
+  @ViewChild("file")
+  file: any;
 
   exerciseTables: ExerciseTable | undefined;
 
@@ -23,6 +27,30 @@ export class MonitorEditExerciseTable {
           error => console.error(error),
       );
   }
+
+  save() {
+    this.service.updateExerciseTable(this.exerciseTables as ExerciseTable).subscribe(
+        act => this.uploadImg(act),
+        error => alert('Error updating exercise table: ' + error)
+    );
+
+    this.router.navigate(["new/monitorExerciseTable" + this.exerciseTables?.id]);
+}
+
+uploadImg(ExerciseTable: unknown): void {
+  const image = this.file.nativeElement.files[0];
+
+  if (image) {
+      let formData = new FormData();
+      formData.append("imageFile", image);
+      this.service.setExerciseTableImage( ExerciseTable as ExerciseTable, formData).subscribe(
+          _ => _,
+          error => alert('Error uploading activity image: ' + error)
+      );
+  }
+
+  this.router.navigate(["new/monitorExerciseTable"]);
+}
 
 
 }
