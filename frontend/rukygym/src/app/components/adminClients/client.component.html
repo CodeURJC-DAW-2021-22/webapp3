@@ -1,0 +1,39 @@
+<h5>Clientes</h5>
+
+<div class="table-responsive colorBlackText">
+    <table id="zero_config" class="table table-striped table-bordered ">
+
+        <thead class="colorOrangeText">
+            <tr>
+                <th>Nombre</th>
+                <th>DNI/NIE</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let elem of clients" class="colorBlackText">
+
+            <tr>
+                <td>{{elem.name}}</td>
+                <td>{{elem.NIF}}</td>
+                <td>
+                    <label class="customcheckbox m-b-20">
+                <input type="checkbox" id="mainCheckbox64" name="id" (click)="select(elem)">
+                <span class="checkmark"></span>
+                </label>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="show" class="loadMore">
+    <button #MoreClients class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore" (click)="more()">
+        Cargar más
+    </button>
+</div>
+
+<div class="col-12 buttonsAddActivity">
+    <button class="btn default btn-outline el-link selector2 colorWhiteText separate" type="submit" (click)="delete()">Eliminar</button>
+    <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" onclick="location.href='/new/clients'">Cancelar</button>
+</div>

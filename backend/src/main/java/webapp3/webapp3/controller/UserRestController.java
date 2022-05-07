@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import webapp3.webapp3.model.DateType;
 import webapp3.webapp3.model.User;
 import webapp3.webapp3.model.UserExerciseTable;
 import webapp3.webapp3.service.ExerciseService;
@@ -32,6 +33,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Year;
+
 import java.util.*;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -302,7 +307,10 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<User> createMember(@RequestBody User user) {
         if (user.getUserType().equals("member")) {
-            System.err.println("ERROR: " + user.getEncodedPassword());
+
+            LocalDate currentdate = LocalDate.now();
+            DateType adminBirthday = new DateType(Integer.toString(currentdate.getYear()), Integer.toString(currentdate.getMonthValue()), Integer.toString(currentdate.getDayOfMonth()));
+            user.setEntryDate(adminBirthday);
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/members/{id}")

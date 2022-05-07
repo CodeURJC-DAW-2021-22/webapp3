@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12">
+        <h5>Lista de monitores</h5>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <a href="new/create/monitor"><button class="but" style="margin-bottom: 20px;">Añadir nuevo monitor</button></a>
+    </div>
+</div>
+<div class="row" style="z-index: 0;">
+
+
+    <div *ngFor="let elem of monitors" class="col-lg-3 col-md-6 col-6">
+        <div class="card">
+            <div class="item">
+                <div class="objetfitcover">
+                    <img class="img" src="/api/users/monitors/{{elem.id}}/image" alt="">
+                </div>
+                <div class="text">
+                    <p style="color: white;">{{elem.name}}</p>
+                </div>
+                <div class="buttons row">
+                    <div class="col-6">
+                        <a href='/new/monitor/{{elem.id}}'><button class="but">Ver</button></a>
+                    </div>
+                    <div class="col-6">
+                        <a href='/new/monitor/edit/{{elem.id}}'><button class="but">Editar</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

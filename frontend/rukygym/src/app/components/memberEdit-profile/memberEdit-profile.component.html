@@ -1,0 +1,113 @@
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div *ngIf="member" class="col-12">
+            <div class="card2">
+                <div class="card-body">
+                    <div class="row el-element-overlay">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                            <h4 class="card-title ">Datos generales</h4>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text" class="form-control " name="name" pattern="[a-zA-Záéíóúü ]+ " [(ngModel)]="member.name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Apellidos: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="surname" pattern="[a-zA-Záéíóúü ]+ " [(ngModel)]="member.surname">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> DNI/NIE: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="NIF" pattern="[0-9]{8}[A-Za-z]|(X|Y|Z)[0-9]{7}[a-zA-Z]" [(ngModel)]="member.NIF" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Altura: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="height" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.height">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Peso: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="weight" pattern="[0-9][0-9][0-9]+" [(ngModel)]="member.weight">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Dirección: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="address " pattern="[a-zA-Z,./ 0-9áéíóúüº]+ " [(ngModel)]="member.address">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Código postal: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="postalCode " pattern="[0-9]{5}" [(ngModel)]="member.postalCode">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Teléfono: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <input type="text " class="form-control " name="phone " pattern="(6|7){1}[0-9]{8} " [(ngModel)]="member.phone">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-12 image ">
+                            <div class="el-card-avatar el-overlay-1 " style="margin: auto;">
+                                <img src="/api/users/me/image" width="100%" alt="user " style="text-align: center;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body ">
+                        <div class="border-top card "></div>
+                    </div>
+
+                    <div class="card-body ">
+                        <h4 class="card-title " style="color: black; margin-bottom: 20px;">Información Médica</h4>
+                        <!-- Create the editor container -->
+                        <textarea style="height: 300px; color: black; width:100%" [(ngModel)]="member.medicalInfo" name="medicalInfo">
+                    </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row el-element-overlay">
+                <div class="col-12 buttonsAddActivity">
+                    <button class="btn default btn-outline el-link selector2 colorWhiteText" style="color: white;" (click)="save()">Guardar</button>
+                    <button class="btn default btn-outline el-link selector2 colorWhiteText" style="color: white;" onclick="window.location.href = '/new/memberprofile'">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

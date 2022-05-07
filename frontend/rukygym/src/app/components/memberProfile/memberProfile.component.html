@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12 col-12 card-body">
+
+                            <h4 class="card-title ">Datos generales</h4>
+                            <hr>
+                            <div class="col-lg-12 col-md-12 col-12 image " style="padding-left: 600px; padding-right: 600px">
+                                <div class="el-card-avatar el-overlay-1">
+                                    <img src="/api/users/me/image" alt="user" style="text-align: center !important;; margin-bottom: 20px;">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Nombre: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control centerText ">{{member?.name}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Apellidos: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.surname}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> DNI/NIE: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.NIF}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Email: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.email}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Altura: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="date" class="form-control">{{member?.height}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Peso: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="date" class="form-control">{{member?.weight}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Dirección: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.address}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Código postal: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.postalCode}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-lg-2 col-md-4 col-12">
+                                    <p style="color:black;" class="centerText"> Teléfono: </p>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-12 ">
+                                    <span type="text " class="form-control ">{{member?.phone}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="card-body ">
+                        <h4 class="card-title" style="color: black; margin-bottom: 20px;">Información Médica</h4>
+                        <!-- Create the editor container -->
+                        <textarea style="height: 300px; color: black; width:100%" readonly="">{{member?.medicalInfo}}
+                      </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 buttonsAddActivity">
+                    <a href="new/profile/edit/{{member?.id}}"><button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" >Editar</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

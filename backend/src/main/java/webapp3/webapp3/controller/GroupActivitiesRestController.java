@@ -289,8 +289,11 @@ public class GroupActivitiesRestController {
 
         URI location = fromCurrentRequest().build().toUri(); // brings URI from the actual get
 
-        actGroup.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
-        actServ.save(actGroup);
+        if (!imageFile.isEmpty()){
+            actGroup.setImage(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+            actServ.save(actGroup);
+        }
+
 
         return ResponseEntity.created(location).build(); // brings url from the image
         // created code is 201
