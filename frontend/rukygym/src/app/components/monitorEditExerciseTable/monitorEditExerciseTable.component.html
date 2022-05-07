@@ -50,19 +50,24 @@
                                     <th>Seleccionar</th>
                                 </tr>
                             </thead>
-                            <tbody class="colorBlackText">
+                            <tbody *ngFor="let elem of exercise" class="colorBlackText">
 
                                 <tr>
-                                    <td [(ngModel)]="exerciseTables.exercises"></td>
-                                    <td>descripcion</td>
+                                    <td>{{elem.name}}</td>
+                                    <td>{{elem.description}}</td>
                                     <td><label class="customcheckbox m-b-20">
-                                          <input type="checkbox" id="mainCheckbox" name="id" value="id" checked/>
-                                          <span class="checkmark"></span>
-                                      </label></td>
+                                        <input type="checkbox" id="mainCheckbox" name="id" (click)="select(elem)"/>
+                                        <span class="checkmark"></span>
+                                    </label></td>
                                 </tr>
 
                             </tbody>
                         </table>
+                    </div>
+                    <div *ngIf="show">
+                        <button class="btn default btn-outline el-link selector2 colorWhiteText" type="button" id="loadMore" (click)="more()">
+                                Cargar más
+                            </button>
                     </div>
 
                     <div class="card-body">
