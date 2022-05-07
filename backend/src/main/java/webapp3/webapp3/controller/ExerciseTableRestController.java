@@ -138,6 +138,7 @@ public class ExerciseTableRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ExerciseTable> createExerciseTable(@RequestBody ExerciseTable exerciseTable) {
         URI location = fromCurrentRequest().build().toUri();
+        System.out.println("Aqui ha llegado exerciseTable");
         exerTabServ.save(exerciseTable);
         return ResponseEntity.created(location).body(exerciseTable);
     }
