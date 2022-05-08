@@ -29,7 +29,7 @@ export class MonitorExerciseTableInfo{
   }
 
     back() {
-        window.location.href = '/monitorExerciseTable';
+        window.location.href = '/new/monitorExerciseTable';
     }
 
 }
