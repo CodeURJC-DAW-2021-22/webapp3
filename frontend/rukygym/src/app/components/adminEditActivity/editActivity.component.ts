@@ -37,7 +37,7 @@ export class EditActivity {
             error => alert('Error updating activity: ' + error)
         );
 
-        this.router.navigate(["new/activity/" + this.activity?.id]);
+        this.router.navigate(["activity/" + this.activity?.id]);
     }
 
     uploadImg(activity: unknown): void {
@@ -52,6 +52,6 @@ export class EditActivity {
             );
         }
 
-        this.router.navigate(["new/activities"]);
+        this.router.navigate(["activities"]);
     }
 }

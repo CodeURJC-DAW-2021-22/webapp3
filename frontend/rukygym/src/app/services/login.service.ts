@@ -57,11 +57,11 @@ export class LoginService {
                 this.logged = true;
                 switch(this.user?.userType){
 
-                    case "monitor": window.location.href = 'http://localhost:4200/new/schedule';
+                    case "monitor": window.location.href = '/new/schedule';
                     break;
-                    case "administrator": window.location.href = 'http://localhost:4200/new/statistics';
+                    case "administrator": window.location.href = '/new/statistics';
                     break;
-                    case "member": window.location.href = 'http://localhost:4200/new/memberexercise-tables';
+                    case "member": window.location.href = '/new/memberexercise-tables';
                     break;
 
                   }
@@ -82,7 +82,7 @@ export class LoginService {
                 console.log("LOGOUT: Successfully");
                 this.logged = false;
                 this.user = undefined;
-                document.location.href = './new/mainPage';
+                document.location.href = './mainPage';
             });
 
     }

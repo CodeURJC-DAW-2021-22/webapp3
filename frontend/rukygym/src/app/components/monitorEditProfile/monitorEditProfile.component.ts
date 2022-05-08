@@ -42,7 +42,7 @@ export class MonitorEditProfile {
           error => alert('Error updating activity: ' + error)
       );
 
-      this.router.navigate(["new/profile"]);
+      this.router.navigate(["profile"]);
   }
 
   uploadImg(activity: unknown): void {
@@ -57,7 +57,7 @@ export class MonitorEditProfile {
           );
       }
 
-      this.router.navigate(["new/profile"]);
+      this.router.navigate(["profile"]);
   }
 
 }

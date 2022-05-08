@@ -7,7 +7,7 @@ import { ActivityService } from "src/app/services/Activity.service";
 @Component({
     selector:'activityinfo',
     templateUrl: './activityInfo.component.html',
-    styleUrls: ['./activityInfo.component.css']
+    styleUrls: ['../../../assets/css/main.css']
 })
 export class ActivityInfo{
 

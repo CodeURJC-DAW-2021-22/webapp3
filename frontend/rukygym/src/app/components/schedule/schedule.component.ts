@@ -9,7 +9,7 @@ import { ActivityService } from "../../services/Activity.service";
 @Component({
     selector:'schedule',
     templateUrl: './schedule.component.html',
-    styleUrls: ['./schedule.component.css']
+    styleUrls: ['../../../assets/css/main.css']
 })
 export class ScheduleComponent {
 

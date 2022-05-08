@@ -8,7 +8,7 @@ import { ActivityService } from "../../services/Activity.service";
 @Component({
     selector:'activities',
     templateUrl: './activities.component.html',
-    styleUrls: ['./activities.component.css']
+    styleUrls: ['../../../assets/css/main.css']
 })
 export class ActivitiesComponent {
 

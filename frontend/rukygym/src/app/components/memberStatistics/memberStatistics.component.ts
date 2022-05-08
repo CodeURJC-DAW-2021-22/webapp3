@@ -61,14 +61,14 @@ export class MemberStatistics{
               this.option.xAxis[0].data = result[0];
 
               this.option.series[0].data= result[1];
-            
+
               this._echartOption = this.option as EChartsOption;
             },
             error => {
-              window.location.href = '/new/mainPage'
+              window.location.href = '/mainPage'
           }
           )}
-    
+
 
     ngOnInit(): void {
     }

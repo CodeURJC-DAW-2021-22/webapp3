@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
     selector:'mainPage',
     templateUrl: './mainPage.component.html',
-    styleUrls: ['./mainPage.component.css']
+    styleUrls: ['../../../assets/css/main.css']
 })
 export class MainPageComponent {
 
@@ -20,7 +20,7 @@ export class MainPageComponent {
         (error: any)                => console.error(error),
       );
 
-      
+
     }
 
 }

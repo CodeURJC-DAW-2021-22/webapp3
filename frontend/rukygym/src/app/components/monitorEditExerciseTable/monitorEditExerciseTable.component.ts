@@ -51,7 +51,7 @@ export class MonitorEditExerciseTable {
         error => alert('Error updating exercise table: ' + error)
     );
 
-    this.router.navigate(["new/monitorExerciseTable" + this.exerciseTables?.id]);
+    this.router.navigate(["monitorExerciseTable" + this.exerciseTables?.id]);
 }
 
 uploadImg(ExerciseTable: unknown): void {
@@ -66,7 +66,7 @@ uploadImg(ExerciseTable: unknown): void {
       );
   }
 
-  this.router.navigate(["new/monitorExerciseTable"]);
+  this.router.navigate(["monitorExerciseTable"]);
 }
 
 more() {

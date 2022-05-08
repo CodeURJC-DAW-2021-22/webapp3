@@ -9,7 +9,7 @@ import { Activity } from "../../models/Activity.model";
     styleUrls: ['./newActivity.component.css']
 })
 export class NewActivity{
-    
+
     activity : Activity = {
         name: "",
         room: "",
@@ -42,22 +42,22 @@ export class NewActivity{
             activity => this.uploadImg(activity),
             error => alert('Error updating activity: ' + error)
         );
-        
+
     }
 
     uploadImg(activity: unknown): void {
         const image = this.file.nativeElement.files[0];
-    
+
         if (image) {
             let formData = new FormData();
             formData.append("imageFile", image);
             this.service.setActivityImage(activity as Activity, formData).subscribe(
-                _ => {this.router.navigate(["new/activities"]); },
+                _ => {this.router.navigate(["activities"]); },
                 error => alert('Error uploading activity image: ' + error)
             );
         }
-    
-        
+
+
     }
 }
 

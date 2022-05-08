@@ -45,7 +45,7 @@ export class MonitorAddExerciseTable {
                 this.show = false;
             }
         },
-        _ => alert("No fue posible cargar los clientes del servidor. Inténtelo más tarde.")
+        _ => _
     )
   }
 
@@ -61,11 +61,11 @@ export class MonitorAddExerciseTable {
     this.serv.addExerciseTable(this.exerciseTables).subscribe(
       x => this.updateImg(x as ExerciseTable),
       _ => alert("No se ha podido guardar la lista. Inténtelo mas tarde.")
-    )       
+    )
   }
 
   exit() {
-    window.location.href = '/new/monitorExerciseTable'
+    window.location.href = '/monitorExerciseTable'
   }
 
   updateImg(monitor: ExerciseTable): void {
@@ -75,8 +75,8 @@ export class MonitorAddExerciseTable {
         let formData = new FormData();
         formData.append("imageFile", image);
         this.serv.setExerciseTableImage(monitor, formData).subscribe(
-            _ => { 
-                this.router.navigate(["/new/monitorExerciseTable"]); 
+            _ => {
+                this.router.navigate(["/monitorExerciseTable"]);
             },
             error => alert('Error uploading monitor image: ' + error)
         );

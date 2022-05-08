@@ -8,7 +8,7 @@ import { LoginService } from "src/app/services/login.service";
 @Component({
     selector:'log-in',
     templateUrl: './log-in.component.html',
-    styleUrls: ['./log-in.component.css']
+    styleUrls: ['../../../assets/css/main.css']
 })
 export class LoginComponent {
 

@@ -24,12 +24,12 @@ export class MonitorExerciseTableInfo{
           },
           error => console.error(error),
       );
-      
-      
+
+
   }
 
     back() {
-        window.location.href = '/new/monitorExerciseTable';
+        window.location.href = '/monitorExerciseTable';
     }
 
 }
