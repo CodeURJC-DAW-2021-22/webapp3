@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -61,19 +62,19 @@ public class UserRestController {
     @Operation(summary = "Get monitor logged in the application")
 
     @ApiResponses(value = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Found the monitor",
-            content = {@Content(
-                    mediaType = "application/json",
-                    schema = @Schema(implementation = User.class)
-            )}
-        ),
-        @ApiResponse(
-                responseCode = "404",
-                description = "Not found",
-                content = @Content
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the monitor",
+                    content = {@Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = User.class)
+                    )}
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not found",
+                    content = @Content
+            )
     })
 
     @JsonView(User.MonitorLog.class)
@@ -312,6 +313,7 @@ public class UserRestController {
             DateType adminBirthday = new DateType(Integer.toString(currentdate.getYear()), Integer.toString(currentdate.getMonthValue()), Integer.toString(currentdate.getDayOfMonth()));
             user.setEntryDate(adminBirthday);
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+            setUserImage(user, "/sample_images/imageNotAddedPeople.jpeg");
             usrServ.save(user);
             URI location = fromCurrentRequest().path("/members/{id}")
                     .buildAndExpand(user.getId()).toUri();
@@ -319,6 +321,15 @@ public class UserRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    private void setUserImage(User monitor, String classpathResource){
+        try {
+            Resource image = new ClassPathResource(classpathResource);
+            monitor.setImage(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch(Exception e){
+
+        };
     }
 
     //POST monitors
@@ -570,6 +581,7 @@ public class UserRestController {
         if (usrServ.exist(id)) {
             if (usrServ.findById(id).get().getUserType().equals("member") && updatedUser.getUserType().equals("member")) {
                 User dbUser = usrServ.findById(id).orElseThrow();
+                updatedUser.setEncodedPassword(dbUser.getEncodedPassword());
                 updatedUser.setImage(BlobProxy.generateProxy(dbUser.getImage().getBinaryStream(),
                         dbUser.getImage().length()));
 
