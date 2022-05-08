@@ -28,7 +28,7 @@ export class SigninComponent {
       userType: "member"} as User;
 
     this.userService.addMembers(user).subscribe(
-      _ => window.location.href = "/log-in",
+      _ => window.location.href = "/new/log-in",
       _ => _
     );
   }
