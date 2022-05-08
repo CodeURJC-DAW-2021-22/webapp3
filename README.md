@@ -441,7 +441,7 @@ Remember that the image is going to be downloaded from DockerHub in the second s
 
 #### HEROKU LINK
 
-The link needed in order to access to the Heroku app ![](https://codeurjc-daw-2021-22-webapp3.herokuapp.com/)
+The link needed in order to access to the Heroku app (https://codeurjc-daw-2021-22-webapp3.herokuapp.com/)
 There are different types of users to test the app. These are some examples:
 
 * CLIENT
@@ -607,3 +607,194 @@ I have worked on the deployment of the application, development of REST APIs and
 |5 | dockerfile (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/main/docker/dockerfile) |
 
 ___
+
+
+## PHASE 4: REST API INCORPORATION AND DOCKER DEPLOYMENT
+
+### PREPARING ANGULAR DEVELOPMENT 
+
+The different versionsof the framework used for developing this part of the proyect are:
+
+  * Angular version: 13.3.3
+  * Node version: 16.14.2
+  * ng version for check version
+
+#### IDE PREPARATION:
+
+In order to prepare the compilation, we need to change the directory: 
+```cd .\frontend\rukygym\```
+
+Then, we need to install Angular: 
+```npm install @angular-devkit/build-angular```
+
+Then, Bootstrap instalation: 
+```ng add @ng-bootstrap/ng-bootstrap```
+
+Charts: ```npm install ngx-echarts -S```
+
+In order to visualize the charts, you have to create on ```.\frontend\rukygym\``` a file:
+```file name: proxy.conf.json```
+
+```file: {
+    "/api/*": {
+        "target": "https://127.0.0.1:8443/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
+``` 
+#### Run aplication: 
+
+In order to run the aplication you need to use the command: 
+```ng serve --proxy-config proxy.conf.json```
+
+
+### UPDATE DIAGRAM CLASS
+
+![](phase4_Doc_Imgs/UML_phase4.png)
+
+
+### VIDEO WITH APLICATION'S RELEVANT ASPECTS
+
+Here you have the link to the video with the relevant aspects of the application (https://youtu.be/PnMKSVd1__s).
+
+
+### MEMBERS PARTICIPATION
+
+#### Nestor Granado Perez
+
+##### DESCRIPTION OF TASKS
+
+During this phase I have been responsible of the non registered user part. I´ve developed all the functionality related to the non registered user of the application.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+|1 | activities page and routing (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/e1c818de89b35b80c0c4163aaf12ef4d6b6347a0) |
+|2 | Prices page and routing (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/0ed03108e2698add86f6d8cbb73b0be7857f163e) |
+|3 | Log-in and sign-in templates (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/8d99915880a433940243aadde0cae75c5465c14d) |
+|4 | mainPage, navbar and footer templates (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/e373f7d5a4a4a07255133bef9c44ca65fb33310e) |
+|5 | conection beetwen main page and api (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/d7ed99e9e24e73cb8f4576610dc9f8d68e92c41a) |
+
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+|1 | frontend/rukygym/src/app/services/Activity.service.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/services/Activity.service.ts) |
+|2 | frontend/rukygym/src/app/components/mainPage/mainPage.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/mainPage/mainPage.component.html) |
+|3 | frontend/rukygym/src/app/components/sign-in/sign-in.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/sign-in/sign-in.component.html) |
+|4 | frontend/rukygym/src/app/components/prices/prices.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/prices/prices.component.html) |
+|5 | frontend/rukygym/src/app/components/activities/activities.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/activities/activities.component.html) |
+
+
+#### Carlos Fernandez Lopez
+
+##### DESCRIPTION OF TASKS
+
+During this phase I have been responsible of the monitor user part. I´ve developed all the functionality related to the monitor user of the application. I recorded the video too
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+|1 | Monitor activities and see activity info components (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/bdf423e0f160fa2507c0011f549b6868b1dba671) |
+|2 | Service files (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/134d74a2887b2e2b541f1ae4b8ecd65e05373b14) |
+|3 | app routing (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/9637608d9969c659400c2f0fc65090b8fa903ced) |
+|4 | model and services (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/43d7c7eb58c7e475b7351b2391e8549e7cb7485e) |
+|5 | Service files (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/134d74a2887b2e2b541f1ae4b8ecd65e05373b14) |
+
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+|1 | frontend/rukygym/src/app/components/activityInfo/activityInfo.component.css (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorActivityInfo/monitorActivityInfo.component.html) |
+|2 | frontend/rukygym/src/app/components/monitorSchedule/monitorSchedule.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorSchedule/monitorSchedule.component.html) |
+|3 | frontend/rukygym/src/app/components/monitorAddExerciseTable/monitorAddExerciseTable.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorAddExerciseTable/monitorAddExerciseTable.component.html) |
+|4 | frontend/rukygym/src/app/components/monitorExerciseTableInfo/monitorExerciseTableInfo.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorExerciseTableInfo/monitorExerciseTableInfo.component.html) |
+|5 | frontend/rukygym/src/app/components/monitorEditExerciseTable/monitorEditExerciseTable.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorEditExerciseTable/monitorEditExerciseTable.component.html) |
+
+
+#### Fernando Sarabia Rodriguez
+
+##### DESCRIPTION OF TASKS
+
+During this phase I have been responsible of the monitor user part. I´ve developed all the functionality related to the monitor user of the application.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+|1 | navBar, sidemenu, footer components (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/7e6966fb56ddded28706216548cc95660d73e725) |
+|2 | monitor schedule component (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/8ded5a0b7e5719bdb2a961a0da30efc4a891fcd4) |
+|3 | add and edit exercise table (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/048d67600227017fd4a6b749ad2ddd0d2ad9c9b9) |
+|4 | monitor exercise table and see exercise table info (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/32feda657dc428528a0cad5f24b43706b0e1e722) |
+|5 | monitor activities (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/571f7a4ba7a7b1c02a8957d25bc5c8a7fb89bbf9) |
+
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+|1 | frontend/rukygym/src/app/components/activityInfo/activityInfo.component.css (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorActivityInfo/monitorActivityInfo.component.html) |
+|2 | frontend/rukygym/src/app/components/monitorSchedule/monitorSchedule.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorSchedule/monitorSchedule.component.html) |
+|3 | frontend/rukygym/src/app/components/monitorAddExerciseTable/monitorAddExerciseTable.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorAddExerciseTable/monitorAddExerciseTable.component.html) |
+|4 | frontend/rukygym/src/app/components/monitorExerciseTableInfo/monitorExerciseTableInfo.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorExerciseTableInfo/monitorExerciseTableInfo.component.html) |
+|5 | frontend/rukygym/src/app/components/monitorEditExerciseTable/monitorEditExerciseTable.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/monitorEditExerciseTable/monitorEditExerciseTable.component.html) |
+
+
+#### Andrea Nuzzi Herrero
+
+##### DESCRIPTION OF TASKS
+
+During this phase I have been responsible of the member user part. I´ve developed all the functionality related to the member user of the application.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+|1 | adding statistics to member (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/808a251b80ef279664d86067cc51df3a611bc700) |
+|2 | adding activity info (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/61fdab83ff21bf8107bed888f993424dbd23e15c) |
+|3 | adding navegation to member (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/efaa155caa6b42ecf66232add473c8a51c337c52) |
+|4 | adding exercise tables component (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/697752a4215ab39e2c9bfe474c1b38eeb8f39a7e) |
+|5 | adding edit profile component (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/9880cc88a93b8b564c29db9dce8b4a923a691d57) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+|1 | frontend/rukygym/src/app/app.module.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/memberAngularDevelopment/frontend/rukygym/src/app/app.module.ts) |
+|2 | frontend/rukygym/src/app/components/activity-info/activity-info.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/memberAngularDevelopment/frontend/rukygym/src/app/components/memberActivity-info/memberActivity-info.component.html) |
+|3 | frontend/rukygym/src/app/components/statistics/statistics.component.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/memberAngularDevelopment/frontend/rukygym/src/app/components/memberStatistics/memberStatistics.component.html) |
+|4 | frontend/rukygym/src/app/exercisetables/exercisetables.component.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/memberAngularDevelopment/frontend/rukygym/src/app/components/memberStatistics/memberStatistics.component.ts) |
+|5 | frontend/rukygym/src/app/edit-profile/edit-profile.component.html (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/memberAngularDevelopment/frontend/rukygym/src/app/components/memberEdit-profile/memberEdit-profile.component.html) |
+
+
+#### Alessandro Nuzzi Herrero
+
+##### DESCRIPTION OF TASKS
+
+During this phase I have been responsible of the administrator user part. I´ve developed all the functionality related to the administrator user of the application. I have also been in charge of the deployment in Heroku.
+
+##### COMMITS DONE
+
+| Name | Description |
+| - | - |
+|1 | activityInfo component created (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/e9f55646e38e1b6cade4582c826818a3bc28f882) |
+|2 | Clients AJAX uploaded from server (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/2a574e09b8946fc94817d6d206e00afe925e594a) |
+|3 | Admin statistics with data from backend (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/26c145f59ff3d3ff712bfe5249930ff468d737cc) |
+|4 | New activity working with images and minor details (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/d54770be47723dba82648d9ff0954f8a02383bde) |
+|5 | Activities frontend (https://github.com/CodeURJC-DAW-2021-22/webapp3/commit/3a15afb6a065c6c0a92a509683462a6e80dd512a) |
+
+##### FILES PARTICIPATED
+
+| File name | Link to github |
+| - | - |
+|1 | frontend/rukygym/src/app/components/activityInfo/activityInfo.component.css (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/adminActivityInfo/activityInfo.component.css) |
+|2 | frontend/rukygym/src/app/components/clients/client.component.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/adminClients/client.component.html) |
+|3 | frontend/rukygym/src/app/components/adminStatistics/adminStatistics.component.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/adminStatistics/adminStatistics.component.ts) |
+|4 | frontend/rukygym/src/app/components/adminActivities/adminActivities.component.css (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/adminStatistics/adminStatistics.component.ts) |
+|5 | frontend/rukygym/src/app/components/newActivity/newActivity.component.ts (https://github.com/CodeURJC-DAW-2021-22/webapp3/blob/nonregistereduserAngularDevelopment/frontend/rukygym/src/app/components/adminNewActivity/newActivity.component.ts) |
