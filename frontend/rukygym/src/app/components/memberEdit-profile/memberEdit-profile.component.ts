@@ -34,7 +34,7 @@ export class MemberEditProfileComponent {
 
     save() {
       this.service.updateMember(this.member as User).subscribe(
-          _ => window.location.href = "/memberprofile",
+          _ => window.location.href = "/new/memberprofile",
           error => alert('Error updating member: ' + error)
       );
   }
